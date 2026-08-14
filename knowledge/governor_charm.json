@@ -1,0 +1,84 @@
+{
+  "domain": "governor_charm",
+  "title": "Governor Charm",
+  "description": "The Governor's (Chief's) Charm system, distinct from hero gear and Governor Gear. Leveling each charm consumes two materials: Charm Guides and Charm Designs. This file records the per-level material cost and the cumulative running total to reach each charm level.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "User-provided in-game charm upgrade material table (2026-07-20)."
+  ],
+  "entries": [
+    {
+      "id": "upgrade-material-costs",
+      "name": "Governor Charm upgrade material costs",
+      "summary": "Per-level and cumulative cost in Charm Guides and Charm Designs to level a single Governor Charm from None up to Level 11, plus the Power granted at each level. Governor Charms unlock at Town Center level 25 and further enhance Governor Gear for a huge overall power boost. Max charm level is 22; data recorded here covers levels 1-11.",
+      "details": {
+        "unlock_requirement": "Town Center level 25",
+        "purpose": "Further enhance your Governor Gear, providing a huge boost to your overall power.",
+        "max_level_total": 22,
+        "materials": ["charm_guides", "charm_designs"],
+        "material_notes": {
+          "charm_guides": "Charm leveling material (Guides).",
+          "charm_designs": "Charm leveling material (Designs)."
+        },
+        "note": "'cost' is the material spent to reach that level from the previous one; 'cumulative' is the running total spent from None up to and including that level; 'power' is the Governor Charm power at that level. Costs are per single charm.",
+        "columns": ["label", "level", "cost", "cumulative", "power"],
+        "max_level_recorded": 11,
+        "table": [
+        {"label": "None", "level": null, "cost": {"charm_guides": 0, "charm_designs": 0}, "cumulative": {"charm_guides": 0, "charm_designs": 0}, "power": null},
+        {"label": "Level 1", "level": 1, "cost": {"charm_guides": 5, "charm_designs": 5}, "cumulative": {"charm_guides": 5, "charm_designs": 5}, "power": 205700},
+        {"label": "Level 2", "level": 2, "cost": {"charm_guides": 40, "charm_designs": 15}, "cumulative": {"charm_guides": 45, "charm_designs": 20}, "power": 288000},
+        {"label": "Level 3", "level": 3, "cost": {"charm_guides": 60, "charm_designs": 40}, "cumulative": {"charm_guides": 105, "charm_designs": 60}, "power": 370000},
+        {"label": "Level 4", "level": 4, "cost": {"charm_guides": 80, "charm_designs": 100}, "cumulative": {"charm_guides": 185, "charm_designs": 160}, "power": 452000},
+        {"label": "Level 5", "level": 5, "cost": {"charm_guides": 100, "charm_designs": 200}, "cumulative": {"charm_guides": 285, "charm_designs": 360}, "power": 576000},
+        {"label": "Level 6", "level": 6, "cost": {"charm_guides": 120, "charm_designs": 300}, "cumulative": {"charm_guides": 405, "charm_designs": 660}, "power": 700000},
+        {"label": "Level 7", "level": 7, "cost": {"charm_guides": 140, "charm_designs": 400}, "cumulative": {"charm_guides": 545, "charm_designs": 1060}, "power": 824000},
+        {"label": "Level 8", "level": 8, "cost": {"charm_guides": 200, "charm_designs": 400}, "cumulative": {"charm_guides": 745, "charm_designs": 1460}, "power": 948000},
+        {"label": "Level 9", "level": 9, "cost": {"charm_guides": 300, "charm_designs": 400}, "cumulative": {"charm_guides": 1045, "charm_designs": 1860}, "power": 1072000},
+        {"label": "Level 10", "level": 10, "cost": {"charm_guides": 420, "charm_designs": 420}, "cumulative": {"charm_guides": 1465, "charm_designs": 2280}, "power": 1196000},
+        {"label": "Level 11", "level": 11, "cost": {"charm_guides": 560, "charm_designs": 420}, "cumulative": {"charm_guides": 2025, "charm_designs": 2700}, "power": 1320000}
+        ]
+      },
+      "tags": ["governor-charm", "chief-charm", "upgrade", "materials", "charm-guides", "charm-designs", "power"]
+    },
+    {
+      "id": "fundamentals",
+      "name": "Governor Charm fundamentals",
+      "summary": "Governor Charms unlock at Town Center level 25 and work like Governor Gear but provide HEALTH and LETHALITY instead of attack and defense. Each troop type has six charms (three per gear piece). Charms use separate materials and have NO set bonuses. Placement does not matter: any charm of the same troop type and level gives identical stats. Bonuses apply GLOBALLY across all marches.",
+      "details": {
+        "unlock_requirement": "Town Center level 25",
+        "stat_type": "health and lethality (per troop type)",
+        "charm_count": {
+          "per_troop_type": 6,
+          "per_gear_piece": 3,
+          "troop_types": [
+            "infantry",
+            "cavalry",
+            "archer"
+          ]
+        },
+        "scope": "Global: applies to every march.",
+        "set_bonuses": "None (unlike Governor Gear).",
+        "placement": "Irrelevant: same troop type + level = identical stats regardless of which gear piece the charm is on.",
+        "materials": [
+          "charm_guides",
+          "charm_designs"
+        ],
+        "cost_shape": "Non-linear: progression includes efficiency breakpoints that reward informed upgrade sequencing.",
+        "tier_gating": "Additional tiers unlock as the kingdom ages, but most players are material-limited before hitting that cap."
+      },
+      "tags": [
+        "governor-charm",
+        "fundamentals",
+        "global",
+        "health",
+        "lethality"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Full progression beyond Level 11.",
+    "Stat bonuses granted at each charm level.",
+    "How many charm slots the Governor has and where the materials are obtained."
+  ]
+}

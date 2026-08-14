@@ -1,0 +1,23 @@
+{
+  "$comment": "Standard shape for every knowledge/*.json file. Copy this when adding a new domain. 'knowledge' = STATIC facts about the game (things that are true regardless of our account state). Dynamic learnings live under memory/.",
+  "domain": "example",
+  "title": "Human readable title",
+  "description": "What this file is about, in one or two sentences.",
+  "status": "scaffold | partial | complete",
+  "last_updated": "YYYY-MM-DD",
+  "sources": [
+    "How we learned this: live testing, in-game screen, wiki, user, etc."
+  ],
+  "entries": [
+    {
+      "id": "unique-slug",
+      "name": "Display name",
+      "summary": "Short explanation.",
+      "details": {},
+      "tags": []
+    }
+  ],
+  "open_questions": [
+    "Things we still need to find out about this domain."
+  ]
+}

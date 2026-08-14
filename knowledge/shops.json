@@ -1,0 +1,63 @@
+{
+  "domain": "shops",
+  "title": "Shops",
+  "description": "In-game shops, their stock, refresh timers and currencies.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "kingshotguide.com Nomadic Merchant guide (user-provided, 2025-02-06)"
+  ],
+  "entries": [
+    {
+      "id": "nomadic-merchant",
+      "name": "Nomadic Merchant",
+      "summary": "A daily resource-exchange shop. All exchanges are benchmarked to a fixed par ratio; with no discount an exchange is perfectly even, so the only thing that matters is whether a DISCOUNT (or a special item) is attached. Cheap daily value if cycled through.",
+      "details": {
+        "par_ratio": "50 Wood = 50 Bread (Food) = 10 Stone = 2 Iron. This 50:50:10:2 is the 'par value' the whole exchange system uses; without a discount every exchange is even (the raw numbers like '113 iron for 3,000 wood' are irrelevant — only the discount % matters).",
+        "deal_rules": {
+          "discounted_exchanges": "Any % off (20%, 25%, etc.) is genuine free resources — always take if you can afford it.",
+          "even_exchanges": "0% off exchanges: still take them, because taking one can REVEAL another (possibly discounted) exchange behind it. Keep cycling.",
+          "diamond_exchanges": "Exchanges costing diamonds are generally skipped — better deals exist in the VIP shop and better uses for diamonds."
+        },
+        "special_items": {
+          "speed_ups": "Occasionally offers construction/training/research speed-ups. Highly valuable — take almost always. Late game the bottleneck is TIME, not raw resources (100M+ food/wood common), so converting excess resources into speed-ups is strong.",
+          "advanced_teleporters": "Occasionally offered. Move city anywhere in the kingdom; extremely valuable for Castle Battles, Fortress, Sanctuary events, strategic alliance positioning. VIP shop price: 2,000 gems each, limited to 2/week. Grabbing one here = converting ~40M food/wood into ~2,000-4,000 gems of value. Always grab."
+        },
+        "refresh": "Has a free refresh — use it and keep cycling through until good deals are exhausted (~2-3 min/day).",
+        "drawback_unsecured_resources": {
+          "issue": "Resources RECEIVED from an exchange are UNSECURED (vulnerable to raids), even if you paid with secured/protected resources.",
+          "matters_when": [
+            "Early game while still vulnerable",
+            "Violent servers with frequent attacks",
+            "When you have no shield active"
+          ],
+          "does_not_matter_when": [
+            "Mid-late game (you likely have excess unsecured resources anyway)",
+            "Servers with strong NAPs between alliances",
+            "When shielded most of the time"
+          ],
+          "verdict": "Minor concern for most players; benefits far outweigh it, especially later."
+        },
+        "priority_order": [
+          "1. Advanced Teleporters (worth 2,000+ gems, scarce elsewhere).",
+          "2. Speed-up exchanges (convert excess resources into time savings).",
+          "3. Discounted resource exchanges (20-25% off — free resources, no downside).",
+          "4. Even resource exchanges (0% off — take to reveal better deals behind them).",
+          "5. Diamond-based exchanges (generally skip unless exceptional value)."
+        ]
+      },
+      "tags": [
+        "shop",
+        "nomadic-merchant",
+        "resources",
+        "exchange",
+        "daily",
+        "teleporter",
+        "speedups"
+      ]
+    }
+  ],
+  "open_questions": [
+    "RESOLVED (policy): auto-claim ALL free shop items. Discounted items (70%/50%/30% off) are left to the player for now — even a good discount may not be worth spending the current balance at that moment."
+  ]
+}

@@ -1,0 +1,930 @@
+{
+  "domain": "buildings",
+  "title": "Buildings",
+  "description": "City buildings grouped by category (Core, Military, Defense, Research, Social, Resource, Special). Level caps live in knowledge/max_levels.json; this file documents each building's role and category.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["kingshotguide.com Buildings list (user-provided)", "kingshotguide.com Town Center upgrade table (user-provided)", "kingshotoptimizer.com Max Levels page", "https://kingshot.fandom.com/wiki/Infirmary (Infirmary Lv.1-30 table, checked 2026-06-02)"],
+  "entries": [
+    {
+      "id": "town-center",
+      "name": "Town Center",
+      "summary": "Core building; the heart of the city. Gates most progression (e.g. hero level 80 needs TC 26) and can be pushed past level 30 into Truegold.",
+      "details": {
+        "category": "Core",
+        "max_level": 30,
+        "truegold": true,
+        "notes": "TC level unlocks features across the game (heroes, gear, governor equipment). Full per-level cost/power table is inlined below (from kingshotguide.com). Resource fields are integers (null = N/A). Levels 30-1..30-4 are the four post-30 fortifications before Truegold; TG 1..TG 3 are Truegold tiers, each preceded by four TGn-x fortification steps.",
+        "upgrade_table": [
+          {"level": "1", "requirements": null, "bread": null, "wood": null, "stone": null, "iron": null, "truegold": null, "upgrade_time": null, "max_power": 2000, "unlocks": ["Cookhouse", "Shelter 1", "Shelter 2", "Sawmill"]},
+          {"level": "2", "requirements": "Sawmill Lvl. 1", "bread": null, "wood": 180, "stone": null, "iron": null, "truegold": null, "upgrade_time": "6 seconds", "max_power": 3800, "unlocks": ["Mill"]},
+          {"level": "3", "requirements": "House 1 Lvl. 2", "bread": null, "wood": 805, "stone": null, "iron": null, "truegold": null, "upgrade_time": "1 minute", "max_power": 6500, "unlocks": ["Quarry"]},
+          {"level": "4", "requirements": "Quarry Lvl. 3", "bread": null, "wood": 1800, "stone": 360, "iron": null, "truegold": null, "upgrade_time": "3 minutes", "max_power": 10100, "unlocks": ["Shelter 3", "Clinic", "Explorer's Cabin", "Hero Hall"]},
+          {"level": "5", "requirements": "Hero Hall, House 3 Lvl. 3", "bread": null, "wood": 7600, "stone": 1500, "iron": null, "truegold": null, "upgrade_time": "10 minutes", "max_power": 15500, "unlocks": ["Shelter 4", "Iron Mine"]},
+          {"level": "6", "requirements": "Iron Mine Lvl. 5", "bread": null, "wood": 19000, "stone": 3800, "iron": 960, "truegold": null, "upgrade_time": "30 minutes", "max_power": 23600, "unlocks": ["Shelter 5", "Chief's House"]},
+          {"level": "7", "requirements": "Mill Lvl. 6", "bread": null, "wood": 69000, "stone": 13000, "iron": 3400, "truegold": null, "upgrade_time": "1 hour", "max_power": 35300, "unlocks": ["Shelter 6", "Lighthouse", "Barracks", "Barricade"]},
+          {"level": "8", "requirements": "Barracks Lvl. 7", "bread": null, "wood": 120000, "stone": 25000, "iron": 6300, "truegold": null, "upgrade_time": "2 hours, 30 minutes", "max_power": 47000, "unlocks": ["Embassy", "Arena", "Range", "Infirmary"]},
+          {"level": "9", "requirements": "Embassy Lvl. 8, Infirmary Lvl. 1", "bread": null, "wood": 260000, "stone": 52000, "iron": 13000, "truegold": null, "upgrade_time": "4 hours, 30 minutes", "max_power": 58700, "unlocks": ["Storehouse", "Academy", "Stable"]},
+          {"level": "10", "requirements": "Range Lvl. 9, Academy", "bread": null, "wood": 460000, "stone": 92000, "iron": 23000, "truegold": null, "upgrade_time": "6 hours", "max_power": 75700, "unlocks": ["Shelter 7", "Shelter 8", "Command Center"]},
+          {"level": "11", "requirements": "Embassy Lvl. 10, Stable Lvl. 10", "bread": 1300000, "wood": 1300000, "stone": 260000, "iron": 65000, "truegold": null, "upgrade_time": "7 hours, 30 minutes", "max_power": 92700, "unlocks": ["Enlistment Office"]},
+          {"level": "12", "requirements": "Embassy Lvl. 11, Command Center Lvl. 1", "bread": 1600000, "wood": 1600000, "stone": 330000, "iron": 84000, "truegold": null, "upgrade_time": "9 hours", "max_power": 109700, "unlocks": []},
+          {"level": "13", "requirements": "Embassy Lvl. 12, Barracks Lvl. 12", "bread": 2300000, "wood": 2300000, "stone": 470000, "iron": 110000, "truegold": null, "upgrade_time": "11 hours", "max_power": 138400, "unlocks": ["Drill Camp"]},
+          {"level": "14", "requirements": "Embassy Lvl. 13, Range Lvl. 13", "bread": 3100000, "wood": 3100000, "stone": 630000, "iron": 150000, "truegold": null, "upgrade_time": "14 hours", "max_power": 167100, "unlocks": []},
+          {"level": "15", "requirements": "Embassy Lvl. 14, Stable Lvl. 14", "bread": 4600000, "wood": 4600000, "stone": 930000, "iron": 230000, "truegold": null, "upgrade_time": "18 hours", "max_power": 195800, "unlocks": ["Hero Gear"]},
+          {"level": "16", "requirements": "Embassy Lvl. 15, Academy Lvl. 15", "bread": 5900000, "wood": 5900000, "stone": 1100000, "iron": 290000, "truegold": null, "upgrade_time": "1 day, 6 hours, 28 minutes", "max_power": 236200, "unlocks": []},
+          {"level": "17", "requirements": "Embassy Lvl. 16, Barracks Lvl. 16", "bread": 9300000, "wood": 9300000, "stone": 1800000, "iron": 480000, "truegold": null, "upgrade_time": "1 day, 12 hours, 34 minutes", "max_power": 276600, "unlocks": []},
+          {"level": "18", "requirements": "Embassy Lvl. 17, Range Lvl. 17", "bread": 12000000, "wood": 12000000, "stone": 2500000, "iron": 620000, "truegold": null, "upgrade_time": "1 day, 19 hours, 53 minutes", "max_power": 317000, "unlocks": []},
+          {"level": "19", "requirements": "Embassy Lvl. 18, Stable Lvl. 18", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 780000, "truegold": null, "upgrade_time": "2 days, 17 hours, 50 minutes", "max_power": 374400, "unlocks": []},
+          {"level": "20", "requirements": "Embassy Lvl. 19, Academy Lvl. 19", "bread": 21000000, "wood": 21000000, "stone": 4300000, "iron": 1000000, "truegold": null, "upgrade_time": "3 days, 10 hours, 18 minutes", "max_power": 431800, "unlocks": ["Forgehammer"]},
+          {"level": "21", "requirements": "Embassy Lvl. 20, Barracks Lvl. 20", "bread": 27000000, "wood": 27000000, "stone": 5400000, "iron": 1300000, "truegold": null, "upgrade_time": "4 days, 10 hours, 59 minutes", "max_power": 489200, "unlocks": []},
+          {"level": "22", "requirements": "Embassy Lvl. 21, Range Lvl. 21", "bread": 36000000, "wood": 36000000, "stone": 7200000, "iron": 1800000, "truegold": null, "upgrade_time": "6 days, 16 hours, 29 minutes", "max_power": 575300, "unlocks": ["Chief Gear"]},
+          {"level": "23", "requirements": "Embassy Lvl. 22, Stable Lvl. 22", "bread": 44000000, "wood": 44000000, "stone": 8900000, "iron": 2200000, "truegold": null, "upgrade_time": "9 days, 8 hours, 40 minutes", "max_power": 661400, "unlocks": []},
+          {"level": "24", "requirements": "Embassy Lvl. 23, Academy Lvl. 23", "bread": 60000000, "wood": 60000000, "stone": 12000000, "iron": 3000000, "truegold": null, "upgrade_time": "13 days, 2 hours, 33 minutes", "max_power": 747500, "unlocks": []},
+          {"level": "25", "requirements": "Embassy Lvl. 24, Barracks Lvl. 24", "bread": 81000000, "wood": 81000000, "stone": 16000000, "iron": 4000000, "truegold": null, "upgrade_time": "18 days, 8 hours, 22 minutes", "max_power": 833600, "unlocks": ["Charms"]},
+          {"level": "26", "requirements": "Embassy Lvl. 25, Range Lvl. 25", "bread": 100000000, "wood": 100000000, "stone": 21000000, "iron": 5200000, "truegold": null, "upgrade_time": "21 days, 2 hours, 26 minutes", "max_power": 960100, "unlocks": []},
+          {"level": "27", "requirements": "Embassy Lvl. 26, Stable Lvl. 26", "bread": 140000000, "wood": 140000000, "stone": 24000000, "iron": 7400000, "truegold": null, "upgrade_time": "25 days, 7 hours, 43 minutes", "max_power": 1086600, "unlocks": []},
+          {"level": "28", "requirements": "Embassy Lvl. 27, Academy Lvl. 27", "bread": 190000000, "wood": 190000000, "stone": 39000000, "iron": 9900000, "truegold": null, "upgrade_time": "29 days, 2 hours, 52 minutes", "max_power": 1213100, "unlocks": []},
+          {"level": "29", "requirements": "Embassy Lvl. 28, Barracks Lvl. 28", "bread": 240000000, "wood": 240000000, "stone": 49000000, "iron": 12000000, "truegold": null, "upgrade_time": "33 days, 11 hours, 42 minutes", "max_power": 1339600, "unlocks": []},
+          {"level": "30", "requirements": "Embassy Lvl. 29, Range Lvl. 29", "bread": 300000000, "wood": 300000000, "stone": 60000000, "iron": 15000000, "truegold": null, "upgrade_time": "40 days, 4 hours, 27 minutes", "max_power": 1523500, "unlocks": []},
+          {"level": "30-1", "requirements": "Embassy Lv. 30, Research Center Lv. 30", "bread": 67000000, "wood": 67000000, "stone": 13000000, "iron": 3300000, "truegold": 132, "upgrade_time": "7 days", "max_power": 1523500, "unlocks": []},
+          {"level": "30-2", "requirements": "Embassy Lv. 30, Research Center Lv. 30", "bread": 67000000, "wood": 67000000, "stone": 13000000, "iron": 3300000, "truegold": 132, "upgrade_time": "7 days", "max_power": 1523500, "unlocks": []},
+          {"level": "30-3", "requirements": "Embassy Lv. 30, Research Center Lv. 30", "bread": 67000000, "wood": 67000000, "stone": 13000000, "iron": 3300000, "truegold": 132, "upgrade_time": "7 days", "max_power": 1523500, "unlocks": []},
+          {"level": "30-4", "requirements": "Embassy Lv. 30, Research Center Lv. 30", "bread": 67000000, "wood": 67000000, "stone": 13000000, "iron": 3300000, "truegold": 132, "upgrade_time": "7 days", "max_power": 1523500, "unlocks": []},
+          {"level": "TG 1", "requirements": "Embassy Lv. 30, Research Center Lv. 30", "bread": 67000000, "wood": 67000000, "stone": 13000000, "iron": 3300000, "truegold": 132, "upgrade_time": "7 days", "max_power": 1810500, "unlocks": []},
+          {"level": "TG1-1", "requirements": "Embassy TG Lv. 1, Lancer Camp TG Lv. 1", "bread": 72000000, "wood": 72000000, "stone": 14000000, "iron": 3600000, "truegold": 158, "upgrade_time": "9 days", "max_power": 1810500, "unlocks": []},
+          {"level": "TG1-2", "requirements": "Embassy TG Lv. 1, Lancer Camp TG Lv. 1", "bread": 72000000, "wood": 72000000, "stone": 14000000, "iron": 3600000, "truegold": 158, "upgrade_time": "9 days", "max_power": 1810500, "unlocks": []},
+          {"level": "TG1-3", "requirements": "Embassy TG Lv. 1, Lancer Camp TG Lv. 1", "bread": 72000000, "wood": 72000000, "stone": 14000000, "iron": 3600000, "truegold": 158, "upgrade_time": "9 days", "max_power": 1810500, "unlocks": []},
+          {"level": "TG1-4", "requirements": "Embassy TG Lv. 1, Lancer Camp TG Lv. 1", "bread": 72000000, "wood": 72000000, "stone": 14000000, "iron": 3600000, "truegold": 158, "upgrade_time": "9 days", "max_power": 1810500, "unlocks": []},
+          {"level": "TG 2", "requirements": "Embassy TG Lv. 1, Lancer Camp TG Lv. 1", "bread": 72000000, "wood": 72000000, "stone": 14000000, "iron": 3600000, "truegold": 158, "upgrade_time": "9 days", "max_power": 2097500, "unlocks": []},
+          {"level": "TG 2-1", "requirements": "Embassy TG Lv. 2, Infantry Camp TG Lv. 2", "bread": 79000000, "wood": 79000000, "stone": 15000000, "iron": 3900000, "truegold": 238, "upgrade_time": "11 days", "max_power": 2097500, "unlocks": []},
+          {"level": "TG 2-2", "requirements": "Embassy TG Lv. 2, Infantry Camp TG Lv. 2", "bread": 79000000, "wood": 79000000, "stone": 15000000, "iron": 3900000, "truegold": 238, "upgrade_time": "11 days", "max_power": 2097500, "unlocks": []},
+          {"level": "TG 2-3", "requirements": "Embassy TG Lv. 2, Infantry Camp TG Lv. 2", "bread": 79000000, "wood": 79000000, "stone": 15000000, "iron": 3900000, "truegold": 238, "upgrade_time": "11 days", "max_power": 2097500, "unlocks": []},
+          {"level": "TG 2-4", "requirements": "Embassy TG Lv. 2, Infantry Camp TG Lv. 2", "bread": 79000000, "wood": 79000000, "stone": 15000000, "iron": 3900000, "truegold": 238, "upgrade_time": "11 days", "max_power": 2097500, "unlocks": []},
+          {"level": "TG 3", "requirements": "Embassy TG Lv. 2, Infantry Camp TG Lv. 2", "bread": 79000000, "wood": 79000000, "stone": 15000000, "iron": 3900000, "truegold": 238, "upgrade_time": "11 days", "max_power": 2384500, "unlocks": []},
+          {"level": "TG3-1", "requirements": "Embassy TG Lv. 3, Marksman Camp TG Lv. 3", "bread": 82000000, "wood": 82000000, "stone": 16000000, "iron": 4100000, "truegold": 280, "upgrade_time": "12 days", "max_power": 2384500, "unlocks": []},
+          {"level": "TG3-2", "requirements": "Embassy TG Lv. 3, Marksman Camp TG Lv. 3", "bread": 82000000, "wood": 82000000, "stone": 16000000, "iron": 4100000, "truegold": 280, "upgrade_time": "12 days", "max_power": 2384500, "unlocks": []},
+          {"level": "TG3-3", "requirements": "Embassy TG Lv. 3, Marksman Camp TG Lv. 3", "bread": 82000000, "wood": 82000000, "stone": 16000000, "iron": 4100000, "truegold": 280, "upgrade_time": "12 days", "max_power": 2384500, "unlocks": []},
+          {"level": "TG3-4", "requirements": "Embassy TG Lv. 3, Marksman Camp TG Lv. 3", "bread": 82000000, "wood": 82000000, "stone": 16000000, "iron": 4100000, "truegold": 280, "upgrade_time": "12 days", "max_power": 2384500, "unlocks": []},
+          {"level": "TG 4", "requirements": "Embassy TG Lv. 3, Marksman Camp TG Lv. 3", "bread": 82000000, "wood": 82000000, "stone": 16000000, "iron": 4100000, "truegold": 280, "upgrade_time": "12 days", "max_power": 2700500, "unlocks": []},
+          {"level": "TG4-1", "requirements": "Embassy TG Lv. 4, Lancer Camp TG Lv. 4", "bread": 84000000, "wood": 84000000, "stone": 16000000, "iron": 4200000, "truegold": 335, "upgrade_time": "14 days", "max_power": 2700500, "unlocks": []},
+          {"level": "TG4-2", "requirements": "Embassy TG Lv. 4, Lancer Camp TG Lv. 4", "bread": 84000000, "wood": 84000000, "stone": 16000000, "iron": 4200000, "truegold": 335, "upgrade_time": "14 days", "max_power": 2700500, "unlocks": []},
+          {"level": "TG4-3", "requirements": "Embassy TG Lv. 4, Lancer Camp TG Lv. 4", "bread": 84000000, "wood": 84000000, "stone": 16000000, "iron": 4200000, "truegold": 335, "upgrade_time": "14 days", "max_power": 2700500, "unlocks": []},
+          {"level": "TG4-4", "requirements": "Embassy TG Lv. 4, Lancer Camp TG Lv. 4", "bread": 84000000, "wood": 84000000, "stone": 16000000, "iron": 4200000, "truegold": 335, "upgrade_time": "14 days", "max_power": 2700500, "unlocks": []},
+          {"level": "TG 5", "requirements": "Embassy TG Lv. 4, Lancer Camp TG Lv. 4", "bread": 84000000, "wood": 84000000, "stone": 16000000, "iron": 4200000, "truegold": 335, "upgrade_time": "14 days", "max_power": 3016500, "unlocks": []}
+        ]
+      },
+      "tags": ["core", "progression-gate", "truegold"]
+    },
+    {
+      "id": "command-center",
+      "name": "Command Center",
+      "summary": "Core building for military command; can be upgraded past 30 into Truegold.",
+      "details": {
+        "category": "Core",
+        "max_level": 30,
+        "truegold": true,
+        "notes": "Each level raises Rally Capacity (max troops in a rally) and Troop Deployment Capacity (max troops in a single march). Full per-level table below (from kingshotguide.com). Resource fields are integers (null = N/A). requirements is the source string of prerequisite buildings/levels. Levels 30-1..30-4 are the four post-30 fortifications; TG 1..TG 3 are Truegold tiers, each preceded by four TGn-x steps.",
+        "upgrade_table": [
+          {"level": "1", "requirements": "Town Center Lv. 10, Embassy Lv. 1", "upgrade_time": "2s", "bread": null, "wood": 80, "stone": null, "iron": null, "truegold": null, "rally_capacity": 1500, "troop_deployment_capacity": 400},
+          {"level": "2", "requirements": "Town Center Lv. 10, Embassy Lv. 2", "upgrade_time": "8s", "bread": null, "wood": 125, "stone": null, "iron": null, "truegold": null, "rally_capacity": 3500, "troop_deployment_capacity": 700},
+          {"level": "3", "requirements": "Town Center Lv. 10, Embassy Lv. 3", "upgrade_time": "35s", "bread": null, "wood": 565, "stone": null, "iron": null, "truegold": null, "rally_capacity": 5700, "troop_deployment_capacity": 1000},
+          {"level": "4", "requirements": "Town Center Lv. 10, Embassy Lv. 4", "upgrade_time": "1m 45s", "bread": null, "wood": 1200, "stone": 250, "iron": null, "truegold": null, "rally_capacity": 8000, "troop_deployment_capacity": 1400},
+          {"level": "5", "requirements": "Town Center Lv. 10, Embassy Lv. 5", "upgrade_time": "3m 35s", "bread": null, "wood": 5300, "stone": 1000, "iron": null, "truegold": null, "rally_capacity": 11500, "troop_deployment_capacity": 1800},
+          {"level": "6", "requirements": "Town Center Lv. 10, Embassy Lv. 6", "upgrade_time": "7m 10s", "bread": null, "wood": 13000, "stone": 2600, "iron": 670, "truegold": null, "rally_capacity": 15000, "troop_deployment_capacity": 2800},
+          {"level": "7", "requirements": "Town Center Lv. 10, Embassy Lv. 7", "upgrade_time": "14m", "bread": null, "wood": 48000, "stone": 9600, "iron": 2400, "truegold": null, "rally_capacity": 19000, "troop_deployment_capacity": 3800},
+          {"level": "8", "requirements": "Town Center Lv. 10, Embassy Lv. 8", "upgrade_time": "21m 30s", "bread": null, "wood": 88000, "stone": 17000, "iron": 4400, "truegold": null, "rally_capacity": 24000, "troop_deployment_capacity": 5000},
+          {"level": "9", "requirements": "Town Center Lv. 10, Embassy Lv. 9", "upgrade_time": "32m", "bread": null, "wood": 180000, "stone": 36000, "iron": 9100, "truegold": null, "rally_capacity": 29500, "troop_deployment_capacity": 6500},
+          {"level": "10", "requirements": "Embassy Lv. 10", "upgrade_time": "43m", "bread": null, "wood": 320000, "stone": 64000, "iron": 16000, "truegold": null, "rally_capacity": 35500, "troop_deployment_capacity": 8000},
+          {"level": "11", "requirements": "Embassy Lv. 11", "upgrade_time": "54m", "bread": 390000, "wood": 390000, "stone": 79000, "iron": 19000, "truegold": null, "rally_capacity": 43500, "troop_deployment_capacity": 10500},
+          {"level": "12", "requirements": "Embassy Lv. 12", "upgrade_time": "1h 4m 30s", "bread": 500000, "wood": 500000, "stone": 100000, "iron": 25000, "truegold": null, "rally_capacity": 52000, "troop_deployment_capacity": 13000},
+          {"level": "13", "requirements": "Embassy Lv. 13", "upgrade_time": "1h 19m", "bread": 710000, "wood": 710000, "stone": 140000, "iron": 35000, "truegold": null, "rally_capacity": 62000, "troop_deployment_capacity": 16000},
+          {"level": "14", "requirements": "Embassy Lv. 14", "upgrade_time": "1h 40m 30s", "bread": 940000, "wood": 940000, "stone": 180000, "iron": 47000, "truegold": null, "rally_capacity": 73500, "troop_deployment_capacity": 19000},
+          {"level": "15", "requirements": "Embassy Lv. 15", "upgrade_time": "2h 9m 30s", "bread": 1300000, "wood": 1300000, "stone": 270000, "iron": 69000, "truegold": null, "rally_capacity": 87500, "troop_deployment_capacity": 22000},
+          {"level": "16", "requirements": "Embassy Lv. 16", "upgrade_time": "3h 39m", "bread": 1700000, "wood": 1700000, "stone": 350000, "iron": 89000, "truegold": null, "rally_capacity": 105000, "troop_deployment_capacity": 27000},
+          {"level": "17", "requirements": "Embassy Lv. 17", "upgrade_time": "4h 23m", "bread": 2700000, "wood": 2700000, "stone": 550000, "iron": 130000, "truegold": null, "rally_capacity": 120000, "troop_deployment_capacity": 32000},
+          {"level": "18", "requirements": "Embassy Lv. 18", "upgrade_time": "5h 16m", "bread": 3700000, "wood": 3700000, "stone": 750000, "iron": 180000, "truegold": null, "rally_capacity": 140000, "troop_deployment_capacity": 34000},
+          {"level": "19", "requirements": "Embassy Lv. 19", "upgrade_time": "7h 54m", "bread": 4700000, "wood": 4700000, "stone": 940000, "iron": 230000, "truegold": null, "rally_capacity": 165000, "troop_deployment_capacity": 36000},
+          {"level": "20", "requirements": "Embassy Lv. 20", "upgrade_time": "9h 52m", "bread": 6400000, "wood": 6400000, "stone": 1200000, "iron": 320000, "truegold": null, "rally_capacity": 195000, "troop_deployment_capacity": 38000},
+          {"level": "21", "requirements": "Embassy Lv. 21", "upgrade_time": "12h 50m", "bread": 8100000, "wood": 8100000, "stone": 1600000, "iron": 400000, "truegold": null, "rally_capacity": 225000, "troop_deployment_capacity": 40500},
+          {"level": "22", "requirements": "Embassy Lv. 22", "upgrade_time": "19h 15m 30s", "bread": 10000000, "wood": 10000000, "stone": 2100000, "iron": 540000, "truegold": null, "rally_capacity": 260000, "troop_deployment_capacity": 43000},
+          {"level": "23", "requirements": "Embassy Lv. 23", "upgrade_time": "1d 2h 57m", "bread": 13000000, "wood": 13000000, "stone": 2600000, "iron": 670000, "truegold": null, "rally_capacity": 305000, "troop_deployment_capacity": 46000},
+          {"level": "24", "requirements": "Embassy Lv. 24", "upgrade_time": "1d 13h 44m", "bread": 18000000, "wood": 18000000, "stone": 3600000, "iron": 900000, "truegold": null, "rally_capacity": 350000, "troop_deployment_capacity": 48500},
+          {"level": "25", "requirements": "Embassy Lv. 25", "upgrade_time": "2d 4h 50m", "bread": 24000000, "wood": 24000000, "stone": 4900000, "iron": 1200000, "truegold": null, "rally_capacity": 400000, "troop_deployment_capacity": 52000},
+          {"level": "26", "requirements": "Embassy Lv. 26", "upgrade_time": "2d 12h 46m", "bread": 31000000, "wood": 31000000, "stone": 6300000, "iron": 1500000, "truegold": null, "rally_capacity": 470000, "troop_deployment_capacity": 54500},
+          {"level": "27", "requirements": "Embassy Lv. 27", "upgrade_time": "3d 55m", "bread": 44000000, "wood": 44000000, "stone": 8900000, "iron": 2200000, "truegold": null, "rally_capacity": 550000, "troop_deployment_capacity": 57000},
+          {"level": "28", "requirements": "Embassy Lv. 28", "upgrade_time": "3d 11h 51m", "bread": 59000000, "wood": 59000000, "stone": 11000000, "iron": 2900000, "truegold": null, "rally_capacity": 630000, "troop_deployment_capacity": 60500},
+          {"level": "29", "requirements": "Embassy Lv. 29", "upgrade_time": "4d 26m", "bread": 73000000, "wood": 73000000, "stone": 14000000, "iron": 3600000, "truegold": null, "rally_capacity": 725000, "troop_deployment_capacity": 64000},
+          {"level": "30", "requirements": "Embassy Lv. 30", "upgrade_time": "4d 19h 44m", "bread": 90000000, "wood": 90000000, "stone": 18000000, "iron": 4500000, "truegold": null, "rally_capacity": 840000, "troop_deployment_capacity": 67000},
+          {"level": "30-1", "requirements": "Embassy TG Lv. 1", "upgrade_time": "20h 9m 30s", "bread": 20000000, "wood": 20000000, "stone": 4000000, "iron": 1000000, "truegold": 26, "rally_capacity": 845000, "troop_deployment_capacity": 67700},
+          {"level": "30-2", "requirements": "Embassy TG Lv. 2", "upgrade_time": "20h 9m 30s", "bread": 20000000, "wood": 20000000, "stone": 4000000, "iron": 1000000, "truegold": 26, "rally_capacity": 850000, "troop_deployment_capacity": 68400},
+          {"level": "30-3", "requirements": "Embassy TG Lv. 3", "upgrade_time": "20h 9m 30s", "bread": 20000000, "wood": 20000000, "stone": 4000000, "iron": 1000000, "truegold": 26, "rally_capacity": 855000, "troop_deployment_capacity": 69100},
+          {"level": "30-4", "requirements": "Embassy TG Lv. 4", "upgrade_time": "20h 9m 30s", "bread": 20000000, "wood": 20000000, "stone": 4000000, "iron": 1000000, "truegold": 26, "rally_capacity": 860000, "troop_deployment_capacity": 69800},
+          {"level": "TG 1", "requirements": "Embassy TG Lv. 5", "upgrade_time": "20h 9m 30s", "bread": 20000000, "wood": 20000000, "stone": 4000000, "iron": 1000000, "truegold": 26, "rally_capacity": 865000, "troop_deployment_capacity": 70500},
+          {"level": "TG1-1", "requirements": "Embassy TG Lv. 2", "upgrade_time": "1d 1h 55m", "bread": 21000000, "wood": 21000000, "stone": 4300000, "iron": 1000000, "truegold": 31, "rally_capacity": 870000, "troop_deployment_capacity": 71200},
+          {"level": "TG1-2", "requirements": "Embassy TG Lv. 3", "upgrade_time": "1d 1h 55m", "bread": 21000000, "wood": 21000000, "stone": 4300000, "iron": 1000000, "truegold": 31, "rally_capacity": 875000, "troop_deployment_capacity": 71900},
+          {"level": "TG1-3", "requirements": "Embassy TG Lv. 4", "upgrade_time": "1d 1h 55m", "bread": 21000000, "wood": 21000000, "stone": 4300000, "iron": 1000000, "truegold": 31, "rally_capacity": 880000, "troop_deployment_capacity": 72600},
+          {"level": "TG1-4", "requirements": "Embassy TG Lv. 5", "upgrade_time": "1d 1h 55m", "bread": 21000000, "wood": 21000000, "stone": 4300000, "iron": 1000000, "truegold": 31, "rally_capacity": 885000, "troop_deployment_capacity": 73300},
+          {"level": "TG 2", "requirements": "Embassy TG Lv. 6", "upgrade_time": "1d 1h 55m", "bread": 21000000, "wood": 21000000, "stone": 4300000, "iron": 1000000, "truegold": 31, "rally_capacity": 890000, "troop_deployment_capacity": 74000},
+          {"level": "TG 2-1", "requirements": "Embassy TG Lv. 3", "upgrade_time": "1d 7h 40m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 47, "rally_capacity": 895000, "troop_deployment_capacity": 74700},
+          {"level": "TG 2-2", "requirements": "Embassy TG Lv. 4", "upgrade_time": "1d 7h 40m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 47, "rally_capacity": 900000, "troop_deployment_capacity": 75400},
+          {"level": "TG 2-3", "requirements": "Embassy TG Lv. 5", "upgrade_time": "1d 7h 40m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 47, "rally_capacity": 905000, "troop_deployment_capacity": 76100},
+          {"level": "TG 2-4", "requirements": "Embassy TG Lv. 6", "upgrade_time": "1d 7h 40m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 47, "rally_capacity": 910000, "troop_deployment_capacity": 76800},
+          {"level": "TG 3", "requirements": "Embassy TG Lv. 7", "upgrade_time": "1d 7h 40m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 47, "rally_capacity": 915000, "troop_deployment_capacity": 77500},
+          {"level": "TG 3-1", "requirements": "Town Center TG Lv. 4, Embassy TG Lv. 4", "upgrade_time": "1d 10h 33m", "bread": 24000000, "wood": 24000000, "stone": 4900000, "iron": 1200000, "truegold": 56, "rally_capacity": 920000, "troop_deployment_capacity": 78200},
+          {"level": "TG 3-2", "requirements": "Town Center TG Lv. 4, Embassy TG Lv. 4", "upgrade_time": "1d 10h 33m", "bread": 24000000, "wood": 24000000, "stone": 4900000, "iron": 1200000, "truegold": 56, "rally_capacity": 925000, "troop_deployment_capacity": 78900},
+          {"level": "TG 3-3", "requirements": "Town Center TG Lv. 4, Embassy TG Lv. 4", "upgrade_time": "1d 10h 33m", "bread": 24000000, "wood": 24000000, "stone": 4900000, "iron": 1200000, "truegold": 56, "rally_capacity": 930000, "troop_deployment_capacity": 79600},
+          {"level": "TG 3-4", "requirements": "Town Center TG Lv. 4, Embassy TG Lv. 4", "upgrade_time": "1d 10h 33m", "bread": 24000000, "wood": 24000000, "stone": 4900000, "iron": 1200000, "truegold": 56, "rally_capacity": 935000, "troop_deployment_capacity": 80300},
+          {"level": "TG 4", "requirements": "Town Center TG Lv. 4, Embassy TG Lv. 4", "upgrade_time": "1d 10h 33m", "bread": 24000000, "wood": 24000000, "stone": 4900000, "iron": 1200000, "truegold": 56, "rally_capacity": 940000, "troop_deployment_capacity": 81000},
+          {"level": "TG 4-1", "requirements": "Town Center TG Lv. 5, Embassy TG Lv. 5", "upgrade_time": "1d 16h 19m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 67, "rally_capacity": 945000, "troop_deployment_capacity": 81700},
+          {"level": "TG 4-2", "requirements": "Town Center TG Lv. 5, Embassy TG Lv. 5", "upgrade_time": "1d 16h 19m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 67, "rally_capacity": 950000, "troop_deployment_capacity": 82400},
+          {"level": "TG 4-3", "requirements": "Town Center TG Lv. 5, Embassy TG Lv. 5", "upgrade_time": "1d 16h 19m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 67, "rally_capacity": 955000, "troop_deployment_capacity": 83100},
+          {"level": "TG 4-4", "requirements": "Town Center TG Lv. 5, Embassy TG Lv. 5", "upgrade_time": "1d 16h 19m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 67, "rally_capacity": 960000, "troop_deployment_capacity": 83800},
+          {"level": "TG 5", "requirements": "Town Center TG Lv. 5, Embassy TG Lv. 5", "upgrade_time": "1d 16h 19m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 67, "rally_capacity": 965000, "troop_deployment_capacity": 84500}
+        ]
+      },
+      "tags": ["core", "military", "truegold"]
+    },
+    {
+      "id": "war-academy",
+      "name": "War Academy",
+      "summary": "Late-game Military building (unlocked around kingdom age ~220 days). Studies the application of Truegold Dust on the battlefield to boost soldier power; unlocks T11 troops (Truegold Infantry, Cavalry, Archers). Distinct from the research 'Academy'.",
+      "details": {
+        "category": "Military",
+        "max_level": null,
+        "truegold": true,
+        "unlock_requirement": "Kingdom age ~220 days",
+        "unlocks": "T11 troops (Truegold Infantry, Cavalry, Archers)",
+        "key_features": {"Truegold Dust": "Required material for T11 troops and upgrades", "Research Speed": "Increases research speed in Academy"},
+        "notes": "War Academy is a Truegold-only building: its levels are TG tiers (TG 1..TG 5), each preceded by four TGn-x fortification steps. TG 1 is the base unlock (2s, no resource cost). Full per-level table below (from kingshotguide.com). Resource fields are integers (null = N/A). research_speed kept as the source string. Each level also raises building Power.",
+        "upgrade_table": [
+          {"level": "TG 1", "tc_required": "TC TG1", "upgrade_time": "2s", "bread": null, "wood": null, "stone": null, "iron": null, "truegold": null, "power": 217260, "research_speed": "0.50%"},
+          {"level": "TG1-1", "tc_required": "TC TG2", "upgrade_time": "1d 19h 12m", "bread": 36000000, "wood": 36000000, "stone": 7200000, "iron": 1800000, "truegold": 71, "power": 224148, "research_speed": "0.60%"},
+          {"level": "TG1-2", "tc_required": "TC TG2", "upgrade_time": "1d 19h 12m", "bread": 36000000, "wood": 36000000, "stone": 7200000, "iron": 1800000, "truegold": 71, "power": 231036, "research_speed": "0.70%"},
+          {"level": "TG1-3", "tc_required": "TC TG2", "upgrade_time": "1d 19h 12m", "bread": 36000000, "wood": 36000000, "stone": 7200000, "iron": 1800000, "truegold": 71, "power": 237924, "research_speed": "0.80%"},
+          {"level": "TG1-4", "tc_required": "TC TG2", "upgrade_time": "1d 19h 12m", "bread": 36000000, "wood": 36000000, "stone": 7200000, "iron": 1800000, "truegold": 71, "power": 244812, "research_speed": "0.90%"},
+          {"level": "TG2", "tc_required": "TC TG2", "upgrade_time": "1d 19h 12m", "bread": 36000000, "wood": 36000000, "stone": 7200000, "iron": 1800000, "truegold": 71, "power": 251700, "research_speed": "1.00%"},
+          {"level": "TG2-1", "tc_required": "TC TG3", "upgrade_time": "2d 4h 48m", "bread": 39000000, "wood": 39000000, "stone": 7900000, "iron": 1900000, "truegold": 107, "power": 258588, "research_speed": "1.10%"},
+          {"level": "TG2-2", "tc_required": "TC TG3", "upgrade_time": "2d 4h 48m", "bread": 39000000, "wood": 39000000, "stone": 7900000, "iron": 1900000, "truegold": 107, "power": 265476, "research_speed": "1.20%"},
+          {"level": "TG2-3", "tc_required": "TC TG3", "upgrade_time": "2d 4h 48m", "bread": 39000000, "wood": 39000000, "stone": 7900000, "iron": 1900000, "truegold": 107, "power": 272364, "research_speed": "1.30%"},
+          {"level": "TG2-4", "tc_required": "TC TG3", "upgrade_time": "2d 4h 48m", "bread": 39000000, "wood": 39000000, "stone": 7900000, "iron": 1900000, "truegold": 107, "power": 279252, "research_speed": "1.40%"},
+          {"level": "TG3", "tc_required": "TC TG3", "upgrade_time": "2d 4h 48m", "bread": 39000000, "wood": 39000000, "stone": 7900000, "iron": 1900000, "truegold": 107, "power": 286140, "research_speed": "1.50%"},
+          {"level": "TG3-1", "tc_required": "TC TG4", "upgrade_time": "2d 9h 36m", "bread": 41000000, "wood": 41000000, "stone": 8200000, "iron": 2000000, "truegold": 126, "power": 293724, "research_speed": "1.60%"},
+          {"level": "TG3-2", "tc_required": "TC TG4", "upgrade_time": "2d 9h 36m", "bread": 41000000, "wood": 41000000, "stone": 8200000, "iron": 2000000, "truegold": 126, "power": 301308, "research_speed": "1.70%"},
+          {"level": "TG3-3", "tc_required": "TC TG4", "upgrade_time": "2d 9h 36m", "bread": 41000000, "wood": 41000000, "stone": 8200000, "iron": 2000000, "truegold": 126, "power": 308892, "research_speed": "1.80%"},
+          {"level": "TG3-4", "tc_required": "TC TG4", "upgrade_time": "2d 9h 36m", "bread": 41000000, "wood": 41000000, "stone": 8200000, "iron": 2000000, "truegold": 126, "power": 316476, "research_speed": "1.90%"},
+          {"level": "TG4", "tc_required": "TC TG4", "upgrade_time": "2d 9h 36m", "bread": 41000000, "wood": 41000000, "stone": 8200000, "iron": 2000000, "truegold": 126, "power": 324060, "research_speed": "2.00%"},
+          {"level": "TG4-1", "tc_required": "TC TG5", "upgrade_time": "2d 19h 12m", "bread": 42000000, "wood": 42000000, "stone": 8200000, "iron": 2100000, "truegold": 150, "power": 331644, "research_speed": "2.10%"},
+          {"level": "TG4-2", "tc_required": "TC TG5", "upgrade_time": "2d 19h 12m", "bread": 42000000, "wood": 42000000, "stone": 8200000, "iron": 2100000, "truegold": 150, "power": 339228, "research_speed": "2.20%"},
+          {"level": "TG4-3", "tc_required": "TC TG5", "upgrade_time": "2d 19h 12m", "bread": 42000000, "wood": 42000000, "stone": 8200000, "iron": 2100000, "truegold": 150, "power": 346812, "research_speed": "2.30%"},
+          {"level": "TG4-4", "tc_required": "TC TG5", "upgrade_time": "2d 19h 12m", "bread": 42000000, "wood": 42000000, "stone": 8200000, "iron": 2100000, "truegold": 150, "power": 354396, "research_speed": "2.40%"},
+          {"level": "TG 5", "tc_required": "TC TG5", "upgrade_time": "2d 19h 12m", "bread": 42000000, "wood": 42000000, "stone": 8200000, "iron": 2100000, "truegold": 150, "power": 361980, "research_speed": "2.50%"}
+        ]
+      },
+      "tags": ["military", "truegold", "t11", "research-speed"]
+    },
+    {
+      "id": "barracks",
+      "name": "Barracks",
+      "summary": "Military building that trains infantry; can be upgraded past 30 into Truegold.",
+      "details": {
+        "category": "Military",
+        "max_level": 30,
+        "truegold": true,
+        "trains": "infantry",
+        "notes": "Each level raises Training Capacity (infantry trained per batch) and Training Speed (% bonus). Full per-level table below (from kingshotguide.com). Resource fields are integers (null = N/A). training_speed kept as the source string with comma decimal (e.g. '8,00%'). tc_required is the Town Center level gating that Barracks level. Levels 30-1..30-4 are the four post-30 fortifications; TG 1..TG 3 are Truegold tiers, each preceded by four TGn-x steps.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": "7", "upgrade_time": "2s", "bread": null, "wood": null, "stone": null, "iron": null, "truegold": null, "training_capacity": 17, "training_speed": "0,30%", "unlocks": ["Rookie Infantry"]},
+          {"level": "2", "tc_required": "7", "upgrade_time": "9s", "bread": null, "wood": 140, "stone": null, "iron": null, "truegold": null, "training_capacity": 22, "training_speed": "0,50%", "unlocks": []},
+          {"level": "3", "tc_required": "7", "upgrade_time": "45s", "bread": null, "wood": 645, "stone": null, "iron": null, "truegold": null, "training_capacity": 26, "training_speed": "0,80%", "unlocks": []},
+          {"level": "4", "tc_required": "7", "upgrade_time": "2m 5s", "bread": null, "wood": 1400, "stone": 285, "iron": null, "truegold": null, "training_capacity": 30, "training_speed": "1%", "unlocks": ["Trained Infantry"]},
+          {"level": "5", "tc_required": "7", "upgrade_time": "4m 30s", "bread": null, "wood": 6000, "stone": 1200, "iron": null, "truegold": null, "training_capacity": 35, "training_speed": "1,30%", "unlocks": []},
+          {"level": "6", "tc_required": "7", "upgrade_time": "9m", "bread": null, "wood": 15000, "stone": 3000, "iron": 765, "truegold": null, "training_capacity": 39, "training_speed": "1,60%", "unlocks": []},
+          {"level": "7", "tc_required": "7", "upgrade_time": "18m", "bread": null, "wood": 55000, "stone": 11000, "iron": 2700, "truegold": null, "training_capacity": 43, "training_speed": "1,80%", "unlocks": ["Experienced Infantry"]},
+          {"level": "8", "tc_required": "8", "upgrade_time": "27m", "bread": null, "wood": 100000, "stone": 20000, "iron": 5000, "truegold": null, "training_capacity": 48, "training_speed": "2,10%", "unlocks": []},
+          {"level": "9", "tc_required": "9", "upgrade_time": "40m 30s", "bread": null, "wood": 200000, "stone": 41000, "iron": 10000, "truegold": null, "training_capacity": 52, "training_speed": "2,40%", "unlocks": []},
+          {"level": "10", "tc_required": "10", "upgrade_time": "54m", "bread": null, "wood": 360000, "stone": 73000, "iron": 18000, "truegold": null, "training_capacity": 56, "training_speed": "2,60%", "unlocks": []},
+          {"level": "11", "tc_required": "11", "upgrade_time": "1h 7m 30s", "bread": 460000, "wood": 460000, "stone": 92000, "iron": 23000, "truegold": null, "training_capacity": 61, "training_speed": "2,90%", "unlocks": ["Veteran Infantry"]},
+          {"level": "12", "tc_required": "12", "upgrade_time": "1h 21m", "bread": 580000, "wood": 580000, "stone": 110000, "iron": 29000, "truegold": null, "training_capacity": 65, "training_speed": "3,20%", "unlocks": []},
+          {"level": "13", "tc_required": "13", "upgrade_time": "1h 39m", "bread": 830000, "wood": 830000, "stone": 160000, "iron": 41000, "truegold": null, "training_capacity": 69, "training_speed": "3,40%", "unlocks": ["Indomitable Infantry", "Troop Promotions"]},
+          {"level": "14", "tc_required": "14", "upgrade_time": "2h 6m", "bread": 1100000, "wood": 1100000, "stone": 220000, "iron": 55000, "truegold": null, "training_capacity": 76, "training_speed": "3,70%", "unlocks": []},
+          {"level": "15", "tc_required": "15", "upgrade_time": "2h 42m", "bread": 1600000, "wood": 1600000, "stone": 320000, "iron": 81000, "truegold": null, "training_capacity": 84, "training_speed": "4,00%", "unlocks": []},
+          {"level": "16", "tc_required": "16", "upgrade_time": "4h 34m", "bread": 2000000, "wood": 2000000, "stone": 410000, "iron": 100000, "truegold": null, "training_capacity": 92, "training_speed": "4,20%", "unlocks": ["Heroic Infantry"]},
+          {"level": "17", "tc_required": "17", "upgrade_time": "5h 29m", "bread": 3200000, "wood": 3200000, "stone": 650000, "iron": 160000, "truegold": null, "training_capacity": 101, "training_speed": "4,50%", "unlocks": []},
+          {"level": "18", "tc_required": "18", "upgrade_time": "6h 35m", "bread": 4300000, "wood": 4300000, "stone": 870000, "iron": 210000, "truegold": null, "training_capacity": 109, "training_speed": "4,80%", "unlocks": []},
+          {"level": "19", "tc_required": "19", "upgrade_time": "9h 52m", "bread": 5400000, "wood": 5400000, "stone": 1000000, "iron": 270000, "truegold": null, "training_capacity": 117, "training_speed": "5,00%", "unlocks": ["Dauntless Infantry"]},
+          {"level": "20", "tc_required": "20", "upgrade_time": "12h 20m 30s", "bread": 7500000, "wood": 7500000, "stone": 1500000, "iron": 370000, "truegold": null, "training_capacity": 126, "training_speed": "5,30%", "unlocks": []},
+          {"level": "21", "tc_required": "21", "upgrade_time": "16h 2m 30s", "bread": 9500000, "wood": 9500000, "stone": 1900000, "iron": 470000, "truegold": null, "training_capacity": 134, "training_speed": "5,60%", "unlocks": []},
+          {"level": "22", "tc_required": "22", "upgrade_time": "1d 4m", "bread": 12000000, "wood": 12000000, "stone": 2500000, "iron": 630000, "truegold": null, "training_capacity": 142, "training_speed": "5,80%", "unlocks": ["Elite Infantry"]},
+          {"level": "23", "tc_required": "23", "upgrade_time": "1d 9h 42m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 780000, "truegold": null, "training_capacity": 151, "training_speed": "6,10%", "unlocks": []},
+          {"level": "24", "tc_required": "24", "upgrade_time": "1d 23h 11m", "bread": 21000000, "wood": 21000000, "stone": 4200000, "iron": 1000000, "truegold": null, "training_capacity": 159, "training_speed": "6,40%", "unlocks": []},
+          {"level": "25", "tc_required": "25", "upgrade_time": "2d 18h 3m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": null, "training_capacity": 167, "training_speed": "6,70%", "unlocks": []},
+          {"level": "26", "tc_required": "26", "upgrade_time": "3d 3h 57m", "bread": 36000000, "wood": 36000000, "stone": 7300000, "iron": 1800000, "truegold": null, "training_capacity": 176, "training_speed": "6,90%", "unlocks": ["Exalted Infantry"]},
+          {"level": "27", "tc_required": "27", "upgrade_time": "3d 19h 9m", "bread": 52000000, "wood": 52000000, "stone": 10000000, "iron": 2600000, "truegold": null, "training_capacity": 184, "training_speed": "7,20%", "unlocks": []},
+          {"level": "28", "tc_required": "28", "upgrade_time": "4d 8h 49m", "bread": 69000000, "wood": 69000000, "stone": 13000000, "iron": 3400000, "truegold": null, "training_capacity": 192, "training_speed": "7,40%", "unlocks": []},
+          {"level": "29", "tc_required": "29", "upgrade_time": "5d 33m", "bread": 86000000, "wood": 86000000, "stone": 17000000, "iron": 4300000, "truegold": null, "training_capacity": 201, "training_speed": "7,70%", "unlocks": []},
+          {"level": "30", "tc_required": "30", "upgrade_time": "6d 40m", "bread": 100000000, "wood": 100000000, "stone": 21000000, "iron": 5800000, "truegold": null, "training_capacity": 209, "training_speed": "8,00%", "unlocks": ["Ultimate Infantry"]},
+          {"level": "30-1", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 214, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-2", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 219, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-3", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 224, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-4", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 229, "training_speed": "8,00%", "unlocks": []},
+          {"level": "TG 1", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 234, "training_speed": "8,30%", "unlocks": ["TG 1 Troops"]},
+          {"level": "TG1-1", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 239, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-2", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 244, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-3", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 249, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-4", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 254, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG 2", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 259, "training_speed": "8,60%", "unlocks": ["TG 2 Troops"]},
+          {"level": "TG 2-1", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 264, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-2", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 269, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-3", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 274, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-4", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 279, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 3", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 284, "training_speed": "8,90%", "unlocks": ["TG 3 Troops"]},
+          {"level": "TG 3-1", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 489540, "unlocks": []},
+          {"level": "TG 3-2", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 502180, "unlocks": []},
+          {"level": "TG 3-3", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 514820, "unlocks": []},
+          {"level": "TG 3-4", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 527460, "unlocks": []},
+          {"level": "TG 4", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 540100, "unlocks": ["TG 4 Troops"]},
+          {"level": "TG 4-1", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 552740, "unlocks": []},
+          {"level": "TG 4-2", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 565380, "unlocks": []},
+          {"level": "TG 4-3", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 578020, "unlocks": []},
+          {"level": "TG 4-4", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 590660, "unlocks": []},
+          {"level": "TG 5", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 603300, "unlocks": ["TG 5 Troops"]}
+        ]
+      },
+      "tags": ["military", "training", "truegold"]
+    },
+    {
+      "id": "range",
+      "name": "Range",
+      "summary": "Military building that trains archers; can be upgraded past 30 into Truegold.",
+      "details": {
+        "category": "Military",
+        "max_level": 30,
+        "truegold": true,
+        "trains": "archers",
+        "notes": "Each level raises Training Capacity (archers trained per batch) and Training Speed (% bonus). Full per-level table below (from kingshotguide.com). Resource fields are integers (null = N/A). training_speed kept as the source string with comma decimal (e.g. '8,00%'). tc_required is the Town Center level gating that Range level. Levels 30-1..30-4 are the four post-30 fortifications; TG 1..TG 3 are Truegold tiers, each preceded by four TGn-x steps. Cost/capacity/speed curve is identical to Barracks and Stable.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": "8", "upgrade_time": "2s", "bread": null, "wood": null, "stone": null, "iron": null, "truegold": null, "training_capacity": 17, "training_speed": "0,30%", "unlocks": ["Rookie Archer"]},
+          {"level": "2", "tc_required": "8", "upgrade_time": "9s", "bread": null, "wood": 140, "stone": null, "iron": null, "truegold": null, "training_capacity": 22, "training_speed": "0,50%", "unlocks": []},
+          {"level": "3", "tc_required": "8", "upgrade_time": "45s", "bread": null, "wood": 645, "stone": null, "iron": null, "truegold": null, "training_capacity": 26, "training_speed": "0,80%", "unlocks": []},
+          {"level": "4", "tc_required": "8", "upgrade_time": "2m 5s", "bread": null, "wood": 1400, "stone": 285, "iron": null, "truegold": null, "training_capacity": 30, "training_speed": "1%", "unlocks": ["Trained Archer"]},
+          {"level": "5", "tc_required": "8", "upgrade_time": "4m 30s", "bread": null, "wood": 6000, "stone": 1200, "iron": null, "truegold": null, "training_capacity": 35, "training_speed": "1,30%", "unlocks": []},
+          {"level": "6", "tc_required": "8", "upgrade_time": "9m", "bread": null, "wood": 15000, "stone": 3000, "iron": 765, "truegold": null, "training_capacity": 39, "training_speed": "1,60%", "unlocks": []},
+          {"level": "7", "tc_required": "8", "upgrade_time": "18m", "bread": null, "wood": 55000, "stone": 11000, "iron": 2700, "truegold": null, "training_capacity": 43, "training_speed": "1,80%", "unlocks": ["Experienced Archer"]},
+          {"level": "8", "tc_required": "8", "upgrade_time": "27m", "bread": null, "wood": 100000, "stone": 20000, "iron": 5000, "truegold": null, "training_capacity": 48, "training_speed": "2,10%", "unlocks": []},
+          {"level": "9", "tc_required": "9", "upgrade_time": "40m 30s", "bread": null, "wood": 200000, "stone": 41000, "iron": 10000, "truegold": null, "training_capacity": 52, "training_speed": "2,40%", "unlocks": []},
+          {"level": "10", "tc_required": "10", "upgrade_time": "54m", "bread": null, "wood": 360000, "stone": 73000, "iron": 18000, "truegold": null, "training_capacity": 56, "training_speed": "2,60%", "unlocks": []},
+          {"level": "11", "tc_required": "11", "upgrade_time": "1h 7m 30s", "bread": 460000, "wood": 460000, "stone": 92000, "iron": 23000, "truegold": null, "training_capacity": 61, "training_speed": "2,90%", "unlocks": ["Veteran Archer"]},
+          {"level": "12", "tc_required": "12", "upgrade_time": "1h 21m", "bread": 580000, "wood": 580000, "stone": 110000, "iron": 29000, "truegold": null, "training_capacity": 65, "training_speed": "3,20%", "unlocks": []},
+          {"level": "13", "tc_required": "13", "upgrade_time": "1h 39m", "bread": 830000, "wood": 830000, "stone": 160000, "iron": 41000, "truegold": null, "training_capacity": 69, "training_speed": "3,40%", "unlocks": ["Indomitable Archer", "Troop Promotions"]},
+          {"level": "14", "tc_required": "14", "upgrade_time": "2h 6m", "bread": 1100000, "wood": 1100000, "stone": 220000, "iron": 55000, "truegold": null, "training_capacity": 76, "training_speed": "3,70%", "unlocks": []},
+          {"level": "15", "tc_required": "15", "upgrade_time": "2h 42m", "bread": 1600000, "wood": 1600000, "stone": 320000, "iron": 81000, "truegold": null, "training_capacity": 84, "training_speed": "4,00%", "unlocks": []},
+          {"level": "16", "tc_required": "16", "upgrade_time": "4h 34m", "bread": 2000000, "wood": 2000000, "stone": 410000, "iron": 100000, "truegold": null, "training_capacity": 92, "training_speed": "4,20%", "unlocks": ["Heroic Archer"]},
+          {"level": "17", "tc_required": "17", "upgrade_time": "5h 29m", "bread": 3200000, "wood": 3200000, "stone": 650000, "iron": 160000, "truegold": null, "training_capacity": 101, "training_speed": "4,50%", "unlocks": []},
+          {"level": "18", "tc_required": "18", "upgrade_time": "6h 35m", "bread": 4300000, "wood": 4300000, "stone": 870000, "iron": 210000, "truegold": null, "training_capacity": 109, "training_speed": "4,80%", "unlocks": []},
+          {"level": "19", "tc_required": "19", "upgrade_time": "9h 52m", "bread": 5400000, "wood": 5400000, "stone": 1000000, "iron": 270000, "truegold": null, "training_capacity": 117, "training_speed": "5,00%", "unlocks": ["Dauntless Archer"]},
+          {"level": "20", "tc_required": "20", "upgrade_time": "12h 20m 30s", "bread": 7500000, "wood": 7500000, "stone": 1500000, "iron": 370000, "truegold": null, "training_capacity": 126, "training_speed": "5,30%", "unlocks": []},
+          {"level": "21", "tc_required": "21", "upgrade_time": "16h 2m 30s", "bread": 9500000, "wood": 9500000, "stone": 1900000, "iron": 470000, "truegold": null, "training_capacity": 134, "training_speed": "5,60%", "unlocks": []},
+          {"level": "22", "tc_required": "22", "upgrade_time": "1d 4m", "bread": 12000000, "wood": 12000000, "stone": 2500000, "iron": 630000, "truegold": null, "training_capacity": 142, "training_speed": "5,80%", "unlocks": ["Elite Archer"]},
+          {"level": "23", "tc_required": "23", "upgrade_time": "1d 9h 42m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 780000, "truegold": null, "training_capacity": 151, "training_speed": "6,10%", "unlocks": []},
+          {"level": "24", "tc_required": "24", "upgrade_time": "1d 23h 11m", "bread": 21000000, "wood": 21000000, "stone": 4200000, "iron": 1000000, "truegold": null, "training_capacity": 159, "training_speed": "6,40%", "unlocks": []},
+          {"level": "25", "tc_required": "25", "upgrade_time": "2d 18h 3m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": null, "training_capacity": 167, "training_speed": "6,70%", "unlocks": []},
+          {"level": "26", "tc_required": "26", "upgrade_time": "3d 3h 57m", "bread": 36000000, "wood": 36000000, "stone": 7300000, "iron": 1800000, "truegold": null, "training_capacity": 176, "training_speed": "6,90%", "unlocks": ["Exalted Archer"]},
+          {"level": "27", "tc_required": "27", "upgrade_time": "3d 19h 9m", "bread": 52000000, "wood": 52000000, "stone": 10000000, "iron": 2600000, "truegold": null, "training_capacity": 184, "training_speed": "7,20%", "unlocks": []},
+          {"level": "28", "tc_required": "28", "upgrade_time": "4d 8h 49m", "bread": 69000000, "wood": 69000000, "stone": 13000000, "iron": 3400000, "truegold": null, "training_capacity": 192, "training_speed": "7,40%", "unlocks": []},
+          {"level": "29", "tc_required": "29", "upgrade_time": "5d 33m", "bread": 86000000, "wood": 86000000, "stone": 17000000, "iron": 4300000, "truegold": null, "training_capacity": 201, "training_speed": "7,70%", "unlocks": []},
+          {"level": "30", "tc_required": "30", "upgrade_time": "6d 40m", "bread": 100000000, "wood": 100000000, "stone": 21000000, "iron": 5800000, "truegold": null, "training_capacity": 209, "training_speed": "8,00%", "unlocks": ["Ultimate Archer"]},
+          {"level": "30-1", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 214, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-2", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 219, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-3", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 224, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-4", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 229, "training_speed": "8,00%", "unlocks": []},
+          {"level": "TG 1", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 234, "training_speed": "8,30%", "unlocks": ["TG 1 Troops"]},
+          {"level": "TG1-1", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 239, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-2", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 244, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-3", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 249, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-4", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 254, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG 2", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 259, "training_speed": "8,60%", "unlocks": ["TG 2 Troops"]},
+          {"level": "TG 2-1", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 264, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-2", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 269, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-3", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 274, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-4", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 279, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 3", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 284, "training_speed": "8,90%", "unlocks": ["TG 3 Troops"]},
+          {"level": "TG 3-1", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 489540, "unlocks": []},
+          {"level": "TG 3-2", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 502180, "unlocks": []},
+          {"level": "TG 3-3", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 514820, "unlocks": []},
+          {"level": "TG 3-4", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 527460, "unlocks": []},
+          {"level": "TG 4", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 540100, "unlocks": ["TG 4 Troops"]},
+          {"level": "TG 4-1", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 552740, "unlocks": []},
+          {"level": "TG 4-2", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 565380, "unlocks": []},
+          {"level": "TG 4-3", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 578020, "unlocks": []},
+          {"level": "TG 4-4", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 590660, "unlocks": []},
+          {"level": "TG 5", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 603300, "unlocks": ["TG 5 Troops"]}
+        ]
+      },
+      "tags": ["military", "training", "truegold"]
+    },
+    {
+      "id": "stable",
+      "name": "Stable",
+      "summary": "Military building that trains cavalry; can be upgraded past 30 into Truegold.",
+      "details": {
+        "category": "Military",
+        "max_level": 30,
+        "truegold": true,
+        "trains": "cavalry",
+        "notes": "Each level raises Training Capacity (cavalry trained per batch) and Training Speed (% bonus). Full per-level table below (from kingshotguide.com). Resource fields are integers (null = N/A). training_speed kept as the source string with comma decimal (e.g. '8,00%'). tc_required is the Town Center level gating that Stable level. Levels 30-1..30-4 are the four post-30 fortifications; TG 1..TG 3 are Truegold tiers, each preceded by four TGn-x steps. Cost/capacity/speed curve is identical to Barracks.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": "9", "upgrade_time": "2s", "bread": null, "wood": null, "stone": null, "iron": null, "truegold": null, "training_capacity": 17, "training_speed": "0,30%", "unlocks": ["Rookie Cavalry"]},
+          {"level": "2", "tc_required": "9", "upgrade_time": "9s", "bread": null, "wood": 140, "stone": null, "iron": null, "truegold": null, "training_capacity": 22, "training_speed": "0,50%", "unlocks": []},
+          {"level": "3", "tc_required": "9", "upgrade_time": "45s", "bread": null, "wood": 645, "stone": null, "iron": null, "truegold": null, "training_capacity": 26, "training_speed": "0,80%", "unlocks": []},
+          {"level": "4", "tc_required": "9", "upgrade_time": "2m 15s", "bread": null, "wood": 1400, "stone": 285, "iron": null, "truegold": null, "training_capacity": 30, "training_speed": "1,00%", "unlocks": ["Trained Cavalry"]},
+          {"level": "5", "tc_required": "9", "upgrade_time": "4m 30s", "bread": null, "wood": 6000, "stone": 1200, "iron": null, "truegold": null, "training_capacity": 35, "training_speed": "1,30%", "unlocks": []},
+          {"level": "6", "tc_required": "9", "upgrade_time": "9m", "bread": null, "wood": 15000, "stone": 3000, "iron": 765, "truegold": null, "training_capacity": 39, "training_speed": "1,60%", "unlocks": []},
+          {"level": "7", "tc_required": "9", "upgrade_time": "18m", "bread": null, "wood": 55000, "stone": 11000, "iron": 2700, "truegold": null, "training_capacity": 43, "training_speed": "1,80%", "unlocks": ["Experienced Cavalry"]},
+          {"level": "8", "tc_required": "9", "upgrade_time": "27m", "bread": null, "wood": 100000, "stone": 20000, "iron": 5000, "truegold": null, "training_capacity": 48, "training_speed": "2,10%", "unlocks": []},
+          {"level": "9", "tc_required": "9", "upgrade_time": "40m 30s", "bread": null, "wood": 200000, "stone": 41000, "iron": 10000, "truegold": null, "training_capacity": 52, "training_speed": "2,40%", "unlocks": []},
+          {"level": "10", "tc_required": "10", "upgrade_time": "54m", "bread": null, "wood": 360000, "stone": 73000, "iron": 18000, "truegold": null, "training_capacity": 56, "training_speed": "2,60%", "unlocks": []},
+          {"level": "11", "tc_required": "11", "upgrade_time": "1h 7m 30s", "bread": 460000, "wood": 460000, "stone": 92000, "iron": 23000, "truegold": null, "training_capacity": 61, "training_speed": "2,90%", "unlocks": ["Veteran Cavalry"]},
+          {"level": "12", "tc_required": "12", "upgrade_time": "1h 21m", "bread": 580000, "wood": 580000, "stone": 110000, "iron": 29000, "truegold": null, "training_capacity": 65, "training_speed": "3,20%", "unlocks": []},
+          {"level": "13", "tc_required": "13", "upgrade_time": "1h 39m", "bread": 830000, "wood": 830000, "stone": 160000, "iron": 41000, "truegold": null, "training_capacity": 69, "training_speed": "3,40%", "unlocks": ["Indomitable Cavalry", "Troop Promotions"]},
+          {"level": "14", "tc_required": "14", "upgrade_time": "2h 6m", "bread": 1100000, "wood": 1100000, "stone": 220000, "iron": 55000, "truegold": null, "training_capacity": 76, "training_speed": "3,70%", "unlocks": []},
+          {"level": "15", "tc_required": "15", "upgrade_time": "2h 42m", "bread": 1600000, "wood": 1600000, "stone": 320000, "iron": 81000, "truegold": null, "training_capacity": 84, "training_speed": "4,00%", "unlocks": []},
+          {"level": "16", "tc_required": "16", "upgrade_time": "4h 34m", "bread": 2000000, "wood": 2000000, "stone": 410000, "iron": 100000, "truegold": null, "training_capacity": 92, "training_speed": "4,20%", "unlocks": ["Heroic Cavalry"]},
+          {"level": "17", "tc_required": "17", "upgrade_time": "5h 29m", "bread": 3200000, "wood": 3200000, "stone": 650000, "iron": 160000, "truegold": null, "training_capacity": 101, "training_speed": "4,50%", "unlocks": []},
+          {"level": "18", "tc_required": "18", "upgrade_time": "6h 35m", "bread": 4300000, "wood": 4300000, "stone": 870000, "iron": 210000, "truegold": null, "training_capacity": 109, "training_speed": "4,80%", "unlocks": []},
+          {"level": "19", "tc_required": "19", "upgrade_time": "9h 52m 30s", "bread": 5400000, "wood": 5400000, "stone": 1000000, "iron": 270000, "truegold": null, "training_capacity": 117, "training_speed": "5,00%", "unlocks": ["Dauntless Cavalry"]},
+          {"level": "20", "tc_required": "20", "upgrade_time": "12h 20m 30s", "bread": 7500000, "wood": 7500000, "stone": 1500000, "iron": 370000, "truegold": null, "training_capacity": 126, "training_speed": "5,30%", "unlocks": []},
+          {"level": "21", "tc_required": "21", "upgrade_time": "16h 2m 30s", "bread": 9500000, "wood": 9500000, "stone": 1900000, "iron": 470000, "truegold": null, "training_capacity": 134, "training_speed": "5,60%", "unlocks": []},
+          {"level": "22", "tc_required": "22", "upgrade_time": "1d 4m", "bread": 12000000, "wood": 12000000, "stone": 2500000, "iron": 630000, "truegold": null, "training_capacity": 142, "training_speed": "5,80%", "unlocks": ["Elite Cavalry"]},
+          {"level": "23", "tc_required": "23", "upgrade_time": "1d 9h 42m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 780000, "truegold": null, "training_capacity": 151, "training_speed": "6,10%", "unlocks": []},
+          {"level": "24", "tc_required": "24", "upgrade_time": "1d 23h 11m", "bread": 21000000, "wood": 21000000, "stone": 4200000, "iron": 1000000, "truegold": null, "training_capacity": 159, "training_speed": "6,40%", "unlocks": []},
+          {"level": "25", "tc_required": "25", "upgrade_time": "2d 18h 3m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": null, "training_capacity": 167, "training_speed": "6,70%", "unlocks": []},
+          {"level": "26", "tc_required": "26", "upgrade_time": "3d 3h 57m", "bread": 36000000, "wood": 36000000, "stone": 7300000, "iron": 1800000, "truegold": null, "training_capacity": 176, "training_speed": "6,90%", "unlocks": ["Exalted Cavalry"]},
+          {"level": "27", "tc_required": "27", "upgrade_time": "3d 19h 9m", "bread": 52000000, "wood": 52000000, "stone": 10000000, "iron": 2600000, "truegold": null, "training_capacity": 184, "training_speed": "7,20%", "unlocks": []},
+          {"level": "28", "tc_required": "28", "upgrade_time": "4d 8h 49m", "bread": 69000000, "wood": 69000000, "stone": 13000000, "iron": 3400000, "truegold": null, "training_capacity": 192, "training_speed": "7,40%", "unlocks": []},
+          {"level": "29", "tc_required": "29", "upgrade_time": "5d 33m", "bread": 86000000, "wood": 86000000, "stone": 17000000, "iron": 4300000, "truegold": null, "training_capacity": 201, "training_speed": "7,70%", "unlocks": []},
+          {"level": "30", "tc_required": "30", "upgrade_time": "6d 40m", "bread": 100000000, "wood": 100000000, "stone": 21000000, "iron": 5800000, "truegold": null, "training_capacity": 209, "training_speed": "8,00%", "unlocks": ["Ultimate Cavalry"]},
+          {"level": "30-1", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 214, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-2", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 219, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-3", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 224, "training_speed": "8,00%", "unlocks": []},
+          {"level": "30-4", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 229, "training_speed": "8,00%", "unlocks": []},
+          {"level": "TG 1", "tc_required": "TG 1", "upgrade_time": "1d 1h 12m", "bread": 23000000, "wood": 23000000, "stone": 4700000, "iron": 1100000, "truegold": 59, "training_capacity": 234, "training_speed": "8,30%", "unlocks": ["TG 1 Troops"]},
+          {"level": "TG1-1", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 239, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-2", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 244, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-3", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 249, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG1-4", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 254, "training_speed": "8,30%", "unlocks": []},
+          {"level": "TG 2", "tc_required": "TG 2", "upgrade_time": "1d 8h 24m", "bread": 25000000, "wood": 25000000, "stone": 5000000, "iron": 1200000, "truegold": 71, "training_capacity": 259, "training_speed": "8,60%", "unlocks": ["TG 2 Troops"]},
+          {"level": "TG 2-1", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 264, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-2", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 269, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-3", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 274, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 2-4", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 279, "training_speed": "8,60%", "unlocks": []},
+          {"level": "TG 3", "tc_required": "TG 3", "upgrade_time": "1d 15h 36m", "bread": 27000000, "wood": 27000000, "stone": 5500000, "iron": 1300000, "truegold": 107, "training_capacity": 284, "training_speed": "8,90%", "unlocks": ["TG 3 Troops"]},
+          {"level": "TG 3-1", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 489540, "unlocks": []},
+          {"level": "TG 3-2", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 502180, "unlocks": []},
+          {"level": "TG 3-3", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 514820, "unlocks": []},
+          {"level": "TG 3-4", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 527460, "unlocks": []},
+          {"level": "TG 4", "tc_required": "TG 4", "upgrade_time": "1d 19h 12m", "bread": 28000000, "wood": 28000000, "stone": 5700000, "iron": 1400000, "truegold": 126, "training_capacity": null, "training_speed": null, "power": 540100, "unlocks": ["TG 4 Troops"]},
+          {"level": "TG 4-1", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 552740, "unlocks": []},
+          {"level": "TG 4-2", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 565380, "unlocks": []},
+          {"level": "TG 4-3", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 578020, "unlocks": []},
+          {"level": "TG 4-4", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 590660, "unlocks": []},
+          {"level": "TG 5", "tc_required": "TG 5", "upgrade_time": "2d 2h 24m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": 150, "training_capacity": null, "training_speed": null, "power": 603300, "unlocks": ["TG 5 Troops"]}
+        ]
+      },
+      "tags": ["military", "training", "truegold"]
+    },
+    {
+      "id": "guard-station",
+      "name": "Guard Station",
+      "summary": "Defense building. A 'limited' building capped at level 10. Protects the city from attacks; if its durability hits zero the city is randomly teleported.",
+      "details": {
+        "category": "Defense",
+        "max_level": 10,
+        "truegold": false,
+        "mechanics": "When the city is attacked and defeated it starts burning, draining Guard Station health over time; repeated attacks extend the burn. If durability reaches zero the city is teleported to a random map location. Critical in events like Swordland Showdown and Viking Vengeance. Assign heroes with defender skills to boost city defense. After an attack, repair every 30 minutes via the building's 'City Defense' > 'Repair Guard Station' option (gems cannot instantly fully repair; but if online during an attack, gems can extinguish the fire to stop further loss). Good power-per-cost target for construction power events.",
+        "cost_data_available": true,
+        "notes": "upgrade_table below has the minimum Town Center level, upgrade time, resource costs, durability and power per level (costs from user-provided kingshotguide.com table). Level 1 is free/instant. Resource fields are integers (null = N/A).",
+        "upgrade_table": [
+          {"level": "1", "tc_required": null, "upgrade_time": null, "wood": null, "bread": null, "stone": null, "iron": null, "durability": 1000, "power": 400},
+          {"level": "2", "tc_required": "7", "upgrade_time": "10s", "wood": 5300, "bread": null, "stone": null, "iron": 1000, "durability": 1500, "power": 3100},
+          {"level": "3", "tc_required": "10", "upgrade_time": "21m 30s", "wood": 88000, "bread": 4400, "stone": null, "iron": 17000, "durability": 2000, "power": 9400},
+          {"level": "4", "tc_required": "13", "upgrade_time": "1h 4m 30s", "wood": 420000, "bread": 21000, "stone": 420000, "iron": 84000, "durability": 5000, "power": 21940},
+          {"level": "5", "tc_required": "16", "upgrade_time": "3h 39m", "wood": 1400000, "bread": 74000, "stone": 1400000, "iron": 290000, "durability": 10000, "power": 47240},
+          {"level": "6", "tc_required": "20", "upgrade_time": "9h 52m 30s", "wood": 5300000, "bread": 260000, "stone": 5300000, "iron": 1000000, "durability": 15000, "power": 86360},
+          {"level": "7", "tc_required": "24", "upgrade_time": "1d 13h 44m", "wood": 15000000, "bread": 750000, "stone": 15000000, "iron": 3000000, "durability": 20000, "power": 149500},
+          {"level": "8", "tc_required": "27", "upgrade_time": "3d 55m", "wood": 37000000, "bread": 1800000, "stone": 37000000, "iron": 7400000, "durability": 25000, "power": 217320},
+          {"level": "9", "tc_required": "29", "upgrade_time": "4d 26m", "wood": 61000000, "bread": 3000000, "stone": 61000000, "iron": 12000000, "durability": 30000, "power": 267920},
+          {"level": "10", "tc_required": "30", "upgrade_time": "4d 19h 44m", "wood": 75000000, "bread": 3700000, "stone": 75000000, "iron": 15000000, "durability": 35000, "power": 304700}
+        ]
+      },
+      "tags": ["defense", "limited"]
+    },
+    {
+      "id": "academy",
+      "name": "Academy",
+      "summary": "Research building housing the tech tree. Core-tier cap of 30.",
+      "details": {
+        "category": "Research",
+        "max_level": 30,
+        "truegold": false,
+        "notes": "Not the same as the military 'War Academy'. Each level raises Research Speed (% bonus). Full per-level table below (from kingshotguide.com); Academy caps at level 30 with no Truegold. Resource fields are integers (null = N/A). research_speed kept as the source string with comma decimal (e.g. '3,00%'). tc_required is the Town Center level gating that Academy level.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": "9", "upgrade_time": "2s", "bread": null, "wood": 105, "stone": null, "iron": null, "research_speed": "0,10%"},
+          {"level": "2", "tc_required": "9", "upgrade_time": "9s", "bread": null, "wood": 160, "stone": null, "iron": null, "research_speed": "0,20%"},
+          {"level": "3", "tc_required": "9", "upgrade_time": "45s", "bread": null, "wood": 725, "stone": null, "iron": null, "research_speed": "0,30%"},
+          {"level": "4", "tc_required": "9", "upgrade_time": "2m 15s", "bread": null, "wood": 1600, "stone": 320, "iron": null, "research_speed": "0,40%"},
+          {"level": "5", "tc_required": "9", "upgrade_time": "4m 30s", "bread": null, "wood": 6800, "stone": 1300, "iron": null, "research_speed": "0,50%"},
+          {"level": "6", "tc_required": "9", "upgrade_time": "9m", "bread": null, "wood": 17000, "stone": 3400, "iron": 860, "research_speed": "0,60%"},
+          {"level": "7", "tc_required": "9", "upgrade_time": "18m", "bread": null, "wood": 62000, "stone": 12000, "iron": 3100, "research_speed": "0,70%"},
+          {"level": "8", "tc_required": "9", "upgrade_time": "27m", "bread": null, "wood": 110000, "stone": 22000, "iron": 5600, "research_speed": "0,80%"},
+          {"level": "9", "tc_required": "9", "upgrade_time": "40m 30s", "bread": null, "wood": 230000, "stone": 47000, "iron": 11000, "research_speed": "0,90%"},
+          {"level": "10", "tc_required": "10", "upgrade_time": "54m", "bread": null, "wood": 410000, "stone": 82000, "iron": 20000, "research_speed": "1,00%"},
+          {"level": "11", "tc_required": "11", "upgrade_time": "1h 7m 30s", "bread": 520000, "wood": 520000, "stone": 100000, "iron": 26000, "research_speed": "1,10%"},
+          {"level": "12", "tc_required": "12", "upgrade_time": "1h 21m", "bread": 670000, "wood": 670000, "stone": 130000, "iron": 33000, "research_speed": "1,20%"},
+          {"level": "13", "tc_required": "13", "upgrade_time": "1h 39m", "bread": 950000, "wood": 950000, "stone": 190000, "iron": 47000, "research_speed": "1,30%"},
+          {"level": "14", "tc_required": "14", "upgrade_time": "2h 6m", "bread": 1200000, "wood": 1200000, "stone": 250000, "iron": 63000, "research_speed": "1,40%"},
+          {"level": "15", "tc_required": "15", "upgrade_time": "2h 42m", "bread": 1800000, "wood": 1800000, "stone": 370000, "iron": 93000, "research_speed": "1,50%"},
+          {"level": "16", "tc_required": "16", "upgrade_time": "4h 34m", "bread": 2300000, "wood": 2300000, "stone": 470000, "iron": 110000, "research_speed": "1,60%"},
+          {"level": "17", "tc_required": "17", "upgrade_time": "5h 29m", "bread": 3700000, "wood": 3700000, "stone": 740000, "iron": 180000, "research_speed": "1,70%"},
+          {"level": "18", "tc_required": "18", "upgrade_time": "6h 35m", "bread": 5000000, "wood": 5000000, "stone": 1000000, "iron": 250000, "research_speed": "1,80%"},
+          {"level": "19", "tc_required": "19", "upgrade_time": "9h 52m", "bread": 6200000, "wood": 6200000, "stone": 1200000, "iron": 310000, "research_speed": "1,90%"},
+          {"level": "20", "tc_required": "20", "upgrade_time": "12h 20m 30s", "bread": 8600000, "wood": 8600000, "stone": 1700000, "iron": 430000, "research_speed": "2,00%"},
+          {"level": "21", "tc_required": "21", "upgrade_time": "16h 2m 30s", "bread": 10000000, "wood": 10000000, "stone": 2100000, "iron": 540000, "research_speed": "2,10%"},
+          {"level": "22", "tc_required": "22", "upgrade_time": "1d 4m", "bread": 14000000, "wood": 14000000, "stone": 2800000, "iron": 720000, "research_speed": "2,20%"},
+          {"level": "23", "tc_required": "23", "upgrade_time": "1d 9h 42m", "bread": 17000000, "wood": 17000000, "stone": 3500000, "iron": 890000, "research_speed": "2,30%"},
+          {"level": "24", "tc_required": "24", "upgrade_time": "1d 23h 11m", "bread": 24000000, "wood": 24000000, "stone": 4800000, "iron": 1200000, "research_speed": "2,40%"},
+          {"level": "25", "tc_required": "25", "upgrade_time": "2d 18h 3m", "bread": 32000000, "wood": 32000000, "stone": 6500000, "iron": 1600000, "research_speed": "2,50%"},
+          {"level": "26", "tc_required": "26", "upgrade_time": "3d 3h 57m", "bread": 42000000, "wood": 42000000, "stone": 8400000, "iron": 2100000, "research_speed": "2,60%"},
+          {"level": "27", "tc_required": "27", "upgrade_time": "3d 19h 9m", "bread": 59000000, "wood": 59000000, "stone": 11000000, "iron": 2900000, "research_speed": "2,70%"},
+          {"level": "28", "tc_required": "28", "upgrade_time": "4d 8h 49m", "bread": 79000000, "wood": 79000000, "stone": 15000000, "iron": 3900000, "research_speed": "2,80%"},
+          {"level": "29", "tc_required": "29", "upgrade_time": "5d 33m", "bread": 98000000, "wood": 98000000, "stone": 19000000, "iron": 4900000, "research_speed": "2,90%"},
+          {"level": "30", "tc_required": "30", "upgrade_time": "6d 40m", "bread": 120000000, "wood": 120000000, "stone": 24000000, "iron": 6000000, "research_speed": "3,00%"}
+        ]
+      },
+      "tags": ["research", "tech"]
+    },
+    {
+      "id": "embassy",
+      "name": "Embassy",
+      "summary": "Social building for alliance interactions (reinforcements, help); can be upgraded past 30 into Truegold.",
+      "details": {
+        "category": "Social",
+        "max_level": 30,
+        "truegold": true,
+        "notes": "Each level raises Ally Assists (alliance help count), Ally Help Time (seconds each help shaves off timers) and Reinforce Capacity (max reinforcement troops). Full per-level table below (from kingshotguide.com). Resource fields are integers (null = N/A). tc_required is the Town Center level gating that Embassy level. Levels 30-1..30-4 are the four post-30 fortifications; TG 1..TG 3 are Truegold tiers, each preceded by four TGn-x steps.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": "8", "upgrade_time": "2s", "bread": null, "wood": 60, "stone": null, "iron": null, "truegold": null, "ally_assists": 1, "ally_help_time": 10, "reinforce_capacity": 1500},
+          {"level": "2", "tc_required": "8", "upgrade_time": "10s", "bread": null, "wood": 90, "stone": null, "iron": null, "truegold": null, "ally_assists": 2, "ally_help_time": 13, "reinforce_capacity": 3500},
+          {"level": "3", "tc_required": "8", "upgrade_time": "1m", "bread": null, "wood": 400, "stone": null, "iron": null, "truegold": null, "ally_assists": 3, "ally_help_time": 16, "reinforce_capacity": 5700},
+          {"level": "4", "tc_required": "8", "upgrade_time": "2m", "bread": null, "wood": 900, "stone": 180, "iron": null, "truegold": null, "ally_assists": 4, "ally_help_time": 19, "reinforce_capacity": 8000},
+          {"level": "5", "tc_required": "8", "upgrade_time": "6m 40s", "bread": null, "wood": 3800, "stone": 760, "iron": null, "truegold": null, "ally_assists": 5, "ally_help_time": 22, "reinforce_capacity": 11500},
+          {"level": "6", "tc_required": "8", "upgrade_time": "13m 20s", "bread": null, "wood": 9600, "stone": 1900, "iron": 480, "truegold": null, "ally_assists": 6, "ally_help_time": 25, "reinforce_capacity": 15000},
+          {"level": "7", "tc_required": "8", "upgrade_time": "25m", "bread": null, "wood": 34000, "stone": 6900, "iron": 1700, "truegold": null, "ally_assists": 7, "ally_help_time": 28, "reinforce_capacity": 19000},
+          {"level": "8", "tc_required": "8", "upgrade_time": "45m", "bread": null, "wood": 63000, "stone": 12000, "iron": 3100, "truegold": null, "ally_assists": 8, "ally_help_time": 31, "reinforce_capacity": 24000},
+          {"level": "9", "tc_required": "9", "upgrade_time": "2h", "bread": null, "wood": 130000, "stone": 26000, "iron": 6500, "truegold": null, "ally_assists": 9, "ally_help_time": 34, "reinforce_capacity": 29500},
+          {"level": "10", "tc_required": "10", "upgrade_time": "3h 57m 30s", "bread": null, "wood": 230000, "stone": 46000, "iron": 11000, "truegold": null, "ally_assists": 10, "ally_help_time": 37, "reinforce_capacity": 35500},
+          {"level": "11", "tc_required": "11", "upgrade_time": "4h 57m", "bread": 260000, "wood": 260000, "stone": 52000, "iron": 13000, "truegold": null, "ally_assists": 11, "ally_help_time": 40, "reinforce_capacity": 43500},
+          {"level": "12", "tc_required": "12", "upgrade_time": "5h 56m", "bread": 330000, "wood": 330000, "stone": 67000, "iron": 16000, "truegold": null, "ally_assists": 12, "ally_help_time": 43, "reinforce_capacity": 52000},
+          {"level": "13", "tc_required": "13", "upgrade_time": "7h 15m 30s", "bread": 470000, "wood": 470000, "stone": 95000, "iron": 23000, "truegold": null, "ally_assists": 13, "ally_help_time": 46, "reinforce_capacity": 62000},
+          {"level": "14", "tc_required": "14", "upgrade_time": "9h 14m", "bread": 630000, "wood": 630000, "stone": 120000, "iron": 31000, "truegold": null, "ally_assists": 14, "ally_help_time": 49, "reinforce_capacity": 73500},
+          {"level": "15", "tc_required": "15", "upgrade_time": "11h 52m 30s", "bread": 930000, "wood": 930000, "stone": 180000, "iron": 46000, "truegold": null, "ally_assists": 15, "ally_help_time": 52, "reinforce_capacity": 87500},
+          {"level": "16", "tc_required": "16", "upgrade_time": "19h 43m 20s", "bread": 1100000, "wood": 1100000, "stone": 230000, "iron": 59000, "truegold": null, "ally_assists": 16, "ally_help_time": 55, "reinforce_capacity": 105000},
+          {"level": "17", "tc_required": "17", "upgrade_time": "1d 8m", "bread": 1800000, "wood": 1800000, "stone": 370000, "iron": 93000, "truegold": null, "ally_assists": 17, "ally_help_time": 58, "reinforce_capacity": 120000},
+          {"level": "18", "tc_required": "18", "upgrade_time": "1d 4h 58m", "bread": 2500000, "wood": 2500000, "stone": 500000, "iron": 120000, "truegold": null, "ally_assists": 18, "ally_help_time": 61, "reinforce_capacity": 140000},
+          {"level": "19", "tc_required": "19", "upgrade_time": "1d 19h 27m", "bread": 3100000, "wood": 3100000, "stone": 620000, "iron": 150000, "truegold": null, "ally_assists": 19, "ally_help_time": 64, "reinforce_capacity": 165000},
+          {"level": "20", "tc_required": "20", "upgrade_time": "2d 6h 19m", "bread": 4300000, "wood": 4300000, "stone": 860000, "iron": 210000, "truegold": null, "ally_assists": 20, "ally_help_time": 67, "reinforce_capacity": 195000},
+          {"level": "21", "tc_required": "21", "upgrade_time": "2d 22h 36m", "bread": 5400000, "wood": 5400000, "stone": 1000000, "iron": 270000, "truegold": null, "ally_assists": 21, "ally_help_time": 70, "reinforce_capacity": 225000},
+          {"level": "22", "tc_required": "22", "upgrade_time": "4d 9h 55m", "bread": 7200000, "wood": 7200000, "stone": 1400000, "iron": 360000, "truegold": null, "ally_assists": 22, "ally_help_time": 73, "reinforce_capacity": 260000},
+          {"level": "23", "tc_required": "23", "upgrade_time": "6d 4h 17m", "bread": 8900000, "wood": 8900000, "stone": 1700000, "iron": 440000, "truegold": null, "ally_assists": 23, "ally_help_time": 76, "reinforce_capacity": 305000},
+          {"level": "24", "tc_required": "24", "upgrade_time": "8d 15h 36m", "bread": 12000000, "wood": 12000000, "stone": 2400000, "iron": 600000, "truegold": null, "ally_assists": 24, "ally_help_time": 79, "reinforce_capacity": 350000},
+          {"level": "25", "tc_required": "25", "upgrade_time": "12d 2h 38m", "bread": 16000000, "wood": 16000000, "stone": 3200000, "iron": 810000, "truegold": null, "ally_assists": 25, "ally_help_time": 82, "reinforce_capacity": 400000},
+          {"level": "26", "tc_required": "26", "upgrade_time": "13d 22h 14m", "bread": 21000000, "wood": 21000000, "stone": 4200000, "iron": 1000000, "truegold": null, "ally_assists": 26, "ally_help_time": 85, "reinforce_capacity": 470000},
+          {"level": "27", "tc_required": "27", "upgrade_time": "16d 17h 5m", "bread": 29000000, "wood": 29000000, "stone": 5900000, "iron": 1400000, "truegold": null, "ally_assists": 27, "ally_help_time": 88, "reinforce_capacity": 550000},
+          {"level": "28", "tc_required": "28", "upgrade_time": "19d 5h 15m", "bread": 39000000, "wood": 39000000, "stone": 7900000, "iron": 1900000, "truegold": null, "ally_assists": 28, "ally_help_time": 91, "reinforce_capacity": 630000},
+          {"level": "29", "tc_required": "29", "upgrade_time": "22d 2h 26m", "bread": 49000000, "wood": 49000000, "stone": 9800000, "iron": 2400000, "truegold": null, "ally_assists": 29, "ally_help_time": 94, "reinforce_capacity": 725000},
+          {"level": "30", "tc_required": "30", "upgrade_time": "26d 12h 32m", "bread": 60000000, "wood": 60000000, "stone": 12000000, "iron": 3000000, "truegold": null, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 840000},
+          {"level": "30-1", "tc_required": "TG 1", "upgrade_time": "4d 14h 52m", "bread": 13000000, "wood": 13000000, "stone": 2700000, "iron": 670000, "truegold": 33, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 845000},
+          {"level": "30-2", "tc_required": "TG 1", "upgrade_time": "4d 14h 52m", "bread": 13000000, "wood": 13000000, "stone": 2700000, "iron": 670000, "truegold": 33, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 850000},
+          {"level": "30-3", "tc_required": "TG 1", "upgrade_time": "4d 14h 52m", "bread": 13000000, "wood": 13000000, "stone": 2700000, "iron": 670000, "truegold": 33, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 855000},
+          {"level": "30-4", "tc_required": "TG 1", "upgrade_time": "4d 14h 52m", "bread": 13000000, "wood": 13000000, "stone": 2700000, "iron": 670000, "truegold": 33, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 860000},
+          {"level": "TG 1", "tc_required": "TG 1", "upgrade_time": "4d 14h 52m", "bread": 13000000, "wood": 13000000, "stone": 2700000, "iron": 670000, "truegold": 33, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 865000},
+          {"level": "TG1-1", "tc_required": "TG 2", "upgrade_time": "5d 22h 33m", "bread": 14000000, "wood": 14000000, "stone": 2900000, "iron": 720000, "truegold": 39, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 870000},
+          {"level": "TG1-2", "tc_required": "TG 2", "upgrade_time": "5d 22h 33m", "bread": 14000000, "wood": 14000000, "stone": 2900000, "iron": 720000, "truegold": 39, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 875000},
+          {"level": "TG1-3", "tc_required": "TG 2", "upgrade_time": "5d 22h 33m", "bread": 14000000, "wood": 14000000, "stone": 2900000, "iron": 720000, "truegold": 39, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 880000},
+          {"level": "TG1-4", "tc_required": "TG 2", "upgrade_time": "5d 22h 33m", "bread": 14000000, "wood": 14000000, "stone": 2900000, "iron": 720000, "truegold": 39, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 885000},
+          {"level": "TG 2", "tc_required": "TG 2", "upgrade_time": "5d 22h 33m", "bread": 14000000, "wood": 14000000, "stone": 2900000, "iron": 720000, "truegold": 39, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 890000},
+          {"level": "TG 2-1", "tc_required": "TG 3", "upgrade_time": "7d 6h 14m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 790000, "truegold": 59, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 895000},
+          {"level": "TG 2-2", "tc_required": "TG 3", "upgrade_time": "7d 6h 14m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 790000, "truegold": 59, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 900000},
+          {"level": "TG 2-3", "tc_required": "TG 3", "upgrade_time": "7d 6h 14m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 790000, "truegold": 59, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 905000},
+          {"level": "TG 2-4", "tc_required": "TG 3", "upgrade_time": "7d 6h 14m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 790000, "truegold": 59, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 910000},
+          {"level": "TG 3", "tc_required": "TG 3", "upgrade_time": "7d 6h 14m", "bread": 15000000, "wood": 15000000, "stone": 3100000, "iron": 790000, "truegold": 59, "ally_assists": 30, "ally_help_time": 97, "reinforce_capacity": 915000}
+        ]
+      },
+      "tags": ["social", "alliance", "truegold"]
+    },
+    {
+      "id": "storehouse",
+      "name": "Storehouse",
+      "summary": "Resource building that protects stored resources from raids. Core-tier cap of 30.",
+      "details": {
+        "category": "Resource",
+        "max_level": 30,
+        "truegold": false,
+        "notes": "Protects stored resources from raids. Each level raises Storage Capacity (resources shielded from looting). Full per-level table below (from kingshotguide.com); Storehouse caps at level 30 with no Truegold. Resource fields are integers (null = N/A). tc_required is the Town Center level gating that Storehouse level.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": "9", "upgrade_time": "2 seconds", "bread": null, "wood": 60, "stone": null, "iron": null, "storage_capacity": 5000},
+          {"level": "2", "tc_required": "9", "upgrade_time": "9 seconds", "bread": null, "wood": 90, "stone": null, "iron": null, "storage_capacity": 10000},
+          {"level": "3", "tc_required": "9", "upgrade_time": "45 seconds", "bread": null, "wood": 400, "stone": null, "iron": null, "storage_capacity": 15000},
+          {"level": "4", "tc_required": "9", "upgrade_time": "2 minutes, 15 seconds", "bread": null, "wood": 900, "stone": 180, "iron": null, "storage_capacity": 20000},
+          {"level": "5", "tc_required": "9", "upgrade_time": "4 minutes, 30 seconds", "bread": null, "wood": 3800, "stone": 760, "iron": null, "storage_capacity": 25000},
+          {"level": "6", "tc_required": "9", "upgrade_time": "9 minutes", "bread": null, "wood": 9600, "stone": 1900, "iron": 480, "storage_capacity": 30000},
+          {"level": "7", "tc_required": "9", "upgrade_time": "18 minutes", "bread": null, "wood": 34000, "stone": 6900, "iron": 1700, "storage_capacity": 45000},
+          {"level": "8", "tc_required": "9", "upgrade_time": "27 minutes", "bread": null, "wood": 63000, "stone": 12000, "iron": 3100, "storage_capacity": 65000},
+          {"level": "9", "tc_required": "9", "upgrade_time": "40 minutes, 30 seconds", "bread": null, "wood": 130000, "stone": 26000, "iron": 6500, "storage_capacity": 120000},
+          {"level": "10", "tc_required": "10", "upgrade_time": "54 minutes", "bread": null, "wood": 230000, "stone": 46000, "iron": 11000, "storage_capacity": 200000},
+          {"level": "11", "tc_required": "11", "upgrade_time": "1 hour, 7 minutes, 30 seconds", "bread": 290000, "wood": 290000, "stone": 57000, "iron": 14000, "storage_capacity": 400000},
+          {"level": "12", "tc_required": "12", "upgrade_time": "1 hour, 21 minutes", "bread": 370000, "wood": 370000, "stone": 74000, "iron": 18000, "storage_capacity": 800000},
+          {"level": "13", "tc_required": "13", "upgrade_time": "1 hour, 39 minutes", "bread": 520000, "wood": 520000, "stone": 100000, "iron": 26000, "storage_capacity": 1200000},
+          {"level": "14", "tc_required": "14", "upgrade_time": "2 hours, 6 minutes", "bread": 690000, "wood": 690000, "stone": 130000, "iron": 34000, "storage_capacity": 1900000},
+          {"level": "15", "tc_required": "15", "upgrade_time": "2 hours, 42 minutes", "bread": 1000000, "wood": 1000000, "stone": 200000, "iron": 51000, "storage_capacity": 3200000},
+          {"level": "16", "tc_required": "16", "upgrade_time": "4 hours, 34 minutes", "bread": 1300000, "wood": 1300000, "stone": 260000, "iron": 65000, "storage_capacity": 4600000},
+          {"level": "17", "tc_required": "17", "upgrade_time": "5 hours, 29 minutes", "bread": 2000000, "wood": 2000000, "stone": 400000, "iron": 100000, "storage_capacity": 6000000},
+          {"level": "18", "tc_required": "18", "upgrade_time": "6 hours, 35 minutes", "bread": 2700000, "wood": 2700000, "stone": 550000, "iron": 130000, "storage_capacity": 7500000},
+          {"level": "19", "tc_required": "19", "upgrade_time": "9 hours, 52 minutes, 30 seconds", "bread": 3400000, "wood": 3400000, "stone": 690000, "iron": 170000, "storage_capacity": 8600000},
+          {"level": "20", "tc_required": "20", "upgrade_time": "12 hours, 20 minutes, 30 seconds", "bread": 4700000, "wood": 4700000, "stone": 940000, "iron": 230000, "storage_capacity": 10000000},
+          {"level": "21", "tc_required": "21", "upgrade_time": "16 hours, 2 minutes, 30 seconds", "bread": 6000000, "wood": 6000000, "stone": 1200000, "iron": 300000, "storage_capacity": 12500000},
+          {"level": "22", "tc_required": "22", "upgrade_time": "1 day, 4 minutes", "bread": 7900000, "wood": 7900000, "stone": 1500000, "iron": 390000, "storage_capacity": 15000000},
+          {"level": "23", "tc_required": "23", "upgrade_time": "1 day, 9 hours, 42 minutes", "bread": 9800000, "wood": 9800000, "stone": 1900000, "iron": 490000, "storage_capacity": 20000000},
+          {"level": "24", "tc_required": "24", "upgrade_time": "1 day, 23 hours, 11 minutes", "bread": 13000000, "wood": 13000000, "stone": 2600000, "iron": 660000, "storage_capacity": 25000000},
+          {"level": "25", "tc_required": "25", "upgrade_time": "2 days, 18 hours, 3 minutes", "bread": 17000000, "wood": 17000000, "stone": 3500000, "iron": 890000, "storage_capacity": 35000000},
+          {"level": "26", "tc_required": "26", "upgrade_time": "3 days, 3 hours, 57 minutes", "bread": 23000000, "wood": 23000000, "stone": 4600000, "iron": 1100000, "storage_capacity": 45000000},
+          {"level": "27", "tc_required": "27", "upgrade_time": "3 days, 19 hours, 9 minutes", "bread": 32000000, "wood": 32000000, "stone": 6500000, "iron": 1600000, "storage_capacity": 60000000},
+          {"level": "28", "tc_required": "28", "upgrade_time": "4 days, 8 hours, 49 minutes", "bread": 43000000, "wood": 43000000, "stone": 8700000, "iron": 2100000, "storage_capacity": 75000000},
+          {"level": "29", "tc_required": "29", "upgrade_time": "5 days, 33 minutes", "bread": 54000000, "wood": 54000000, "stone": 10000000, "iron": 2700000, "storage_capacity": 100000000},
+          {"level": "30", "tc_required": "30", "upgrade_time": "6 days, 40 minutes", "bread": 66000000, "wood": 66000000, "stone": 13000000, "iron": 3300000, "storage_capacity": 120000000}
+        ]
+      },
+      "tags": ["resource", "protection"]
+    },
+    {
+      "id": "kitchen",
+      "name": "Kitchen",
+      "summary": "Resource building (food-related): produces Bread, one of the essential resources. A 'limited' building capped at level 10.",
+      "details": {
+        "category": "Resource",
+        "max_level": 10,
+        "truegold": false,
+        "key_features": {"Bread Production": "Hourly bread production rate (rises with level)"},
+        "notes": "Produces Bread. Each level raises the hourly bread production rate (the source table did not list the exact per-level production values, only Power). Full per-level table below (from kingshotguide.com). Level 1 is built during the tutorial. Resource fields are integers (null = N/A). tc_required is the Town Center level gating that Kitchen level.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": null, "unlock": "Built During Tutorial", "upgrade_time": "00:00:02", "wood": 35, "bread": null, "stone": null, "iron": null, "power": 100},
+          {"level": "2", "tc_required": "2", "upgrade_time": "00:00:09", "wood": 50, "bread": null, "stone": null, "iron": null, "power": 190},
+          {"level": "3", "tc_required": "3", "upgrade_time": "00:00:45", "wood": 240, "bread": null, "stone": null, "iron": null, "power": 325},
+          {"level": "4", "tc_required": "4", "upgrade_time": "00:02:15", "wood": 540, "bread": null, "stone": null, "iron": 105, "power": 505},
+          {"level": "5", "tc_required": "5", "upgrade_time": "00:04:30", "wood": 2200, "bread": null, "stone": null, "iron": 455, "power": 775},
+          {"level": "6", "tc_required": "6", "upgrade_time": "00:09:00", "wood": 5700, "bread": 285, "stone": null, "iron": 1100, "power": 1180},
+          {"level": "7", "tc_required": "7", "upgrade_time": "00:18:00", "wood": 20000, "bread": 1000, "stone": null, "iron": 4100, "power": 1765},
+          {"level": "8", "tc_required": "8", "upgrade_time": "00:27:00", "wood": 37000, "bread": 1800, "stone": null, "iron": 7500, "power": 2350},
+          {"level": "9", "tc_required": "9", "upgrade_time": "00:40:30", "wood": 78000, "bread": 3900, "stone": null, "iron": 15000, "power": 2935},
+          {"level": "10", "tc_required": "10", "upgrade_time": "00:54:00", "wood": 130000, "bread": 6900, "stone": null, "iron": 27000, "power": 3785}
+        ]
+      },
+      "tags": ["resource", "limited", "food"]
+    },
+    {
+      "id": "truegold-crucible",
+      "name": "Truegold Crucible",
+      "summary": "Special building tied to the Truegold system. Unlocks when the kingdom reaches Truegold Level 5. Free to build, built instantly, with no level upgrades; provides Truegold refinement.",
+      "details": {
+        "category": "Special",
+        "max_level": null,
+        "truegold": true,
+        "unlock_requirement": "Kingdom Age of Truegold Level 5",
+        "build": {"cost": "Free", "time": "Instant", "level_upgrades": false},
+        "key_features": {"Refinement": "Refine resources to obtain 1-5 Truegold per refinement", "Special Building": "No upgrades required - functionality unlocked at build"},
+        "notes": "Unlocks when your kingdom reaches Truegold Level 5. Free to build and can be built instantly. Has no level upgrades but provides refinement functionality for obtaining Truegold resources (1-5 Truegold per refinement). Also seen in the executor tutorial flow."
+      },
+      "tags": ["special", "truegold", "tutorial", "refinement"]
+    },
+    {
+      "id": "infirmary",
+      "name": "Infirmary",
+      "summary": "Defense building that heals/holds wounded troops; can be upgraded past 30 into Truegold.",
+      "details": {
+        "category": "Defense",
+        "max_level": 30,
+        "truegold": true,
+        "notes": "Holds wounded troops after battle. Each level raises Troop Capacity (max wounded troops held). Full per-level table below (from kingshotguide.com). Resource fields are integers (null = N/A). tc_required is the Town Center level gating that Infirmary level. Levels 30-1..30-4 are the four post-30 fortifications; TG 1..TG 3 are Truegold tiers, each preceded by four TGn-x steps.",
+        "upgrade_table": [
+          {"level": "1", "tc_required": "8", "upgrade_time": "00:00:02", "bread": null, "wood": null, "stone": null, "iron": null, "truegold": null, "troop_capacity": 200},
+          {"level": "2", "tc_required": "8", "upgrade_time": "00:00:09", "bread": null, "wood": 100, "stone": null, "iron": null, "truegold": null, "troop_capacity": 300},
+          {"level": "3", "tc_required": "8", "upgrade_time": "00:00:40", "bread": null, "wood": 460, "stone": null, "iron": null, "truegold": null, "troop_capacity": 400},
+          {"level": "4", "tc_required": "8", "upgrade_time": "00:02:05", "bread": null, "wood": 1000, "stone": 205, "iron": null, "truegold": null, "troop_capacity": 500},
+          {"level": "5", "tc_required": "8", "upgrade_time": "00:04:10", "bread": null, "wood": 4300, "stone": 865, "iron": null, "truegold": null, "troop_capacity": 600},
+          {"level": "6", "tc_required": "8", "upgrade_time": "00:08:20", "bread": null, "wood": 10000, "stone": 2100, "iron": 545, "truegold": null, "troop_capacity": 700},
+          {"level": "7", "tc_required": "8", "upgrade_time": "00:16:30", "bread": null, "wood": 39000, "stone": 7800, "iron": 1900, "truegold": null, "troop_capacity": 900},
+          {"level": "8", "tc_required": "8", "upgrade_time": "00:25:00", "bread": null, "wood": 72000, "stone": 14000, "iron": 3600, "truegold": null, "troop_capacity": 1100},
+          {"level": "9", "tc_required": "9", "upgrade_time": "00:37:30", "bread": null, "wood": 140000, "stone": 29000, "iron": 7400, "truegold": null, "troop_capacity": 1300},
+          {"level": "10", "tc_required": "10", "upgrade_time": "00:50:00", "bread": null, "wood": 260000, "stone": 52000, "iron": 13000, "truegold": null, "troop_capacity": 1600},
+          {"level": "11", "tc_required": "11", "upgrade_time": "01:03:00", "bread": 320000, "wood": 320000, "stone": 65000, "iron": 16000, "truegold": null, "troop_capacity": 1900},
+          {"level": "12", "tc_required": "12", "upgrade_time": "01:15:30", "bread": 420000, "wood": 420000, "stone": 84000, "iron": 21000, "truegold": null, "troop_capacity": 2400},
+          {"level": "13", "tc_required": "13", "upgrade_time": "01:32:00", "bread": 590000, "wood": 590000, "stone": 110000, "iron": 29000, "truegold": null, "troop_capacity": 2900},
+          {"level": "14", "tc_required": "14", "upgrade_time": "01:57:30", "bread": 780000, "wood": 780000, "stone": 150000, "iron": 39000, "truegold": null, "troop_capacity": 3500},
+          {"level": "15", "tc_required": "15", "upgrade_time": "02:31:00", "bread": 1100000, "wood": 1100000, "stone": 230000, "iron": 58000, "truegold": null, "troop_capacity": 4200},
+          {"level": "16", "tc_required": "16", "upgrade_time": "04:16:00", "bread": 1400000, "wood": 1400000, "stone": 290000, "iron": 74000, "truegold": null, "troop_capacity": 5000},
+          {"level": "17", "tc_required": "17", "upgrade_time": "05:07:00", "bread": 2300000, "wood": 2300000, "stone": 460000, "iron": 100000, "truegold": null, "troop_capacity": 6000},
+          {"level": "18", "tc_required": "18", "upgrade_time": "06:08:30", "bread": 3100000, "wood": 3100000, "stone": 620000, "iron": 150000, "truegold": null, "troop_capacity": 7300},
+          {"level": "19", "tc_required": "19", "upgrade_time": "09:13:00", "bread": 3900000, "wood": 3900000, "stone": 780000, "iron": 190000, "truegold": null, "troop_capacity": 8800},
+          {"level": "20", "tc_required": "20", "upgrade_time": "11:31:00", "bread": 5300000, "wood": 5300000, "stone": 1000000, "iron": 260000, "truegold": null, "troop_capacity": 10500},
+          {"level": "21", "tc_required": "21", "upgrade_time": "14:58:30", "bread": 6800000, "wood": 6800000, "stone": 1300000, "iron": 340000, "truegold": null, "troop_capacity": 13000},
+          {"level": "22", "tc_required": "22", "upgrade_time": "22:28:00", "bread": 9000000, "wood": 9000000, "stone": 1800000, "iron": 450000, "truegold": null, "troop_capacity": 15500},
+          {"level": "23", "tc_required": "23", "upgrade_time": "1d 07:27:00", "bread": 11000000, "wood": 11000000, "stone": 2200000, "iron": 560000, "truegold": null, "troop_capacity": 18500},
+          {"level": "24", "tc_required": "24", "upgrade_time": "1d 20:02:00", "bread": 15000000, "wood": 15000000, "stone": 3000000, "iron": 750000, "truegold": null, "troop_capacity": 22000},
+          {"level": "25", "tc_required": "25", "upgrade_time": "2d 13:39:00", "bread": 20000000, "wood": 20000000, "stone": 4000000, "iron": 1000000, "truegold": null, "troop_capacity": 26500},
+          {"level": "26", "tc_required": "26", "upgrade_time": "2d 22:54:00", "bread": 26000000, "wood": 26000000, "stone": 5200000, "iron": 1300000, "truegold": null, "troop_capacity": 32000},
+          {"level": "27", "tc_required": "27", "upgrade_time": "3d 13:04:00", "bread": 37000000, "wood": 37000000, "stone": 7400000, "iron": 1800000, "truegold": null, "troop_capacity": 38500},
+          {"level": "28", "tc_required": "28", "upgrade_time": "4d 01:50:00", "bread": 49000000, "wood": 49000000, "stone": 9900000, "iron": 2400000, "truegold": null, "troop_capacity": 46200},
+          {"level": "29", "tc_required": "29", "upgrade_time": "4d 16:31:00", "bread": 61000000, "wood": 61000000, "stone": 12000000, "iron": 3000000, "truegold": null, "troop_capacity": 55500},
+          {"level": "30", "tc_required": "30", "upgrade_time": "5d 15:01:00", "bread": 75000000, "wood": 75000000, "stone": 15000000, "iron": 3700000, "truegold": null, "troop_capacity": 66500},
+          {"level": "30-1", "tc_required": "TG 1", "upgrade_time": "23h 31m 0s", "bread": 16000000, "wood": 16000000, "stone": 3300000, "iron": 840000, "truegold": 26, "troop_capacity": 67600},
+          {"level": "30-2", "tc_required": "TG 1", "upgrade_time": "23h 31m 0s", "bread": 16000000, "wood": 16000000, "stone": 3300000, "iron": 840000, "truegold": 26, "troop_capacity": 68700},
+          {"level": "30-3", "tc_required": "TG 1", "upgrade_time": "23h 31m 0s", "bread": 16000000, "wood": 16000000, "stone": 3300000, "iron": 840000, "truegold": 26, "troop_capacity": 69800},
+          {"level": "30-4", "tc_required": "TG 1", "upgrade_time": "23h 31m 0s", "bread": 16000000, "wood": 16000000, "stone": 3300000, "iron": 840000, "truegold": 26, "troop_capacity": 70900},
+          {"level": "TG 1", "tc_required": "TG 1", "upgrade_time": "23h 31m 0s", "bread": 16000000, "wood": 16000000, "stone": 3300000, "iron": 840000, "truegold": 26, "troop_capacity": 72000},
+          {"level": "TG1-1", "tc_required": "TG 2", "upgrade_time": "1d 6h 14m", "bread": 18000000, "wood": 18000000, "stone": 3600000, "iron": 900000, "truegold": 31, "troop_capacity": 73100},
+          {"level": "TG1-2", "tc_required": "TG 2", "upgrade_time": "1d 6h 14m", "bread": 18000000, "wood": 18000000, "stone": 3600000, "iron": 900000, "truegold": 31, "troop_capacity": 74200},
+          {"level": "TG1-3", "tc_required": "TG 2", "upgrade_time": "1d 6h 14m", "bread": 18000000, "wood": 18000000, "stone": 3600000, "iron": 900000, "truegold": 31, "troop_capacity": 75300},
+          {"level": "TG1-4", "tc_required": "TG 2", "upgrade_time": "1d 6h 14m", "bread": 18000000, "wood": 18000000, "stone": 3600000, "iron": 900000, "truegold": 31, "troop_capacity": 76400},
+          {"level": "TG 2", "tc_required": "TG 2", "upgrade_time": "1d 6h 14m", "bread": 18000000, "wood": 18000000, "stone": 3600000, "iron": 900000, "truegold": 31, "troop_capacity": 77500},
+          {"level": "TG 2-1", "tc_required": "TG 3", "upgrade_time": "1d 12h 57m", "bread": 19000000, "wood": 19000000, "stone": 3900000, "iron": 990000, "truegold": 47, "troop_capacity": 78600},
+          {"level": "TG 2-2", "tc_required": "TG 3", "upgrade_time": "1d 12h 57m", "bread": 19000000, "wood": 19000000, "stone": 3900000, "iron": 990000, "truegold": 47, "troop_capacity": 79700},
+          {"level": "TG 2-3", "tc_required": "TG 3", "upgrade_time": "1d 12h 57m", "bread": 19000000, "wood": 19000000, "stone": 3900000, "iron": 990000, "truegold": 47, "troop_capacity": 80800},
+          {"level": "TG 2-4", "tc_required": "TG 3", "upgrade_time": "1d 12h 57m", "bread": 19000000, "wood": 19000000, "stone": 3900000, "iron": 990000, "truegold": 47, "troop_capacity": 81900},
+          {"level": "TG 3", "tc_required": "TG 3", "upgrade_time": "1d 12h 57m", "bread": 19000000, "wood": 19000000, "stone": 3900000, "iron": 990000, "truegold": 47, "troop_capacity": 83000}
+        ]
+      },
+      "tags": ["defense", "healing", "truegold"]
+    },
+    {
+      "id": "truegold-requirements",
+      "name": "Truegold & Tempered Truegold building requirements (TG1-TG8)",
+      "summary": "Truegold-only quantities needed to push key buildings from TG1-TG5, and the Truegold + Tempered Truegold requirements from TG5 to TG8. Age of Truegold begins around day 70; Truegold upgrades start after building level 30. From TG5, Tempered Truegold is an added bottleneck for Town Center and support buildings.",
+      "details": {
+        "progression": [
+          "Age of Truegold begins around day 70 on the server timeline.",
+          "Truegold upgrades start after building level 30 and run through TG levels.",
+          "TG1-TG5 requirements use Truegold plus normal resources.",
+          "After TG5, Tempered Truegold becomes an additional bottleneck.",
+          "Plan Town Center, Embassy, Command Center, Infirmary, and troop camps together so one weak building does not block the next unlock."
+        ],
+        "notes": [
+          "TG1-TG5 rows show Truegold only. Standard resources, speedups, and building prerequisites still apply in game.",
+          "Training camps (Barracks, Range, Stable) use the same Truegold pattern.",
+          "If short on Tempered Truegold, repeat the same TG band instead of jumping ahead on Town Center alone."
+        ],
+        "truegold_tg1_to_tg5": {
+          "unit": "Truegold only (per building, per TG level)",
+          "columns": [
+            "building",
+            "TG1",
+            "TG2",
+            "TG3",
+            "TG4",
+            "TG5"
+          ],
+          "rows": [
+            {
+              "building": "Town Center",
+              "TG1": 132,
+              "TG2": 158,
+              "TG3": 238,
+              "TG4": 280,
+              "TG5": 335
+            },
+            {
+              "building": "Embassy",
+              "TG1": 33,
+              "TG2": 39,
+              "TG3": 59,
+              "TG4": 70,
+              "TG5": 83
+            },
+            {
+              "building": "Command Center",
+              "TG1": 26,
+              "TG2": 31,
+              "TG3": 47,
+              "TG4": 56,
+              "TG5": 67
+            },
+            {
+              "building": "Infirmary",
+              "TG1": 26,
+              "TG2": 31,
+              "TG3": 47,
+              "TG4": 56,
+              "TG5": 67
+            },
+            {
+              "building": "Barracks",
+              "TG1": 59,
+              "TG2": 71,
+              "TG3": 107,
+              "TG4": 126,
+              "TG5": 150
+            },
+            {
+              "building": "Range",
+              "TG1": 59,
+              "TG2": 71,
+              "TG3": 107,
+              "TG4": 126,
+              "TG5": 150
+            },
+            {
+              "building": "Stable",
+              "TG1": 59,
+              "TG2": 71,
+              "TG3": 107,
+              "TG4": 126,
+              "TG5": 150
+            }
+          ]
+        },
+        "tempered_truegold_tg5_to_tg8": {
+          "unit": "Truegold (tg) + Tempered Truegold (tempered_tg) per building",
+          "training_camps_means": "Barracks, Range, Stable",
+          "columns": [
+            "level_band",
+            "town_center",
+            "embassy",
+            "command_center",
+            "infirmary",
+            "training_camps"
+          ],
+          "rows": [
+            {
+              "level_band": "TG5-1 to TG5-4",
+              "town_center": {
+                "tg": 200,
+                "tempered_tg": 10
+              },
+              "embassy": {
+                "tg": 50,
+                "tempered_tg": 2
+              },
+              "command_center": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "infirmary": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "training_camps": {
+                "tg": 90,
+                "tempered_tg": 4
+              }
+            },
+            {
+              "level_band": "TG6",
+              "town_center": {
+                "tg": 100,
+                "tempered_tg": 20
+              },
+              "embassy": {
+                "tg": 25,
+                "tempered_tg": 5
+              },
+              "command_center": {
+                "tg": 20,
+                "tempered_tg": 5
+              },
+              "infirmary": {
+                "tg": 20,
+                "tempered_tg": 5
+              },
+              "training_camps": {
+                "tg": 45,
+                "tempered_tg": 9
+              }
+            },
+            {
+              "level_band": "TG6-1 to TG6-4",
+              "town_center": {
+                "tg": 240,
+                "tempered_tg": 15
+              },
+              "embassy": {
+                "tg": 60,
+                "tempered_tg": 3
+              },
+              "command_center": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "infirmary": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "training_camps": {
+                "tg": 108,
+                "tempered_tg": 6
+              }
+            },
+            {
+              "level_band": "TG7",
+              "town_center": {
+                "tg": 120,
+                "tempered_tg": 30
+              },
+              "embassy": {
+                "tg": 30,
+                "tempered_tg": 7
+              },
+              "command_center": {
+                "tg": 24,
+                "tempered_tg": 7
+              },
+              "infirmary": {
+                "tg": 24,
+                "tempered_tg": 7
+              },
+              "training_camps": {
+                "tg": 54,
+                "tempered_tg": 13
+              }
+            },
+            {
+              "level_band": "TG7-1 to TG7-4",
+              "town_center": {
+                "tg": 240,
+                "tempered_tg": 20
+              },
+              "embassy": {
+                "tg": 60,
+                "tempered_tg": 5
+              },
+              "command_center": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "infirmary": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "training_camps": {
+                "tg": 108,
+                "tempered_tg": 9
+              }
+            },
+            {
+              "level_band": "TG8",
+              "town_center": {
+                "tg": 120,
+                "tempered_tg": 40
+              },
+              "embassy": {
+                "tg": 30,
+                "tempered_tg": 10
+              },
+              "command_center": {
+                "tg": 24,
+                "tempered_tg": 8
+              },
+              "infirmary": {
+                "tg": 24,
+                "tempered_tg": 8
+              },
+              "training_camps": {
+                "tg": 54,
+                "tempered_tg": 18
+              }
+            }
+          ]
+        }
+      },
+      "tags": [
+        "truegold",
+        "tempered-truegold",
+        "upgrade",
+        "town-center",
+        "embassy",
+        "command-center",
+        "infirmary",
+        "training-camps",
+        "endgame"
+      ]
+    }
+  ],
+  "reference": {
+    "categories": ["Core", "Military", "Defense", "Research", "Social", "Resource", "Special"],
+    "note": "Category labels follow kingshotguide.com. Level caps and the Truegold window progression (30 -> TG3 -> TG5 -> TG8) are documented in knowledge/max_levels.json.",
+    "war_academy_vs_academy": "'War Academy' (Military) and 'Academy' (Research) are two different buildings.",
+    "training_bonus_scope": "IMPORTANT: the training_capacity and training_speed bonuses from each troop-training building (Barracks / Range / Stable) apply GLOBALLY to ALL troop types, not just the building's own type. The building detail text is misleading because it only lists unlocking higher-tier versions of that building's troop type. Verified in-game (Strat Game Sloth video): upgrading the Barracks 20->21 raised the Range's archer training capacity (460->468). Practical consequence: keep the Stable leveled even when prioritizing infantry/archer, since it also boosts infantry and archer training."
+  },
+  "open_questions": [
+    "Which buildings gate progression (e.g. Truegold) and their level requirements? (building level caps are in knowledge/max_levels.json)",
+    "War Academy and Truegold Crucible max levels / exact function are not yet confirmed.",
+    "Truegold Crucible: appears during the forced Lv.5 tutorial (see executor tutorial flow)."
+  ]
+}

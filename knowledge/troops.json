@@ -1,0 +1,13 @@
+{
+  "domain": "troops",
+  "title": "Troops",
+  "description": "Troop types, tiers, training costs and counters.",
+  "status": "scaffold",
+  "last_updated": "2026-07-20",
+  "sources": [],
+  "entries": [],
+  "open_questions": [
+    "Troop types and tiers.",
+    "Training screens/templates (see tasks/train_troops.py, currently disabled)."
+  ]
+}

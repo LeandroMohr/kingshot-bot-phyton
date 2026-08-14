@@ -1,0 +1,273 @@
+{
+  "domain": "formation",
+  "title": "Formation",
+  "description": "Battle formation rules, troop-split templates and hero positioning.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["Kingshot hero/formation guides (context), shared by user"],
+  "entries": [
+    {
+      "id": "balanced-50-20-30",
+      "name": "Balanced (50/20/30)",
+      "summary": "Most versatile all-purpose formation, balancing defense and offensive pressure. Recommended default for players who want reliability across situations.",
+      "details": {
+        "use_case": "All situations",
+        "troop_split": {"infantry": "50%", "cavalry": "20%", "archer": "30%"},
+        "gear_priority": ["Infantry", "Archer"],
+        "recommended_heroes": {
+          "gen_2_core": ["Zoe (5-Star, tanking)", "Marlin (4-Star, ranged support)"],
+          "gen_4_powerups": ["Margot (S-tier bridge to late game)"],
+          "gen_5_finishers": ["Vivian", "Long Fei"]
+        }
+      },
+      "tags": ["formation", "balanced", "troop-split"]
+    },
+    {
+      "id": "defensive-60-40-0",
+      "name": "Defensive (60/40/0)",
+      "summary": "High-durability, high-mobility defensive specialization popular with high-level players. Skips Archers entirely, letting you ignore Archer tech in the Academy and funnel resources into Infantry and Cavalry gear.",
+      "details": {
+        "use_case": "Maximum defense",
+        "troop_split": {"infantry": "60%", "cavalry": "40%", "archer": "0%"},
+        "gear_priority": ["Infantry", "Cavalry"],
+        "research_tip": "Ignore Archer tech in the Academy to save resources; invest only in Infantry and Cavalry gear.",
+        "recommended_heroes": {
+          "gen_1_necessity": ["Saul (4-Star, 25% Lethality buff; primary defender)"],
+          "gen_3_core": ["Petra (5-Star)", "Jaeger (4-Star, attacking)"],
+          "gen_5_powerhouse": ["Thrud (Infantry synergy makes the 60/40 defense nearly unbreakable)"]
+        }
+      },
+      "tags": ["formation", "defensive", "cavalry-skip", "troop-split"]
+    },
+    {
+      "id": "offensive-50-0-50",
+      "name": "Offensive Whale-Killer (50/0/50)",
+      "summary": "Pure-destruction 'Cavalry Skip' build. Infantry holds the line while Archers melt the enemy. Designed for offensive rallies against high-power targets.",
+      "details": {
+        "use_case": "Offensive / whale-killer",
+        "troop_split": {"infantry": "50%", "cavalry": "0%", "archer": "50%"},
+        "recommended_heroes": {
+          "gen_3": ["Petra (used for her 'Dichotomy' skill buffing Infantry/Archer synergy, not her troops)"],
+          "gen_4_additions": ["Alcar (dual-buffing capabilities)"],
+          "gen_5_apex": ["Vivian (S-tier for any Archer-heavy build; damage output reshapes the lineup at 5 stars)"]
+        }
+      },
+      "tags": ["formation", "offensive", "cavalry-skip", "archer-heavy", "troop-split"]
+    },
+    {
+      "id": "mystic-trial-formations",
+      "name": "Mystic Trial formations by zone",
+      "summary": "Mystic Trial (PvE) has no single permanent ratio. Each of the six zones tests a DIFFERENT account system, so use the zone's baseline troop ratio and then adjust to the enemy lineup / the stage-10 wall. If troop-ratio changes barely move the result, the real bottleneck is that zone's stat system, not the ratio.",
+      "details": {
+        "ratio_order": "infantry/cavalry/archer (percent), matching this file's troop_split convention (same order as the Bear Hunt formations in events.json). The source wrote ratios as 'X/Y/Z' without labeling the order; infantry/cavalry/archer is the confirmed working assumption.",
+        "core_principle": "Each zone tests a different part of your account. Upgrading the wrong system means changing troop ratios only hides the problem for a few stages.",
+        "zones": [
+          {
+            "zone": "Coliseum",
+            "what_matters": "Heroes, hero gear, exclusive gear",
+            "start_ratio": {
+              "infantry": "50%",
+              "cavalry": "10%",
+              "archer": "40%"
+            },
+            "adjustment_rule": "Shift toward your best-geared damage type if your front line survives.",
+            "upgrade_priority": "Hero quality, hero gear tiers and exclusive gear matter more than decorative account power."
+          },
+          {
+            "zone": "Forest of Life",
+            "what_matters": "Pets and pet combat effects",
+            "start_ratio": {
+              "infantry": "50%",
+              "cavalry": "15%",
+              "archer": "35%"
+            },
+            "adjustment_rule": "Do not overreact to troop type before checking pet skill value.",
+            "upgrade_priority": "Pet skills and combat-use pet development matter more than generic pet collection."
+          },
+          {
+            "zone": "Crystal Cave",
+            "what_matters": "Governor charm stats",
+            "start_ratio": {
+              "infantry": "60%",
+              "cavalry": "20%",
+              "archer": "20%"
+            },
+            "adjustment_rule": "If you lose too fast, improve charm breakpoints before testing exotic ratios.",
+            "upgrade_priority": "Use the Governor Charm Calculator before chasing the next charm level."
+          },
+          {
+            "zone": "Knowledge Nexus",
+            "what_matters": "Academy and War Academy research",
+            "start_ratio": {
+              "infantry": "50%",
+              "cavalry": "20%",
+              "archer": "30%"
+            },
+            "adjustment_rule": "Use a balanced setup unless your research is clearly skewed by troop type.",
+            "upgrade_priority": "Compare Academy and War Academy bottlenecks with the War Academy Calculator."
+          },
+          {
+            "zone": "Molten Fort",
+            "what_matters": "Governor gear",
+            "start_ratio": {
+              "infantry": "60%",
+              "cavalry": "15%",
+              "archer": "25%"
+            },
+            "adjustment_rule": "Prioritize gear breakpoints before moving troops away from infantry safety.",
+            "upgrade_priority": "Use the Governor Gear Calculator to avoid spending on a weak breakpoint."
+          },
+          {
+            "zone": "Radiant Spire",
+            "what_matters": "All major account systems",
+            "start_ratio": {
+              "infantry": "50%",
+              "cavalry": "15%",
+              "archer": "35%"
+            },
+            "adjustment_rule": "Use your full account strength, then tune the ratio around the stage that blocks you.",
+            "upgrade_priority": "Fix your weakest full-account system rather than blaming one troop ratio."
+          }
+        ],
+        "stuck_stage_procedure": [
+          "Do NOT immediately spend premium materials.",
+          "Run three cheap tests: (1) swap between the suggested ratio and one heavier-infantry setup; (2) try a slightly higher archer share if damage is missing; (3) check whether your weakest march is dragging the whole clear down.",
+          "If ratio changes barely move the result, the bottleneck is the zone's stat system (Coliseum=hero/gear, Crystal Cave=charms, Molten Fort=governor gear, Knowledge Nexus=research), so fix that system before spending.",
+          "Only then use the Mystic Trials Optimizer, before spending premium materials."
+        ],
+        "note": "Ratios are starting points, not laws — adjust to the enemy lineup and the stage-10 wall."
+      },
+      "tags": [
+        "formation",
+        "mystic-trial",
+        "pve",
+        "troop-split",
+        "zones",
+        "breakpoints"
+      ]
+    },
+    {
+      "id": "combat-mechanics",
+      "name": "Core combat mechanics (troop counters)",
+      "summary": "How the three troop types interact, which drives every formation choice. Formation order is always Infantry / Cavalry / Archer (percent). A formation only works if you actually have enough of the required troop types.",
+      "details": {
+        "infantry": "The 'meat shield' — absorbs the initial waves of attacks and protects your damage dealers.",
+        "cavalry": "Has a % chance to BYPASS infantry and directly hit archers, and deals INCREASED damage to archers. Use cavalry to counter enemy archer-heavy compositions.",
+        "archer": "High damage/lethality but LOW defense against cavalry.",
+        "implications": [
+          "Archers are generally less effective on DEFENSE than on attack (exposed to cavalry).",
+          "Sufficient infantry is vital to protect your damage dealers.",
+          "Cavalry counters archer-heavy enemies."
+        ],
+        "counter_triangle": "Infantry shields -> Cavalry punishes exposed Archers -> Archers out-damage when protected."
+      },
+      "tags": [
+        "formation",
+        "combat-mechanics",
+        "counters",
+        "infantry",
+        "cavalry",
+        "archer"
+      ]
+    },
+    {
+      "id": "scenario-formations",
+      "name": "Recommended formations by scenario",
+      "summary": "Quick per-scenario troop splits (Infantry/Cavalry/Archer). Adjust to the enemy lineup and your available troop quantities. Cross-references existing detailed entries where they exist.",
+      "details": {
+        "ratio_order": "infantry/cavalry/archer (percent), matching this file's troop_split convention.",
+        "scenarios": [
+          {
+            "scenario": "Joining rallies (general combat)",
+            "formation": {
+              "infantry": "50%",
+              "cavalry": "20%",
+              "archer": "30%"
+            },
+            "why": "Strong infantry front line, cavalry to counter enemy archers, archers for ranged damage. Same as entry balanced-50-20-30.",
+            "see": "balanced-50-20-30"
+          },
+          {
+            "scenario": "Garrisoning (defense)",
+            "formation": {
+              "infantry": "70%",
+              "cavalry": "30%",
+              "archer": "0%"
+            },
+            "why": "High infantry durability; cavalry cleans up any archers that slip through. Archers NOT recommended (weak on defense vs cavalry). Note: differs from the 60/40/0 in defensive-60-40-0 — this guide recommends 70/30/0 specifically for garrison.",
+            "see": "defensive-60-40-0"
+          },
+          {
+            "scenario": "Bear Hunt (damage maximization)",
+            "formation": {
+              "infantry": "10%",
+              "cavalry": "10%",
+              "archer": "80%"
+            },
+            "why": "Maximize lethality; archers have highest lethality, minimal inf/cav just to meet minimums. If 80% archers isn't possible, use max archers then prioritize cavalry (2nd-highest lethality). Matches events.json bear-hunt gen_3 (10/10/80); that entry has the full generation-by-generation ladder.",
+            "see": "events.json -> bear-hunt"
+          },
+          {
+            "scenario": "Alliance Championship",
+            "formation": {
+              "infantry": "50%",
+              "cavalry": "20%",
+              "archer": "30%"
+            },
+            "why": "Balanced, versatile, robust — same as general rally joining.",
+            "see": "balanced-50-20-30"
+          }
+        ]
+      },
+      "tags": [
+        "formation",
+        "scenarios",
+        "garrison",
+        "bear-hunt",
+        "rally",
+        "alliance-championship"
+      ]
+    },
+    {
+      "id": "formation-slots",
+      "name": "Formation slots and front/back line positioning",
+      "summary": "Most combat formations use 3 heroes with NO repeated troop category (1 infantry + 1 cavalry + 1 archer). A few modes allow 5 heroes with no category restriction. The battlefield always has 2 frontline slots and 3 backline slots.",
+      "details": {
+        "three_hero_formations": {
+          "rule": "1 Infantry + 1 Cavalry + 1 Archer (categories cannot repeat).",
+          "used_in": [
+            "Rallies",
+            "PvP",
+            "Garrison",
+            "Bear Hunt"
+          ]
+        },
+        "five_hero_formations": {
+          "rule": "5 heroes, NO troop-category restriction (can repeat categories).",
+          "used_in": [
+            "Arena",
+            "Mystic Trial"
+          ],
+          "line_layout": "Frontline = 2 positions, Backline = 3 positions (always).",
+          "common_layouts": [
+            "Frontline: 2 Infantry / Backline: 2 Cavalry + 1 Archer",
+            "Frontline: 1 Infantry + 1 Cavalry / Backline: 3 Archers"
+          ]
+        },
+        "source": "user (account owner), 2026-07-20"
+      },
+      "tags": [
+        "formation",
+        "slots",
+        "frontline",
+        "backline",
+        "arena",
+        "mystic-trial"
+      ]
+    }
+  ],
+  "open_questions": [
+    "RESOLVED: see formation-slots (3-hero no-repeat for rally/pvp/garrison/bear; 5-hero no-restriction for arena/mystic; 2 frontline + 3 backline slots).",
+    "Star/gen recommendations above are from an external guide — reconcile hero picks against knowledge/hero_event_ratings.json where roles overlap."
+  ]
+}

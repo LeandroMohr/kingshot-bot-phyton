@@ -1,0 +1,839 @@
+{
+  "domain": "inventory",
+  "title": "Inventory",
+  "description": "Backpack items, consumables and speedups.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "kingshotguide.com Items collection (user-provided)"
+  ],
+  "entries": [
+    {
+      "id": "general-master-emblem",
+      "name": "General Master Emblem",
+      "summary": "A key planning material for Kingshot Master upgrades and Master Academy progression.",
+      "details": {
+        "category": "resource",
+        "overview": "General Master Emblem is the material players should track before committing to Master upgrades. Because Master pages and Master Academy timing can vary by kingdom and event rotation, the safest approach is to model your weekly income, target window, and priority Master before spending.",
+        "sources": [
+          "Master Academy activity windows",
+          "Elysium Shop rotation",
+          "Limited-time event shops",
+          "Value packs and bundles"
+        ],
+        "requirements": [
+          {
+            "purpose": "Planning reserve",
+            "amount_required": "Track weekly income",
+            "additional_info": "Use the Master Upgrade Planner before spending so you can compare current stock, expected income, and the next push window."
+          },
+          {
+            "purpose": "Upgrade push",
+            "amount_required": "Confirm in game",
+            "additional_info": "Exact costs can change by Master and kingdom state, so use this item page as a planning hub rather than a fixed cost table."
+          }
+        ],
+        "related_info": "Recommended internal workflow: check your kingdom age, compare Master pages for Pan, Valora, and Roman, then use the Master Upgrade Planner to decide whether to spend now or hold for the next event cycle."
+      },
+      "tags": [
+        "item",
+        "resource",
+        "master",
+        "master-academy",
+        "planning"
+      ]
+    },
+    {
+      "id": "tempered-truegold",
+      "name": "Tempered Truegold",
+      "summary": "The Royal Foundry's further refinement of Truegold enhances its hardness and ductility, transforming it into an extraordinary material.",
+      "details": {
+        "category": "resource",
+        "overview": "Tempered Truegold is required for upgrading the Town Center and key buildings beyond TG5. Before TG5, upgrades use only Truegold and standard resources. After TG5, Tempered Truegold becomes an additional required material.",
+        "sources": [
+          "Super Refinement - Truegold Crucible",
+          "Golden Glaives Event"
+        ],
+        "eligible_buildings": [
+          "Town Center",
+          "Embassy",
+          "Command Center",
+          "Infirmary",
+          "Troop Training Camps"
+        ],
+        "requirements_note": "Each row lists the Town Center total (TG = Truegold, Tempered TG = Tempered Truegold) and the per-building breakdown for that step. Troop Training Camps = Barracks / Range / Stable.",
+        "requirements": [
+          {
+            "level": "TG5-1",
+            "total": {
+              "tg": 200,
+              "tempered_tg": 10
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 50,
+                "tempered_tg": 2
+              },
+              "Command Center": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Infirmary": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Troop Training Camps": {
+                "tg": 90,
+                "tempered_tg": 4
+              }
+            }
+          },
+          {
+            "level": "TG5-2",
+            "total": {
+              "tg": 200,
+              "tempered_tg": 10
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 50,
+                "tempered_tg": 2
+              },
+              "Command Center": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Infirmary": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Troop Training Camps": {
+                "tg": 90,
+                "tempered_tg": 4
+              }
+            }
+          },
+          {
+            "level": "TG5-3",
+            "total": {
+              "tg": 200,
+              "tempered_tg": 10
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 50,
+                "tempered_tg": 2
+              },
+              "Command Center": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Infirmary": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Troop Training Camps": {
+                "tg": 90,
+                "tempered_tg": 4
+              }
+            }
+          },
+          {
+            "level": "TG5-4",
+            "total": {
+              "tg": 200,
+              "tempered_tg": 10
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 50,
+                "tempered_tg": 2
+              },
+              "Command Center": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Infirmary": {
+                "tg": 40,
+                "tempered_tg": 2
+              },
+              "Troop Training Camps": {
+                "tg": 90,
+                "tempered_tg": 4
+              }
+            }
+          },
+          {
+            "level": "TG6",
+            "total": {
+              "tg": 100,
+              "tempered_tg": 20
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 25,
+                "tempered_tg": 5
+              },
+              "Command Center": {
+                "tg": 20,
+                "tempered_tg": 5
+              },
+              "Infirmary": {
+                "tg": 20,
+                "tempered_tg": 5
+              },
+              "Troop Training Camps": {
+                "tg": 45,
+                "tempered_tg": 9
+              }
+            }
+          },
+          {
+            "level": "TG6-1",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 15
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 3
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 6
+              }
+            }
+          },
+          {
+            "level": "TG6-2",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 15
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 3
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 6
+              }
+            }
+          },
+          {
+            "level": "TG6-3",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 15
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 3
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 6
+              }
+            }
+          },
+          {
+            "level": "TG6-4",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 15
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 3
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 3
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 6
+              }
+            }
+          },
+          {
+            "level": "TG7",
+            "total": {
+              "tg": 120,
+              "tempered_tg": 30
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 30,
+                "tempered_tg": 7
+              },
+              "Command Center": {
+                "tg": 24,
+                "tempered_tg": 7
+              },
+              "Infirmary": {
+                "tg": 24,
+                "tempered_tg": 7
+              },
+              "Troop Training Camps": {
+                "tg": 54,
+                "tempered_tg": 13
+              }
+            }
+          },
+          {
+            "level": "TG7-1",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 20
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 5
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 9
+              }
+            }
+          },
+          {
+            "level": "TG7-2",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 20
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 5
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 9
+              }
+            }
+          },
+          {
+            "level": "TG7-3",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 20
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 5
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 9
+              }
+            }
+          },
+          {
+            "level": "TG7-4",
+            "total": {
+              "tg": 240,
+              "tempered_tg": 20
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 60,
+                "tempered_tg": 5
+              },
+              "Command Center": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Infirmary": {
+                "tg": 48,
+                "tempered_tg": 4
+              },
+              "Troop Training Camps": {
+                "tg": 108,
+                "tempered_tg": 9
+              }
+            }
+          },
+          {
+            "level": "TG8",
+            "total": {
+              "tg": 120,
+              "tempered_tg": 40
+            },
+            "per_building": {
+              "Embassy": {
+                "tg": 30,
+                "tempered_tg": 10
+              },
+              "Command Center": {
+                "tg": 24,
+                "tempered_tg": 8
+              },
+              "Infirmary": {
+                "tg": 24,
+                "tempered_tg": 8
+              },
+              "Troop Training Camps": {
+                "tg": 54,
+                "tempered_tg": 18
+              }
+            }
+          }
+        ],
+        "super_refinement": {
+          "note": "Super Refinement tiers convert Truegold into Tempered Truegold at the Truegold Crucible.",
+          "tiers": [
+            {
+              "tier": 1,
+              "refinement_range": "1-20",
+              "truegold_cost": 20,
+              "tempered_output": "1-3"
+            },
+            {
+              "tier": 2,
+              "refinement_range": "21-40",
+              "truegold_cost": 50,
+              "tempered_output": "2-3"
+            },
+            {
+              "tier": 3,
+              "refinement_range": "41-60",
+              "truegold_cost": 100,
+              "tempered_output": "3-6"
+            },
+            {
+              "tier": 4,
+              "refinement_range": "61-80",
+              "truegold_cost": 130,
+              "tempered_output": "3-9"
+            },
+            {
+              "tier": 5,
+              "refinement_range": "81-100",
+              "truegold_cost": 160,
+              "tempered_output": "3-12"
+            }
+          ],
+          "strategy": "Do 20 refinements at the start of the week, then one per day to maximize the daily half-cost refinement."
+        }
+      },
+      "tags": [
+        "item",
+        "resource",
+        "truegold",
+        "buildings",
+        "refinement"
+      ]
+    },
+    {
+      "id": "artisans-vision",
+      "name": "Artisan's Vision",
+      "summary": "Artisan's Vision is an item you need to upgrade Governor Gear to Blue 2-star and higher.",
+      "details": {
+        "category": "crafting",
+        "overview": "The item is not required for upgrades before Blue 2-star tier, where only Satin and Gilded Threads are needed. Once reaching Blue 2-star, Artisan's Vision becomes a required upgrade material.",
+        "sources": [
+          "Armament Competition Event",
+          "Merchant Empire Event",
+          "Kingdom of Power - Preparation Phase",
+          "Strongest Governor Event",
+          "Swordland Shop",
+          "Tidal Shop",
+          "Kingdom of Power Shop",
+          "Alliance Championship Store (Gen 3 - Day 170)",
+          "Champagne Fair Event",
+          "War Chant Custom Chest - Call of the Sovereign Event",
+          "Packs"
+        ]
+      },
+      "tags": [
+        "item",
+        "crafting",
+        "governor-gear"
+      ]
+    },
+    {
+      "id": "mithril",
+      "name": "Mithril",
+      "summary": "A rare silvery metal that infuses Hero Gear with extraordinary power.",
+      "details": {
+        "category": "resource",
+        "overview": "Mithril is a rare item required for upgrading Red Hero Gears in Kingshot. Once a Mythic Gear hits level 100 and has Mastery Forging level 10, you can turn it into Red Gear by merging it with two other Mythic Gears. After that, you can keep leveling up the Red Gear another 100 levels. You'll need Mithril for a special upgrade every 20 levels (i.e, levels 20, 40, 60, 80, and 100).",
+        "sources": [
+          "Arena Shop",
+          "Champagne Fair"
+        ],
+        "requirements": [
+          {
+            "level": "+1",
+            "mithril": null,
+            "additional_info": "2 Mythic Gears"
+          },
+          {
+            "level": "+20",
+            "mithril": 10,
+            "additional_info": "3 Mythic Gears"
+          },
+          {
+            "level": "+40",
+            "mithril": 20,
+            "additional_info": "5 Mythic Gears"
+          },
+          {
+            "level": "+60",
+            "mithril": 30,
+            "additional_info": "5 Mythic Gears"
+          },
+          {
+            "level": "+80",
+            "mithril": 40,
+            "additional_info": "10 Mythic Gears"
+          },
+          {
+            "level": "+100",
+            "mithril": 50,
+            "additional_info": "10 Mythic Gears"
+          }
+        ],
+        "related_info": "The safest Mithril plan is to decide before a gear or KvK event window. Red gear upgrades are powerful, but Mithril is scarce enough that spending it without checking the next governor gear, hero gear, or scoring breakpoint can slow the rest of your account."
+      },
+      "tags": [
+        "item",
+        "resource",
+        "hero-gear",
+        "red-gear",
+        "mythic"
+      ]
+    },
+    {
+      "id": "truegold",
+      "name": "Truegold",
+      "summary": "The product of multiple complex refinements of gold, its unique structure and energy will surely change the world.",
+      "details": {
+        "category": "resource",
+        "overview": "Truegold is a rare resource used to upgrade buildings beyond level 30 in Kingshot. These advanced levels are called Truegold levels and become available once your state reaches 70 days old.",
+        "sources": [
+          "Daily Missions",
+          "Truegold Crucible",
+          "Alliance Brawl Event",
+          "Merchant Empire Event",
+          "Kingdom of Power Shop",
+          "Kingdom of Power Event",
+          "Strongest Governor Event",
+          "Armament Competition",
+          "Alliance Mobilization Event",
+          "Call of the Sovereign Event",
+          "Golden Glaives Event",
+          "Watchtower Intel Missions (Town Center Level 30)",
+          "Buccaneer Bounty Event",
+          "Hero Rally",
+          "Packs"
+        ],
+        "eligible_buildings": [
+          "Town Center",
+          "Embassy",
+          "Command Center",
+          "Infirmary",
+          "Barracks",
+          "Range",
+          "Stable"
+        ],
+        "requirements_note": "Amounts are Truegold needed per building for tiers TG1 through TG5 (in order).",
+        "requirements": [
+          {
+            "building": "Town Center",
+            "tg1_to_tg5": [
+              132,
+              158,
+              238,
+              280,
+              335
+            ]
+          },
+          {
+            "building": "Embassy",
+            "tg1_to_tg5": [
+              33,
+              39,
+              59,
+              70,
+              83
+            ]
+          },
+          {
+            "building": "Command Center",
+            "tg1_to_tg5": [
+              26,
+              31,
+              47,
+              56,
+              67
+            ]
+          },
+          {
+            "building": "Infirmary",
+            "tg1_to_tg5": [
+              26,
+              31,
+              47,
+              56,
+              67
+            ]
+          },
+          {
+            "building": "Barracks",
+            "tg1_to_tg5": [
+              59,
+              71,
+              107,
+              126,
+              150
+            ]
+          },
+          {
+            "building": "Range",
+            "tg1_to_tg5": [
+              59,
+              71,
+              107,
+              126,
+              150
+            ]
+          },
+          {
+            "building": "Stable",
+            "tg1_to_tg5": [
+              59,
+              71,
+              107,
+              126,
+              150
+            ]
+          }
+        ],
+        "related_info": "Truegold planning becomes much easier when you separate building TG requirements from War Academy research costs. Use the requirement table first, then decide whether your next push belongs in buildings, War Academy, or an event scoring window."
+      },
+      "tags": [
+        "item",
+        "resource",
+        "truegold",
+        "buildings"
+      ]
+    },
+    {
+      "id": "charm-design",
+      "name": "Charm Design",
+      "summary": "At Town Center Level 25, the Governor Charms feature becomes available.",
+      "details": {
+        "category": "crafting",
+        "overview": "To craft and upgrade Governor Charms, players need two items: Charm Designs and Charm Guides. Players can start collecting Charm Designs early through events like Eternity's Reach, but cannot use them until reaching Town Center Level 25.",
+        "sources": [
+          "Eternity's Reach",
+          "Swordland Shop",
+          "Tidal Shop",
+          "Kingdom of Power Shop",
+          "Champagne Fair",
+          "Alliance Brawl Event",
+          "Merchant Empire Event",
+          "Kingdom of Power Event",
+          "Strongest Governor Event",
+          "Officer Project Event",
+          "Packs and Deals"
+        ],
+        "related_info": "Used alongside Charm Guide for crafting Governor Charms."
+      },
+      "tags": [
+        "item",
+        "crafting",
+        "governor-charm"
+      ]
+    },
+    {
+      "id": "charm-guide",
+      "name": "Charm Guide",
+      "summary": "Charm Guide is a companion item needed alongside Charm Designs to craft and upgrade Governor Charms.",
+      "details": {
+        "category": "crafting",
+        "overview": "The Governor Charms feature becomes available at Town Center Level 25. Charm Guides work together with Charm Designs to unlock and enhance powerful governor abilities.",
+        "sources": [
+          "Eternity's Reach",
+          "Swordland Shop",
+          "Tidal Shop",
+          "Kingdom of Power Shop",
+          "Champagne Fair",
+          "Alliance Brawl Event",
+          "Merchant Empire Event",
+          "Kingdom of Power Event",
+          "Strongest Governor Event",
+          "Officer Project Event",
+          "Packs and Deals"
+        ],
+        "related_info": "Used alongside Charm Design for crafting Governor Charms."
+      },
+      "tags": [
+        "item",
+        "crafting",
+        "governor-charm"
+      ]
+    },
+    {
+      "id": "satin",
+      "name": "Satin",
+      "summary": "Fine fabric material used in crafting Governor Gear.",
+      "details": {
+        "category": "material",
+        "overview": "Satin is one of the essential materials needed for upgrading Governor Gear. It is required for upgrades before Blue 2-star tier, working alongside Gilded Threads.",
+        "sources": [
+          "Daily Missions",
+          "Alliance Shop",
+          "Arena Shop",
+          "Champagne Fair",
+          "Kingdom of Power Event",
+          "Merchant Empire Event",
+          "Alliance Brawl Event",
+          "Packs"
+        ]
+      },
+      "tags": [
+        "item",
+        "material",
+        "governor-gear"
+      ]
+    },
+    {
+      "id": "gilded-threads",
+      "name": "Gilded Threads",
+      "summary": "Luxurious threads infused with gold, essential for crafting elite Governor Gear.",
+      "details": {
+        "category": "material",
+        "overview": "Gilded Threads are premium crafting materials used for upgrading Governor Gear. They work alongside Satin for early gear upgrades and continue to be needed for advanced enhancements.",
+        "sources": [
+          "Daily Missions",
+          "Alliance Shop",
+          "Arena Shop",
+          "Champagne Fair",
+          "Kingdom of Power Event",
+          "Merchant Empire Event",
+          "Alliance Brawl Event",
+          "Strongest Governor Event",
+          "Packs"
+        ]
+      },
+      "tags": [
+        "item",
+        "material",
+        "governor-gear"
+      ]
+    },
+    {
+      "id": "forgehammer",
+      "name": "Forgehammer",
+      "summary": "Essential tool for forging and upgrading equipment in Kingshot.",
+      "details": {
+        "category": "tool",
+        "overview": "The Forgehammer is a special tool used in the equipment enhancement system. It enables players to forge, upgrade, and enhance various types of gear including Hero Gear and Governor Gear.",
+        "sources": [
+          "Blacksmith Shop",
+          "Daily Missions",
+          "Alliance Contributions",
+          "Events",
+          "Packs"
+        ]
+      },
+      "tags": [
+        "item",
+        "tool",
+        "hero-gear",
+        "governor-gear",
+        "gear-mastery"
+      ]
+    },
+    {
+      "id": "governor-stamina",
+      "name": "Governor Stamina",
+      "summary": "Restores governor stamina for continued exploration and battles.",
+      "details": {
+        "category": "consumable",
+        "overview": "Governor Stamina is a consumable item that replenishes your governor's energy, allowing you to participate in more battles, explorations, and other stamina-consuming activities. Essential for active gameplay and event participation.",
+        "sources": [
+          "Daily Login Rewards",
+          "Alliance Gifts",
+          "Daily Missions",
+          "Events",
+          "VIP Rewards",
+          "Packs"
+        ]
+      },
+      "tags": [
+        "item",
+        "consumable",
+        "stamina",
+        "exploration"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Item categories and which consumables are safe to auto-use.",
+    "Exact General Master Emblem costs per Master upgrade (source lists as planning-only, not fixed).",
+    "Full Governor Gear and Governor Charm crafting cost tables live in their own knowledge files (governor_gear.json, governor_charm.json)."
+  ]
+}

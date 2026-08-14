@@ -1,0 +1,77 @@
+{
+  "domain": "oasis_island",
+  "title": "Oasis Island",
+  "description": "Oasis Island: a side mode unlocked at Town Center level 19 where you develop an island to earn permanent buffs for your main account (combat stats, squad capacity, march speed, and economy/growth boosts). Acts as a second development/tech layer (see knowledge/research.json -> research-speed-boosts).",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["kingshotguide.com Oasis Island guide (user-provided, 2025-01-28)"],
+  "entries": [
+    {
+      "id": "core-loop",
+      "name": "Core gameplay loop (Essence & Prosperity)",
+      "summary": "Unlocked at Town Center level 19. Loop: accumulate Essence -> upgrade Fountain of Life and Reservoirs -> higher Essence generation. Upgrading the Fountain requires reaching Prosperity thresholds, gained by constructing buildings/decorations.",
+      "details": {
+        "unlock": "Town Center level 19.",
+        "essence": {
+          "role": "The upgrade currency. Used to upgrade the Fountain of Life and Reservoirs, which raise Essence generation rate.",
+          "gained_by": [
+            "Passively from the Fountain of Life and Reservoirs.",
+            "Finding treasure chests hidden in cacti.",
+            "Rewards for completing island-related quests.",
+            "Assisting alliance members."
+          ]
+        },
+        "prosperity": {
+          "role": "A measure of island development; gates Fountain upgrades (must reach thresholds).",
+          "key_trait": "NOT consumed on use — it is a cumulative total gained by constructing buildings and decorations."
+        },
+        "second_tech_tree_note": "At Fountain Level 10, Oasis buildings act as a second tech tree; archetype research priorities apply (see knowledge/research.json -> research-speed-boosts)."
+      },
+      "tags": ["oasis", "essence", "prosperity", "fountain", "unlock"]
+    },
+    {
+      "id": "building-types",
+      "name": "Building & decoration types",
+      "summary": "Island items fall into distinct buff categories. Only some provide gameplay buffs; others are cosmetic or prosperity-only.",
+      "details": {
+        "types": {
+          "cosmetic": "Aesthetic only, no gameplay advantage.",
+          "prosperity_only": "Increase Prosperity total but give no other buff.",
+          "growth_oriented": "Bonuses to mainland activities: research, construction, gathering speed.",
+          "combat_oriented": "Increase troop attack and defense.",
+          "limited_time": "Powerful event-exclusive buildings with unique/significant buffs (example: 'Golden Sunset' lighthouse boosting troop health and lethality)."
+        },
+        "buffs_scope": "Buffs apply to the MAIN account (combat stats, squad capacity, march speed, economy/growth).",
+        "max_active_rule": "You only receive bonuses for the maximum number of active buildings ALLOWED of a type — extra copies waste Essence."
+      },
+      "tags": ["oasis", "buildings", "buffs", "combat", "growth", "limited-time"]
+    },
+    {
+      "id": "growth-tips",
+      "name": "Seven tips for accelerated growth",
+      "summary": "Practical optimization tips for faster Essence/Prosperity and efficient layout.",
+      "details": {
+        "tips": [
+          "Reservoir placement: position reservoirs near cacti with treasure chests to clear them faster.",
+          "Strategic decorations: use cosmetic decorations to block worker paths and guide workers toward desired cacti.",
+          "Value-dense items: prioritize decorations with more Prosperity per square to conserve space.",
+          "Buy cheaper decorations first: complete a quest line that rewards extra Essence.",
+          "Recycle items: recycle for half their cost for a quick Essence boost or to free space.",
+          "Upgrade Reservoirs quickly: reach Reservoir level 4 ASAP for a SECOND worker (doubles clearing speed).",
+          "Identify arbitrage: watch each item's Essence-to-Prosperity ratio for the most efficient purchases."
+        ],
+        "common_mistakes": [
+          "Building too many of the same item (only max active buildings give bonuses — extras waste Essence).",
+          "Excessive early decoration (drains resources needed by the main town and clutters the island).",
+          "Inefficient worker pathing (pretty layouts that stop workers reaching treasure chests quickly)."
+        ]
+      },
+      "tags": ["oasis", "tips", "essence", "prosperity", "workers", "mistakes"]
+    }
+  ],
+  "open_questions": [
+    "Exact Essence/Prosperity numbers per Fountain/Reservoir level and per building are not captured (only the loop and item categories).",
+    "Full list of growth vs combat buildings and their buff values.",
+    "Automation (account-verified): cacti are collected AUTOMATICALLY; what needs bot collection is WATER/Essence — if the store hits max, production STOPS, so collect before the cap. Quests/alliance help still to map. This corrects the 'workers clear cacti' framing in growth-tips (likely an older/other version)."
+  ]
+}

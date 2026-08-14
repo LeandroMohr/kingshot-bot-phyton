@@ -1,0 +1,63 @@
+{
+  "title": "Mistakes Learned",
+  "description": "Problems we hit while building the bot and how we avoid them now. Add an entry whenever a fix teaches us something reusable.",
+  "last_updated": "2026-07-20",
+  "entries": [
+    {
+      "id": "transient-lag-task-fail",
+      "date": "2026-07-20",
+      "context": "The game connection hiccups: the screen freezes (loading spinner, or a blank gray screen with no assets loaded) or the game reloads mid-task, so a task FAILS just because its templates weren't on screen at that instant.",
+      "mistake": "Skipping a failed task until the next cycle wasted the opportunity, and a single try is fragile against intermittent lag.",
+      "fix": "Retry a FAILED task up to config.TASK_RETRY_ATTEMPTS=2 times (TASK_RETRY_DELAY=3s). Before each retry, recover: ensure_game_ready (relaunch if the game reloaded) + go_to_home_screen (wait out lag / clear popups). ABSENT ('nothing to do') is NOT retried. Implemented in main.check_task.",
+      "tags": ["resilience", "lag", "retry"]
+    },
+    {
+      "id": "background-vs-foreground",
+      "date": "2026-07-17",
+      "context": "The bot assumed a popup when the game was actually not on screen.",
+      "mistake": "Used is_app_running (pidof), which is true even for a backgrounded process.",
+      "fix": "Detect the FOREGROUND app via 'dumpsys window | grep mCurrentFocus' (is_app_foreground). Launcher = com.uncube.launcher3, game = com.run.tower.defense.",
+      "tags": ["adb", "foreground"]
+    },
+    {
+      "id": "home-marker-during-tutorial",
+      "date": "2026-07-18",
+      "context": "go_to_home_screen returned home too early during a forced tutorial.",
+      "mistake": "HOME_MARKER (World button) matches EVEN during the tutorial, so checking home first skipped real steps.",
+      "fix": "Check dismiss popups and the tutorial highlight BEFORE the home check.",
+      "tags": ["navigation", "tutorial"]
+    },
+    {
+      "id": "glow-single-frame",
+      "date": "2026-07-18",
+      "context": "The pulsing tutorial glow was missed on some frames.",
+      "mistake": "Detected the glow from a single screenshot; it pulses, so dim frames missed it.",
+      "fix": "Capture a burst of frames and use the TEMPORAL difference of the color mask (max-min) to isolate the region that pulses. See executor/tutorial.py + vision.find_tutorial_glow.",
+      "tags": ["vision", "tutorial", "glow"]
+    },
+    {
+      "id": "glow-false-positive-static-gold",
+      "date": "2026-07-18",
+      "context": "Clean home and promo art triggered false 'glow' detections.",
+      "mistake": "Pure yellow color matched static gold building trim and animated promo splashes.",
+      "fix": "Gate the pulsing blob by area: GLOW_MIN_AREA=900, GLOW_STRONG_AREA=1300 while home is visible, GLOW_MAX_AREA=4000 to reject huge animated art. Real tutorial rings measure ~1500-2500.",
+      "tags": ["vision", "glow", "false-positive"]
+    },
+    {
+      "id": "conquest-chest-unreliable",
+      "date": "2026-07-17",
+      "context": "Collect Conquest failed even when there was income to claim.",
+      "mistake": "Matched the animated chest (conquest_chest.png), which only reached ~0.81 confidence.",
+      "fix": "Use the stable green 'Claim' button (conquest_ready.png, thr 0.80). Nothing to collect => return ABSENT, not FAILED.",
+      "tags": ["conquest", "templates"]
+    },
+    {
+      "id": "varied-close-x-styles",
+      "date": "2026-07-19",
+      "context": "Different popups use different close-X styles/positions.",
+      "mistake": "One X template did not cover all popups (orange, blue, white event, dark purchase).",
+      "fix": "Keep several X templates in config.DISMISS_MARKERS: close_x (orange), close_x_blue (New Advancement), close_x_white (event e.g. Field Triage), close_x_dark (dark purchase e.g. TOP UP NOW), plus skip_tutorial.",
+      "tags": ["popups", "templates"]
+    }
+  ]
+}

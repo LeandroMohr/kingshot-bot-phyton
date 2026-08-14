@@ -1,0 +1,68 @@
+{
+  "domain": "server_timeline",
+  "title": "Server Timeline (State Age)",
+  "description": "When features, heroes and pets unlock as the Kingshot server (state) ages, plus how to estimate the server's age.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["Kingshot community guide (Server Timeline / State Age)"],
+  "entries": [
+    {
+      "id": "server-timeline",
+      "name": "Server age milestones",
+      "summary": "Server age (in days since state creation) gates when features, hero generations and pet generations unlock. Understanding these milestones helps plan progression.",
+      "details": {
+        "unit": "days since server (state) creation",
+        "columns": ["server_age", "available_features"],
+        "milestones": [
+          {"server_age": "0 days", "day_min": 0, "day_max": 0, "features": ["Generation 1 Heroes"]},
+          {"server_age": "14 days", "day_min": 14, "day_max": 14, "features": ["Fog is lifted from Plains"]},
+          {"server_age": "38 days", "day_min": 38, "day_max": 38, "features": ["Fog is lifted from Fertile Land"]},
+          {"server_age": "40-50 days", "day_min": 40, "day_max": 50, "features": ["Generation 2 Heroes"]},
+          {"server_age": "45 days", "day_min": 45, "day_max": 45, "features": ["Alliance Resource Exchange"]},
+          {"server_age": "54 days", "day_min": 54, "day_max": 54, "features": ["First Castle Battle"]},
+          {"server_age": "55-60 days", "day_min": 55, "day_max": 60, "features": ["Generation 1 Pets (Gray Wolf, Lynx, Bison)"]},
+          {"server_age": "70 days", "day_min": 70, "day_max": 70, "features": ["Age of Truegold"]},
+          {"server_age": "75-80 days", "day_min": 75, "day_max": 80, "features": ["Generation 2 Pets (Cheetah, Moose)"]},
+          {"server_age": "70-80 days", "day_min": 70, "day_max": 80, "features": ["Kingdom becomes eligible for Kingdom of Power"]},
+          {"server_age": "105-110 days", "day_min": 105, "day_max": 110, "features": ["Generation 3 Pets (Lion, Grizzly Bear)"]},
+          {"server_age": "105-120 days", "day_min": 105, "day_max": 120, "features": ["Generation 3 Heroes & Masters"]},
+          {"server_age": "150 days", "day_min": 150, "day_max": 150, "features": ["Truegold Level 5", "Truegold Crucible"]},
+          {"server_age": "170 days", "day_min": 170, "day_max": 170, "features": ["Artisan's Vision in Alliance Championship Store", "Vikings Vengeance Level 12-20"]},
+          {"server_age": "190-200 days", "day_min": 190, "day_max": 200, "features": ["Generation 4 Heroes", "Generation 4 Pets (Giant Rhino, Mighty Bison)", "Gen 2 Heroes become available in Hero Recruitment and Intel Missions"]},
+          {"server_age": "220 days", "day_min": 220, "day_max": 220, "features": ["War Academy"]},
+          {"server_age": "270-280 days", "day_min": 270, "day_max": 280, "features": ["Generation 5 Heroes", "Generation 5 Pets (Great Moose, Alpha Black Panther)"]},
+          {"server_age": "310-320 days", "day_min": 310, "day_max": 320, "features": ["Truegold Level 8", "Tempered Truegold"]},
+          {"server_age": "350-360 days", "day_min": 350, "day_max": 360, "features": ["Generation 6 Heroes", "Generation 6 Pets (Regal White Lion, Ironclad War Elephant)"]},
+          {"server_age": "440 days", "day_min": 440, "day_max": 440, "features": ["Generation 7 Heroes", "Generation 7 Pet (Ironclad War Bear)"]}
+        ]
+      },
+      "tags": ["server", "state-age", "timeline", "unlocks", "heroes", "pets", "truegold", "generations"]
+    },
+    {
+      "id": "how-to-calculate-state-age",
+      "name": "How to calculate State Age",
+      "summary": "Two estimation methods for a server's age: VIP login-day counter, or the Beast Hunting achievement completion date. There is no exact method, only estimates.",
+      "details": {
+        "methods": [
+          {
+            "method": "Method 1: VIP Login Days",
+            "detail": "Check the VIP tab login counter. If you joined on server creation day and logged in daily, this count approximates the server's age."
+          },
+          {
+            "method": "Method 2: Beast Hunting Achievement",
+            "detail": "Go to the Monument (center of Outer City, or the Events page), find the 'Beast Hunting' achievement (third from top). This achievement completes 6 days after server creation. Subtract 6 days from the completion date to estimate the server creation date."
+          }
+        ],
+        "notes": [
+          "There is no exact calculation method, only estimates.",
+          "Most players join servers on creation day, making login days a reliable metric."
+        ]
+      },
+      "tags": ["server", "state-age", "estimate", "vip", "beast-hunting", "monument"]
+    }
+  ],
+  "open_questions": [
+    "Do the day ranges (e.g. 40-50 days) reflect regional/server variance or a staged rollout window?",
+    "Exact list of which heroes/pets belong to each generation referenced here."
+  ]
+}

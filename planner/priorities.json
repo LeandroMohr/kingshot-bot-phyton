@@ -1,0 +1,35 @@
+{
+  "title": "Task Priorities",
+  "description": "Order the tasks are evaluated each cycle. Lower 'order' runs first. This mirrors tasks/__init__.py today; the planner will read it directly as it grows.",
+  "last_updated": "2026-07-20",
+  "tasks": [
+    {
+      "name": "Dismiss popups",
+      "order": 10,
+      "enabled": false,
+      "cadence": "continuous (handled inline by executor.go_to_home_screen for now)",
+      "notes": "Generic popup/tutorial clearing. Currently done by the executor before every task pass; the standalone task is a disabled placeholder."
+    },
+    {
+      "name": "Help alliance",
+      "order": 20,
+      "enabled": true,
+      "cadence": "every 60s (loop)",
+      "notes": "One-tap handshake balloon on home. See knowledge/alliance.json."
+    },
+    {
+      "name": "Collect Conquest",
+      "order": 30,
+      "enabled": true,
+      "cadence": "every 1h (loop)",
+      "notes": "Idle income claim. See knowledge/resources.json."
+    },
+    {
+      "name": "Train troops",
+      "order": 40,
+      "enabled": false,
+      "cadence": "TBD",
+      "notes": "Disabled until barracks templates are captured."
+    }
+  ]
+}

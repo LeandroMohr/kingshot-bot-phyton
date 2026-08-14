@@ -1,0 +1,61 @@
+{
+  "domain": "defense",
+  "title": "Town Defense",
+  "description": "How to defend your town when attacked by other players, and defensive strategies.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "Kingshot wiki (Help! I'm being Attacked!)"
+  ],
+  "entries": [
+    {
+      "id": "being-attacked",
+      "name": "Help! I'm being Attacked!",
+      "summary": "Other players may attack your town, especially during Kill Events like All Out. It is usually not personal; scouting first is a warning sign, and attackers are typically after your resources. There are several defensive options when your town is under attack.",
+      "details": {
+        "context": [
+          "Players may attack your town, especially during Kill Events like 'All Out'.",
+          "This is part of the game and unlikely to be personal.",
+          "You may get warning of an attack if a player scouts you first.",
+          "Attackers are probably looking to steal your resources."
+        ],
+        "options": [
+          {
+            "option": "Shield",
+            "detail": "Buy shields from your alliance store to protect your town."
+          },
+          {
+            "option": "Teleport",
+            "detail": "Teleport your town away from the threat."
+          },
+          {
+            "option": "Empty your town",
+            "detail": "Send your troops to reinforce a friend's town, or garrison at an HQ or flag, so there is nothing to kill."
+          },
+          {
+            "option": "Reinforce your town",
+            "detail": "Set a trap with the help of a stronger Alliance member."
+          },
+          {
+            "option": "Activate buffs",
+            "detail": "Use buffs such as anti-scouting."
+          },
+          {
+            "option": "Message them, respectfully",
+            "detail": "Contact the attacker politely to de-escalate."
+          },
+          {
+            "option": "Join or ally with a stronger Alliance",
+            "detail": "Being in a stronger Alliance deters attacks and provides support."
+          }
+        ]
+      },
+      "tags": ["defense", "attack", "shield", "teleport", "kill-event", "all-out", "scouting", "resources"]
+    }
+  ],
+  "open_questions": [
+    "Where exactly are shields purchased (alliance store vs other shops) and their durations/costs?",
+    "How to activate anti-scouting buffs and where they are found?",
+    "Mechanics of the 'trap' / reinforcement defense (troop caps, targeting)."
+  ]
+}

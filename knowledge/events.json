@@ -1,0 +1,242 @@
+{
+  "domain": "events",
+  "title": "Events & Game Modes",
+  "description": "Time-limited events plus the recurring game modes heroes are rated for. Modes below are stubs built from hero-guide context; expand as we map each one live.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["live testing on BlueStacks (ADB 540x960)", "Kingshot Optimizer hero guides (context), shared by user"],
+  "entries": [
+    {
+      "id": "expedition",
+      "name": "Expedition",
+      "summary": "Mode where heroes' Expedition skills apply (often passive/global growth or gathering bonuses). Heroes carry a separate 'Expedition' skill set from their Conquest one.",
+      "details": {"skill_set": "expedition (see heroes.json hero skills)"},
+      "tags": ["mode", "expedition"]
+    },
+    {
+      "id": "conquest",
+      "name": "Conquest",
+      "summary": "Stage-based combat mode; heroes use their active 'Conquest' skills. Clearing Conquest stages increases account (idle) income. Distinct from Arena. See resources.json for the idle-income claim flow.",
+      "details": {"skill_set": "conquest", "reward": "advances account idle income"},
+      "tags": ["mode", "conquest", "combat"]
+    },
+    {
+      "id": "arena",
+      "name": "Arena",
+      "summary": "Champion PvP combat mode. A hero's Arena ability is rated SEPARATELY from its Conquest ability — different events lean on one or the other.",
+      "details": {},
+      "tags": ["mode", "arena", "pvp"]
+    },
+    {
+      "id": "bear-hunt",
+      "name": "Bear Hunt",
+      "summary": "Rally event against a Bear boss; heroes serve as Bear Rally Lead or Bear Joiner. Troop ratios matter for damage. Growth-only heroes (e.g. Olive) should NOT be used here — they waste combat slots.",
+      "details": {
+        "roles": ["Bear Rally Lead", "Bear Joiner"],
+        "best_formation": {
+          "note": "Bear is archer-heavy: shift almost everything to archers as generations progress.",
+          "gen_1": "10% Infantry / 30% Cavalry / 60% Archer",
+          "gen_2": "10% Infantry / 20% Cavalry / 70% Archer",
+          "gen_3": "10% Infantry / 10% Cavalry / 80% Archer",
+          "universal_gen_4_plus": "1% Infantry / 10% Cavalry / 89% Archer"
+        },
+        "rally_leaders_by_generation": {
+          "note": "Recommended rally-lead trios per generation from the Bear guide (external source). Spelling normalized to our roster where safe: 'Merlin'=Marlin, 'Fahad'=Fahd. 'Seo-yul' is not in our current roster (left as-is).",
+          "gen_1": {"overall": ["Amadeus", "Jabel", "Seo-yul"], "alternative_best": ["Helga", "Jabel", "Seo-yul"], "f2p": ["Howard", "Jabel", "Quinn"]},
+          "gen_2": {"overall": ["Amadeus", "Jabel", "Marlin"], "alternative_best": ["Amadeus", "Hilde", "Marlin"], "f2p": ["Zoe", "Jabel", "Marlin (replace with Quinn if needed)"]},
+          "gen_3": {"overall": ["Amadeus", "Petra", "Marlin"], "low_spender": ["Zoe", "Petra", "Marlin"], "f2p": ["Zoe", "Jabel", "Quinn"]},
+          "gen_4": {"overall": ["Amadeus", "Petra", "Rosa"], "low_mid_spender": ["Zoe", "Petra", "Rosa"]},
+          "gen_5": {"overall": ["Amadeus", "Petra", "Rosa"], "alternative": ["Zoe", "Petra", "Rosa"]}
+        },
+        "pet_skills": {
+          "work": [
+            "Deadly Bite (Troop Lethality)",
+            "Antler Impact (Rally Capacity)",
+            "Fearless Roar (Squad Capacity)",
+            "Wild Charge (Squad Attack)",
+            "Grizzly Bear pet (+25% march speed)"
+          ],
+          "not_work": [
+            "Moose pet — reduces enemy squad Health, but the Bear has no Health bar (only Defense), so it does nothing"
+          ]
+        },
+        "instant_fill_solution": {
+          "goal": "Even troop split so every joiner slot fills the rally without overshoot.",
+          "steps": [
+            "Take your Rally Capacity (e.g. 1,132,210).",
+            "Subtract the Rally Leader's Squad Capacity (e.g. 162,210).",
+            "Remaining Capacity = 970,000.",
+            "Divide by the 14 available joiner slots (970,000 / 14 = 69,285).",
+            "Round to a clean figure: ~69,000 troops per joiner."
+          ]
+        },
+        "joiner_tier_list": {
+          "note": "Tier list DERIVED FROM our Bear Joiner star ratings in knowledge/hero_event_ratings.json (source of truth), mapped S=5, A=4, B=3, C=2, Trash=1. See reconciliation_vs_external_guide for where the external Bear guide disagreed.",
+          "S": ["Amadeus", "Chenko", "Amane", "Yeonwoo", "Margot", "Vivian", "Ava", "Wee & Woo"],
+          "A": [],
+          "B": ["Hilde", "Petra", "Rosa", "Jaeger"],
+          "C": ["Marlin"],
+          "Trash": ["Zoe", "Thrud", "Long Fei", "Alcar", "Helga", "Saul", "Jabel", "Diana", "Fahd", "Howard", "Gordon", "Quinn", "Olive", "Edwin", "Seth", "Forrest", "Eric", "Yang", "Triton", "Sophia", "Charles"]
+        },
+        "reconciliation_vs_external_guide": {
+          "note": "External Bear guide's joiner tiers differed from our ratings on 6 heroes. Per decision, our ratings win; differences recorded here for reference. Guide only covered up to Gen 5 (did not cover Eric/Yang/Triton/Sophia/Ava/Charles/Wee & Woo).",
+          "differences": [
+            {"hero": "Petra", "guide_tier": "A", "our_tier": "B", "our_rating": 3},
+            {"hero": "Hilde", "guide_tier": "A", "our_tier": "B", "our_rating": 3},
+            {"hero": "Marlin", "guide_tier": "B", "our_tier": "C", "our_rating": 2},
+            {"hero": "Thrud", "guide_tier": "B", "our_tier": "Trash", "our_rating": 1},
+            {"hero": "Jaeger", "guide_tier": "C", "our_tier": "B", "our_rating": 3},
+            {"hero": "Zoe", "guide_tier": "C", "our_tier": "Trash", "our_rating": 1}
+          ],
+          "diana_note": "Diana is purely an economy hero — Trash for Bear joining in both sources."
+        }
+      },
+      "tags": ["event", "bear-hunt", "rally"]
+    },
+    {
+      "id": "strongest-governor",
+      "name": "Strongest Governor",
+      "summary": "A multi-stage scoring event with daily milestones, per-stage rankings and an overall ranking. This entry separates guaranteed rewards from ranking rewards and gives a value-priority framework for deciding whether to spend saved resources on a points push.",
+      "details": {
+        "reward_buckets": [
+          {
+            "bucket": "Daily milestones",
+            "how_earned": "Reach stage point thresholds during the active day.",
+            "best_use": "Best baseline target for F2P and low-spend accounts."
+          },
+          {
+            "bucket": "Stage ranking",
+            "how_earned": "Place high during a specific stage.",
+            "best_use": "Worth considering when your saved items match the stage perfectly."
+          },
+          {
+            "bucket": "Overall ranking",
+            "how_earned": "Hold a high total score across the event.",
+            "best_use": "Only chase if you can fund multiple stages without breaking future plans."
+          },
+          {
+            "bucket": "Participation rewards",
+            "how_earned": "Complete routine event tasks and claim available chests.",
+            "best_use": "Low-risk value for every active account."
+          }
+        ],
+        "reward_value_priority": [
+          {
+            "reward_type": "Hero shards",
+            "values_most": "Accounts replacing or starring core march heroes.",
+            "priority_note": "High value when the hero fits your current generation and troop role."
+          },
+          {
+            "reward_type": "Forgehammers and gear materials",
+            "values_most": "Rally leads and combat-focused players.",
+            "priority_note": "Better when the next gear breakpoint changes a real march."
+          },
+          {
+            "reward_type": "Speedups",
+            "values_most": "Growth-focused accounts and KVK planners.",
+            "priority_note": "Good if you can recycle them into a stronger future event."
+          },
+          {
+            "reward_type": "Resources",
+            "values_most": "Building and research bottlenecked accounts.",
+            "priority_note": "Useful, but rarely worth overpaying for ranking alone."
+          },
+          {
+            "reward_type": "Cosmetics or frames",
+            "values_most": "Collectors and top-rank competitors.",
+            "priority_note": "Do not let cosmetic value drive a bad points push."
+          }
+        ],
+        "when_ranking_worth_chasing": [
+          "You already planned to complete the same upgrades for account progression.",
+          "Your saved inventory covers the target bracket without emergency packs.",
+          "The reward includes materials you cannot get efficiently elsewhere.",
+          "The event overlaps with KVK, Alliance Brawl, or another scoring window."
+        ],
+        "notes": [
+          "If you need to buy the last bracket without knowing the final leaderboard pace, treat the reward as speculation, not planning."
+        ]
+      },
+      "tags": [
+        "event",
+        "strongest-governor",
+        "rankings",
+        "milestones",
+        "rewards",
+        "spending",
+        "f2p",
+        "kvk"
+      ]
+    },
+    {
+      "id": "swordland-showdown",
+      "name": "Swordland Showdown",
+      "summary": "An alliance PvP event decided by objective TIMING and coverage, not by raw brawling volume. Alliances underperform when they fight everywhere and plan too little; the event rewards focused pressure that lands on the right targets during the windows that actually swing the score.",
+      "details": {
+        "type": "Alliance PvP (timing/placement)",
+        "core_idea": "Won by the alliance that knows which windows matter, not the busiest one. Unfocused pressure 'leaks' value (e.g. strong players tied up in a low-value lane while a key window opens elsewhere).",
+        "key_levers": [
+          "Window ownership: explicitly assign who owns each objective window; unowned windows get dropped because everyone assumes someone else has it.",
+          "Launch discipline: rallies that leave late or land staggered waste good rosters; synchronized launches convert cleaner.",
+          "Match plan to kingdom age: don't imitate mature-kingdom execution without the hero depth / march quality / War Academy maturity to back it.",
+          "Right leads: not every strong player should host every push; pick the best damage/survivability lead per window."
+        ],
+        "external_tools_referenced": [
+          "Rally Timer",
+          "Castle Scheduler",
+          "Kingdom Age Tracker",
+          "Hero Stat Comparison Tool"
+        ],
+        "source": "kingshotguide.com Swordland Showdown guide, shared by user (dated 2026-04-11)"
+      },
+      "tags": [
+        "event",
+        "swordland-showdown",
+        "alliance",
+        "pvp",
+        "timing",
+        "rally"
+      ]
+    },
+    {
+      "id": "viking-vengeance",
+      "name": "Viking Vengeance",
+      "summary": "Alliance PvE-style event where members rally shared Viking targets across a difficulty ladder. It is primarily an ALLIANCE EXECUTION check, not a solo power check: most missed rewards come from small collective mistakes stacking (wrong difficulty, sloppy start, poor rally timing) rather than one weak player.",
+      "details": {
+        "difficulty_principle": "The correct difficulty is the highest level the alliance can clear CLEANLY and REPEATEDLY, not the highest it can click.",
+        "reward_driver": "Repeatable reward efficiency across the whole activity window beats one flashy push.",
+        "key_inputs_for_safe_difficulty": [
+          "march power",
+          "troop tier",
+          "attendance",
+          "hospital depth (recovery/repeatability)"
+        ],
+        "common_alliance_mistakes": [
+          "Choosing difficulty by ego (highest they want to believe they can beat).",
+          "Starting without attendance discipline (too many members late = failed coordination, not lack of power).",
+          "Treating rally timing as an afterthought (late launches, messy joins, uneven landings cut efficiency).",
+          "Ignoring safe difficulty planning (not estimating a safe level first).",
+          "Not respecting recovery and repeatability (a clear that leaves the alliance unstable is not efficient)."
+        ],
+        "external_tools_referenced": [
+          "Viking Vengeance Calculator (estimate safe difficulty)",
+          "Rally Timer (standardize launch timing so members land together)",
+          "Castle Scheduler (map event window / leadership coverage)"
+        ]
+      },
+      "tags": [
+        "event",
+        "alliance",
+        "pve",
+        "rally",
+        "timing",
+        "difficulty"
+      ]
+    }
+  ],
+  "open_questions": [
+    "'Field Triage' event popup seen on a new account (closed via a plain white X, top-right ~508,64).",
+    "Which events are recurring and which have automatable daily tasks?",
+    "Full mechanics/rewards for Expedition, Conquest, Arena and Bear Hunt (these are stubs)."
+  ]
+}

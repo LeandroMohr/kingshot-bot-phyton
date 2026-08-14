@@ -1,0 +1,651 @@
+{
+  "title": "Strategies",
+  "description": "How the bot should apply its knowledge to make decisions. Scaffold: fill in as we define higher-level behavior (what to prioritize when, resource spending policy, etc.).",
+  "status": "scaffold",
+  "last_updated": "2026-07-20",
+  "strategies": [
+    {
+      "id": "hero-generation-gating",
+      "domain": "heroes",
+      "rule": "Only plan around heroes from the player's CURRENT generation or earlier. Heroes unlock as the kingdom ages (G1..G7); recommending a later-generation hero (e.g. G5) to a player still in an earlier era (e.g. G2) is useless.",
+      "needs": "Detect/confirm the account's current generation before advising heroes.",
+      "source": "knowledge/heroes.json -> reference.generations.gating"
+    },
+    {
+      "id": "hero-investment-basics",
+      "domain": "heroes",
+      "rule": "Focus hero investment: don't spread shards/books across many heroes. Pick a few and level them with intent — typically one combat lead, one growth/support hero, and one that helps with events/gathering — favoring heroes you can actually keep upgrading (accessible now) over rare heroes you can't feed yet.",
+      "decision_factors": [
+        "Function/role of the hero (attack, defense, gathering, support) vs. what the account needs right now.",
+        "Ease of evolution (can we keep getting its shards?) — an accessible hero built well beats a rare hero left stuck.",
+        "Usefulness in events (event participation accelerates progress).",
+        "Synergy with the troop type the player uses most."
+      ],
+      "common_mistakes": [
+        "Spending resources on random heroes.",
+        "Leveling too many heroes at once (slows overall progress).",
+        "Ignoring each hero's function.",
+        "Using shards with no plan.",
+        "Chasing rarity alone without checking utility.",
+        "Not factoring in events and alliances."
+      ],
+      "source": "user-provided beginner hero guide (2026-07-20)"
+    },
+    {
+      "id": "gear-investment-policy",
+      "domain": "hero_gear",
+      "rule": "Allocate gear resources (XP, forgehammers, mithril, mythic gear) by weighted value-per-resource, not by fixed guide steps. Always pick the upgrade with the highest (stat gain x stat weight x mastery multiplier) / resource cost, adapting to the resources currently owned.",
+      "core_formula": "Final Stat = (Base + XP Enhancement) x (1 + 0.1 x Mastery). Optimize the whole product, not one factor at a time.",
+      "decision_factors": [
+        "Stat weight: the same stat is worth different amounts per troop type. Reference 'Balance' profile weights Infantry Health 1.2x and Cavalry/Archer Health 0.8x, with the opposite pattern for Lethality. Decisions use stat x weight, never raw stat.",
+        "Enhance before mastery: mastery is a multiplier, so grow the enhancement base first (target 60+ enhancement) before spending forgehammers.",
+        "Value per % of budget: to compare heterogeneous resources, use value_gain / (resource_used / resource_available x 100). This adapts the optimal path to how much of each resource you actually own (F2P vs whale differ).",
+        "Irreversibility penalty (~10x): XP in Epic/Mythic gear (levels 0-100) is reversible via the free daily reforge; XP in Red gear (101+), forgehammers, mithril and mythic gear are irreversible. Only spend irreversible resources when the weighted gain is very high.",
+        "XP banking: keep low-weight pieces at Mythic level 100 (do NOT ascend them) so their XP stays reforgeable as a reserve.",
+        "Red gear milestones: value Expedition imbuements only (R120 +20%, R160 +30%, R200 +50%). Ignore Conquest-only milestones R140/R180. Jump directly to milestone levels instead of spreading XP incrementally.",
+        "Mastery gates: reaching red milestones requires mastery (M11->120, M13->160, M15->200). Plan a gate-crossing (mastery + enhancement + imbuement) as a single combined move, weighed against its total cost, so a piece is not left stranded just below a milestone."
+      ],
+      "prerequisites": {
+        "mastery_forging": "Requires Gold (Mythic) gear and Town Center level 20.",
+        "ascension": "Requires enhancement level 100 + mastery level 10, and consumes 2 mythic gears as fodder."
+      },
+      "priority_targets": "Build one set per troop type (infantry/cavalry/archer) for the 3 main expedition heroes; gear is fully portable, so decouple gear investment from the specific hero.",
+      "common_mistakes": [
+        "Optimizing one resource in isolation (XP first, then forgehammers) instead of jointly — leaves ~1-2% of improvement on the table and can get stuck in locally-good solutions.",
+        "Ascending low-weight pieces to Red (locks their XP forever for little value).",
+        "Pushing mastery high on low-enhancement pieces (multiplier applied to a small base).",
+        "Chasing Conquest milestones (R140/R180) that give no Expedition troop bonus.",
+        "Mastery reforge (50% forgehammer loss) — almost never economical; keep sub-optimal mastery and correct going forward."
+      ],
+      "source": "Kingshot Optimizer hero gear guide, shared by user (2026-07-20)",
+      "references": [
+        "knowledge/hero_gear.json -> gear-portability, prioritize-by-troop-type, upgrade-priority-pieces, gear-mastery, red-gear-imbuement, enhancement-basics"
+      ]
+    },
+    {
+      "id": "gov-gear-investment-policy",
+      "domain": "governor_gear",
+      "rule": "Invest in Governor Gear for efficiency and timing, not reflexive tier advancement. Chase the non-linear cost breakpoints (where a higher tier costs less than a prior step) and the set-bonus thresholds (3 and 6 pieces of the same gear level), and schedule upgrades during point-scoring events.",
+      "decision_factors": [
+        "Set-bonus breakpoints: bonuses activate at 3 and 6 pieces of the same gear level -> pushing all six to the same level to unlock a set bonus can beat over-leveling a single piece.",
+        "Non-linear material cost: costs show diminishing returns AND points where a higher tier is cheaper than a prior upgrade -> compute cost-per-power at each step (materials in knowledge/governor_gear.json) and take the cheapest gains first.",
+        "Troop-type stat value: attack/defense are not equally valuable across troop types, so weight gains the same way as hero gear before comparing.",
+        "Event timing: complete upgrades during Hall of Governors / Kingdom of Power for secondary rewards. Event points are ALSO non-linear -> sometimes a lower-tier upgrade yields more event points than a higher-tier one, so bank ready upgrades for the right event.",
+        "Global scope & ROI role: bonuses apply to all marches (rising value as multi-march modes grow), but Governor Gear hits diminishing returns fast -> treat it as a slow durable backbone, not the primary stat engine; don't starve higher-ROI systems (hero gear, research, pets) for it."
+      ],
+      "constraints": {
+        "unlock": "Town Center level 22.",
+        "no_downgrade": "Cannot be downgraded; plan before committing materials.",
+        "tier_gating": "Higher tiers unlock with kingdom age but most players are material-limited first."
+      },
+      "source": "Kingshot Governor Gear & Charms guide, shared by user (2026-07-20)",
+      "references": [
+        "knowledge/governor_gear.json -> fundamentals, upgrade-material-costs"
+      ]
+    },
+    {
+      "id": "gov-charm-investment-policy",
+      "domain": "governor_charm",
+      "rule": "Invest in Governor Charms by efficiency breakpoints and event timing, not reflexive leveling. There are NO set bonuses, so optimize purely on cost-per-value per charm and on event-point timing.",
+      "decision_factors": [
+        "No set bonuses: unlike gear, there is no 3/6-piece threshold -> level charms strictly by best value-per-material, spreading or focusing as the cost curve dictates.",
+        "Stat type: charms give health + lethality (per troop type). Weight these by troop type before comparing (same principle as hero gear).",
+        "Non-linear material cost: charm-guide/charm-design costs have efficiency breakpoints -> use knowledge/governor_charm.json cost table to take the cheapest power/stat gains first.",
+        "Placement is irrelevant: don't optimize which gear piece a charm sits on; only the troop type and level matter.",
+        "Event timing: complete upgrades during Hall of Governors / Kingdom of Power. Event points are non-linear -> sometimes lower-tier upgrades score more points, so bank ready charm upgrades for the right event."
+      ],
+      "constraints": {
+        "unlock": "Town Center level 25.",
+        "materials": "Separate from gear: charm guides and charm designs.",
+        "tier_gating": "Higher tiers unlock with kingdom age but most players are material-limited first."
+      },
+      "source": "Kingshot Governor Gear & Charms guide, shared by user (2026-07-20)",
+      "references": [
+        "knowledge/governor_charm.json -> fundamentals, upgrade-material-costs"
+      ]
+    },
+    {
+      "id": "early-game-first-100-days",
+      "domain": "progression",
+      "rule": "Treat the first ~100 days of a server as the foundation stage where decisions compound. Invest gems into heroes early and aggressively, get ready for wilderness resource gathering to scale, and plan around the fact that the map, modes, heroes and resources expand quickly (see server_timeline).",
+      "context": "The environment changes fast: fog lifts from the Plains (~day 14) and Fertile Land (~day 38); recurring events roll out (Alliance Championships, Eternity's Reach, Sanctuary, Fortress Battles, Fishing); Gen 2 heroes and Red hero gear unlock ~day 40-50; first Castle Battle ~day 54; Gen 1 pets a few days later; Age of Truegold breaks the TC level-30 cap and adds a scarce Truegold resource + new troop abilities; Hall of Governors evolves into Strongest Governor and new events appear (Golden Glaives, Stand of Arms, Armament Competition); Gen 2 pets ~1 week after Truegold (one gives the first combat pet ability); first Kingdom-vs-Kingdom battle ~day 99 (some servers eligible as early as day 80); Gen 3 heroes ~day 101 with Gen 3 pets and an Oasis Island feature following. Many upgrades only make sense once you expect this rapid change.",
+      "tips": [
+        {
+          "title": "Lost wilderness battles refund stamina",
+          "guidance": "When you LOSE a stamina-consuming wilderness battle, the stamina is refunded (sometimes immediately, sometimes when the troops return home). Applies to beasts, terrors, rebel bounties, Caesars — anything that costs stamina to attack. So it's free to gamble on uncertain fights."
+        },
+        {
+          "title": "Use the City Bonus window (arrow under profile picture)",
+          "guidance": "A small arrow under the profile picture opens the City Bonus window, one of the most overlooked panels. It has a free rechargeable shield, a purchasable counter-recon (prevents being scouted), and purchasable troop/deployment bonuses. Its Growth panel has a free rechargeable random teleporter and buyable gathering-speed and training-capacity boosts. The gathering-speed boost DOUBLES resource collection and only needs to be active when troops actually REACH the node — so one activation can cover multiple gathers if timed right (great for events like Hall of Governors)."
+        },
+        {
+          "title": "Wilderness gathering is underrated and scales hard",
+          "guidance": "Early on, town resource buildings are cheap to upgrade and produce secured (unraidable) resources, so wilderness nodes look like tiny bonuses. This flips: town buildings become exponentially slower/costlier and barely scale over the last ~10 levels, while Plains/Fertile Land open high-level nodes gathering 1M+ food or wood per hour — eventually a bigger source than town buildings. Also REVERSE research priority after a few weeks: favor gathering research over town-generation research (a mistake the author made)."
+        },
+        {
+          "title": "Set up a farm account",
+          "guidance": "You can run up to two towns per account on one server. A second (farm) town generates resources via events, stores and gathering; you attack it risk-free from your main to bring the resources home. Top alliances even create separate farm alliances. Worth starting early despite setup effort."
+        },
+        {
+          "title": "Spend gems aggressively on heroes",
+          "guidance": "Don't hoard gems fearing you'll run short. Gems accumulate faster than expected even F2P, so spend tens of thousands (even 100k+ on a strong Hero Roulette like Zoe) each Hall of Heroes / Hero Roulette to build heroes — the foundation of PvE, rally and event scoring — without ending up pinched."
+        },
+        {
+          "title": "Save Mythic General (custom orange) hero shards for later generations",
+          "guidance": "Don't dump custom/general orange shards on an early hero (e.g. Saul) just because you get free Jabel shards and can't use them on Helga/Amadeus. The next hero generation arrives as soon as ~6 weeks in with strong heroes that are hard to get F2P. Instead: spend GEMS to build Saul, but SAVE the custom orange shards to reach critical mass for a later, more valuable generation."
+        },
+        {
+          "title": "Training capacity/speed bonuses apply to ALL troop types",
+          "guidance": "Each troop-training building's training-capacity and training-speed bonus applies to EVERY troop type, not just its own. The building detail text is misleading (it lists unlocking higher-tier versions of that troop type). Proof from the video: upgrading Barracks 20->21 raised the Range's archer training capacity (460->468) and time. Consequence: even if you prioritize infantry/archer stats, keep the Stable leveled — it also boosts infantry and archer training."
+        }
+      ],
+      "common_mistakes": [
+        "Not gambling on uncertain wilderness fights, unaware that losses refund stamina.",
+        "Never opening the City Bonus window (free shield, teleporter, and the resource-doubling gathering-speed boost).",
+        "Underestimating wilderness gathering and keeping town-generation research above gathering research too long.",
+        "Hoarding gems instead of spending them aggressively on heroes.",
+        "Dumping custom orange shards on an early hero instead of saving them for a stronger later generation.",
+        "Neglecting the Stable when prioritizing infantry/archer, not realizing its training bonuses are global."
+      ],
+      "source": "Kingshot 'First 100 Days / 7 Early Tips' video by Strat Game Sloth — full transcript, shared by user (2026-07-20)",
+      "video": "https://www.youtube.com/watch?v=3zPoKM-CcP8 (Strat Game Sloth; transcript captured)",
+      "references": [
+        "knowledge/server_timeline.json -> server-timeline",
+        "planner/strategies.json -> hero-investment-basics, hero-generation-gating"
+      ]
+    },
+    {
+      "id": "swordland-showdown-timing",
+      "domain": "events",
+      "rule": "Play Swordland Showdown as a timing and coverage problem, not a 'fight harder' event. Pre-decide who owns each objective window and which fights to skip; focused, synchronized pressure beats constant reactive brawling.",
+      "decision_factors": [
+        "Focus over volume: pressure only counts when concentrated on windows that swing score. Don't fight low-value lanes just to feel active.",
+        "Window ownership: assign an owner to each objective window ahead of time (unowned windows get dropped).",
+        "Launch discipline: synchronize rally launches so they land together; late/staggered rallies waste the roster.",
+        "Kingdom-age fit: only run mature-kingdom execution if your hero depth / march quality / War Academy maturity actually support it.",
+        "Lead selection: rotate the best damage/survivability lead into each key window instead of letting the same player host everything."
+      ],
+      "playbook": {
+        "if_messy": [
+          "Reduce the number of 'must-win' windows.",
+          "Assign one officer to timing and one to coverage.",
+          "Stop fighting low-value lanes just to look active."
+        ],
+        "if_organized": [
+          "Build coordinated launch chains instead of single isolated rallies.",
+          "Rotate strongest leads into the windows that actually swing score.",
+          "Keep backup callers ready for mid-match attendance shifts."
+        ]
+      },
+      "source": "kingshotguide.com Swordland Showdown guide, shared by user (2026-04-11)",
+      "references": [
+        "knowledge/events.json -> swordland-showdown"
+      ]
+    },
+    {
+      "id": "gov-gear-charm-priority-by-role",
+      "domain": "governor_gear",
+      "rule": "Governor gear is an efficiency system, not a prestige system. Do NOT use one universal upgrade order or spread materials evenly. The right next upgrade depends on the account's ROLE (rally joiner vs hybrid vs rally lead), the material cost of the next breakpoint, and event timing. Complements gov-gear-investment-policy.",
+      "roles": [
+        {
+          "role": "F2P / light spender (mostly joins rallies)",
+          "stance": "Treat governor gear as SUPPORT progression, not flagship. Don't overinvest early — a joiner's alliance impact comes more from march size, healing efficiency, troop quality, account growth and event timing than from personal gear stats.",
+          "priority": [
+            "Build a usable baseline set instead of chasing one premium piece.",
+            "Push the cheaper upgrades first.",
+            "Stop when the next jump becomes materially painful.",
+            "Re-check whether charms, heroes or event prep now give better value (compare hero paths with the Hero Stat Comparison tool)."
+          ]
+        },
+        {
+          "role": "Low spender / hybrid (joins most, hosts some)",
+          "stance": "Most common account type and the biggest material-waster. Middle path: upgrade gear until a bad-efficiency breakpoint, then pause and evaluate charms or another system.",
+          "priority": [
+            "Early/mid-tier upgrades are fine while they help you keep pace.",
+            "When the next step demands a painful amount of Artisan's Vision or crowds out other progress, stop auto-upgrading.",
+            "If the next charm level is cheaper and keeps the whole set moving, it can be the better spend — charms are NOT automatically second."
+          ]
+        },
+        {
+          "role": "Rally lead / heavy spender (carries alliance fights)",
+          "stance": "The one case for aggressive gear investment: return is multiplied because your stats land on key hits and influence alliance outcomes, not just personal power.",
+          "priority": [
+            "Keep the full set relevant.",
+            "Push high-impact upgrades you can actually FINISH.",
+            "Plan gear and charms together, not separately.",
+            "Spend for timing, not just raw progression: a rushed upgrade outside a scoring window can be worse than a delayed one inside an event (cross-check KvK Event Calculator; spend side via Pack/VIP calculators)."
+          ]
+        }
+      ],
+      "gear_vs_charm_rule": {
+        "trigger": "When the next governor gear step becomes material-heavy enough to delay multiple OTHER upgrades, check charms immediately (do not assume 'gear first forever').",
+        "compare_five": [
+          "material pain",
+          "power gain",
+          "event timing",
+          "account role",
+          "whether it helps your actual main march or only your account sheet"
+        ],
+        "default": "On low-to-mid spending accounts, if the next gear jump is expensive and the next charm level is still efficient, often take the charm first."
+      },
+      "breakpoint_examples": {
+        "note": "Concrete efficiency cliff — a sharp premium-material spike for only a modest power gain. Full tables in the knowledge files.",
+        "gear_cliff": "Gold T3 3-star (90,000 satin / 900 gilded threads / 180 Artisan's Vision) -> Red 0-star (108,000 satin / 1,080 gilded threads / 220 Artisan's Vision). Hybrid/low-spend accounts should stop auto-upgrading here and compare alternatives.",
+        "charm_step": "Charm Level 10 (420 charm guides / 420 charm designs) -> Level 11 (560 charm guides / 420 charm designs)."
+      },
+      "common_mistakes": [
+        "Spreading materials evenly to look 'balanced' instead of chasing efficient breakpoints.",
+        "Using one universal priority list regardless of account role.",
+        "Rushing an expensive high-tier upgrade just because one piece looks close.",
+        "Dumping premium materials into marginal upgrades while better progression is missing elsewhere.",
+        "Assuming governor charm priority and governor gear priority are the same thing."
+      ],
+      "source": "kingshotguide.com Governor Gear Upgrade Priority guide (F2P / joiners / rally leads), shared by user (2026-03-23)",
+      "references": [
+        "planner/strategies.json -> gov-gear-investment-policy, gov-charm-investment-policy",
+        "knowledge/governor_gear.json -> upgrade-material-costs (Gold T3 3-star / Red 0-star cliff)",
+        "knowledge/governor_charm.json -> upgrade-material-costs (Level 10 -> 11)"
+      ]
+    },
+    {
+      "id": "gem-spending-priority",
+      "domain": "premium_currency",
+      "rule": "Spend gems on permanent account value or event-aligned spikes, never on convenience. Gems accelerate GOOD planning; they are not a painkiller for every shortage. If a spend does not help the account for weeks (not hours), unlock a real breakpoint, or line up with a high-value event, it probably does not deserve gems.",
+      "priority_order": [
+        {
+          "tier": "1. Permanent progress (highest)",
+          "detail": "Purchases that permanently improve the account. VIP progress rates highly for disciplined F2P / low spenders IF daily gem use meaningfully advances a strong VIP breakpoint. If daily spend barely moves the needle, hold gems for a better window."
+        },
+        {
+          "tier": "2. Growth breakpoints",
+          "detail": "Gems to unlock a real growth breakpoint (Town Center progression, queue efficiency, an event-timed construction push) are fine ONLY if the breakpoint is real and moves the account into a stronger phase sooner. If it only relieves impatience, skip."
+        },
+        {
+          "tier": "3. Hero Roulette — only when the hero fits the plan",
+          "detail": "Not 'always spin'. Good only when the hero genuinely belongs in your long-term march plan and solves a real problem. If it doesn't upgrade your march, the wheel is just a fancy way to burn gems."
+        },
+        {
+          "tier": "4. Selective utility buys",
+          "detail": "Stamina / shop utility can be worth it, but only tied to a specific goal, not to habit. Don't buy stamina reflexively just because it is 'valuable'."
+        },
+        {
+          "tier": "5. Convenience (lowest)",
+          "detail": "Random speedups, bad-value resource top-ups, panic refreshes — feel good now, age badly. Lowest priority."
+        }
+      ],
+      "spend_now_if": [
+        "It improves the account permanently.",
+        "It unlocks a real progression breakpoint.",
+        "It fits an event where value is multiplied.",
+        "It supports a hero you genuinely plan to run long term."
+      ],
+      "do_not_spend_if": [
+        "You are only removing today's discomfort.",
+        "The expense creates no meaningful advantage next week.",
+        "You would not make the same spend after checking the math (calculator) first.",
+        "You are spending because the offer looks rare, not because the value is clear."
+      ],
+      "bad_emotional_moments": [
+        "Short on a timer and wanting instant relief.",
+        "A wheel or shop appears and you feel pressure to participate.",
+        "Confusing 'rare' with 'worth it'."
+      ],
+      "reconciliation": "Consistent with early-game-first-100-days (don't hoard gems; heroes are top value) and hero-investment-basics: heroes ARE the best gem target, but the hero must fit a long-term march plan rather than being bought on impulse. 'Don't hoard' means deploy gems on planned hero/VIP/breakpoint value, not that any hero spin is good.",
+      "money_note": "The source also references a real-money Pack Calculator to compare gem vs pack value. Per the account's standing rule, this bot NEVER spends real money — gem-vs-pack money comparisons are out of scope; only gem allocation is considered here.",
+      "source": "kingshotguide.com 'Where to Spend Gems' priority guide (F2P / low spenders), shared by user (2026-03-22)",
+      "references": [
+        "planner/strategies.json -> early-game-first-100-days, hero-investment-basics",
+        "memory/user_rules.json -> no-real-money"
+      ]
+    },
+    {
+      "id": "rally-joiner-build-priority",
+      "domain": "rally",
+      "rule": "If your role is mostly rally JOINER, your biggest gains come from capacity, timing and reliability BEFORE deep personal stat chasing. Build for your real role, not the captain role you imagine on paper. Complements gov-gear-charm-priority-by-role (joiner = support progression).",
+      "useful_upgrades_in_order": [
+        {
+          "upgrade": "March capacity",
+          "why": "More relevant troops in the rally is the primary joiner contribution — prioritize march-size over shiny personal stats."
+        },
+        {
+          "upgrade": "Timing and coordination",
+          "why": "A strong joiner who arrives late is still weak. Fix staggered launches (Rally Timer / Castle Scheduler) before any stat discussion."
+        },
+        {
+          "upgrade": "Troop quality and recovery",
+          "why": "A joiner who can participate REPEATEDLY beats one who looks strong once and disappears — troop quality, hospital depth and recovery planning matter."
+        },
+        {
+          "upgrade": "Hero choices that change march value",
+          "why": "Only hero investments that actually change real rally impact; compare paths before spending."
+        }
+      ],
+      "prioritize_joiner_fundamentals_if": [
+        "You almost never captain rallies.",
+        "Your alliance already has stronger rally leaders.",
+        "Your main value is consistent rally participation.",
+        "Bad timing and low capacity hurt you more than raw stats."
+      ],
+      "prioritize_deeper_stats_if": [
+        "You are starting to lead meaningful rallies yourself.",
+        "Your march quality is clearly below your kingdom standard.",
+        "Your alliance needs more strong captains, not just more bodies (emergency-rally cover)."
+      ],
+      "common_mistake": "Upgrading for ego (prettiest stat sheet) instead of role. Even when stats do matter, target the upgrade that helps your real role first rather than 'upgrade everything'.",
+      "source": "kingshotguide.com Rally Joiner Mechanics guide, shared by user (2026-03-21)",
+      "references": [
+        "knowledge/rally.json -> joiner-contribution, rally-principles",
+        "planner/strategies.json -> gov-gear-charm-priority-by-role, swordland-showdown-timing"
+      ]
+    },
+    {
+      "id": "farm-account-policy",
+      "domain": "resources",
+      "rule": "A farm account is worth it ONLY if it strengthens the main without competing with it. Treat it as infrastructure, not a side hobby or a second main. Build one only when the main is stable enough that the extra time/logistics create net value instead of hidden drag. Expands the farm tip in early-game-first-100-days.",
+      "build_if": [
+        "You are F2P / low spender wanting a long-term resource supplement.",
+        "Your main already handles daily priorities comfortably (doesn't collapse under daily workload).",
+        "You log in consistently enough to gather, transfer and maintain the alt.",
+        "Kingdom/alliance situation is stable enough for the farm to mature.",
+        "Extra gathered resources will clearly solve a REAL main-account bottleneck."
+      ],
+      "delay_if": [
+        "Your main is still behind on core progression / has obvious inefficiencies.",
+        "You already feel short on time for events, rallies and daily maintenance.",
+        "You change alliances/kingdoms often enough that the alt becomes unstable.",
+        "You mainly want it because others said it is 'mandatory' (copying spender habits on a non-spender schedule)."
+      ],
+      "biggest_mistake": "Not creating the farm — but OVERBUILDING it. A farm should be lean: gather, hold, transfer. Do not spend premium time/planning/attention on the alt unless it clearly increases output back to the main.",
+      "bad_behavior": [
+        "Building it like a second main account.",
+        "Overinvesting in combat power that doesn't increase resource output.",
+        "Letting the farm steal event focus from the main.",
+        "Spending so much time on the alt that the main misses better opportunities."
+      ],
+      "build_guidelines": [
+        "Keep the build lean: it needs to function, not impress.",
+        "Train only enough troops to gather efficiently and survive routine activity — plan the minimum effective training path, don't overtrain by instinct (unless the specific kingdom environment forces combat).",
+        "Protect main-account TIME: the real hidden cost. The farm should REDUCE pressure on the main, not create a second set of resented daily chores.",
+        "Match the farm to kingdom stage: in an unstable/early phase the main may need all available focus."
+      ],
+      "mindset": "A farm account is infrastructure, not identity. The right one quietly improves the main and makes it MORE focused; the wrong one becomes a second source of inefficiency.",
+      "note": "Kingshot allows up to two towns per account on one server (see early-game-first-100-days). You attack the farm risk-free from your main to bring resources home.",
+      "source": "kingshotguide.com Farm Account guide, shared by user (2026-03-20)",
+      "references": [
+        "planner/strategies.json -> early-game-first-100-days (farm tip), gov-gear-charm-priority-by-role",
+        "knowledge/server_timeline.json -> server-timeline (kingdom stage)"
+      ]
+    },
+    {
+      "id": "viking-vengeance-difficulty",
+      "domain": "events",
+      "rule": "Treat Viking Vengeance as an operations/alliance-execution problem, not a solo power check. Fix alliance discipline (attendance, rally timing, recovery) BEFORE chasing higher difficulty out of pride. The correct level is the highest you can clear cleanly without attendance panic, healing panic, or timing chaos.",
+      "decision_factors": [
+        "Difficulty by capability, not ego: highest level cleared reliably, not the highest you want to believe.",
+        "Attendance discipline before the event starts (late members = failed coordination, not weak power).",
+        "Standardized rally launch timing so members land together (Rally Timer).",
+        "Right players cover the right leadership roles.",
+        "Recovery/repeatability: sustain the full activity window without chaos (hospital depth)."
+      ],
+      "push_higher_if": [
+        "Attendance is stable.",
+        "Rally leadership is clear.",
+        "Calculator estimate says the alliance has margin.",
+        "Previous clears felt controlled, not lucky."
+      ],
+      "stay_lower_if": [
+        "Members arrive late regularly.",
+        "Rallies are landing unevenly.",
+        "Hospital depth and recovery are already uncomfortable.",
+        "Success depends too heavily on a few players carrying chaos."
+      ],
+      "pre_event_process": [
+        "Estimate safe difficulty in the Viking Vengeance Calculator.",
+        "Standardize launch timing with the Rally Timer.",
+        "If leadership windows are messy, map the event window in the Castle Scheduler so everyone knows coverage and responsibility."
+      ],
+      "principle": "The alliance that clears Viking cleanly is the one with the cleanest process, not the loudest confidence. If timing is messy, fix process before pushing power.",
+      "source": "kingshotguide.com Viking Vengeance guide, shared by user (2026-03-19)",
+      "references": [
+        "knowledge/events.json -> viking-vengeance, swordland-showdown",
+        "planner/strategies.json -> swordland-showdown-timing, rally-joiner-build-priority"
+      ]
+    },
+    {
+      "id": "research-priority-by-archetype",
+      "domain": "research",
+      "rule": "Research priority is NOT one-size-fits-all. Prioritize the tech tree based on your ACCOUNT ARCHETYPE (F2P rally joiner / low-mid spender / big spender / farm account), not on a universal order. The key driver: combat research only matters if YOUR stats apply (i.e. you host rallies) — joiners get nothing from battle tech in joined rallies.",
+      "battle_stat_order_when_you_do_combat": {
+        "stat_priority": "Lethality > Attack, and Health > Defense (durability + damage conversion over raw attack/defense).",
+        "troop_priority": "Infantry & Archers > Cavalry.",
+        "f2p_detailed_order": [
+          "Archer Lethality & Infantry Health",
+          "Cavalry Lethality (close 2nd)",
+          "Archer Attack & Infantry Defense",
+          "Cavalry Attack (close 3rd)"
+        ],
+        "note": "This spender/leader order (Lethality>Attack) differs from the generic default_priority_order in knowledge/research.json -> battle-research (Attack>Defense>Health>Lethality); use this archetype order for investment decisions."
+      },
+      "archetypes": {
+        "f2p_rally_joiner": {
+          "core_fact": "Your combat research does NOT affect rallies you join (only the leader's stats apply). Most F2P join rather than host.",
+          "top_priority": [
+            "Tool Enhancement (research speed — do early)",
+            "Tooling Up (construction speed -> faster higher-tier troops)",
+            "Command Tactics (extra march queues)",
+            "Resource/gathering tech"
+          ],
+          "second_tier": [
+            "Regimental Expansion (more troops per march = better rally contribution)",
+            "Trainer Tools (faster training)",
+            "Bandaging (faster healing — critical for batch healing in Castle Battle)"
+          ],
+          "economy": "Pre-TC20 prioritize output (passive income); Post-TC20 shift to gathering (Foraging etc.) as wilderness gathering becomes the main driver.",
+          "battle_tech": "Deprioritize EXCEPT Regimental Expansion. Save battle-tech projects for 2nd/3rd Hall of Governors events — some give 10,000+ power in 1-2h and can score tens of millions of points in a day to compete with spenders.",
+          "situational": [
+            "Camp Expansion (batch size only, not speed — early if you log in less; diminishing returns)",
+            "Ward Expansion (great early if infirmary short, esp. violent servers; can save for Hall of Governors points)"
+          ]
+        },
+        "low_mid_spender": {
+          "base": "Read the F2P plan first — all of it applies, with these modifications. This archetype aligns most with conventional research guides: you need to build everything.",
+          "modifications": [
+            "Tooling Up has more value EARLY (likely a 2nd construction slot). Rush it. But don't over-invest the bottom of Tooling Up (level 7) — less value late when TrueGold-bottlenecked.",
+            "Do NOT deprioritize battle stats — you're more likely to be a rally leader. Lethality>Attack, Health>Defense; Infantry & Archers > Cavalry.",
+            "Overlook output economy skills more (reach gathering phase sooner via faster builds + larger higher-tier marches).",
+            "Prioritize infirmary healing capacity & speed (you flex in combat more -> more troops injured)."
+          ],
+          "can_deprioritize": [
+            "Resource output projects",
+            "Camp Expansion"
+          ]
+        },
+        "big_spender": {
+          "core_idea": "Not managing in-game scarcity — maximizing value per DOLLAR via prioritization. Flush with pack resources/speedups.",
+          "deprioritize_initially": "Economy tree (pack resources cover it). Eventually do gathering skills for KvK prep points and to remove bottlenecks for efficient spending.",
+          "still_important": [
+            "Tool Enhancement (thousands of research-days exist; use speedups instantly to clear it without clogging queues)",
+            "Troop Training & Healing (grow army faster, protect investment)"
+          ],
+          "can_ignore": [
+            "Later Tooling Up levels (empty build queues anyway; keeping unused construction speedups can help Strongest Governor points)",
+            "Camp Expansion (lowest ROI of the 4 troop skills)"
+          ],
+          "battle_tree": "Take EVERYTHING as fast as possible, still Lethality & Health > Attack & Defense, Infantry & Archers > Cavalry."
+        },
+        "farm_account": {
+          "purpose": "Secondary account supplying resources to main via raiding. Play very differently.",
+          "battle_tree": "Skip almost everything except Regimental Expansion (gathering capacity). Research other battle skills only to level 1 to unlock more Regimental Expansion projects, or for quick Hall of Governors points.",
+          "economy": "Gathering focus — output skills only produce PROTECTED resources (can't be raided). Grab a few cheap output projects for town development, not a priority.",
+          "growth": [
+            "Tool Enhancement (helps, skip bottom levels)",
+            "Command Tactics (more march slots = more gathering)",
+            "Trainer Tools (army up quicker)",
+            "Camp Expansion first few levels (helpful — you log in less)",
+            "Ward Expansion (insurance vs attacks — prevents catastrophic troop loss)",
+            "Bandaging (somewhat helpful if tile-hit often; less critical, no Castle Battles)"
+          ],
+          "skip": "Tooling Up — no need for construction speed; don't need to take farm accounts to TC30+."
+        }
+      },
+      "quick_reference": {
+        "note": "Stars = priority (more = higher).",
+        "Tool Enhancement": {
+          "F2P": "***",
+          "LowMid": "***",
+          "BigSpender": "***",
+          "Farm": "**"
+        },
+        "Battle Tech": {
+          "F2P": "* (save for events)",
+          "LowMid": "**",
+          "BigSpender": "***",
+          "Farm": "Skip"
+        },
+        "Economy (Gathering)": {
+          "F2P": "***",
+          "LowMid": "**",
+          "BigSpender": "* (later)",
+          "Farm": "***"
+        },
+        "Troop Training": {
+          "F2P": "***",
+          "LowMid": "***",
+          "BigSpender": "***",
+          "Farm": "**"
+        },
+        "Tooling Up": {
+          "F2P": "**",
+          "LowMid": "***",
+          "BigSpender": "* (early only)",
+          "Farm": "Skip"
+        }
+      },
+      "source": "kingshotguide.com Research Priority Strategy for All Player Types (user-provided, 2025-02-06)",
+      "references": [
+        "knowledge/research.json -> economy-research, growth-research, battle-research, research-speed-boosts",
+        "knowledge/rally.json -> rally-principles, joiner-contribution",
+        "planner/strategies.json -> rally-joiner-build-priority, farm-account-policy, gem-spending-priority"
+      ]
+    },
+    {
+      "id": "daily-rush-job-optimization",
+      "domain": "resources",
+      "rule": "Never fire Rush Job alone. Always activate Productivity Day FIRST (it doubles building production values, which Rush Job reads), then immediately Rush Job to collect the doubled 5-day payout. Optionally follow with Festivities to offset the mood hit. ~10 seconds/day for ~+30M resources/month at mid-game.",
+      "correct_order": [
+        "1. Activate Productivity Day (doubles building production values).",
+        "2. IMMEDIATELY activate Rush Job (reads the now-doubled production values -> double payout).",
+        "3. (Optional) Activate Festivities to offset Productivity Day's mood penalty."
+      ],
+      "do_not": [
+        "Do not activate Rush Job before Productivity Day (loses ~half the payout, ~1M/day).",
+        "Do not use Urgent Mobilization before Rush Job — it changes workday length, not production values, so it adds nothing to Rush Job."
+      ],
+      "daily_checklist": [
+        "Log in",
+        "Open Decrees panel",
+        "Productivity Day",
+        "Rush Job (immediately after)",
+        "Festivities (optional)",
+        "Collect ~2.5M+ resources"
+      ],
+      "note": "Automation candidate: this is a fixed 24h-cooldown daily sequence in the Decrees panel. Mechanics detail in knowledge/resources.json -> decrees-rush-job-combo.",
+      "source": "kingshotguide.com Rush Job Edict Optimization (user-provided, 2025-02-06)",
+      "references": [
+        "knowledge/resources.json -> decrees-rush-job-combo",
+        "planner/strategies.json -> early-game-first-100-days, farm-account-policy"
+      ]
+    },
+    {
+      "id": "daily-nomadic-merchant",
+      "domain": "resources",
+      "rule": "Cycle the Nomadic Merchant daily. Raw exchange numbers are irrelevant (everything is benchmarked to 50:50:10:2 par); only the DISCOUNT and special items matter. Take every discounted exchange, take even (0%) ones to reveal what's behind them, grab speed-ups and Advanced Teleporters on sight, skip diamond exchanges. ~2-3 min/day for millions of resources + rare items monthly.",
+      "daily_routine": [
+        "Open the Nomadic Merchant when it refreshes.",
+        "Take all exchanges showing any discount (20%, 25%, ...).",
+        "Take even (0%) exchanges to reveal what's behind them.",
+        "Grab any speed-up or Advanced Teleporter exchanges (top value).",
+        "Skip diamond-based exchanges.",
+        "Use the free refresh and repeat until good deals are exhausted."
+      ],
+      "value_priority": [
+        "Advanced Teleporters (~2,000+ gems, VIP-limited to 2/week)",
+        "Speed-ups (time is the real late-game bottleneck)",
+        "Discounted resource exchanges (20-25% = free resources)",
+        "Even exchanges (reveal deals behind them)",
+        "Diamond exchanges (skip unless exceptional)"
+      ],
+      "caveat": "Received resources are UNSECURED. Only a real concern early game / violent servers / unshielded; negligible mid-late or under strong NAPs.",
+      "note": "Automation candidate: fixed daily cycle-through in a shop panel, similar cadence to daily-rush-job-optimization. Mechanics in knowledge/shops.json -> nomadic-merchant.",
+      "source": "kingshotguide.com Nomadic Merchant guide (user-provided, 2025-02-06)",
+      "references": [
+        "knowledge/shops.json -> nomadic-merchant",
+        "planner/strategies.json -> daily-rush-job-optimization, gem-spending-priority"
+      ]
+    },
+    {
+      "id": "oasis-island-development",
+      "domain": "oasis_island",
+      "rule": "On Oasis Island, always prioritize upgrading the Fountain of Life first (maximizes Essence and unlocks new items). For most players, favor GROWTH buffs (research/construction speed) over combat buffs early. Treat limited-time event buildings as situational — often only crucial for rally leaders. Don't overbuild copies or over-decorate early.",
+      "long_term_priorities": [
+        "Fountain of Life first: upgrade as fast as possible to maximize Essence production and unlock new items.",
+        "Growth buffs over combat buffs (for most players): research + construction speed beat troop stats early.",
+        "Strategic investment in limited items: powerful but often only crucial for players who LEAD rallies — evaluate account role before spending Essence on them."
+      ],
+      "efficiency_rules": [
+        "Reach Reservoir level 4 ASAP for a second worker (doubles cactus/treasure clearing).",
+        "Buy value-dense (Prosperity-per-square) items; watch Essence-to-Prosperity arbitrage.",
+        "Buy cheap decorations first to complete the quest line that rewards extra Essence.",
+        "Recycle items (half cost back) for a quick Essence boost or to free space.",
+        "Guide worker pathing toward chest-cacti; don't sacrifice pathing for aesthetics."
+      ],
+      "avoid": [
+        "Building extra copies past the max-active limit (only max active buildings give bonuses — extras waste Essence).",
+        "Over-decorating early (drains resources the MAIN town needs)."
+      ],
+      "note": "Oasis buffs feed the main account. This aligns with research-priority-by-archetype: growth-first mirrors the F2P/most-players research priority, and 'combat buffs mainly for rally leaders' mirrors the rally-joiner logic. Mechanics in knowledge/oasis_island.json.",
+      "source": "kingshotguide.com Oasis Island guide (user-provided, 2025-01-28)",
+      "references": [
+        "knowledge/oasis_island.json -> core-loop, building-types, growth-tips",
+        "knowledge/research.json -> research-speed-boosts",
+        "planner/strategies.json -> research-priority-by-archetype, rally-joiner-build-priority"
+      ]
+    },
+    {
+      "id": "daily-routine-and-march-queues",
+      "domain": "operations",
+      "rule": "Run the daily loop efficiently around the march-queue limit. March queues are the scarcest scheduler resource (max 6, F2P ~5). Keep gathering marches running continuously and reserve one queue for hunt (feeds Terror/beast daily missions). Hunt first, then refill with gathering.",
+      "march_queue_policy": {
+        "max": 6,
+        "f2p_typical": 5,
+        "recommended_split": "~4 gathering + 1 hunt (adjust to daily missions in flight).",
+        "order": "Dispatch HUNT before gathering when both are pending (hunt covers 'defeat Terror 3x' and beast dailies); backfill freed queues with gathering.",
+        "note": "6th queue is real-money only (out of scope)."
+      },
+      "daily_targets_source": "Full daily mission checklist in knowledge/daily_missions.json -> daily-mission-list.",
+      "recurring_daily_actions": [
+        "Collect daily VIP points (knowledge/vip.json -> daily-vip-points).",
+        "Collect Oasis water/Essence before it caps (knowledge/oasis_island.json).",
+        "Run daily decrees combo (planner -> daily-rush-job-optimization).",
+        "Cycle Nomadic Merchant (planner -> daily-nomadic-merchant).",
+        "Auto-claim all FREE shop items (discounts left to player).",
+        "Answer Suggestion Box if question->answer map is available (knowledge/player.json -> suggestion-box)."
+      ],
+      "red_dot_usage": "Use menu red dots to DISCOVER pending actions (reliable signal of 'something here'), but gate whether to act per-task — red dots also push packs/spending (knowledge/resources.json -> red-dots-heuristic).",
+      "note": "Building-upgrade and research-a-tech dailies ALWAYS exist, but at high levels a single upgrade/research spans multiple days (construction ~3/8/20 days, research min ~2 days), so they complete every few days rather than daily — don't treat them as strictly-daily targets on high-level accounts.",
+      "source": "user (account owner), 2026-07-20",
+      "references": [
+        "knowledge/daily_missions.json -> daily-mission-list",
+        "knowledge/resources.json -> march-queues, red-dots-heuristic",
+        "planner/strategies.json -> daily-rush-job-optimization, daily-nomadic-merchant, oasis-island-development"
+      ]
+    }
+  ],
+  "open_questions": [
+    "RESOLVED (hybrid): red dots reliably flag pending actions but not worth-doing; use them to discover, gate action per-task. See knowledge/resources.json -> red-dots-heuristic.",
+    "PARTIALLY RESOLVED: daily mission list mapped (knowledge/daily_missions.json) and routine drafted (daily-routine-and-march-queues). Still need weekly missions and exact panel claim flows.",
+    "Spending policy for free premium currency (never real money).",
+    "RESOLVED (source): hero generation is visible in the HEROES menu on the main screen. Also worth a pre-setup config so the bot directs resources correctly before it can read this reliably.",
+    "Per-troop-type stat weights: NOT visible/derivable in-game — the 'Balance' example (Inf Health 1.2x / Cav-Archer 0.8x) is a community/optimizer DEDUCTION from video math, not an in-game value. Most of our numbers are community trial-and-error deductions, so treat weight-based rankings as reasoned ESTIMATES, not exact. Refine opportunistically if the community publishes fuller profiles."
+  ]
+}

@@ -1,0 +1,11 @@
+# Ambiente virtual
+.venv/
+__pycache__/
+*.pyc
+
+# Screenshots temporários de criação de templates
+screen.png
+*.tmp.png
+
+# Pasta do Uninter (fora do repositório)
+uninter_pos/

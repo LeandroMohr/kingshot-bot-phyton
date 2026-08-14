@@ -1,0 +1,27 @@
+{
+  "domain": "exploration",
+  "title": "Exploration",
+  "description": "Exploration / expedition and wilderness combat mechanics and rewards.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["Strat Game Sloth 'First 100 Days' video (2026-07-20)"],
+  "entries": [
+    {
+      "id": "stamina-refund-on-loss",
+      "name": "Lost wilderness battles refund stamina",
+      "summary": "When you LOSE a stamina-consuming wilderness battle, the stamina spent is refunded. The refund is sometimes granted immediately and sometimes only when the troops return home, so it is easy to miss.",
+      "details": {
+        "applies_to": ["beasts", "terrors", "rebel bounties", "Caesars", "anything that consumes stamina to attack"],
+        "timing": "Refund can be immediate OR delayed until troops return home.",
+        "observation": "In-game example: stamina drops by 10 on attack, then returns to 10 after the defeat.",
+        "implication": "It is effectively free to gamble on uncertain wilderness fights, since a loss returns the stamina.",
+        "source": "Strat Game Sloth 'First 100 Days' video (2026-07-20)"
+      },
+      "tags": ["wilderness", "stamina", "combat", "beasts", "terrors", "rebels"]
+    }
+  ],
+  "open_questions": [
+    "Exploration screen layout and claimable rewards.",
+    "RESOLVED: stamina is consumed only by wilderness combat (monster/beast hunts and terrors); the loss-refund applies there. Arena does NOT use stamina — it uses tickets (see knowledge/arena.json -> arena-tickets)."
+  ]
+}

@@ -1,0 +1,118 @@
+{
+  "domain": "resources",
+  "title": "Resources",
+  "description": "Resource generation/collection the bot automates (idle income, gathering, etc.).",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["live testing on BlueStacks (ADB 540x960)"],
+  "entries": [
+    {
+      "id": "conquest-idle-income",
+      "name": "Conquest — Idle Income",
+      "summary": "Conquest accumulates idle resources over time. When something is ready, a green 'Claim' button shows next to a glowing chest on the Conquest screen; claiming opens an 'Idle Income' modal with a big CLAIM button.",
+      "details": {
+        "entry_point": "Conquest button on the home bottom bar",
+        "automated_by": "tasks/collect_conquest.py (ConquestTask)",
+        "cadence": "checked every 1h (loop task)",
+        "flow": [
+          "home: tap conquest_button.png",
+          "conquest screen: tap conquest_ready.png (green Claim; absent => nothing to collect)",
+          "modal: tap conquest_claim.png (big CLAIM)",
+          "tap conquest_exit.png (or screen center) to leave",
+          "back to home"
+        ],
+        "templates": {
+          "conquest_button.png": "opens Conquest from home (~54,918)",
+          "conquest_ready.png": "green Claim on the conquest screen (thr 0.80)",
+          "conquest_claim.png": "big CLAIM in the Idle Income modal (thr 0.80)",
+          "conquest_exit.png": "tap-anywhere-to-exit (thr 0.80)",
+          "conquest_chest.png": "UNUSED (animated, unreliable ~0.81 match)"
+        }
+      },
+      "tags": ["idle", "timer", "conquest"]
+    },
+    {
+      "id": "decrees-rush-job-combo",
+      "name": "Decrees: Rush Job + Productivity Day combo",
+      "summary": "Town Decrees (Decrees panel) that affect resource output. Rush Job's payout is calculated from your buildings' CURRENT production values, so activating Productivity Day (which doubles those production values) FIRST roughly doubles the Rush Job payout. Claimed to be worth ~+1M/day (~+30M/month) at mid-game.",
+      "details": {
+        "rush_job": {
+          "cooldown": "once every 24 hours",
+          "effect": "Instantly grants ~5 in-game days of resources from your town's production buildings.",
+          "typical_gain": "~1-1.5M resources at mid-game building levels (TC 27-29).",
+          "formula": "Rush Job Reward = Building Production Value x 5 days"
+        },
+        "productivity_day": {
+          "effect": "Doubles the output of all resource-producing buildings in your town.",
+          "duration": "one in-game day",
+          "key_mechanic": "It modifies the actual building production VALUES, which is why it stacks with Rush Job. With it active: Reward = (Production Value x 2) x 5 days.",
+          "mood_cost": "Has a negative mood impact (offset with Festivities)."
+        },
+        "festivities": {
+          "role": "Optional follow-up decree. Offsets the negative mood impact from Productivity Day and rewards residents."
+        },
+        "urgent_mobilization": {
+          "does_not_stack": true,
+          "why": "Extends each resident's in-game workday LENGTH but does NOT modify building production values. Rush Job is computed from production values, not work duration, so it adds nothing to Rush Job. Do not waste it before Rush Job."
+        },
+        "numbers_example": {
+          "buildings": "TC 27-29",
+          "rush_job_only": "~1.5M",
+          "productivity_then_rush": "~2.5M",
+          "difference": "+~1M/day => +~30M/month"
+        }
+      },
+      "tags": [
+        "resources",
+        "decrees",
+        "edict",
+        "rush-job",
+        "productivity-day",
+        "daily"
+      ]
+    },
+    {
+      "id": "march-queues",
+      "name": "March queues (deployment slots)",
+      "summary": "Each simultaneous march (gather, hunt, rally, etc.) occupies one march queue. Max is 6. Accounts start with 1 and unlock more via combat research (Regimental/Command Tactics path); F2P realistically reach 5. The 6th queue requires a real-money purchase.",
+      "details": {
+        "max": 6,
+        "start": 1,
+        "growth": "Increases as you level up combat research; typically reach 5 through research/progression.",
+        "typical_5_split": "4 gathering + 1 hunt.",
+        "sixth_queue": "Only obtainable via real-money purchase (out of scope per no-real-money rule).",
+        "usage_order": "When doing daily map actions, run HUNT first, then gathering — each consumes a queue and hunt feeds the 'defeat Terror' / beast daily missions.",
+        "source": "user (account owner), 2026-07-20"
+      },
+      "tags": [
+        "march-queue",
+        "gathering",
+        "hunt",
+        "research",
+        "limit"
+      ]
+    },
+    {
+      "id": "red-dots-heuristic",
+      "name": "Menu red dots as a collection signal",
+      "summary": "Red dots on menu buttons reliably signal that there is SOMETHING to collect or do behind that menu — but not necessarily something worth doing. The game also uses them to push packs or nudge you into spending resources that are often better saved for a high-reward event.",
+      "details": {
+        "reliable_for": "Detecting 'there is an action/collectible here' without a fixed timer.",
+        "not_reliable_for": "Deciding whether to ACT — a red dot may be a pack push or a suboptimal resource spend.",
+        "bot_guidance": "Use red dots to DISCOVER pending actions, then gate the actual action behind task-specific rules (e.g. free claims yes; discounted/spending prompts deferred to the player).",
+        "source": "user (account owner), 2026-07-20"
+      },
+      "tags": [
+        "red-dot",
+        "ui",
+        "signal",
+        "collection",
+        "heuristic"
+      ]
+    }
+  ],
+  "open_questions": [
+    "RESOLVED: yes, automate gathering AND hunt (run hunt first, then gathering); both consume march queues (see march-queues).",
+    "RESOLVED: red dots reliably signal a pending action/collectible but NOT that it's worth doing (may be pack/spend pushes). See red-dots-heuristic."
+  ]
+}

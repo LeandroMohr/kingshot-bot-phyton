@@ -1,0 +1,4 @@
+{
+  "description": "Train Troops settings. 'train_tier' (1-10) is which troop tier to train; 10 = Apex (strongest). Re-read before every training pass.",
+  "train_tier": 10
+}

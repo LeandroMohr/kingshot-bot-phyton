@@ -1,0 +1,5 @@
+{
+  "description": "Terror Hunt settings. 'terror_level' (3-8) is which Terror level to hunt. 'rally_mode' is 'hnt' (one rally with the HNT preset) or 'fill' (keep every free march queue busy, Equalize, no preset). Both are re-read before every hunt.",
+  "terror_level": 8,
+  "rally_mode": "hnt"
+}

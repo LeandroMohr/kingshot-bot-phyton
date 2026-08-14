@@ -1,0 +1,2179 @@
+{
+  "domain": "masters",
+  "title": "Masters",
+  "description": "Kingshot Masters (Realm Journey companions upgraded with General Master Emblem, Master's Manuscripts and Affinity). Each Master has Relationship Levels (global squad buff), unlock-gated Skills, and a single Talent. Terminology: 'Squads' = troops/marches. Marksman=Archer, Lancer=Cavalry elsewhere in the kit but Masters use generic Squad stats.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "kingshotguide.com Masters guide (user-provided)"
+  ],
+  "entries": [
+    {
+      "id": "pan",
+      "name": "Pan",
+      "summary": "Palace Administrator. Second Master unlocked; a growth-focused Master (intel, stamina, construction speed, Mystery Badges, gathering chests) rather than a combat specialist. Relationship buff: Squads' Defense up to +15.00%.",
+      "details": {
+        "role": "Palace Administrator",
+        "unlock_order": "Second Master",
+        "focus": "Growth, extra intel missions, storehouse stamina, construction time, Mystery Badges, and gathering chests",
+        "relationship_buff": "Squads' Defense, up to +15.00%",
+        "timing_note": "Pan is not a pure battle Master. He is strongest when your account still benefits from daily intel, stamina, building speed, and shop refresh value.",
+        "relationship_levels_note": "Major relationship breakpoints and emblem gates; intermediate levels continue the same progression.",
+        "relationship_levels": [
+          {
+            "level": 1,
+            "affinity": 240,
+            "emblem": null,
+            "buff": "+1.58%"
+          },
+          {
+            "level": 10,
+            "affinity": 410,
+            "emblem": 5,
+            "buff": "+2.85%"
+          },
+          {
+            "level": 20,
+            "affinity": 650,
+            "emblem": 10,
+            "buff": "+4.20%"
+          },
+          {
+            "level": 30,
+            "affinity": 920,
+            "emblem": 15,
+            "buff": "+5.55%"
+          },
+          {
+            "level": 40,
+            "affinity": 1300,
+            "emblem": 20,
+            "buff": "+6.90%"
+          },
+          {
+            "level": 50,
+            "affinity": 1800,
+            "emblem": 25,
+            "buff": "+8.25%"
+          },
+          {
+            "level": 60,
+            "affinity": 2400,
+            "emblem": 30,
+            "buff": "+9.60%"
+          },
+          {
+            "level": 70,
+            "affinity": 3000,
+            "emblem": 35,
+            "buff": "+10.95%"
+          },
+          {
+            "level": 80,
+            "affinity": 3600,
+            "emblem": 40,
+            "buff": "+12.30%"
+          },
+          {
+            "level": 90,
+            "affinity": 4200,
+            "emblem": 45,
+            "buff": "+13.65%"
+          },
+          {
+            "level": 100,
+            "affinity": 4800,
+            "emblem": 50,
+            "buff": "+15.00%"
+          }
+        ],
+        "best_for": [
+          "Developing accounts that still need construction speed and daily resource tempo.",
+          "Players who complete Watchtower Intel and gathering every day.",
+          "Low-to-mid spenders who want permanent account value before niche combat bonuses."
+        ],
+        "not_ideal_for": [
+          "Players looking for immediate Bear Hunt score gains.",
+          "Arena-focused accounts that already have growth systems mostly finished."
+        ],
+        "skills": [
+          {
+            "name": "Falconer",
+            "unlock_requirement": "Relationship Level 10",
+            "effect": "Increases the number of daily Watchtower Intel Missions found.",
+            "columns": [
+              "level",
+              "intel_missions",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "intel_missions": 2,
+                "power": 20000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "intel_missions": 3,
+                "power": 40000,
+                "xp": 43200,
+                "masters_manuscripts": 500
+              },
+              {
+                "level": 3,
+                "intel_missions": 4,
+                "power": 60000,
+                "xp": 86400,
+                "masters_manuscripts": 1000
+              },
+              {
+                "level": 4,
+                "intel_missions": 6,
+                "power": 80000,
+                "xp": 172800,
+                "masters_manuscripts": 2000
+              },
+              {
+                "level": 5,
+                "intel_missions": 8,
+                "power": 100000,
+                "xp": 345600,
+                "masters_manuscripts": 4000
+              }
+            ]
+          },
+          {
+            "name": "Good Steward",
+            "unlock_requirement": "Relationship Level 20",
+            "effect": "Increases Storehouse Governor Stamina replenishment.",
+            "columns": [
+              "level",
+              "governor_stamina",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "governor_stamina": 10,
+                "power": 16000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "governor_stamina": 15,
+                "power": 32000,
+                "xp": 34200,
+                "masters_manuscripts": 400
+              },
+              {
+                "level": 3,
+                "governor_stamina": 20,
+                "power": 48000,
+                "xp": 69000,
+                "masters_manuscripts": 800
+              },
+              {
+                "level": 4,
+                "governor_stamina": 30,
+                "power": 64000,
+                "xp": 138000,
+                "masters_manuscripts": 1600
+              },
+              {
+                "level": 5,
+                "governor_stamina": 40,
+                "power": 80000,
+                "xp": 276000,
+                "masters_manuscripts": 3200
+              }
+            ]
+          },
+          {
+            "name": "Master Architect",
+            "unlock_requirement": "Relationship Level 30",
+            "effect": "Speeds up each new construction by a fixed number of hours.",
+            "columns": [
+              "level",
+              "speed_boost",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "speed_boost": "2h",
+                "power": 7000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "speed_boost": "3h",
+                "power": 14000,
+                "xp": 13800,
+                "masters_manuscripts": 200
+              },
+              {
+                "level": 3,
+                "speed_boost": "4h",
+                "power": 21000,
+                "xp": 27600,
+                "masters_manuscripts": 400
+              },
+              {
+                "level": 4,
+                "speed_boost": "6h",
+                "power": 28000,
+                "xp": 55200,
+                "masters_manuscripts": 800
+              },
+              {
+                "level": 5,
+                "speed_boost": "8h",
+                "power": 35000,
+                "xp": 110400,
+                "masters_manuscripts": 1600
+              }
+            ]
+          },
+          {
+            "name": "Ways and Means",
+            "unlock_requirement": "Relationship Level 40",
+            "effect": "Adds Mystery Badges after daily mission completion and increases Mystery Shop free refreshes.",
+            "columns": [
+              "level",
+              "extra_mystery_badges",
+              "refreshes",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "extra_mystery_badges": 20,
+                "refreshes": 1,
+                "power": 7000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "extra_mystery_badges": 30,
+                "refreshes": 1,
+                "power": 14000,
+                "xp": 10200,
+                "masters_manuscripts": 100
+              },
+              {
+                "level": 3,
+                "extra_mystery_badges": 40,
+                "refreshes": 1,
+                "power": 21000,
+                "xp": 20400,
+                "masters_manuscripts": 200
+              },
+              {
+                "level": 4,
+                "extra_mystery_badges": 50,
+                "refreshes": 2,
+                "power": 28000,
+                "xp": 30600,
+                "masters_manuscripts": 300
+              },
+              {
+                "level": 5,
+                "extra_mystery_badges": 60,
+                "refreshes": 2,
+                "power": 35000,
+                "xp": 41400,
+                "masters_manuscripts": 400
+              },
+              {
+                "level": 10,
+                "extra_mystery_badges": 120,
+                "refreshes": 4,
+                "power": 70000,
+                "xp": 93000,
+                "masters_manuscripts": 900
+              }
+            ]
+          }
+        ],
+        "talent": {
+          "name": "Efficient Reserves",
+          "effect": "Gives Reserve Chests after total gathering time, with a daily cap that refreshes at UTC 00:00.",
+          "columns": [
+            "level",
+            "chest_gain",
+            "daily_cap",
+            "power"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "chest_gain": 1,
+              "daily_cap": 10,
+              "power": 36000
+            },
+            {
+              "level": 2,
+              "chest_gain": 1,
+              "daily_cap": 12,
+              "power": 72000
+            },
+            {
+              "level": 3,
+              "chest_gain": 1,
+              "daily_cap": 14,
+              "power": 108000
+            },
+            {
+              "level": 4,
+              "chest_gain": 2,
+              "daily_cap": 16,
+              "power": 144000
+            },
+            {
+              "level": 5,
+              "chest_gain": 2,
+              "daily_cap": 18,
+              "power": 180000
+            },
+            {
+              "level": 6,
+              "chest_gain": 3,
+              "daily_cap": 20,
+              "power": 216000
+            },
+            {
+              "level": 7,
+              "chest_gain": 3,
+              "daily_cap": 22,
+              "power": 252000
+            },
+            {
+              "level": 8,
+              "chest_gain": 4,
+              "daily_cap": 24,
+              "power": 288000
+            },
+            {
+              "level": 9,
+              "chest_gain": 4,
+              "daily_cap": 26,
+              "power": 324000
+            },
+            {
+              "level": 10,
+              "chest_gain": 5,
+              "daily_cap": 28,
+              "power": 360000
+            },
+            {
+              "level": 11,
+              "chest_gain": 5,
+              "daily_cap": 30,
+              "power": 396000
+            }
+          ],
+          "reserve_chest_contents": [
+            {
+              "item": "Truegold x10",
+              "probability": "1%"
+            },
+            {
+              "item": "Truegold x1",
+              "probability": "20%"
+            },
+            {
+              "item": "Gems x1000",
+              "probability": "2%"
+            },
+            {
+              "item": "Gems x10",
+              "probability": "20%"
+            },
+            {
+              "item": "100 Enhancement XP Part x1",
+              "probability": "3%"
+            },
+            {
+              "item": "10 Enhancement XP Part x1",
+              "probability": "20%"
+            },
+            {
+              "item": "1h General Speedup x1",
+              "probability": "4%"
+            },
+            {
+              "item": "5m General Speedup x1",
+              "probability": "30%"
+            }
+          ]
+        },
+        "upgrade_planning_notes": [
+          "Build Pan first if your account still needs economy, construction, and daily routine value.",
+          "Relationship Level 10 and 20 are the first useful breakpoints for active players.",
+          "Do not over-invest if your next priority is Bear Hunt damage or Arena rewards."
+        ]
+      },
+      "tags": [
+        "master",
+        "pan",
+        "growth",
+        "economy",
+        "construction",
+        "intel"
+      ]
+    },
+    {
+      "id": "valora",
+      "name": "Valora",
+      "summary": "Bear Hunter. First Master unlocked when the Master system becomes available; kit built around Bear Hunt rally capacity, Bear rewards, and Bear damage points. Relationship buff: Squads' Attack up to +15.00%.",
+      "details": {
+        "role": "Bear Hunter",
+        "unlock_order": "First Master",
+        "focus": "Bear Hunt rally capacity, Bear rewards, and Bear damage points",
+        "relationship_buff": "Squads' Attack, up to +15.00%",
+        "timing_note": "Valora is narrow but very clear: if Bear Hunt performance matters to your alliance, she is the Master to evaluate first.",
+        "relationship_levels_note": "Major relationship breakpoints and emblem gates; intermediate levels continue the same progression. Level 0 is the base unlock row (1,000 affinity).",
+        "relationship_levels": [
+          {
+            "level": 0,
+            "affinity": 1000,
+            "emblem": null,
+            "buff": null
+          },
+          {
+            "level": 1,
+            "affinity": 200,
+            "emblem": null,
+            "buff": "+1.58%"
+          },
+          {
+            "level": 10,
+            "affinity": 340,
+            "emblem": 5,
+            "buff": "+2.85%"
+          },
+          {
+            "level": 20,
+            "affinity": 540,
+            "emblem": 10,
+            "buff": "+4.20%"
+          },
+          {
+            "level": 30,
+            "affinity": 760,
+            "emblem": 15,
+            "buff": "+5.55%"
+          },
+          {
+            "level": 40,
+            "affinity": 1080,
+            "emblem": 20,
+            "buff": "+6.90%"
+          },
+          {
+            "level": 50,
+            "affinity": 1500,
+            "emblem": 25,
+            "buff": "+8.25%"
+          },
+          {
+            "level": 60,
+            "affinity": 2000,
+            "emblem": 30,
+            "buff": "+9.60%"
+          },
+          {
+            "level": 70,
+            "affinity": 2500,
+            "emblem": 35,
+            "buff": "+10.95%"
+          },
+          {
+            "level": 80,
+            "affinity": 3000,
+            "emblem": 40,
+            "buff": "+12.30%"
+          },
+          {
+            "level": 90,
+            "affinity": 3500,
+            "emblem": 45,
+            "buff": "+13.65%"
+          },
+          {
+            "level": 100,
+            "affinity": 4000,
+            "emblem": 50,
+            "buff": "+15.00%"
+          }
+        ],
+        "best_for": [
+          "Bear rally hosts and alliance members optimizing Bear Hunt rewards.",
+          "Players who want more Forgehammers and Enhancement XP from Bear activity.",
+          "Alliances that coordinate Bear timing and test formations."
+        ],
+        "not_ideal_for": [
+          "Players who rarely join Bear Hunt.",
+          "Accounts that need construction, stamina, or Arena value more than Bear rewards."
+        ],
+        "skills": [
+          {
+            "name": "Dance of the Hunt",
+            "unlock_requirement": "None",
+            "effect": "Increases Raging Bear Rally Squad Capacity.",
+            "columns": [
+              "level",
+              "rally_capacity",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "rally_capacity": 30000,
+                "power": 3000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "rally_capacity": 60000,
+                "power": 6000,
+                "xp": 3600,
+                "masters_manuscripts": 70
+              },
+              {
+                "level": 3,
+                "rally_capacity": 90000,
+                "power": 9000,
+                "xp": 7200,
+                "masters_manuscripts": 140
+              },
+              {
+                "level": 4,
+                "rally_capacity": 120000,
+                "power": 12000,
+                "xp": 10800,
+                "masters_manuscripts": 210
+              },
+              {
+                "level": 5,
+                "rally_capacity": 150000,
+                "power": 15000,
+                "xp": 14400,
+                "masters_manuscripts": 280
+              },
+              {
+                "level": 10,
+                "rally_capacity": 300000,
+                "power": 30000,
+                "xp": 32400,
+                "masters_manuscripts": 630
+              }
+            ]
+          },
+          {
+            "name": "Leader by Example",
+            "unlock_requirement": "Relationship Level 20",
+            "effect": "Adds extra 100 Enhancement XP Part rewards from Bear Hunt.",
+            "columns": [
+              "level",
+              "xp_part_count",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "xp_part_count": 1,
+                "power": 13000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "xp_part_count": 2,
+                "power": 26000,
+                "xp": 27600,
+                "masters_manuscripts": 400
+              },
+              {
+                "level": 3,
+                "xp_part_count": 3,
+                "power": 39000,
+                "xp": 55200,
+                "masters_manuscripts": 800
+              },
+              {
+                "level": 4,
+                "xp_part_count": 4,
+                "power": 52000,
+                "xp": 110400,
+                "masters_manuscripts": 1600
+              },
+              {
+                "level": 5,
+                "xp_part_count": 5,
+                "power": 65000,
+                "xp": 220800,
+                "masters_manuscripts": 3200
+              }
+            ]
+          },
+          {
+            "name": "Weapon Obsession",
+            "unlock_requirement": "Relationship Level 30",
+            "effect": "Adds extra Forgehammer rewards from Bear Hunt.",
+            "columns": [
+              "level",
+              "forgehammers",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "forgehammers": 1,
+                "power": 20000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "forgehammers": 2,
+                "power": 40000,
+                "xp": 43200,
+                "masters_manuscripts": 500
+              },
+              {
+                "level": 3,
+                "forgehammers": 3,
+                "power": 60000,
+                "xp": 86400,
+                "masters_manuscripts": 1000
+              },
+              {
+                "level": 4,
+                "forgehammers": 4,
+                "power": 80000,
+                "xp": 172800,
+                "masters_manuscripts": 2000
+              },
+              {
+                "level": 5,
+                "forgehammers": 5,
+                "power": 100000,
+                "xp": 345600,
+                "masters_manuscripts": 4000
+              }
+            ]
+          },
+          {
+            "name": "Savage Advantage",
+            "unlock_requirement": "Relationship Level 40",
+            "effect": "Increases Bear Hunt Squad Capacity.",
+            "columns": [
+              "level",
+              "deployment_capacity",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "deployment_capacity": 3000,
+                "power": 7000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "deployment_capacity": 6000,
+                "power": 14000,
+                "xp": 10200,
+                "masters_manuscripts": 100
+              },
+              {
+                "level": 3,
+                "deployment_capacity": 9000,
+                "power": 21000,
+                "xp": 20400,
+                "masters_manuscripts": 200
+              },
+              {
+                "level": 4,
+                "deployment_capacity": 12000,
+                "power": 28000,
+                "xp": 30600,
+                "masters_manuscripts": 300
+              },
+              {
+                "level": 5,
+                "deployment_capacity": 15000,
+                "power": 35000,
+                "xp": 41400,
+                "masters_manuscripts": 400
+              },
+              {
+                "level": 10,
+                "deployment_capacity": 30000,
+                "power": 70000,
+                "xp": 93000,
+                "masters_manuscripts": 900
+              }
+            ]
+          }
+        ],
+        "talent": {
+          "name": "Hunter Instinct",
+          "effect": "Increases Bear Hunt Damage Points.",
+          "columns": [
+            "level",
+            "point_boost",
+            "power"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "point_boost": "2%",
+              "power": 36000
+            },
+            {
+              "level": 2,
+              "point_boost": "4%",
+              "power": 72000
+            },
+            {
+              "level": 3,
+              "point_boost": "6%",
+              "power": 108000
+            },
+            {
+              "level": 4,
+              "point_boost": "9%",
+              "power": 144000
+            },
+            {
+              "level": 5,
+              "point_boost": "12%",
+              "power": 180000
+            },
+            {
+              "level": 6,
+              "point_boost": "15%",
+              "power": 216000
+            },
+            {
+              "level": 7,
+              "point_boost": "18%",
+              "power": 252000
+            },
+            {
+              "level": 8,
+              "point_boost": "21%",
+              "power": 288000
+            },
+            {
+              "level": 9,
+              "point_boost": "24%",
+              "power": 324000
+            },
+            {
+              "level": 10,
+              "point_boost": "27%",
+              "power": 360000
+            },
+            {
+              "level": 11,
+              "point_boost": "30%",
+              "power": 396000
+            }
+          ]
+        },
+        "upgrade_planning_notes": [
+          "Choose Valora first if your alliance measures progress through Bear damage and Bear rewards.",
+          "Prioritize rally capacity and reward skills before chasing every late relationship level.",
+          "Pair this page with the Bear Formation Helper when testing host and joiner quality."
+        ]
+      },
+      "tags": [
+        "master",
+        "valora",
+        "bear-hunt",
+        "rally",
+        "rewards"
+      ]
+    },
+    {
+      "id": "roman",
+      "name": "Roman",
+      "summary": "Arena Champion. Third Master met in Realm Journey; skills focus on Arena stat boosts, Arena Tokens, Arena Shop discounts and Arena Star Chests. Relationship buff: Squads' Attack and Defense up to +15.00%.",
+      "details": {
+        "role": "Arena Champion",
+        "unlock_order": "Third Master",
+        "focus": "Arena stats, Arena Token income, Arena Shop discounts, and Arena Star Chests",
+        "relationship_buff": "Squads' Attack and Squads' Defense, up to +15.00%",
+        "timing_note": "Roman is more valuable when Arena tokens, shop discounts, and match rewards are already part of your weekly routine.",
+        "relationship_levels_note": "Major relationship breakpoints and emblem gates; intermediate levels continue the same progression.",
+        "relationship_levels": [
+          {
+            "level": 1,
+            "affinity": 1000,
+            "emblem": null,
+            "buff": "+1.58%"
+          },
+          {
+            "level": 10,
+            "affinity": 960,
+            "emblem": 8,
+            "buff": "+2.85%"
+          },
+          {
+            "level": 20,
+            "affinity": 1560,
+            "emblem": 16,
+            "buff": "+4.20%"
+          },
+          {
+            "level": 30,
+            "affinity": 2190,
+            "emblem": 24,
+            "buff": "+5.55%"
+          },
+          {
+            "level": 40,
+            "affinity": 3120,
+            "emblem": 32,
+            "buff": "+6.90%"
+          },
+          {
+            "level": 50,
+            "affinity": 4350,
+            "emblem": 40,
+            "buff": "+8.25%"
+          },
+          {
+            "level": 60,
+            "affinity": 5850,
+            "emblem": 48,
+            "buff": "+9.60%"
+          },
+          {
+            "level": 70,
+            "affinity": 7350,
+            "emblem": 56,
+            "buff": "+10.95%"
+          },
+          {
+            "level": 80,
+            "affinity": 8850,
+            "emblem": 64,
+            "buff": "+12.30%"
+          },
+          {
+            "level": 90,
+            "affinity": 10350,
+            "emblem": 72,
+            "buff": "+13.65%"
+          },
+          {
+            "level": 100,
+            "affinity": 11850,
+            "emblem": 80,
+            "buff": "+15.00%"
+          }
+        ],
+        "best_for": [
+          "Players who complete Arena every day and spend Arena Tokens efficiently.",
+          "Accounts that already have growth and Bear priorities covered.",
+          "Competitive players who want Arena-specific stat gains."
+        ],
+        "not_ideal_for": [
+          "Players who skip Arena or ignore the Arena Shop.",
+          "Newer accounts that still need Pan growth value or Valora Bear rewards first."
+        ],
+        "skills": [
+          {
+            "name": "Teacher of Champions",
+            "unlock_requirement": "Relationship Level 10",
+            "effect": "Increases Escorts' Arena Battle Attack and Health.",
+            "columns": [
+              "level",
+              "escort_boost",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "escort_boost": "2%",
+                "power": 42000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "escort_boost": "4%",
+                "power": 84000,
+                "xp": 82800,
+                "masters_manuscripts": 600
+              },
+              {
+                "level": 3,
+                "escort_boost": "6%",
+                "power": 126000,
+                "xp": 165600,
+                "masters_manuscripts": 1200
+              },
+              {
+                "level": 4,
+                "escort_boost": "8%",
+                "power": 168000,
+                "xp": 248400,
+                "masters_manuscripts": 1800
+              },
+              {
+                "level": 5,
+                "escort_boost": "10%",
+                "power": 210000,
+                "xp": 331800,
+                "masters_manuscripts": 2400
+              },
+              {
+                "level": 10,
+                "escort_boost": "20%",
+                "power": 420000,
+                "xp": 746400,
+                "masters_manuscripts": 5400
+              }
+            ]
+          },
+          {
+            "name": "Winner Take All",
+            "unlock_requirement": "Relationship Level 20",
+            "effect": "Increases daily and weekly Arena Token rewards.",
+            "columns": [
+              "level",
+              "arena_token_gain",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "arena_token_gain": "5%",
+                "power": 18000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "arena_token_gain": "10%",
+                "power": 36000,
+                "xp": 30600,
+                "masters_manuscripts": 300
+              },
+              {
+                "level": 3,
+                "arena_token_gain": "15%",
+                "power": 54000,
+                "xp": 61800,
+                "masters_manuscripts": 600
+              },
+              {
+                "level": 4,
+                "arena_token_gain": "20%",
+                "power": 72000,
+                "xp": 93000,
+                "masters_manuscripts": 900
+              },
+              {
+                "level": 5,
+                "arena_token_gain": "25%",
+                "power": 90000,
+                "xp": 124200,
+                "masters_manuscripts": 1200
+              },
+              {
+                "level": 10,
+                "arena_token_gain": "50%",
+                "power": 180000,
+                "xp": 279600,
+                "masters_manuscripts": 2700
+              }
+            ]
+          },
+          {
+            "name": "Crowd Favorite",
+            "unlock_requirement": "Relationship Level 30",
+            "effect": "Adds discounted Arena Shop items.",
+            "columns": [
+              "level",
+              "shop_items",
+              "price_drop",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "shop_items": 1,
+                "price_drop": "5%",
+                "power": 18000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "shop_items": 1,
+                "price_drop": "10%",
+                "power": 36000,
+                "xp": 30600,
+                "masters_manuscripts": 300
+              },
+              {
+                "level": 3,
+                "shop_items": 1,
+                "price_drop": "15%",
+                "power": 54000,
+                "xp": 61800,
+                "masters_manuscripts": 600
+              },
+              {
+                "level": 4,
+                "shop_items": 1,
+                "price_drop": "20%",
+                "power": 72000,
+                "xp": 93000,
+                "masters_manuscripts": 900
+              },
+              {
+                "level": 5,
+                "shop_items": 1,
+                "price_drop": "25%",
+                "power": 90000,
+                "xp": 124200,
+                "masters_manuscripts": 1200
+              },
+              {
+                "level": 10,
+                "shop_items": 3,
+                "price_drop": "50%",
+                "power": 180000,
+                "xp": 279600,
+                "masters_manuscripts": 2700
+              }
+            ]
+          },
+          {
+            "name": "One Desire",
+            "unlock_requirement": "Relationship Level 40",
+            "effect": "Boosts Arena Battle Attack and Health.",
+            "columns": [
+              "level",
+              "hero_stats_up",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "hero_stats_up": "2%",
+                "power": 42000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "hero_stats_up": "4%",
+                "power": 84000,
+                "xp": 82800,
+                "masters_manuscripts": 600
+              },
+              {
+                "level": 3,
+                "hero_stats_up": "6%",
+                "power": 126000,
+                "xp": 165600,
+                "masters_manuscripts": 1200
+              },
+              {
+                "level": 4,
+                "hero_stats_up": "8%",
+                "power": 168000,
+                "xp": 248400,
+                "masters_manuscripts": 1800
+              },
+              {
+                "level": 5,
+                "hero_stats_up": "10%",
+                "power": 210000,
+                "xp": 331800,
+                "masters_manuscripts": 2400
+              },
+              {
+                "level": 10,
+                "hero_stats_up": "20%",
+                "power": 420000,
+                "xp": 746400,
+                "masters_manuscripts": 5400
+              }
+            ]
+          }
+        ],
+        "talent": {
+          "name": "Star Belligerent",
+          "effect": "Gives a chance to receive Arena Star Chests after Arena matches.",
+          "columns": [
+            "level",
+            "reward_chance",
+            "chests",
+            "power"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "reward_chance": "50%",
+              "chests": 1,
+              "power": 58000
+            },
+            {
+              "level": 2,
+              "reward_chance": "55%",
+              "chests": 1,
+              "power": 116000
+            },
+            {
+              "level": 3,
+              "reward_chance": "60%",
+              "chests": 1,
+              "power": 174000
+            },
+            {
+              "level": 4,
+              "reward_chance": "65%",
+              "chests": 1,
+              "power": 232000
+            },
+            {
+              "level": 5,
+              "reward_chance": "70%",
+              "chests": 1,
+              "power": 290000
+            },
+            {
+              "level": 6,
+              "reward_chance": "75%",
+              "chests": 2,
+              "power": 348000
+            },
+            {
+              "level": 7,
+              "reward_chance": "80%",
+              "chests": 2,
+              "power": 406000
+            },
+            {
+              "level": 8,
+              "reward_chance": "85%",
+              "chests": 2,
+              "power": 464000
+            },
+            {
+              "level": 9,
+              "reward_chance": "90%",
+              "chests": 2,
+              "power": 522000
+            },
+            {
+              "level": 10,
+              "reward_chance": "95%",
+              "chests": 2,
+              "power": 580000
+            },
+            {
+              "level": 11,
+              "reward_chance": "100%",
+              "chests": 3,
+              "power": 638000
+            }
+          ],
+          "arena_star_chest_contents": [
+            {
+              "item": "Mythic General Hero Shards x1",
+              "probability": "4%"
+            },
+            {
+              "item": "Forgehammers x1",
+              "probability": "6%"
+            },
+            {
+              "item": "100 Enhancement XP Part x1",
+              "probability": "8%"
+            },
+            {
+              "item": "10 Enhancement XP Part x2",
+              "probability": "20%"
+            },
+            {
+              "item": "1h General Speedup x1",
+              "probability": "10%"
+            },
+            {
+              "item": "5m General Speedup x1",
+              "probability": "52%"
+            }
+          ]
+        },
+        "upgrade_planning_notes": [
+          "Build Roman after you know Arena tokens and shop discounts matter to your account.",
+          "Relationship Level 20 is a strong checkpoint because it improves daily and weekly token flow.",
+          "Do not split General Master Emblems across every Master unless each one supports a real routine."
+        ]
+      },
+      "tags": [
+        "master",
+        "roman",
+        "arena",
+        "tokens",
+        "shop"
+      ]
+    },
+    {
+      "id": "cassia",
+      "name": "Cassia",
+      "summary": "Battle Commander. Fourth Master met in Realm Journey; a battle-focused Master with combat buffs, extra soldiers, Soldier's Medallions, squad stats, rally capacity and deployment capacity. Relationship buff: Squads' Lethality and Health up to +20.00%.",
+      "details": {
+        "role": "Battle Commander",
+        "unlock_order": "Fourth Master",
+        "focus": "Combat buffs, extra soldiers, Soldier's Medallions, squad stats, rally capacity, and deployment capacity",
+        "relationship_buff": "Squads' Lethality and Health, up to +20.00%",
+        "timing_note": "Cassia is a battle-focused Master. Her value is highest when you can use extra deployment size, rally capacity, and direct combat stats.",
+        "relationship_levels_note": "Source lists both the level milestones (with affinity) and separate '+' emblem-gate rows (e.g. '10+' pays 20 emblems between levels 10 and 20). '-' means the source left that cell blank. Kept verbatim.",
+        "relationship_levels": [
+          {
+            "level": "1",
+            "affinity": 1100,
+            "emblem": null,
+            "buff": "+2.10%"
+          },
+          {
+            "level": "10+",
+            "affinity": null,
+            "emblem": 20,
+            "buff": "+3.00%"
+          },
+          {
+            "level": "10",
+            "affinity": 1870,
+            "emblem": null,
+            "buff": "+3.80%"
+          },
+          {
+            "level": "20+",
+            "affinity": null,
+            "emblem": 40,
+            "buff": "+4.80%"
+          },
+          {
+            "level": "20",
+            "affinity": 2970,
+            "emblem": null,
+            "buff": "+5.60%"
+          },
+          {
+            "level": "30+",
+            "affinity": null,
+            "emblem": 80,
+            "buff": "+6.60%"
+          },
+          {
+            "level": "30",
+            "affinity": 4180,
+            "emblem": null,
+            "buff": "+7.40%"
+          },
+          {
+            "level": "40+",
+            "affinity": null,
+            "emblem": 120,
+            "buff": "+8.40%"
+          },
+          {
+            "level": "40",
+            "affinity": 5940,
+            "emblem": null,
+            "buff": "+9.20%"
+          },
+          {
+            "level": "50+",
+            "affinity": null,
+            "emblem": 160,
+            "buff": "+10.20%"
+          },
+          {
+            "level": "50",
+            "affinity": 8250,
+            "emblem": null,
+            "buff": "+11.00%"
+          },
+          {
+            "level": "60+",
+            "affinity": null,
+            "emblem": 200,
+            "buff": "+12.00%"
+          },
+          {
+            "level": "60",
+            "affinity": 11000,
+            "emblem": null,
+            "buff": "+12.80%"
+          },
+          {
+            "level": "70+",
+            "affinity": null,
+            "emblem": 240,
+            "buff": "+13.80%"
+          },
+          {
+            "level": "70",
+            "affinity": 13750,
+            "emblem": null,
+            "buff": "+14.60%"
+          },
+          {
+            "level": "80+",
+            "affinity": null,
+            "emblem": 280,
+            "buff": "+15.60%"
+          },
+          {
+            "level": "80",
+            "affinity": 16500,
+            "emblem": null,
+            "buff": "+16.40%"
+          },
+          {
+            "level": "90+",
+            "affinity": null,
+            "emblem": 320,
+            "buff": "+17.40%"
+          },
+          {
+            "level": "90",
+            "affinity": 19250,
+            "emblem": null,
+            "buff": "+18.20%"
+          },
+          {
+            "level": "100",
+            "affinity": null,
+            "emblem": 360,
+            "buff": "+20.00%"
+          }
+        ],
+        "best_for": [
+          "Rally leaders and spenders who can turn combat stats into event and PvP value.",
+          "Players who already have early economy Masters handled and want late-game combat power.",
+          "Accounts that need rally capacity, squad size, and direct troop stat upgrades."
+        ],
+        "not_ideal_for": [
+          "Newer accounts that still need Pan-style economy and daily routine value.",
+          "Players with limited General Master Emblems who cannot reach meaningful Cassia breakpoints."
+        ],
+        "skills": [
+          {
+            "name": "Recruiter in Chief",
+            "unlock_requirement": "Relationship Level 10",
+            "effect": "Allows free recruitment of additional high-level soldiers from any Camp and adds Soldier's Medallions from the Enlistment Office.",
+            "columns": [
+              "level",
+              "troops",
+              "soldiers_medallions",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "troops": 150,
+                "soldiers_medallions": 1,
+                "power": 18000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "troops": 200,
+                "soldiers_medallions": 2,
+                "power": 36000,
+                "xp": 30600,
+                "masters_manuscripts": 300
+              },
+              {
+                "level": 3,
+                "troops": 250,
+                "soldiers_medallions": 3,
+                "power": 54000,
+                "xp": 61800,
+                "masters_manuscripts": 600
+              },
+              {
+                "level": 4,
+                "troops": 300,
+                "soldiers_medallions": 4,
+                "power": 72000,
+                "xp": 93000,
+                "masters_manuscripts": 900
+              },
+              {
+                "level": 5,
+                "troops": 350,
+                "soldiers_medallions": 5,
+                "power": 90000,
+                "xp": 124200,
+                "masters_manuscripts": 1200
+              },
+              {
+                "level": 6,
+                "troops": 400,
+                "soldiers_medallions": 6,
+                "power": 108000,
+                "xp": 155400,
+                "masters_manuscripts": 1500
+              },
+              {
+                "level": 7,
+                "troops": 450,
+                "soldiers_medallions": 7,
+                "power": 126000,
+                "xp": 186600,
+                "masters_manuscripts": 1800
+              },
+              {
+                "level": 8,
+                "troops": 500,
+                "soldiers_medallions": 8,
+                "power": 144000,
+                "xp": 217200,
+                "masters_manuscripts": 2100
+              },
+              {
+                "level": 9,
+                "troops": 550,
+                "soldiers_medallions": 9,
+                "power": 162000,
+                "xp": 248400,
+                "masters_manuscripts": 2400
+              },
+              {
+                "level": 10,
+                "troops": 600,
+                "soldiers_medallions": 10,
+                "power": 180000,
+                "xp": 279600,
+                "masters_manuscripts": 2700
+              }
+            ]
+          },
+          {
+            "name": "Firepower to Win",
+            "unlock_requirement": "Relationship Level 20",
+            "effect": "Cassia's battlefield experience increases Squad Attack and Defense.",
+            "columns": [
+              "level",
+              "squad_attack_defense",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "squad_attack_defense": "0.5%",
+                "power": 108000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "squad_attack_defense": "1%",
+                "power": 216000,
+                "xp": 86400,
+                "masters_manuscripts": 500
+              },
+              {
+                "level": 3,
+                "squad_attack_defense": "1.5%",
+                "power": 324000,
+                "xp": 172800,
+                "masters_manuscripts": 1000
+              },
+              {
+                "level": 4,
+                "squad_attack_defense": "2%",
+                "power": 432000,
+                "xp": 259200,
+                "masters_manuscripts": 1500
+              },
+              {
+                "level": 5,
+                "squad_attack_defense": "2.5%",
+                "power": 540000,
+                "xp": 345600,
+                "masters_manuscripts": 2000
+              },
+              {
+                "level": 6,
+                "squad_attack_defense": "3%",
+                "power": 648000,
+                "xp": 432000,
+                "masters_manuscripts": 2500
+              },
+              {
+                "level": 7,
+                "squad_attack_defense": "3.5%",
+                "power": 756000,
+                "xp": 518400,
+                "masters_manuscripts": 3000
+              },
+              {
+                "level": 8,
+                "squad_attack_defense": "4%",
+                "power": 864000,
+                "xp": 604800,
+                "masters_manuscripts": 3500
+              },
+              {
+                "level": 9,
+                "squad_attack_defense": "4.5%",
+                "power": 972000,
+                "xp": 691200,
+                "masters_manuscripts": 4000
+              },
+              {
+                "level": 10,
+                "squad_attack_defense": "5%",
+                "power": 1080000,
+                "xp": 777600,
+                "masters_manuscripts": 4500
+              },
+              {
+                "level": 11,
+                "squad_attack_defense": "5.5%",
+                "power": 1188000,
+                "xp": 864000,
+                "masters_manuscripts": 5000
+              },
+              {
+                "level": 12,
+                "squad_attack_defense": "6%",
+                "power": 1296000,
+                "xp": 950400,
+                "masters_manuscripts": 5500
+              },
+              {
+                "level": 13,
+                "squad_attack_defense": "6.5%",
+                "power": 1404000,
+                "xp": 1036800,
+                "masters_manuscripts": 6000
+              },
+              {
+                "level": 14,
+                "squad_attack_defense": "7%",
+                "power": 1512000,
+                "xp": 1209600,
+                "masters_manuscripts": 7000
+              },
+              {
+                "level": 15,
+                "squad_attack_defense": "7.5%",
+                "power": 1620000,
+                "xp": 1382400,
+                "masters_manuscripts": 8000
+              },
+              {
+                "level": 16,
+                "squad_attack_defense": "8%",
+                "power": 1728000,
+                "xp": 1382400,
+                "masters_manuscripts": 8000
+              },
+              {
+                "level": 17,
+                "squad_attack_defense": "8.5%",
+                "power": 1836000,
+                "xp": 1555200,
+                "masters_manuscripts": 9000
+              },
+              {
+                "level": 18,
+                "squad_attack_defense": "9%",
+                "power": 1944000,
+                "xp": 1555200,
+                "masters_manuscripts": 9000
+              },
+              {
+                "level": 19,
+                "squad_attack_defense": "9.5%",
+                "power": 2052000,
+                "xp": 1728000,
+                "masters_manuscripts": 10000
+              },
+              {
+                "level": 20,
+                "squad_attack_defense": "10%",
+                "power": 2160000,
+                "xp": 1728000,
+                "masters_manuscripts": 10000
+              }
+            ]
+          },
+          {
+            "name": "Commando",
+            "unlock_requirement": "Relationship Level 30",
+            "effect": "Cassia's handpicked elite squads increase Squad Lethality and Health.",
+            "columns": [
+              "level",
+              "squad_health_lethality",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "squad_health_lethality": "0.5%",
+                "power": 135000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "squad_health_lethality": "1%",
+                "power": 270000,
+                "xp": 159000,
+                "masters_manuscripts": 800
+              },
+              {
+                "level": 3,
+                "squad_health_lethality": "1.5%",
+                "power": 405000,
+                "xp": 297600,
+                "masters_manuscripts": 1500
+              },
+              {
+                "level": 4,
+                "squad_health_lethality": "2%",
+                "power": 540000,
+                "xp": 436800,
+                "masters_manuscripts": 2200
+              },
+              {
+                "level": 5,
+                "squad_health_lethality": "2.5%",
+                "power": 675000,
+                "xp": 595800,
+                "masters_manuscripts": 3000
+              },
+              {
+                "level": 6,
+                "squad_health_lethality": "3%",
+                "power": 810000,
+                "xp": 754800,
+                "masters_manuscripts": 3800
+              },
+              {
+                "level": 7,
+                "squad_health_lethality": "3.5%",
+                "power": 945000,
+                "xp": 894000,
+                "masters_manuscripts": 4500
+              },
+              {
+                "level": 8,
+                "squad_health_lethality": "4%",
+                "power": 1080000,
+                "xp": 1033200,
+                "masters_manuscripts": 5200
+              },
+              {
+                "level": 9,
+                "squad_health_lethality": "4.5%",
+                "power": 1215000,
+                "xp": 1192200,
+                "masters_manuscripts": 6000
+              },
+              {
+                "level": 10,
+                "squad_health_lethality": "5%",
+                "power": 1350000,
+                "xp": 1351200,
+                "masters_manuscripts": 6800
+              },
+              {
+                "level": 11,
+                "squad_health_lethality": "5.5%",
+                "power": 1485000,
+                "xp": 1490400,
+                "masters_manuscripts": 7500
+              },
+              {
+                "level": 12,
+                "squad_health_lethality": "6%",
+                "power": 1620000,
+                "xp": 1629000,
+                "masters_manuscripts": 8200
+              },
+              {
+                "level": 13,
+                "squad_health_lethality": "6.5%",
+                "power": 1755000,
+                "xp": 1788000,
+                "masters_manuscripts": 9000
+              },
+              {
+                "level": 14,
+                "squad_health_lethality": "7%",
+                "power": 1890000,
+                "xp": 2086200,
+                "masters_manuscripts": 10500
+              },
+              {
+                "level": 15,
+                "squad_health_lethality": "7.5%",
+                "power": 2025000,
+                "xp": 2384400,
+                "masters_manuscripts": 12000
+              },
+              {
+                "level": 16,
+                "squad_health_lethality": "8%",
+                "power": 2160000,
+                "xp": 2384400,
+                "masters_manuscripts": 12000
+              },
+              {
+                "level": 17,
+                "squad_health_lethality": "8.5%",
+                "power": 2295000,
+                "xp": 2682600,
+                "masters_manuscripts": 13500
+              },
+              {
+                "level": 18,
+                "squad_health_lethality": "9%",
+                "power": 2430000,
+                "xp": 2682600,
+                "masters_manuscripts": 13500
+              },
+              {
+                "level": 19,
+                "squad_health_lethality": "9.5%",
+                "power": 2565000,
+                "xp": 2980800,
+                "masters_manuscripts": 15000
+              },
+              {
+                "level": 20,
+                "squad_health_lethality": "10%",
+                "power": 2700000,
+                "xp": 2980800,
+                "masters_manuscripts": 15000
+              }
+            ]
+          },
+          {
+            "name": "Inspiring Mobilization",
+            "unlock_requirement": "Relationship Level 40",
+            "effect": "Boosts Rally Squad Capacity so larger rally marches can be assembled.",
+            "columns": [
+              "level",
+              "rally_capacity",
+              "power",
+              "xp",
+              "masters_manuscripts"
+            ],
+            "levels": [
+              {
+                "level": 1,
+                "rally_capacity": 5000,
+                "power": 150000,
+                "xp": null,
+                "masters_manuscripts": null
+              },
+              {
+                "level": 2,
+                "rally_capacity": 10000,
+                "power": 300000,
+                "xp": 179400,
+                "masters_manuscripts": 800
+              },
+              {
+                "level": 3,
+                "rally_capacity": 15000,
+                "power": 450000,
+                "xp": 336600,
+                "masters_manuscripts": 1500
+              },
+              {
+                "level": 4,
+                "rally_capacity": 20000,
+                "power": 600000,
+                "xp": 493800,
+                "masters_manuscripts": 2200
+              },
+              {
+                "level": 5,
+                "rally_capacity": 25000,
+                "power": 750000,
+                "xp": 673800,
+                "masters_manuscripts": 3000
+              },
+              {
+                "level": 6,
+                "rally_capacity": 30000,
+                "power": 900000,
+                "xp": 853200,
+                "masters_manuscripts": 3800
+              },
+              {
+                "level": 7,
+                "rally_capacity": 35000,
+                "power": 1050000,
+                "xp": 1010400,
+                "masters_manuscripts": 4500
+              },
+              {
+                "level": 8,
+                "rally_capacity": 40000,
+                "power": 1200000,
+                "xp": 1167600,
+                "masters_manuscripts": 5200
+              },
+              {
+                "level": 9,
+                "rally_capacity": 45000,
+                "power": 1350000,
+                "xp": 1347600,
+                "masters_manuscripts": 6000
+              },
+              {
+                "level": 10,
+                "rally_capacity": 50000,
+                "power": 1500000,
+                "xp": 1527600,
+                "masters_manuscripts": 6800
+              },
+              {
+                "level": 11,
+                "rally_capacity": 55000,
+                "power": 1650000,
+                "xp": 1684800,
+                "masters_manuscripts": 7500
+              },
+              {
+                "level": 12,
+                "rally_capacity": 60000,
+                "power": 1800000,
+                "xp": 1842000,
+                "masters_manuscripts": 8200
+              },
+              {
+                "level": 13,
+                "rally_capacity": 65000,
+                "power": 1950000,
+                "xp": 2021400,
+                "masters_manuscripts": 9000
+              },
+              {
+                "level": 14,
+                "rally_capacity": 70000,
+                "power": 2100000,
+                "xp": 2358600,
+                "masters_manuscripts": 10500
+              },
+              {
+                "level": 15,
+                "rally_capacity": 75000,
+                "power": 2250000,
+                "xp": 2695200,
+                "masters_manuscripts": 12000
+              },
+              {
+                "level": 16,
+                "rally_capacity": 80000,
+                "power": 2400000,
+                "xp": 2695200,
+                "masters_manuscripts": 12000
+              },
+              {
+                "level": 17,
+                "rally_capacity": 85000,
+                "power": 2550000,
+                "xp": 3032400,
+                "masters_manuscripts": 13500
+              },
+              {
+                "level": 18,
+                "rally_capacity": 90000,
+                "power": 2700000,
+                "xp": 3032400,
+                "masters_manuscripts": 13500
+              },
+              {
+                "level": 19,
+                "rally_capacity": 95000,
+                "power": 2850000,
+                "xp": 3369600,
+                "masters_manuscripts": 15000
+              },
+              {
+                "level": 20,
+                "rally_capacity": 100000,
+                "power": 3000000,
+                "xp": 3369600,
+                "masters_manuscripts": 15000
+              }
+            ]
+          }
+        ],
+        "talent": {
+          "name": "Horn of Valor",
+          "effect": "Increases Squad size limit, making Cassia especially valuable for large combat pushes.",
+          "columns": [
+            "level",
+            "deployment_capacity",
+            "power"
+          ],
+          "levels": [
+            {
+              "level": 1,
+              "deployment_capacity": 300,
+              "power": 236000
+            },
+            {
+              "level": 2,
+              "deployment_capacity": 600,
+              "power": 472000
+            },
+            {
+              "level": 3,
+              "deployment_capacity": 1000,
+              "power": 708000
+            },
+            {
+              "level": 4,
+              "deployment_capacity": 1500,
+              "power": 944000
+            },
+            {
+              "level": 5,
+              "deployment_capacity": 2000,
+              "power": 1180000
+            },
+            {
+              "level": 6,
+              "deployment_capacity": 3000,
+              "power": 1416000
+            },
+            {
+              "level": 7,
+              "deployment_capacity": 4000,
+              "power": 1652000
+            },
+            {
+              "level": 8,
+              "deployment_capacity": 5500,
+              "power": 1888000
+            },
+            {
+              "level": 9,
+              "deployment_capacity": 7000,
+              "power": 2124000
+            },
+            {
+              "level": 10,
+              "deployment_capacity": 8500,
+              "power": 2360000
+            },
+            {
+              "level": 11,
+              "deployment_capacity": 10000,
+              "power": 2596000
+            }
+          ]
+        },
+        "upgrade_planning_notes": [
+          "Treat Cassia as a late combat investment, not an early account-growth Master.",
+          "Relationship Level 20 and 30 are major stat checkpoints before chasing the level 40 rally-capacity skill.",
+          "Plan General Master Emblems carefully because Cassia asks for large emblem gates at each 10-level breakpoint."
+        ]
+      },
+      "tags": [
+        "master",
+        "cassia",
+        "combat",
+        "rally",
+        "deployment",
+        "squad-stats"
+      ]
+    },
+    {
+      "id": "master-academy-priority",
+      "name": "Master Academy Priority (Pan, Valora, Roman & Emblems)",
+      "summary": "Decision-first guide for the Master Academy: which Master to prioritize, when to spend General Master Emblems, and how to avoid spreading upgrades too thin. Core rule: spend Emblems only when they unlock a useful breakpoint on a Master you will keep using.",
+      "details": {
+        "guide_meta": {
+          "published": "2026-05-11",
+          "difficulty": "Intermediate",
+          "tags": [
+            "Master Academy",
+            "Masters",
+            "Progression",
+            "Guide"
+          ]
+        },
+        "short_answer": "Do not upgrade every Master evenly just because the Master Academy is new. Pick the Master whose bonus solves your current account problem, then push clean relationship and skill breakpoints before moving sideways.",
+        "master_summary": {
+          "Pan": "Safest first serious Master investment for most developing accounts; value is tied to daily growth, stamina, construction tempo, and resource flow.",
+          "Valora": "More attractive when your account needs hunt and combat tempo.",
+          "Roman": "A later, heavier investment that makes more sense when you can actually use the combat pressure he supports."
+        },
+        "core_rule": "Spend General Master Emblems when they unlock a useful breakpoint on a Master you will keep using. If the upgrade only makes the Master screen look more complete, hold the Emblems.",
+        "biggest_mistake": {
+          "trap": "Unlocking everything and leveling whatever is cheapest. It feels efficient but creates weak partial progress; Master Academy rewards focused upgrades because relationship levels, skill unlocks, and talent value matter more than scattered small numbers.",
+          "who_it_hurts_most": "Low spenders. A whale can brute force bad sequencing; a normal account cannot. Splitting Emblems across Pan, Valora, and Roman without a reason delays the exact breakpoints that help your account every day."
+        },
+        "what_actually_matters": [
+          {
+            "factor": "Your account stage",
+            "guidance": "If your kingdom is still building economy, research, and daily routine, choose the Master that improves repeatable value. If your alliance already fights heavily and you are in the main combat group, combat Masters become easier to justify."
+          },
+          {
+            "factor": "Your Master role",
+            "guidance": "Pan is the growth-first choice. Valora is better for hunt tempo and combat utility. Roman is more demanding and should not be treated as a casual side project."
+          },
+          {
+            "factor": "Emblem scarcity",
+            "guidance": "General Master Emblems are the gating material that forces real choices. Do not spend them until you know which Master and which relationship breakpoint you are targeting."
+          },
+          {
+            "factor": "Event timing",
+            "guidance": "If your next big event is KvK, Castle Battle, or a heavy alliance event, you can justify saving materials until the account impact is clearer. In a quiet growth window, Pan-style daily gains are often more useful than forcing combat progress too early."
+          }
+        ],
+        "priority_by_player_type": [
+          {
+            "player_type": "F2P and low spenders",
+            "advice": "Focus on one Master first. Pan is usually the cleanest early priority because daily economy compounds and does not require you to be a rally lead."
+          },
+          {
+            "player_type": "Active fighters",
+            "advice": "Consider Valora earlier if your alliance expects you to join combat events, hunt consistently, and keep marches active."
+          },
+          {
+            "player_type": "Rally leads and spenders",
+            "advice": "Roman can matter, but only if you can fund the path. Half-built Roman is not better than a focused Pan or Valora breakpoint."
+          },
+          {
+            "player_type": "Late-game planners",
+            "advice": "Use the Masters hub as your control page, then plan Master upgrades alongside Truegold, War Academy, and hero gear."
+          }
+        ],
+        "compare_before_committing": [
+          "Use the Kingshot Masters list to compare Pan, Valora, and Roman before spending.",
+          "Use the War Academy hub if your choice competes with Truegold and late-game research planning.",
+          "Use the War Academy Calculator before draining materials that may be needed for research branches.",
+          "Use the Kingdom Age Tracker to keep Master decisions aligned with server-stage unlock pressure."
+        ],
+        "faq": [
+          {
+            "q": "Which Master should I prioritize first in Kingshot?",
+            "a": "Most growth-focused accounts should prioritize Pan first. Combat-heavy accounts can justify Valora earlier, while Roman is best treated as a bigger investment for accounts that can actually use his combat value."
+          },
+          {
+            "q": "Should I level Pan, Valora, and Roman evenly?",
+            "a": "No. Even leveling is usually slower. Pick one target Master, reach the relationship or skill breakpoint you actually want, then reassess."
+          },
+          {
+            "q": "What are General Master Emblems for?",
+            "a": "General Master Emblems support Master relationship progression. Because they are limited, use them only when you know the breakpoint you are buying."
+          },
+          {
+            "q": "Is Master Academy more important than War Academy?",
+            "a": "Not universally. Master Academy can give strong permanent value, but War Academy still controls major late-game research. Compare the next real breakpoint, not the system name."
+          },
+          {
+            "q": "Is Roman worth rushing?",
+            "a": "Only for accounts that can fund him and use combat pressure often. If you are still resource-bound, a focused Pan path is usually cleaner."
+          }
+        ]
+      },
+      "tags": [
+        "master",
+        "master-academy",
+        "priority",
+        "emblems",
+        "strategy",
+        "f2p",
+        "progression"
+      ]
+    }
+  ],
+  "reference": {
+    "system": "Masters",
+    "unlock_source": "Realm Journey",
+    "upgrade_materials": [
+      "General Master Emblem",
+      "Master's Manuscripts",
+      "Affinity"
+    ],
+    "unlock_order": [
+      "Valora (first)",
+      "Pan (second)",
+      "Roman (third)",
+      "Cassia (fourth)"
+    ],
+    "known_masters": [
+      "Pan (Palace Administrator)",
+      "Valora (Bear Hunter)",
+      "Roman (Arena Champion)",
+      "Cassia (Battle Commander)"
+    ],
+    "also_mentioned": [
+      "Master Academy",
+      "Master Upgrade Planner",
+      "Bear Formation Helper",
+      "Enlistment Office"
+    ]
+  },
+  "open_questions": [
+    "General Master Emblem income rate and best sources for planning emblem gates (partly covered in inventory.json general-master-emblem).",
+    "Whether additional Masters exist beyond Pan, Valora, Roman, Cassia (guide also references Pan/Valora/Roman/Cassia in Master Academy and Master Upgrade Planner tooling).",
+    "Master's Manuscripts sources and income rate."
+  ]
+}

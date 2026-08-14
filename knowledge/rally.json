@@ -1,0 +1,100 @@
+{
+  "domain": "rally",
+  "title": "Rally",
+  "description": "Rally mechanics: joining or starting group attacks on bosses/players.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["Kingshot community guide (Rally Principles for Everyone)"],
+  "entries": [
+    {
+      "id": "rally-principles",
+      "name": "Rally Principles for Everyone",
+      "summary": "Which hero skills count when hosting versus joining a rally, how member bonuses are selected, why stacking the same hero matters, and where to view rally bonuses.",
+      "details": {
+        "hosting_skills": {
+          "note": "When you host a rally, all three expedition skills from your (rally leader) hero are used.",
+          "skills": [
+            {"name": "Damage Taken Chance Down", "effect": "Reduces the chance of taking damage."},
+            {"name": "Attack Up", "effect": "Increases attack power."},
+            {"name": "Lethality Up", "effect": "Boosts lethality, making attacks more effective."}
+          ]
+        },
+        "joining_rules": [
+          "When you join a rally, only your rally leader hero counts for the rally bonus.",
+          "The first hero is your rally leader; creating troop formations is the key to success."
+        ],
+        "member_bonus_selection": {
+          "question": "When joining a rally, which chief heroes count for the Rally Member bonus?",
+          "answers": [
+            "The strongest heroes (by stars).",
+            "The heroes with the highest expedition skill (5*)."
+          ],
+          "stacking_examples": [
+            "If everyone uses Chenko in Bear Hunt rallies they stack: 4x DMG Up 25%.",
+            "In King's Castle everyone uses Gordon: 4x Health Up 25%."
+          ]
+        },
+        "how_to_view_bonuses": [
+          "Open the War > Rally screen to check details.",
+          "Click the info button to see the rally leader's hero skills.",
+          "The info button also shows the top 4 heroes of rally members."
+        ]
+      },
+      "tags": ["rally", "expedition-skills", "rally-leader", "member-bonus", "stacking", "chenko", "gordon", "bear-hunt", "kings-castle"]
+    },
+    {
+      "id": "joiner-contribution",
+      "name": "What a rally joiner actually contributes",
+      "summary": "In many important rally situations, a joiner does NOT contribute their entire personal stat sheet the way players casually assume (only the rally-leader hero counts for the member bonus — see rally-principles). So a joiner who blindly chases deeper governor gear, charms and combat stats can spend a lot while improving real rally impact less than a better-organized player.",
+      "details": {
+        "joiners_bring": [
+          "march capacity and troop count",
+          "correct attendance and start-timing discipline",
+          "troop quality and healing/recovery readiness",
+          "alliance reliability across repeated rallies"
+        ],
+        "joiners_overvalue": [
+          "deep personal stat upgrades with weak practical rally impact",
+          "cosmetic power jumps that don't improve real contribution",
+          "building like a rally captain while mostly playing as a joiner"
+        ],
+        "principle": "Role identity comes before upgrade priority: if you are a joiner, build like a joiner. A rally joiner is not a weaker captain — it is a different job.",
+        "note": "This is a practical/organizational claim from a community guide; the exact per-rally stat contribution formula is not specified. See rally-principles for the confirmed 'only rally-leader hero counts when joining' mechanic.",
+        "source": "kingshotguide.com Rally Joiner Mechanics guide, shared by user (2026-03-21)"
+      },
+      "tags": [
+        "rally",
+        "joiner",
+        "march-capacity",
+        "timing",
+        "role",
+        "mechanics"
+      ]
+    },
+    {
+      "id": "help-bonus-stacking-cap",
+      "name": "Rally member (help) bonus: 4-hero cap and displacement",
+      "summary": "The rally member 'help' bonus stacks from at most 4 heroes — 4x is the maximum the game counts. The game auto-selects the 4 STRONGEST member heroes, so a stronger hero with the WRONG buff type can displace a useful one and hurt the final combat score.",
+      "details": {
+        "cap": "Maximum 4 stacked help bonuses (e.g. 4x Chenko = +25% total in Bear Hunt; adding a 5th identical hero adds nothing).",
+        "displacement_rule": "Selection is by hero strength (stars/power). A stronger hero takes one of the 4 slots even if its expedition buff is irrelevant to the fight.",
+        "example": "4x Chenko (4*) + 1x Seth (5*, blue): Seth is stronger, so it takes a slot from a Chenko — but Seth's buff is GATHERING, not damage, so it lowers the combat rally score.",
+        "implication": "Keep your strongest usable heroes aligned to the fight type; a powerful hero with an off-type buff is a liability in that rally. Ties into which heroes to invest in (see planner/strategies.json -> rally-joiner-build-priority).",
+        "source": "user (account owner), 2026-07-20"
+      },
+      "tags": [
+        "rally",
+        "member-bonus",
+        "stacking",
+        "cap",
+        "displacement",
+        "chenko",
+        "seth"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Join-rally flow and formation selection (UI to map).",
+    "RESOLVED: the help/member bonus caps at 4 heroes; a stronger off-type hero can displace a useful one (see help-bonus-stacking-cap)."
+  ]
+}

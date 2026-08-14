@@ -1,0 +1,42 @@
+{
+  "domain": "arena",
+  "title": "Arena",
+  "description": "Arena / PvP mechanics, rewards and reset timing.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "user (account owner), 2026-07-20"
+  ],
+  "entries": [
+    {
+      "id": "arena-tickets",
+      "name": "Arena tickets (entry currency)",
+      "summary": "Arena does NOT consume stamina — it uses Arena tickets. Tickets renew daily and extra ones can be bought with gems at a steeply scaling cost. The 'fight Arena 5x' daily mission is designed around the 5 free tickets.",
+      "details": {
+        "free_per_day": 5,
+        "renews": "daily",
+        "extra_with_gems": "Up to 5 more per day, purchased with gems.",
+        "gem_cost_scaling": {
+          "1st_extra": 100,
+          "2nd_extra": 200,
+          "3rd_extra": 400,
+          "4th_extra": 800,
+          "5th_extra": 800
+        },
+        "stamina": "Arena uses NO stamina (unlike wilderness beasts/terrors). See knowledge/exploration.json -> stamina-refund-on-loss.",
+        "daily_mission": "Fight Arena 5x (matches the 5 free tickets)."
+      },
+      "tags": [
+        "arena",
+        "tickets",
+        "gems",
+        "daily",
+        "pvp"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Arena matchmaking/ranking rewards and reset timing.",
+    "Whether buying extra Arena tickets is ever worth the gem cost (likely a player decision; see gem-spending-priority)."
+  ]
+}

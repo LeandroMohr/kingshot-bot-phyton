@@ -1,0 +1,13 @@
+{
+  "domain": "premium_currency",
+  "title": "Premium Currency",
+  "description": "Gems/diamonds and other paid currencies: their sources and sinks.",
+  "status": "scaffold",
+  "last_updated": "2026-07-20",
+  "sources": [],
+  "entries": [],
+  "open_questions": [
+    "Free vs paid gem sources.",
+    "Reminder: this is a free-to-play account; the bot never spends real money (see memory/user_rules.json)."
+  ]
+}

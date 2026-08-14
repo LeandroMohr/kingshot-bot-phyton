@@ -1,0 +1,37 @@
+{
+  "title": "User Rules",
+  "description": "Hard rules from the player. The bot must ALWAYS obey these; they override any strategy or task.",
+  "last_updated": "2026-08-13",
+  "rules": [
+    {
+      "id": "no-real-money",
+      "rule": "Never tap real-money purchase buttons (e.g. '$61.90', 'TOP UP NOW', monthly cards, first-purchase promos). Only close such popups with their X.",
+      "reason": "Free-to-play account. Spending real money is never allowed."
+    },
+    {
+      "id": "no-gems-finish-training",
+      "rule": "Never, under any circumstances, tap the 'Finish' button (the one that costs gems/diamonds) to complete troop training. Only 'Speedups' (accelerators) and 'Train' are allowed on troop buildings.",
+      "reason": "Gems are premium currency; the player forbids spending them to finish training."
+    },
+    {
+      "id": "english-project",
+      "rule": "All code, comments, docstrings, terminal messages, task names, filenames and identifiers are in English.",
+      "reason": "Project language decided by the user."
+    },
+    {
+      "id": "templates-adb-resolution",
+      "rule": "Crop image templates ONLY from ADB captures at 540x960, never from the BlueStacks window screenshots.",
+      "reason": "The BlueStacks window uses a different scale, so those templates would not match."
+    },
+    {
+      "id": "ask-when-stuck",
+      "rule": "If the bot cannot advance a forced tutorial step on its own, it must stop and ask the user to complete that action, then continue automatically.",
+      "reason": "Requested behavior: prefer a generic approach and ask for help instead of guessing risky taps."
+    },
+    {
+      "id": "friendly-durations",
+      "rule": "Show durations in a friendly way: seconds under 60s, minutes from 60s to under 1h, hours from 60min on (e.g. '45s', '10min', '2h 15min').",
+      "reason": "Readability of terminal messages."
+    }
+  ]
+}

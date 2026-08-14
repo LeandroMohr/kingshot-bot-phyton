@@ -1,0 +1,10 @@
+{
+  "domain": "weekly_missions",
+  "title": "Weekly Missions",
+  "description": "Weekly mission list, requirements and rewards.",
+  "status": "scaffold",
+  "last_updated": "2026-07-20",
+  "sources": [],
+  "entries": [],
+  "open_questions": ["Weekly mission list, reset day and the claim flow."]
+}

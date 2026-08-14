@@ -1,0 +1,60 @@
+{
+  "domain": "vip",
+  "title": "VIP",
+  "description": "The account VIP system. Accumulating VIP XP (earned mainly by using VIP Points / activity) raises the VIP level, unlocking shop access, bonuses and perks. This file records the VIP XP values shown in-game for each level.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "User-provided in-game VIP XP table screenshot (2026-07-20)."
+  ],
+  "entries": [
+    {
+      "id": "xp-requirements",
+      "name": "VIP XP requirements",
+      "summary": "VIP XP value listed for each VIP level, from VIP 1 (base, no requirement) up to VIP 12. VIP 1 shows '-' (no XP needed / starting level).",
+      "details": {
+        "note": "VIP 1 is the starting level and shows '-' in-game (recorded as null). The source table does not label whether the number is the XP needed to reach that level from the previous one (per-level) or the cumulative total XP; kept verbatim as shown. See open_questions.",
+        "max_level_recorded": 12,
+        "columns": ["vip_level", "xp"],
+        "table": [
+        {"vip_level": 1, "xp": null},
+        {"vip_level": 2, "xp": 2500},
+        {"vip_level": 3, "xp": 5000},
+        {"vip_level": 4, "xp": 12500},
+        {"vip_level": 5, "xp": 30000},
+        {"vip_level": 6, "xp": 40000},
+        {"vip_level": 7, "xp": 60000},
+        {"vip_level": 8, "xp": 100000},
+        {"vip_level": 9, "xp": 350000},
+        {"vip_level": 10, "xp": 600000},
+        {"vip_level": 11, "xp": 1200000},
+        {"vip_level": 12, "xp": 2400000}
+        ]
+      },
+      "tags": ["vip", "xp", "progression", "account"]
+    },
+    {
+      "id": "daily-vip-points",
+      "name": "Daily VIP points collection",
+      "summary": "There is a daily VIP points claim that must be collected each day to avoid losing the daily bonus. Simple recurring daily action — a good automation candidate.",
+      "details": {
+        "cadence": "daily",
+        "why": "Missing the daily collection forfeits that day's VIP progress/bonus.",
+        "automation_note": "Fixed daily claim; pairs with the other daily routines (decrees, nomadic merchant).",
+        "source": "user (account owner), 2026-07-20"
+      },
+      "tags": [
+        "vip",
+        "daily",
+        "points",
+        "claim",
+        "routine"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Is the 'xp' value per-level (XP to advance from the previous level) or the cumulative total XP threshold?",
+    "VIP levels beyond 12.",
+    "Perks/bonuses unlocked at each VIP level and how VIP XP is earned (VIP Points sources)."
+  ]
+}

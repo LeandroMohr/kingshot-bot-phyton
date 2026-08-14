@@ -1,0 +1,135 @@
+{
+  "domain": "max_levels",
+  "title": "Max Levels",
+  "description": "Maximum level caps for buildings, heroes, gear, governor equipment, troops and other game features in Kingshot.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "kingshotoptimizer.com Max Levels page (user-provided)"
+  ],
+  "entries": [
+    {
+      "id": "standard-buildings",
+      "name": "Standard Building Caps",
+      "summary": "Baseline maximum levels for buildings before the Age of Truegold.",
+      "details": {
+        "resource_buildings": {
+          "max_level": 30,
+          "buildings": ["Sawmill", "Mill", "Quarry", "Iron Mine"]
+        },
+        "military_buildings": {
+          "max_level": 30,
+          "buildings": ["Barracks", "Stable", "Range"]
+        },
+        "core_buildings": {
+          "max_level": 30,
+          "buildings": ["Town Center", "Command Center", "Academy", "Storehouse", "Infirmary", "Embassy"]
+        },
+        "limited_buildings": {
+          "max_level": 10,
+          "buildings": ["Kitchen", "House", "Clinic", "Barricade", "Defense Tower", "Guard Station"]
+        }
+      },
+      "tags": ["buildings", "caps"]
+    },
+    {
+      "id": "truegold-buildings",
+      "name": "Truegold Enhanced Buildings",
+      "summary": "At ~70 days (Age of Truegold), certain buildings can exceed level 30. Truegold unlocks in windows as the kingdom ages: first cap is TG3, later opens to TG5, and currently the game goes up to TG8.",
+      "details": {
+        "unlock": "Age of Truegold (~day 70 of the kingdom)",
+        "truegold_max_current": "TG8",
+        "progression_windows": {
+          "note": "The Truegold cap opens in stages as the kingdom gets older; each window mirrors the level-30-to-TG jump.",
+          "window_1": "Level 30 -> TG3 (initial Age of Truegold cap)",
+          "window_2": "TG3 -> TG5 (the tutorial stage we went through)",
+          "window_3": "TG5 -> TG8 (current maximum; assumed same window pattern)"
+        },
+        "buildings": ["Town Center", "Command Center", "Barracks", "Stable", "Range", "Infirmary", "Embassy"],
+        "upgrade_path": "From level 30 to TG1 you pass through five stages: 30-1, 30-2, 30-3, 30-4, then TG1.",
+        "levels_added": "Each building gains 15 additional levels through the Truegold system."
+      },
+      "tags": ["buildings", "truegold", "caps"]
+    },
+    {
+      "id": "hero-and-gear",
+      "name": "Hero & Gear Caps",
+      "summary": "Maximum levels for heroes and their gear.",
+      "details": {
+        "hero": {
+          "max_level": 80,
+          "requirement": "Town Center level 26"
+        },
+        "hero_gear": {
+          "max_level": 100,
+          "requirement": "Mythic Gear"
+        },
+        "red_hero_gear": {
+          "max_level": 200,
+          "requirement": "Imbuement unlocked"
+        },
+        "hero_exclusive_gear": {
+          "max_level": 10,
+          "requirement": "Mythic Heroes only"
+        },
+        "mastery_forging": {
+          "max_level": 20,
+          "requirement": "Mythic Gear only"
+        }
+      },
+      "tags": ["heroes", "gear", "caps"]
+    },
+    {
+      "id": "governor-equipment",
+      "name": "Governor Equipment Caps",
+      "summary": "Governor gear and charms — a major source of power.",
+      "details": {
+        "governor_gears": {
+          "max_level": 26,
+          "requirement": "Town Center level 22"
+        },
+        "governor_charms": {
+          "max_level": 22,
+          "requirement": "Town Center level 25"
+        },
+        "note": "Governor equipment is a huge source of power in the game."
+      },
+      "tags": ["governor", "gear", "caps"]
+    },
+    {
+      "id": "other-features",
+      "name": "Other Feature Caps",
+      "summary": "Maximum levels for miscellaneous game features and map content.",
+      "details": {
+        "intel_missions_watchtower": {
+          "max_level": 20,
+          "notes": "Unlocks at Town Center level 7"
+        },
+        "beasts": {
+          "max_level": 30,
+          "notes": "Map creatures"
+        },
+        "terrors": {
+          "max_level": 7,
+          "notes": "Map creatures"
+        },
+        "alliance": {
+          "max_level": 11
+        },
+        "bear_pitfall": {
+          "max_level": 5,
+          "notes": "25% attack boost vs Raging Bear"
+        },
+        "viking": {
+          "max_level": 21,
+          "notes": "Viking Vengeance event"
+        }
+      },
+      "tags": ["misc", "map", "events", "caps"]
+    }
+  ],
+  "open_questions": [
+    "Confirm exact power/stat gains per Truegold stage (30-1 .. TG8).",
+    "Confirm the exact kingdom-age thresholds that open each Truegold window (TG3 -> TG5 -> TG8)."
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "domain": "daily_missions",
+  "title": "Daily Missions",
+  "description": "Daily mission list, requirements and rewards.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "user (account owner), 2026-07-20"
+  ],
+  "entries": [
+    {
+      "id": "daily-mission-list",
+      "name": "Daily mission checklist",
+      "summary": "The recurring daily objectives that grant daily-mission points/rewards. Counts are the target quantity per day. The 'upgrade a building' and 'research a technology' objectives ALWAYS exist, but at high levels a single upgrade/research takes multiple days, so they complete every few days rather than strictly daily.",
+      "details": {
+        "missions": [
+          {
+            "task": "Fight in Arena",
+            "count": 5,
+            "note": "Arena uses tickets, not stamina (see knowledge/arena.json)."
+          },
+          {
+            "task": "Daily login",
+            "count": 1
+          },
+          {
+            "task": "Help alliance members",
+            "count": 20
+          },
+          {
+            "task": "Alliance contributions (tech donations)",
+            "count": 40
+          },
+          {
+            "task": "Recruit heroes",
+            "count": 3,
+            "note": "5 free recruits available per day."
+          },
+          {
+            "task": "Train Infantry",
+            "count": 30
+          },
+          {
+            "task": "Train Cavalry",
+            "count": 30
+          },
+          {
+            "task": "Train Archers",
+            "count": 30
+          },
+          {
+            "task": "Intel missions",
+            "count": 10
+          },
+          {
+            "task": "Online rewards",
+            "count": 5
+          },
+          {
+            "task": "Heal troops",
+            "count": 10
+          },
+          {
+            "task": "Collect Bread",
+            "count": "250k"
+          },
+          {
+            "task": "Collect Wood",
+            "count": "250k"
+          },
+          {
+            "task": "Collect Stone",
+            "count": "50k"
+          },
+          {
+            "task": "Collect Iron",
+            "count": "15k"
+          },
+          {
+            "task": "Upgrade a building",
+            "count": 1,
+            "note": "Always available, but at high levels a single upgrade takes DAYS (e.g. 3, 8, 20 days), so the 'daily' completion actually lands every few days rather than every day."
+          },
+          {
+            "task": "Research a technology",
+            "count": 1,
+            "note": "Always available, but at high levels the shortest research is ~2 days, so completion is periodic (every 2-5 days), not strictly daily."
+          },
+          {
+            "task": "Gather resources (map)",
+            "count": "4x (bread, wood, stone, iron)"
+          },
+          {
+            "task": "Defeat Terror",
+            "count": 3
+          },
+          {
+            "task": "Mystic Trials",
+            "count": 1,
+            "note": "at least once"
+          },
+          {
+            "task": "Pet adventures",
+            "count": 4
+          }
+        ],
+        "automation_note": "Most of these map directly to bot tasks; several are already covered (train_troops, help_alliance). Order/queue them around march-queue limits (see knowledge/resources.json -> march-queues)."
+      },
+      "tags": [
+        "daily",
+        "missions",
+        "checklist",
+        "routine"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Exact point/reward values per daily mission and the daily-chest claim thresholds.",
+    "Claim-all flow and screen coordinates for the daily-mission panel."
+  ]
+}

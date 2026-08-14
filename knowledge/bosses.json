@@ -1,0 +1,10 @@
+{
+  "domain": "bosses",
+  "title": "Bosses",
+  "description": "World/event bosses: locations, timers and rewards.",
+  "status": "scaffold",
+  "last_updated": "2026-07-20",
+  "sources": [],
+  "entries": [],
+  "open_questions": ["Boss types, spawn timers and how to engage them."]
+}

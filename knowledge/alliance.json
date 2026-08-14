@@ -1,0 +1,497 @@
+{
+  "domain": "alliance",
+  "title": "Alliance",
+  "description": "Alliance features the bot interacts with (helping members, etc.).",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "live testing on BlueStacks (ADB 540x960)"
+  ],
+  "entries": [
+    {
+      "id": "alliance-help",
+      "name": "Alliance Help",
+      "summary": "A handshake balloon appears on the city screen when members have help requests. Tapping it helps everyone at once and the balloon disappears. It does not open any window, so nothing needs to be closed afterwards.",
+      "details": {
+        "trigger": "handshake balloon on the home screen (only when there are pending requests)",
+        "template": "help_balloon.png",
+        "opens_window": false,
+        "automated_by": "tasks/help_alliance.py",
+        "cadence": "checked every 60s (loop task)"
+      },
+      "tags": [
+        "home",
+        "one-tap",
+        "no-window"
+      ]
+    },
+    {
+      "id": "overview",
+      "name": "Alliance overview",
+      "summary": "Alliances are groups of players working together toward common goals. Alliance Territory is the area of the world map controlled by an Alliance HQ and by placing Alliance Banners. Alliances are ranked on a Leaderboard by overall power.",
+      "details": {
+        "territory": "Controlled by placing an Alliance HQ and Alliance Banners on the world map.",
+        "leaderboard": "Alliances are ranked by overall power.",
+        "nap": "Alliance leaders (R5) on a server may agree a Non-Aggression Pact (NAP / NAP10) between the most powerful alliances: members agree not to attack each other, with negotiation around occupying Sanctuaries, Fortresses and the Castle to share resources."
+      },
+      "tags": [
+        "alliance",
+        "overview",
+        "territory",
+        "nap"
+      ]
+    },
+    {
+      "id": "benefits",
+      "name": "Benefits of joining an Alliance",
+      "summary": "What a player gains by being in an Alliance: help speedups, tokens and shop, tech/facility buffs, loot chests, rallies, events, protection and social ties.",
+      "details": {
+        "benefits": [
+          "Boosts to building, healing and research speed from Allies' help.",
+          "Alliance Tokens in return for contributions.",
+          "Alliance Shop to spend Alliance Tokens.",
+          "Boosts to building speed, research speed and troop strength from Alliance Tech and Facilities.",
+          "Alliance loot chests: an extra bonus for every rally called by anyone in the Alliance, containing resources and speedups.",
+          "The ability to join Rallies against Terrors.",
+          "Access to events like Pitfall, Alliance Mobilisation and Swordland Showdown.",
+          "People willing to help you if you are attacked.",
+          "Friends in game via Alliance Chat."
+        ]
+      },
+      "tags": [
+        "alliance",
+        "benefits",
+        "buffs",
+        "events"
+      ]
+    },
+    {
+      "id": "contributions",
+      "name": "Alliance contributions",
+      "summary": "Contributing grows the Alliance's power and ranking and earns Alliance Tokens, exchangeable in the Alliance Shop for Speedups, VIP tokens, Teleports and City Shields.",
+      "details": {
+        "rewards": "Alliance Tokens, spendable in the Alliance Shop (Speedups, VIP tokens, Teleports, City Shields).",
+        "ways_to_contribute": [
+          "Helping Allies speed up building and research tasks (tap the clasped-hands icon whenever it appears; it costs nothing).",
+          "Contributing resources to research Alliance Tech.",
+          "Sending troops to help build Alliance buildings and banners.",
+          "Joining Rallies and Battles.",
+          "Reinforcing Allies' cities when under attack.",
+          "Garrisoning troops at flags vulnerable to attack.",
+          "Adding Broken Arrows to level up the Pitfall."
+        ],
+        "endless_contribution": "The Battle Tree Alliance Tech 'Covenant Making I' can never be maxed out, so Allies can keep contributing for Alliance Tokens even after all other tech is maxed."
+      },
+      "tags": [
+        "alliance",
+        "contributions",
+        "tokens",
+        "shop",
+        "tech"
+      ]
+    },
+    {
+      "id": "ranks-privileges",
+      "name": "Alliance ranks and privileges",
+      "summary": "Privilege matrix for alliance ranks R5 (leader) down to R1. Shows which rank can perform each management/social action.",
+      "details": {
+        "ranks": {
+          "R5": "Alliance leader (highest).",
+          "R4": "Officer.",
+          "R3": "Mid rank.",
+          "R2": "Member rank.",
+          "R1": "Lowest rank."
+        },
+        "notes": [
+          "R3 can promote and demote R1 and R2.",
+          "R2 and above can mass-message all members."
+        ],
+        "columns": [
+          "privilege",
+          "R5",
+          "R4",
+          "R3",
+          "R2",
+          "R1"
+        ],
+        "privileges": [
+          {
+            "privilege": "Update Banner",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Edit Alliance Tag",
+            "R5": true,
+            "R4": false,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Rename",
+            "R5": true,
+            "R4": false,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Disband",
+            "R5": true,
+            "R4": false,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Transfer Leadership",
+            "R5": true,
+            "R4": false,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Removable",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Change Decree",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Recruitment Settings",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Manage Alliance Invites",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Build Alliance HQ",
+            "R5": true,
+            "R4": false,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Build other Alliance Buildings",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Edit Bulletin",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Change language",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Research Alliance Tech",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Change Member Rank",
+            "R5": true,
+            "R4": true,
+            "R3": true,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "View Members",
+            "R5": true,
+            "R4": true,
+            "R3": true,
+            "R2": true,
+            "R1": true
+          },
+          {
+            "privilege": "Leave Alliance",
+            "R5": false,
+            "R4": true,
+            "R3": true,
+            "R2": true,
+            "R1": true
+          },
+          {
+            "privilege": "Message all members",
+            "R5": true,
+            "R4": true,
+            "R3": true,
+            "R2": true,
+            "R1": false
+          },
+          {
+            "privilege": "Vote / Delete Alliance Vote",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Disband Allies Rally",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          },
+          {
+            "privilege": "Confirm to expel ally's squad in rally",
+            "R5": true,
+            "R4": true,
+            "R3": false,
+            "R2": false,
+            "R1": false
+          }
+        ]
+      },
+      "tags": [
+        "alliance",
+        "ranks",
+        "privileges",
+        "r5",
+        "permissions"
+      ]
+    },
+    {
+      "id": "territory",
+      "name": "Alliance Territory",
+      "summary": "Territory is the area of the world map controlled by an alliance. It appears as coloured squares when zoomed out, with Allies' towns shown as map-pin markers. Built by placing an Alliance HQ and expanding with Banners.",
+      "details": {
+        "appearance": "Coloured squares on the World map when zoomed out; Allies' towns show as map-pin markers.",
+        "tldr_guide": [
+          "Your Alliance Leader builds an Alliance HQ.",
+          "Teleport your city onto Alliance Territory to get bonuses.",
+          "Build Banners to expand Territory.",
+          "Cover Alliance resource nodes with territory to get more resources.",
+          "Use resources to research Alliance Tech and build more Banners."
+        ],
+        "world_map_zones": {
+          "description": "The World Map is divided into three concentric zones: Badlands (outer), Plains (middle), Fertile Lands (inner). At the start, Plains and Fertile Lands are covered by fog and cannot be accessed.",
+          "zones": [
+            "Badlands",
+            "Plains",
+            "Fertile Lands"
+          ]
+        },
+        "badlands_hq": "Building the Badlands HQ establishes your Alliance territory. It can be placed anywhere in the Badlands.",
+        "plains_hq": "When the Plains open (after 14 days), an Alliance can build a Plains HQ to grow territory in the new, resource-richer area. The Plains HQ does not need to be adjacent to existing territory; place it near Facilities for strategic gain, or near the border with the Fertile Lands so banners can expand into them when they open.",
+        "references": [
+          "See 'Early Game Territory' for tactics.",
+          "Reddit discussion of the World Map for more hints."
+        ]
+      },
+      "tags": [
+        "alliance",
+        "territory",
+        "hq",
+        "banners",
+        "world-map",
+        "badlands",
+        "plains"
+      ]
+    },
+    {
+      "id": "territory-in-game-help",
+      "name": "Alliance Territory — in-game help text",
+      "summary": "Official in-game help text explaining how Alliance territory borders, banner connectivity, city Territory Bonus and resource nodes work, plus how to improve the Territory Bonus.",
+      "details": {
+        "territory_rules": [
+          "The entire area within the zone demarcated by your territory border is considered your Alliance's territory.",
+          "All Alliance members' cities located within Alliance territory receive an ongoing Territory Bonus.",
+          "You can build Alliance Banners to expand territory, but new Banners must be connected to existing Alliance territory to expand it.",
+          "All Alliance Banners must sit on territory directly connected to your Alliance HQ, or indirectly connected but still contiguous via other Banners.",
+          "Resource Nodes located within Alliance territory provide a steady stream of Alliance Resources every hour."
+        ],
+        "territory_bonus_overview": [
+          "Any area within the border surrounding the Alliance HQ and Banners is considered Alliance Territory.",
+          "Alliance members' cities located within Alliance territory enjoy an ongoing Territory Bonus.",
+          "You can upgrade your Alliance Level and construct Prestige Buildings to improve the Territory Bonus."
+        ],
+        "source_note": "Verbatim from the in-game help text (Kingshot wiki, Territory article)."
+      },
+      "tags": [
+        "alliance",
+        "territory",
+        "territory-bonus",
+        "banners",
+        "hq",
+        "resource-nodes",
+        "prestige-buildings"
+      ]
+    },
+    {
+      "id": "facilities",
+      "name": "Alliance Facilities (King's Castle map)",
+      "summary": "Capturable buildings arranged around the central King's Castle on the world map. Each facility type has its own map colour and grants a buff to the controlling alliance. A BUFFS table lists the bonus given at facility levels LV.1-LV.4.",
+      "details": {
+        "center": "King's Castle (central objective of the map).",
+        "layout": "Facilities are scattered in a diamond around the King's Castle; each dot on the map shows the facility type (by colour) and its level number (observed 1-12).",
+        "facility_types": [
+          {
+            "name": "Builders Guild",
+            "map_colour": "light blue"
+          },
+          {
+            "name": "Forager Grove",
+            "map_colour": "pink"
+          },
+          {
+            "name": "Harvest Altar",
+            "map_colour": "cream/white",
+            "source_label": "Harvest Alter (in-game spelling)"
+          },
+          {
+            "name": "Scholar's Tower",
+            "map_colour": "white/light blue"
+          },
+          {
+            "name": "Arsenal",
+            "map_colour": "red"
+          },
+          {
+            "name": "Drill Camp",
+            "map_colour": "dark red"
+          },
+          {
+            "name": "Armory",
+            "map_colour": "brown"
+          },
+          {
+            "name": "Frontier Lodge",
+            "map_colour": "pink"
+          },
+          {
+            "name": "Sanctuary",
+            "map_colour": "grey"
+          },
+          {
+            "name": "Fortress",
+            "map_colour": "gold/yellow"
+          }
+        ],
+        "buffs_table": {
+          "columns": [
+            "LV.1",
+            "LV.2",
+            "LV.3",
+            "LV.4"
+          ],
+          "note": "Values are the buff percentage granted at each facility level; null ('-') means no bonus of that type at that level. Kept verbatim from the map legend. It is not fully clear from the legend how each facility TYPE maps to these buff rows/levels (see open_questions).",
+          "rows": [
+            {
+              "buff": "Construction Speed",
+              "LV.1": 5.0,
+              "LV.2": null,
+              "LV.3": 8.0,
+              "LV.4": null
+            },
+            {
+              "buff": "Gathering Speed",
+              "LV.1": 5.0,
+              "LV.2": null,
+              "LV.3": null,
+              "LV.4": null
+            },
+            {
+              "buff": "RSS Production Speed",
+              "LV.1": 5.0,
+              "LV.2": null,
+              "LV.3": null,
+              "LV.4": null
+            },
+            {
+              "buff": "Research Speed",
+              "LV.1": 5.0,
+              "LV.2": 5.0,
+              "LV.3": 8.0,
+              "LV.4": null
+            },
+            {
+              "buff": "Troop Attack",
+              "LV.1": null,
+              "LV.2": null,
+              "LV.3": null,
+              "LV.4": 8.0
+            },
+            {
+              "buff": "Training Speed",
+              "LV.1": null,
+              "LV.2": 5.0,
+              "LV.3": null,
+              "LV.4": null
+            },
+            {
+              "buff": "Troop Defense",
+              "LV.1": null,
+              "LV.2": 5.0,
+              "LV.3": null,
+              "LV.4": 8.0
+            },
+            {
+              "buff": "Troop March Speed",
+              "LV.1": null,
+              "LV.2": null,
+              "LV.3": 15.0,
+              "LV.4": null
+            }
+          ]
+        }
+      },
+      "tags": [
+        "alliance",
+        "facilities",
+        "kings-castle",
+        "world-map",
+        "buffs",
+        "fortress",
+        "sanctuary"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Facilities map: how does each facility TYPE (Builders Guild, Arsenal, etc.) map to the BUFFS table rows and to facility levels LV.1-LV.4?",
+    "Alliance tech donations: is there a one-tap 'recommended' donate button worth automating?",
+    "Alliance gifts: claim-all flow and its screen layout."
+  ]
+}

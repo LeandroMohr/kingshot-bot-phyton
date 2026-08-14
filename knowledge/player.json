@@ -1,0 +1,68 @@
+{
+  "domain": "player",
+  "title": "Player",
+  "description": "Account-level info shown on the Governor Profile screen: name, ID, power, kills, alliance and kingdom. The live snapshot is stored in memory/player_state.json; this file documents WHERE/HOW to read it.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["live testing on emulator 5605 (540x960 ADB capture)"],
+  "entries": [
+    {
+      "id": "governor-profile-screen",
+      "name": "Governor Profile screen",
+      "summary": "Opened by tapping the player avatar in the FIXED top-left corner of the home screen (the picture may change, the position does not). Header reads 'Governor Profile'.",
+      "details": {
+        "open_by": "tap fixed coordinate config.PROFILE_AVATAR_TAP = (32, 26)",
+        "open_marker": "templates/profile_header.png",
+        "close_by": "back arrow (top-left) / ADB back key",
+        "layout": "top = hero gear grid; bottom info box has two columns.",
+        "left_column": ["profile photo", "Mood button/message", "stamina pill 'used/max' (e.g. 647/200) with a + button to refill via items or gems"],
+        "right_column": ["name (with [TAG] prefix if in an alliance)", "ID (permanent, unique)", "combat power (e.g. 78.7M)", "Kills (e.g. 2.4M)", "Alliance tag", "Kingdom (e.g. #1708)"]
+      },
+      "tags": ["profile", "ocr", "reading"]
+    },
+    {
+      "id": "city-bonus-window",
+      "name": "City Bonus window (arrow under profile picture)",
+      "summary": "A small, easily-missed arrow under the profile picture opens the City Bonus window, one of the most useful and overlooked panels. The game never walks players through it.",
+      "details": {
+        "open_by": "tap the small arrow under the profile picture on the home screen",
+        "main_panel": [
+          "free rechargeable Shield",
+          "Counter-Recon ability (purchasable) that prevents you from being scouted",
+          "purchasable troop and deployment bonuses"
+        ],
+        "growth_panel": [
+          "free rechargeable random Teleporter",
+          "buyable Gathering Speed boost",
+          "buyable Training Capacity boost"
+        ],
+        "gathering_speed_note": "The Gathering Speed boost DOUBLES resource collection. It only needs to be active when the troops actually REACH the resource node (not the whole travel/gather time), so one activation can cover multiple gathers if timed correctly. Useful for extra points in events like Hall of Governors.",
+        "source": "Strat Game Sloth 'First 100 Days' video (2026-07-20)"
+      },
+      "tags": ["city-bonus", "shield", "teleporter", "gathering-speed", "hidden-menu"]
+    },
+    {
+      "id": "suggestion-box",
+      "name": "Suggestion Box (citizen questions)",
+      "summary": "A recurring feature where you answer citizens' questions. Correct answers raise city SATISFACTION; wrong answers lower it. City satisfaction affects resource PRODUCTION and the daily rewards you receive for governing well.",
+      "details": {
+        "mechanic": "Answer citizen questions; each answer moves city satisfaction up or down.",
+        "impact": "Satisfaction influences resource production output and daily governance rewards.",
+        "automation_requirement": "Requires mapping the full question->answer set before it can be automated reliably.",
+        "source": "user (account owner), 2026-07-20"
+      },
+      "tags": [
+        "suggestion-box",
+        "satisfaction",
+        "mood",
+        "citizens",
+        "daily",
+        "production"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Player level and VIP level are shown elsewhere (top bar), not on this screen — map them later.",
+    "Mood message OCR not implemented yet (currently a '+Mood' button when unset)."
+  ]
+}

@@ -1,0 +1,127 @@
+{
+  "domain": "governor_gear",
+  "title": "Governor Gear",
+  "description": "The Governor's (Chief's) personal gear system, distinct from hero gear. Upgrading each piece through rarity tiers and star levels consumes three materials: Satin (basic), Gilded Threads, and Artisan's Vision. This file records the per-step material cost and the cumulative running total to reach each tier/star.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": [
+    "User-provided in-game upgrade material table (2026-07-20)."
+  ],
+  "entries": [
+    {
+      "id": "upgrade-material-costs",
+      "name": "Governor Gear upgrade material costs",
+      "summary": "Per-step and cumulative cost in Satin, Gilded Threads, and Artisan's Vision to advance a Governor Gear piece through every rarity tier and star level, from None up to Red (0 star). Costs are per single piece.",
+      "details": {
+        "materials": ["satin", "gilded_threads", "artisans_vision"],
+        "material_notes": {
+          "satin": "Basic upgrade material.",
+          "gilded_threads": "Mid-tier upgrade material.",
+          "artisans_vision": "Advanced material; first required at Blue (2 star)."
+        },
+        "progression_order": ["None", "Green", "Blue", "Purple", "Purple T1", "Gold", "Gold T1", "Gold T2", "Gold T3", "Red", "Red T1", "Red T2", "Red T3", "Red T4"],
+        "unlock_requirement": "Town Center level 22",
+        "access": "Tap your profile in the top-left corner of the screen.",
+        "power_note": "Governor Gear is a huge source of power. 'power' is the gear power at that step; null means the source listed it as TBD (highest Red tiers not yet available).",
+        "note": "'cost' is the material spent on that single step; 'cumulative' is the running total spent from None up to and including that row. star = star level within the rarity/tier (0-3); tier = advancement tier (T1/T2/T3) where applicable. Costs are per single gear piece.",
+        "columns": ["label", "rarity", "tier", "star", "cost", "cumulative", "power"],
+        "table": [
+        {"label": "None", "rarity": null, "tier": null, "star": null, "cost": {"satin": 0, "gilded_threads": 0, "artisans_vision": 0}, "cumulative": {"satin": 0, "gilded_threads": 0, "artisans_vision": 0}, "power": null},
+        {"label": "Green (0 star)", "rarity": "Green", "tier": null, "star": 0, "cost": {"satin": 1500, "gilded_threads": 15, "artisans_vision": 0}, "cumulative": {"satin": 1500, "gilded_threads": 15, "artisans_vision": 0}, "power": 224400},
+        {"label": "Green (1 star)", "rarity": "Green", "tier": null, "star": 1, "cost": {"satin": 3800, "gilded_threads": 40, "artisans_vision": 0}, "cumulative": {"satin": 5300, "gilded_threads": 55, "artisans_vision": 0}, "power": 306000},
+        {"label": "Blue (0 star)", "rarity": "Blue", "tier": null, "star": 0, "cost": {"satin": 7000, "gilded_threads": 70, "artisans_vision": 0}, "cumulative": {"satin": 12300, "gilded_threads": 125, "artisans_vision": 0}, "power": 408000},
+        {"label": "Blue (1 star)", "rarity": "Blue", "tier": null, "star": 1, "cost": {"satin": 9700, "gilded_threads": 95, "artisans_vision": 0}, "cumulative": {"satin": 22000, "gilded_threads": 220, "artisans_vision": 0}, "power": 510000},
+        {"label": "Blue (2 star)", "rarity": "Blue", "tier": null, "star": 2, "cost": {"satin": 1000, "gilded_threads": 10, "artisans_vision": 45}, "cumulative": {"satin": 23000, "gilded_threads": 230, "artisans_vision": 45}, "power": 612000},
+        {"label": "Blue (3 star)", "rarity": "Blue", "tier": null, "star": 3, "cost": {"satin": 1000, "gilded_threads": 10, "artisans_vision": 50}, "cumulative": {"satin": 24000, "gilded_threads": 240, "artisans_vision": 95}, "power": 714000},
+        {"label": "Purple (0 star)", "rarity": "Purple", "tier": null, "star": 0, "cost": {"satin": 1500, "gilded_threads": 15, "artisans_vision": 60}, "cumulative": {"satin": 25500, "gilded_threads": 255, "artisans_vision": 155}, "power": 816000},
+        {"label": "Purple (1 star)", "rarity": "Purple", "tier": null, "star": 1, "cost": {"satin": 1500, "gilded_threads": 15, "artisans_vision": 70}, "cumulative": {"satin": 27000, "gilded_threads": 270, "artisans_vision": 225}, "power": 885360},
+        {"label": "Purple (2 star)", "rarity": "Purple", "tier": null, "star": 2, "cost": {"satin": 6500, "gilded_threads": 65, "artisans_vision": 40}, "cumulative": {"satin": 33500, "gilded_threads": 335, "artisans_vision": 265}, "power": 954720},
+        {"label": "Purple (3 star)", "rarity": "Purple", "tier": null, "star": 3, "cost": {"satin": 8000, "gilded_threads": 80, "artisans_vision": 50}, "cumulative": {"satin": 41500, "gilded_threads": 415, "artisans_vision": 315}, "power": 1024080},
+        {"label": "Purple T1 (0 star)", "rarity": "Purple", "tier": "T1", "star": 0, "cost": {"satin": 10000, "gilded_threads": 95, "artisans_vision": 60}, "cumulative": {"satin": 51500, "gilded_threads": 510, "artisans_vision": 375}, "power": 1093440},
+        {"label": "Purple T1 (1 star)", "rarity": "Purple", "tier": "T1", "star": 1, "cost": {"satin": 11000, "gilded_threads": 110, "artisans_vision": 70}, "cumulative": {"satin": 62500, "gilded_threads": 620, "artisans_vision": 445}, "power": 1162800},
+        {"label": "Purple T1 (2 star)", "rarity": "Purple", "tier": "T1", "star": 2, "cost": {"satin": 13000, "gilded_threads": 130, "artisans_vision": 85}, "cumulative": {"satin": 75500, "gilded_threads": 750, "artisans_vision": 530}, "power": 1232160},
+        {"label": "Purple T1 (3 star)", "rarity": "Purple", "tier": "T1", "star": 3, "cost": {"satin": 15000, "gilded_threads": 160, "artisans_vision": 100}, "cumulative": {"satin": 90500, "gilded_threads": 910, "artisans_vision": 630}, "power": 1301520},
+        {"label": "Gold (0 star)", "rarity": "Gold", "tier": null, "star": 0, "cost": {"satin": 22000, "gilded_threads": 220, "artisans_vision": 40}, "cumulative": {"satin": 112500, "gilded_threads": 1130, "artisans_vision": 670}, "power": 1362720},
+        {"label": "Gold (1 star)", "rarity": "Gold", "tier": null, "star": 1, "cost": {"satin": 23000, "gilded_threads": 230, "artisans_vision": 40}, "cumulative": {"satin": 135500, "gilded_threads": 1360, "artisans_vision": 710}, "power": 1423920},
+        {"label": "Gold (2 star)", "rarity": "Gold", "tier": null, "star": 2, "cost": {"satin": 25000, "gilded_threads": 250, "artisans_vision": 45}, "cumulative": {"satin": 160500, "gilded_threads": 1610, "artisans_vision": 755}, "power": 1485120},
+        {"label": "Gold (3 star)", "rarity": "Gold", "tier": null, "star": 3, "cost": {"satin": 26000, "gilded_threads": 260, "artisans_vision": 45}, "cumulative": {"satin": 186500, "gilded_threads": 1870, "artisans_vision": 800}, "power": 1546320},
+        {"label": "Gold T1 (0 star)", "rarity": "Gold", "tier": "T1", "star": 0, "cost": {"satin": 28000, "gilded_threads": 280, "artisans_vision": 45}, "cumulative": {"satin": 214500, "gilded_threads": 2150, "artisans_vision": 845}, "power": 1607520},
+        {"label": "Gold T1 (1 star)", "rarity": "Gold", "tier": "T1", "star": 1, "cost": {"satin": 30000, "gilded_threads": 300, "artisans_vision": 55}, "cumulative": {"satin": 244500, "gilded_threads": 2450, "artisans_vision": 900}, "power": 1668720},
+        {"label": "Gold T1 (2 star)", "rarity": "Gold", "tier": "T1", "star": 2, "cost": {"satin": 32000, "gilded_threads": 320, "artisans_vision": 55}, "cumulative": {"satin": 276500, "gilded_threads": 2770, "artisans_vision": 955}, "power": 1729920},
+        {"label": "Gold T1 (3 star)", "rarity": "Gold", "tier": "T1", "star": 3, "cost": {"satin": 35000, "gilded_threads": 340, "artisans_vision": 55}, "cumulative": {"satin": 311500, "gilded_threads": 3110, "artisans_vision": 1010}, "power": 1791120},
+        {"label": "Gold T2 (0 star)", "rarity": "Gold", "tier": "T2", "star": 0, "cost": {"satin": 38000, "gilded_threads": 390, "artisans_vision": 55}, "cumulative": {"satin": 349500, "gilded_threads": 3500, "artisans_vision": 1065}, "power": 1852320},
+        {"label": "Gold T2 (1 star)", "rarity": "Gold", "tier": "T2", "star": 1, "cost": {"satin": 43000, "gilded_threads": 430, "artisans_vision": 75}, "cumulative": {"satin": 392500, "gilded_threads": 3930, "artisans_vision": 1140}, "power": 1913520},
+        {"label": "Gold T2 (2 star)", "rarity": "Gold", "tier": "T2", "star": 2, "cost": {"satin": 45000, "gilded_threads": 460, "artisans_vision": 80}, "cumulative": {"satin": 437500, "gilded_threads": 4390, "artisans_vision": 1220}, "power": 1974720},
+        {"label": "Gold T2 (3 star)", "rarity": "Gold", "tier": "T2", "star": 3, "cost": {"satin": 48000, "gilded_threads": 500, "artisans_vision": 85}, "cumulative": {"satin": 485500, "gilded_threads": 4890, "artisans_vision": 1305}, "power": 2040000},
+        {"label": "Gold T3 (0 star)", "rarity": "Gold", "tier": "T3", "star": 0, "cost": {"satin": 60000, "gilded_threads": 600, "artisans_vision": 120}, "cumulative": {"satin": 545500, "gilded_threads": 5490, "artisans_vision": 1425}, "power": 2097120},
+        {"label": "Gold T3 (1 star)", "rarity": "Gold", "tier": "T3", "star": 1, "cost": {"satin": 70000, "gilded_threads": 700, "artisans_vision": 140}, "cumulative": {"satin": 615500, "gilded_threads": 6190, "artisans_vision": 1565}, "power": 2158320},
+        {"label": "Gold T3 (2 star)", "rarity": "Gold", "tier": "T3", "star": 2, "cost": {"satin": 80000, "gilded_threads": 800, "artisans_vision": 160}, "cumulative": {"satin": 695500, "gilded_threads": 6990, "artisans_vision": 1725}, "power": 2219520},
+        {"label": "Gold T3 (3 star)", "rarity": "Gold", "tier": "T3", "star": 3, "cost": {"satin": 90000, "gilded_threads": 900, "artisans_vision": 180}, "cumulative": {"satin": 785500, "gilded_threads": 7890, "artisans_vision": 1905}, "power": 2280000},
+        {"label": "Red (0 star)", "rarity": "Red", "tier": null, "star": 0, "cost": {"satin": 108000, "gilded_threads": 1080, "artisans_vision": 220}, "cumulative": {"satin": 893500, "gilded_threads": 8970, "artisans_vision": 2125}, "power": 2340000},
+        {"label": "Red (1 star)", "rarity": "Red", "tier": null, "star": 1, "cost": {"satin": 114000, "gilded_threads": 1140, "artisans_vision": 230}, "cumulative": {"satin": 1007500, "gilded_threads": 10110, "artisans_vision": 2355}, "power": 2400000},
+        {"label": "Red (2 star)", "rarity": "Red", "tier": null, "star": 2, "cost": {"satin": 121000, "gilded_threads": 1210, "artisans_vision": 240}, "cumulative": {"satin": 1128500, "gilded_threads": 11320, "artisans_vision": 2595}, "power": 2460000},
+        {"label": "Red (3 star)", "rarity": "Red", "tier": null, "star": 3, "cost": {"satin": 128000, "gilded_threads": 1280, "artisans_vision": 250}, "cumulative": {"satin": 1256500, "gilded_threads": 12600, "artisans_vision": 2845}, "power": 2520000},
+        {"label": "Red T1 (0 star)", "rarity": "Red", "tier": "T1", "star": 0, "cost": {"satin": 154000, "gilded_threads": 1540, "artisans_vision": 300}, "cumulative": {"satin": 1410500, "gilded_threads": 14140, "artisans_vision": 3145}, "power": 2580000},
+        {"label": "Red T1 (1 star)", "rarity": "Red", "tier": "T1", "star": 1, "cost": {"satin": 163000, "gilded_threads": 1630, "artisans_vision": 320}, "cumulative": {"satin": 1573500, "gilded_threads": 15770, "artisans_vision": 3465}, "power": 2640000},
+        {"label": "Red T1 (2 star)", "rarity": "Red", "tier": "T1", "star": 2, "cost": {"satin": 173000, "gilded_threads": 1730, "artisans_vision": 340}, "cumulative": {"satin": 1746500, "gilded_threads": 17500, "artisans_vision": 3805}, "power": null},
+        {"label": "Red T1 (3 star)", "rarity": "Red", "tier": "T1", "star": 3, "cost": {"satin": 183000, "gilded_threads": 1830, "artisans_vision": 360}, "cumulative": {"satin": 1929500, "gilded_threads": 19330, "artisans_vision": 4165}, "power": null},
+        {"label": "Red T2 (0 star)", "rarity": "Red", "tier": "T2", "star": 0, "cost": {"satin": 220000, "gilded_threads": 2200, "artisans_vision": 430}, "cumulative": {"satin": 2149500, "gilded_threads": 21530, "artisans_vision": 4595}, "power": null},
+        {"label": "Red T2 (1 star)", "rarity": "Red", "tier": "T2", "star": 1, "cost": {"satin": 233000, "gilded_threads": 2330, "artisans_vision": 460}, "cumulative": {"satin": 2382500, "gilded_threads": 23860, "artisans_vision": 5055}, "power": null},
+        {"label": "Red T2 (2 star)", "rarity": "Red", "tier": "T2", "star": 2, "cost": {"satin": 247000, "gilded_threads": 2470, "artisans_vision": 490}, "cumulative": {"satin": 2629500, "gilded_threads": 26330, "artisans_vision": 5545}, "power": null},
+        {"label": "Red T2 (3 star)", "rarity": "Red", "tier": "T2", "star": 3, "cost": {"satin": 264000, "gilded_threads": 2640, "artisans_vision": 520}, "cumulative": {"satin": 2893500, "gilded_threads": 28970, "artisans_vision": 6065}, "power": null},
+        {"label": "Red T3 (0 star)", "rarity": "Red", "tier": "T3", "star": 0, "cost": {"satin": 306000, "gilded_threads": 3060, "artisans_vision": 610}, "cumulative": {"satin": 3199500, "gilded_threads": 32030, "artisans_vision": 6675}, "power": null},
+        {"label": "Red T3 (1 star)", "rarity": "Red", "tier": "T3", "star": 1, "cost": {"satin": 323000, "gilded_threads": 3230, "artisans_vision": 650}, "cumulative": {"satin": 3522500, "gilded_threads": 35260, "artisans_vision": 7325}, "power": null},
+        {"label": "Red T3 (2 star)", "rarity": "Red", "tier": "T3", "star": 2, "cost": {"satin": 340000, "gilded_threads": 3400, "artisans_vision": 690}, "cumulative": {"satin": 3862500, "gilded_threads": 38660, "artisans_vision": 8015}, "power": null},
+        {"label": "Red T3 (3 star)", "rarity": "Red", "tier": "T3", "star": 3, "cost": {"satin": 357000, "gilded_threads": 3570, "artisans_vision": 730}, "cumulative": {"satin": 4219500, "gilded_threads": 42230, "artisans_vision": 8745}, "power": null},
+        {"label": "Red T4 (0 star)", "rarity": "Red", "tier": "T4", "star": 0, "cost": {"satin": 412000, "gilded_threads": 4120, "artisans_vision": 840}, "cumulative": {"satin": 4631500, "gilded_threads": 46350, "artisans_vision": 9585}, "power": null},
+        {"label": "Red T4 (1 star)", "rarity": "Red", "tier": "T4", "star": 1, "cost": {"satin": 433000, "gilded_threads": 4330, "artisans_vision": 890}, "cumulative": {"satin": 5064500, "gilded_threads": 50680, "artisans_vision": 10475}, "power": null},
+        {"label": "Red T4 (2 star)", "rarity": "Red", "tier": "T4", "star": 2, "cost": {"satin": 454000, "gilded_threads": 4540, "artisans_vision": 940}, "cumulative": {"satin": 5518500, "gilded_threads": 55220, "artisans_vision": 11415}, "power": null},
+        {"label": "Red T4 (3 star)", "rarity": "Red", "tier": "T4", "star": 3, "cost": {"satin": 475000, "gilded_threads": 4750, "artisans_vision": 990}, "cumulative": {"satin": 5993500, "gilded_threads": 59970, "artisans_vision": 12405}, "power": null}
+        ]
+      },
+      "tags": ["governor-gear", "chief-gear", "upgrade", "materials", "satin", "gilded-threads", "artisans-vision"]
+    },
+    {
+      "id": "fundamentals",
+      "name": "Governor Gear fundamentals",
+      "summary": "Governor Gear unlocks at Town Center level 22 and allows up to six permanent gear pieces: two each for infantry, cavalry, and archers. Each piece gives standardized attack and defense for its troop type. It has no unique abilities, cannot be downgraded, and all pieces of the same type and level give identical stats. Bonuses apply GLOBALLY across all marches.",
+      "details": {
+        "unlock_requirement": "Town Center level 22",
+        "piece_count": {
+          "total": 6,
+          "per_troop_type": 2,
+          "troop_types": [
+            "infantry",
+            "cavalry",
+            "archer"
+          ]
+        },
+        "stat_type": "attack and defense (per troop type)",
+        "scope": "Global: applies to every march, unlike single-march bonuses (heroes, hero gear).",
+        "set_bonuses": "Set bonuses activate at 3 and at 6 pieces of the same gear level.",
+        "materials": [
+          "satin",
+          "gilded_threads",
+          "artisans_vision"
+        ],
+        "cost_shape": "Non-linear: diminishing returns, plus points where a higher tier costs less than a prior upgrade -> creates specific efficiency breakpoints.",
+        "tier_gating": "Additional tiers unlock as the kingdom ages, but most players are material-limited before hitting that cap.",
+        "role": "A slow, durable backbone of account power. Reaches diminishing returns faster than research/pets/hero gear/charms, so it complements higher-ROI systems rather than replacing them.",
+        "rising_value": "As multi-march game modes grow, its global bonus gains relative value versus single-march systems."
+      },
+      "tags": [
+        "governor-gear",
+        "fundamentals",
+        "set-bonus",
+        "global",
+        "attack",
+        "defense"
+      ]
+    }
+  ],
+  "open_questions": [
+    "Full progression beyond Red (0 star) (higher Red stars / further tiers).",
+    "Stat bonuses granted at each Governor Gear tier/star.",
+    "Where each material (Satin, Gilded Threads, Artisan's Vision) is obtained."
+  ]
+}

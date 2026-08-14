@@ -1,0 +1,176 @@
+{
+  "domain": "pets",
+  "title": "Pets",
+  "description": "Pet roster with generation, max level and each pet's single skill. Combat pets buff the squad in battle; utility pets speed up gathering, construction, stamina and material discovery. Higher-generation pets cap at a higher level.",
+  "status": "partial",
+  "last_updated": "2026-07-20",
+  "sources": ["kingshotoptimizer.com Pets Database (user-provided)"],
+  "entries": [
+    {
+      "id": "ironclad-war-bear",
+      "name": "Ironclad War Bear",
+      "summary": "Generation 7 pet with the Ursa's Rage skill that reduces enemy Squad Defense.",
+      "details": {
+        "generation": 7,
+        "max_level": 100,
+        "skill": {"name": "Ursa's Rage", "effect": "Reduces enemy Squad Defense.", "type": "combat"}
+      },
+      "tags": ["pet", "gen7", "combat", "debuff", "defense-shred"]
+    },
+    {
+      "id": "ironclad-war-elephant",
+      "name": "Ironclad War Elephant",
+      "summary": "Generation 6 pet with the Elephant's Guard skill that increases Squad Health.",
+      "details": {
+        "generation": 6,
+        "max_level": 100,
+        "skill": {"name": "Elephant's Guard", "effect": "Increases Squad Health.", "type": "combat"}
+      },
+      "tags": ["pet", "gen6", "combat", "health"]
+    },
+    {
+      "id": "regal-white-lion",
+      "name": "Regal White Lion",
+      "summary": "Generation 6 pet with the Territorial Power skill that increases Squads' Defense.",
+      "details": {
+        "generation": 6,
+        "max_level": 100,
+        "skill": {"name": "Territorial Power", "effect": "Increases Squads' Defense.", "type": "combat"}
+      },
+      "tags": ["pet", "gen6", "combat", "defense"]
+    },
+    {
+      "id": "alpha-black-panther",
+      "name": "Alpha Black Panther",
+      "summary": "Generation 5 pet with the Deadly Bite skill that increases Troop Lethality.",
+      "details": {
+        "generation": 5,
+        "max_level": 100,
+        "skill": {"name": "Deadly Bite", "effect": "Increases Troop Lethality.", "type": "combat"}
+      },
+      "tags": ["pet", "gen5", "combat", "lethality"]
+    },
+    {
+      "id": "great-moose",
+      "name": "Great Moose",
+      "summary": "Generation 5 pet with the Antler Impact skill that increases Rally Capacity.",
+      "details": {
+        "generation": 5,
+        "max_level": 100,
+        "skill": {"name": "Antler Impact", "effect": "Increases Rally Capacity.", "type": "combat"}
+      },
+      "tags": ["pet", "gen5", "combat", "rally-capacity"]
+    },
+    {
+      "id": "mighty-bison",
+      "name": "Mighty Bison",
+      "summary": "Generation 4 pet with the Fearless Roar skill that increases Squad Capacity.",
+      "details": {
+        "generation": 4,
+        "max_level": 100,
+        "skill": {"name": "Fearless Roar", "effect": "Increases Squad Capacity.", "type": "combat"}
+      },
+      "tags": ["pet", "gen4", "combat", "squad-capacity"]
+    },
+    {
+      "id": "giant-rhino",
+      "name": "Giant Rhino",
+      "summary": "Generation 4 pet with the Wild Charge skill that increases all Squads' Attack.",
+      "details": {
+        "generation": 4,
+        "max_level": 100,
+        "skill": {"name": "Wild Charge", "effect": "Increases all Squads' Attack.", "type": "combat"}
+      },
+      "tags": ["pet", "gen4", "combat", "attack"]
+    },
+    {
+      "id": "grizzly-bear",
+      "name": "Grizzly Bear",
+      "summary": "Generation 3 pet with The Howler skill that increases March Speed and reduces enemy Lethality.",
+      "details": {
+        "generation": 3,
+        "max_level": 80,
+        "skill": {"name": "The Howler", "effect": "Increases March Speed and reduces enemy Lethality.", "type": "combat"}
+      },
+      "tags": ["pet", "gen3", "combat", "march-speed", "debuff"]
+    },
+    {
+      "id": "lion",
+      "name": "Lion",
+      "summary": "Generation 3 pet with the Gift of the King skill that unearths lost items on the Badland.",
+      "details": {
+        "generation": 3,
+        "max_level": 80,
+        "skill": {"name": "Gift of the King", "effect": "Unearths lost items on the Badland.", "type": "utility"}
+      },
+      "tags": ["pet", "gen3", "utility", "badland", "loot"]
+    },
+    {
+      "id": "moose",
+      "name": "Moose",
+      "summary": "Generation 2 pet with the Horror Stare skill that reduces enemy Squad's Health.",
+      "details": {
+        "generation": 2,
+        "max_level": 70,
+        "skill": {"name": "Horror Stare", "effect": "Reduces enemy Squad's Health.", "type": "combat"}
+      },
+      "tags": ["pet", "gen2", "combat", "debuff", "health"]
+    },
+    {
+      "id": "cheetah",
+      "name": "Cheetah",
+      "summary": "Generation 2 pet with the Scent Mastery skill that locates Pet Food.",
+      "details": {
+        "generation": 2,
+        "max_level": 70,
+        "skill": {"name": "Scent Mastery", "effect": "Locates Pet Food.", "type": "utility"}
+      },
+      "tags": ["pet", "gen2", "utility", "pet-food"]
+    },
+    {
+      "id": "bison",
+      "name": "Bison",
+      "summary": "Generation 1 pet with the Grip of the Titan skill that instantly completes gathering.",
+      "details": {
+        "generation": 1,
+        "max_level": 60,
+        "skill": {"name": "Grip of the Titan", "effect": "Instantly completes gathering.", "type": "utility"}
+      },
+      "tags": ["pet", "gen1", "utility", "gathering"]
+    },
+    {
+      "id": "lynx",
+      "name": "Lynx",
+      "summary": "Generation 1 pet with the Comforting Embrace skill that restores Stamina.",
+      "details": {
+        "generation": 1,
+        "max_level": 60,
+        "skill": {"name": "Comforting Embrace", "effect": "Restores Stamina.", "type": "utility"}
+      },
+      "tags": ["pet", "gen1", "utility", "stamina"]
+    },
+    {
+      "id": "gray-wolf",
+      "name": "Gray Wolf",
+      "summary": "Generation 1 pet with the Construction Aide skill that increases Construction Speed.",
+      "details": {
+        "generation": 1,
+        "max_level": 50,
+        "skill": {"name": "Construction Aide", "effect": "Increases Construction Speed.", "type": "utility"}
+      },
+      "tags": ["pet", "gen1", "utility", "construction"]
+    }
+  ],
+  "reference": {
+    "max_level_by_generation": {"gen1": "50-60", "gen2": 70, "gen3": 80, "gen4": 100, "gen5": 100, "gen6": 100, "gen7": 100},
+    "skill_types": {
+      "combat": "Buffs/debuffs applied in battle (attack, defense, health, lethality, capacity, march speed).",
+      "utility": "Non-combat economy skills (gathering, construction, stamina, pet-food/loot discovery)."
+    }
+  },
+  "open_questions": [
+    "Pet upgrade paths and material costs (pet food / shards) per generation.",
+    "Unlock timing: when each generation's pet becomes obtainable on the account.",
+    "Exact skill values per level (only qualitative effects are documented so far)."
+  ]
+}
