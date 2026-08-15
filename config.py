@@ -242,6 +242,66 @@ TERROR_DIANA_THRESHOLD = 0.80              # match >= this means Diana is loaded
 TERROR_DIANA_WAIT_RETRY = 5 * 60           # seconds to wait for Diana before re-checking
 
 # ---------------------------------------------------------------------------
+# Gather resources (tasks/gather_resources.py)
+# ---------------------------------------------------------------------------
+# Reuses the Terror SEARCH screen (world map -> magnifier). Instead of the
+# Terror (beast) category it selects a RESOURCE category from the bottom row
+# (horizontally scrollable): ... | Bread | Wood | Stone | Iron (Terror and Great
+# Mill are further left). Each gather occupies ONE march queue; the task fills
+# every FREE queue, distributing the resources round-robin in GATHER_RESOURCE_ORDER,
+# always trying the highest level first and dropping a level only when no node is
+# found OR the available troops cannot fill the node's capacity.
+GATHER_RESOURCE_ORDER = ("iron", "stone", "wood", "bread")  # round-robin priority
+GATHER_RESOURCE_ICONS = {                     # bottom-row category-icon templates
+    "iron": "res_iron.png",
+    "stone": "res_stone.png",
+    "wood": "res_wood.png",
+    "bread": "res_bread.png",
+}
+# The one BLUE gatherer the game auto-selects (slot 1) for each resource. We keep
+# ONLY this hero and remove the generic gold heroes; if he is out on a march (not
+# matched) we deploy with NO hero at all.
+GATHER_RESOURCE_HEROES = {
+    "iron": "hero_seth.png",
+    "stone": "hero_edwin.png",
+    "wood": "hero_forrest.png",
+    "bread": "hero_olive.png",
+}
+GATHER_HERO_THRESHOLD = 0.85                  # match >= this = correct hero present
+GATHER_ICON_THRESHOLD = 0.85                  # match >= this = category icon found
+# The category row starts scrolled left (Terror/Great Mill visible). Swiping it
+# left twice pins it to the right extent where all four resource icons show.
+GATHER_CAT_ROW_SWIPE = (480, 675, 120, 675, 500)  # (x1, y1, x2, y2, duration_ms)
+# Resource levels go 1..8 (floor is 1, NOT 3 like Terrors). The slider itself is
+# the SAME control as the Terror one (reuses TERROR_LEVEL_MINUS/PLUS/BOX).
+GATHER_LEVEL_MIN = 1
+GATHER_LEVEL_MAX = 8
+GATHER_LEVEL_START = 8                         # always try the highest level first
+# The node CARD shown after Search carries the cyan "Gather" button: its presence
+# means a node was found. Its ABSENCE after Search means "no suitable target"
+# (we stay on the search screen) -> drop a level / move to the next resource.
+GATHER_BUTTON_TEMPLATE = "gather_button.png"
+GATHER_BUTTON_THRESHOLD = 0.80
+GATHER_CARD_CAPACITY_REGION = (300, 333, 418, 353)  # node "Capacity" value (dark text)
+# The DEPLOY/formation screen (after tapping Gather). Slot 1 holds the auto-picked
+# blue gatherer; slots 2 and 3 hold generic gold heroes. Per-slot red "minus"
+# buttons remove a hero (tapped RIGHT-to-LEFT so remaining cards do not reflow).
+GATHER_HERO_SLOT_MINUS = ((179, 238), (320, 239), (462, 239))
+GATHER_HERO_SLOT_CENTERS = (128, 270, 411)    # hero card centre x per slot
+GATHER_CARRY_REGION = (405, 133, 510, 160)    # troops' carry capacity (white text)
+GATHER_DEPLOY_BUTTON = "gather_deploy_button.png"  # the "Deploy" button (bottom-right)
+GATHER_BACK_ARROW = (30, 28)                  # deploy-header back arrow (-> search)
+# The point of gathering is the specialist hero's buff, so the task keeps exactly
+# ONE active gather per resource (four marches max), each with its blue gatherer.
+# A busy specialist means that resource is already being gathered, so it is
+# skipped; a gather is never dispatched without its hero. While any gather is
+# running the task re-checks every GATHER_ACTIVE_RETRY (queues stay tied up for
+# hours); otherwise it retries sooner on GATHER_INTERVAL.
+GATHER_INTERVAL = 20 * 60                      # seconds between gather sweeps
+GATHER_ACTIVE_RETRY = 60 * 60                 # wait 1h while gathers are running
+GATHER_ALL_BUSY_RETRY = 15 * 60               # seconds to wait when all queues busy
+
+# ---------------------------------------------------------------------------
 # Train troops (tasks/train_troops.py)
 # ---------------------------------------------------------------------------
 # The Barracks is reached DETERMINISTICALLY through the Power panel, which the

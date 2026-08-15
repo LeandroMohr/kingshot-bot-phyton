@@ -26,6 +26,7 @@ from tasks import (
     alliance_tech,
     buy_vip_points,
     hunt_terror,
+    gather_resources,
     train_troops,
     intel_missions,
     arena,
@@ -49,6 +50,7 @@ _MODULES = [
     train_troops,          # trains infantry/cavalry/archer at a chosen tier (loop 3h)
     arena,                 # opens the Arena of Glory ranking screen (PVP entry point) (loop 1h)
     intel_missions,        # dispatches Intel Mission balloons (hunt/battle/refugee), then Claim All (loop 6h) — BEFORE Hunt Terror
+    gather_resources,      # fills free march queues with resource-gathering marches (loop 20min)
     hunt_terror,           # launches Terror rallies, gated by stamina, many delays — ALWAYS LAST (slow)
 ]
 
