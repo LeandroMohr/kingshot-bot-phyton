@@ -55,8 +55,17 @@ class GovernorOrderTask(Task):
             self._go_home(controller)
             return Outcome.ABSENT
 
+        # All three orders must be available (none on cooldown / active). If any
+        # is unavailable, issue NOTHING this run (partial sequences are skipped).
+        blocked = self._blocked_orders(controller)
+        if blocked:
+            print(f"[Governor] On cooldown/active: {', '.join(blocked)}; issuing "
+                  f"nothing until all three are available.")
+            self._go_home(controller)
+            return Outcome.ABSENT
+
         issued: list[str] = []
-        for i, (name, tap, cost) in enumerate(config.GOV_ORDERS):
+        for i, (name, tap, cost, _region) in enumerate(config.GOV_ORDERS):
             # The screen is already open for the first order; reopen for the rest
             # (each issue returns to the city).
             if i > 0 and not self._open_governor(controller):
@@ -76,6 +85,28 @@ class GovernorOrderTask(Task):
             return Outcome.SUCCESS
         print("[Governor] No order issued (all on cooldown).")
         return Outcome.ABSENT
+
+    # -- availability ------------------------------------------------------
+    def _blocked_orders(self, controller: ADBController) -> list[str]:
+        """Return the names of orders whose grid banner reads "On cooldown" or
+        "Active" (i.e. NOT available to issue). Empty list = all three ready."""
+        screen = controller.screenshot()
+        blocked: list[str] = []
+        for name, _tap, _cost, region in config.GOV_ORDERS:
+            if not self._order_available(screen, region):
+                blocked.append(name)
+        return blocked
+
+    @staticmethod
+    def _order_available(screen, region: tuple[int, int, int, int]) -> bool:
+        """True when a book's status-banner region has no cooldown/active text."""
+        x1, y1, x2, y2 = region
+        gray = cv2.cvtColor(screen[y1:y2, x1:x2], cv2.COLOR_BGR2GRAY)
+        gray = cv2.resize(gray, None, fx=4, fy=4, interpolation=cv2.INTER_CUBIC)
+        _, thr = cv2.threshold(gray, 0, 255,
+                               cv2.THRESH_BINARY + cv2.THRESH_OTSU)
+        text = pytesseract.image_to_string(thr, config="--psm 6").lower()
+        return not any(kw in text for kw in config.GOV_UNAVAILABLE_KEYWORDS)
 
     # -- open / navigate ---------------------------------------------------
     def _open_governor(self, controller: ADBController) -> bool:

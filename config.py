@@ -328,13 +328,19 @@ GOV_ISSUE_BUTTON = "gov_issue_button.png"  # the cyan "Issue" label on an order'
 GOV_ISSUE_TAP = (270, 692)              # the "Issue" button (fixed layout on the book)
 # Star balance at the top-right of the Governor Order screen ("82.3M"). OCR region.
 GOV_STARS_REGION = (435, 10, 505, 42)
-# The three orders issued, in strict order, with their star cost. Book tap points
-# on the 2x3 grid: col1/col2 x, rows at these y's (centres).
+# The three orders issued, in strict order, with their star cost and the OCR
+# region (x1,y1,x2,y2) of the book's status banner on the 2x3 grid. A book shows
+# "On cooldown HH:MM:SS" (already issued) or "Active HH:MM:SS" (running); an
+# available book shows only its icon (no banner text). Book tap points on the
+# grid: col1/col2 x, rows at these y's (centres).
 GOV_ORDERS = (
-    ("productivity", (163, 715), 50_000),   # col1 row3: +100% output 24h (cd 12h)
-    ("rush_job", (371, 265), 150_000),      # col2 row1: 5 days of resources (Rewards modal)
-    ("festivities", (371, 715), 50_000),    # col2 row3: +50 Mood/+30 Comfort (cd 1 day)
+    ("productivity", (163, 715), 50_000, (88, 688, 242, 748)),   # col1 row3: +100% output 24h (cd 12h)
+    ("rush_job", (371, 265), 150_000, (300, 240, 445, 300)),     # col2 row1: 5 days of resources (Rewards modal)
+    ("festivities", (371, 715), 50_000, (300, 688, 445, 748)),   # col2 row3: +50 Mood/+30 Comfort (cd 1 day)
 )
+# A book is UNAVAILABLE when its banner OCR contains any of these (case-insensitive):
+# "cooldown" (already issued, waiting) or "active" (currently running).
+GOV_UNAVAILABLE_KEYWORDS = ("cooldown", "active")
 GOV_TOTAL_COST = 250_000                # sum of the three costs; need at least this to run
 GOV_POST_ISSUE_DELAY = 6.0              # seconds of on-screen effects after issuing before reopening
 GOV_REWARDS_DISMISS_TAP = (270, 500)    # neutral spot to dismiss the Rush Job "Rewards" modal

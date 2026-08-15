@@ -24,6 +24,9 @@ Collect everything on the Alliance -> Chests screen:
          screenful so nothing is jumped over, and repeat until the list stops
          moving. Because claimed cards no longer match the "Claim" template, the
          overlap is harmless. Expired gifts drop off the list on their own.
+         This per-card scan is ONLY used on the Alliance Gift tab, and only when
+         there is an unclaimed gift (a card with the green "Claim"/red-dot) and
+         no "Claim All" button. The Loot tab is Claim-All-only and never scans.
   4. Return to the city home screen.
 
 Runs in a LOOP with a long interval: chests/gifts trickle in over the day.
@@ -89,7 +92,8 @@ class AllianceChestsTask(Task):
         # 3. Both tabs.
         self._claim_tab(controller, LOOT_TAB_TAP, "loot_chest_tab.png",
                         check_limit=True)
-        self._claim_tab(controller, GIFT_TAB_TAP, "alliance_gift_tab.png")
+        self._claim_tab(controller, GIFT_TAB_TAP, "alliance_gift_tab.png",
+                        is_gift=True)
 
         # 4. Back to the city.
         self._go_home(controller)
@@ -112,8 +116,15 @@ class AllianceChestsTask(Task):
 
     # -- per-tab claiming --------------------------------------------------
     def _claim_tab(self, controller: ADBController, tab_tap: tuple[int, int],
-                   tab_template: str, check_limit: bool = False) -> None:
-        """Select a tab and collect all its rewards (Claim All or card by card)."""
+                   tab_template: str, is_gift: bool = False,
+                   check_limit: bool = False) -> None:
+        """Select a tab and collect all its rewards.
+
+        Per the user's rule, the expensive card-by-card list scan only runs for
+        the Alliance Gift tab when there is an unclaimed gift AND no "Claim All"
+        button in the footer. If "Claim All" is present it collects everything in
+        one tap, so we skip the scan. The Loot tab never scans card by card.
+        """
         # Select the tab (prefer the template, fall back to fixed coords).
         if not self._tap(controller, tab_template, wait=1.5):
             controller.tap(*tab_tap)
@@ -128,9 +139,22 @@ class AllianceChestsTask(Task):
 
         # Fast path: with 15+ items a green "Claim All" collects the whole list
         # at once. Loop in case a fresh batch keeps the button around.
+        claimed_all = False
         for _ in range(3):
             if not self._claim_all_if_active(controller):
                 break
+            claimed_all = True
+
+        # If "Claim All" handled the list there is nothing left to scan. The Loot
+        # tab is Claim-All-only, so it never falls through to the card scan.
+        if claimed_all or not is_gift:
+            return
+
+        # Alliance Gift, no active "Claim All": only scan the list card by card
+        # when there is actually an unclaimed gift (red-dot / green "Claim" card).
+        if not self._has_unclaimed_gift(controller):
+            print("[Alliance Chests] No unclaimed Alliance Gift; skipping scan.")
+            return
 
         # Slow path: claim each remaining card, scrolling down in small
         # overlapping steps so no unclaimed gift is skipped. Claimed cards stay
@@ -153,6 +177,17 @@ class AllianceChestsTask(Task):
             prev_fp = fp
             if stale >= 2:
                 break
+
+    def _has_unclaimed_gift(self, controller: ADBController) -> bool:
+        """True when the Alliance Gift list shows at least one unclaimed gift.
+
+        An unclaimed card carries a green "Claim" button (the red-dot / "presente
+        não resgatado" indicator); claimed cards show grey "Claimed" text and no
+        longer match the template. So any visible "chest_claim.png" match means
+        there is still something to collect and the list is worth scanning.
+        """
+        screen = controller.screenshot()
+        return bool(find_all_templates(screen, "chest_claim.png", 0.85))
 
     @staticmethod
     def _list_fingerprint(screen) -> bytes:
