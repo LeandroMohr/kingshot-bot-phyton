@@ -2,6 +2,7 @@
 .venv/
 __pycache__/
 *.pyc
+memory/*
 
 # Screenshots temporários de criação de templates
 screen.png
