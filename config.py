@@ -504,6 +504,57 @@ INTEL_BALANCE_CONFIRM_TAP = (270, 735)     # "Confirm" button in the Balance dia
 INTEL_BALANCE_CLOSE_TAP = (497, 238)       # "X" to close the Balance dialog
 INTEL_BALANCE_TAP_DELAY = 0.15             # pause after each +/- tap so the value updates
 
+# ----------------------------------------------------------------------------
+# Daily Missions (scroll / quest tracker on the home screen)
+# ----------------------------------------------------------------------------
+# The parchment icon on the bottom-left of the city view opens the daily-mission
+# panel. Its "Daily" tab lists recurring objectives (help, train, contribute,
+# ...) that are DONE by other bot tasks; this task only CLAIMS the rewards. The
+# green "Claim All" button collects every completed mission at once, and the
+# activity-point milestone chests on the top progress bar auto-open (chained
+# reward popups) as the bar crosses each threshold. The per-mission "Go" buttons
+# navigate away to perform a mission and must NEVER be tapped here.
+DAILY_INTERVAL = 60 * 60                    # loop hourly; claims accumulate through the day
+DAILY_SCROLL_ICON = "daily_scroll_icon.png"       # parchment icon on the home screen
+DAILY_SCROLL_TAP = (32, 798)                # fallback tap if the icon is not matched
+DAILY_PANEL_MARKER = "daily_refresh_marker.png"   # "Refreshes In:" pill (Daily tab, panel open)
+DAILY_TAB_TAP = (357, 850)                  # "Daily" tab at the bottom of the panel
+DAILY_CLAIM_ALL = "daily_claim_all.png"     # green "Claim All" (present only when there is something to claim)
+DAILY_CLAIM_ALL_THRESHOLD = 0.85
+DAILY_REWARDS_BANNER = "chest_rewards_banner.png"  # reused golden "Rewards" banner
+DAILY_REWARDS_EXIT_TAP = (270, 160)         # neutral spot above the banner to dismiss rewards
+DAILY_CLOSE_TAP = (517, 94)                 # "X" to close the panel
+DAILY_MAX_CLAIM_PASSES = 5                  # safety cap on the claim/dismiss loop
+DAILY_MAX_DISMISS = 8                       # safety cap on chained reward-popup dismissals
+
+# After claiming, the task READS the still-pending daily missions (OCR of the
+# list) and, for each one it recognises, runs the EXISTING bot task that makes
+# progress on it (e.g. "Train 10 Infantry" -> train_troops). This actively
+# drives the daily list instead of waiting for the main loop. Missions with no
+# linked flow (recruit hero, upgrade building, research, gather, ...) are left
+# for the player / other tasks.
+DAILY_RUN_LINKED = True                     # master switch for the linked-flow execution
+# Module names (under tasks/) allowed to be auto-run from the daily list. The
+# heavy/slow ones (intel_missions, hunt_terror) are left OFF by default since
+# they already run in the main loop and can take a long time / drain stamina;
+# add them here to also drive them from the daily checker.
+DAILY_LINKED_MODULES = ("help_alliance", "alliance_tech", "arena", "train_troops")
+DAILY_LIST_REGION = (44, 368, 470, 800)     # x1,y1,x2,y2 OCR band over the mission list (y1=368 avoids clipping the top card title)
+DAILY_LIST_SWIPE = (270, 700, 270, 430)     # one scroll-up step through the list
+DAILY_LIST_MAX_SCROLLS = 6                  # safety cap while scanning the list
+
+# Some missions have no linked flow but can be completed straight from the panel
+# by tapping their in-panel "Go" button, which navigates NATIVELY to the right
+# screen (e.g. "Recruit 1 Hero" -> Hero Recruitment, where a single free recruit
+# finishes it). For those, the task taps "Go" and performs the small native
+# action. Only missions with a registered handler (DAILY_GO_HANDLERS in
+# tasks/daily_missions.py) are ever Go-tapped.
+DAILY_USE_GO = True                         # master switch for Go-button completion
+DAILY_GO_BUTTON = "daily_go_button.png"     # the blue per-mission "Go" button
+DAILY_GO_THRESHOLD = 0.85
+DAILY_GO_MAX_ACTIONS = 4                     # safety cap on how many Go missions to drive per run
+DAILY_RECRUIT_FREE_TAP = (143, 635)         # "Recruit x1 Free" on the Hero Recruitment screen
+
 # If True, saves an annotated screenshot ONLY when DEBUG is enabled.
 # By default no image is written to disk — captures live only in memory.
 DEBUG = False

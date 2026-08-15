@@ -19,6 +19,7 @@ from tasks import (
     help_alliance,
     collect_conquest,
     collect_vip,
+    daily_missions,
     governor_order,
     rebel_conquest,
     alliance_chests,
@@ -39,6 +40,7 @@ _MODULES = [
     help_alliance,         # one tap on the help balloon (loop 1min) — simplest
     collect_conquest,      # collects Conquest resources, quick idle claim (loop 1h)
     collect_vip,           # collects daily VIP points + free bundle (once per run)
+    daily_missions,        # claims completed daily missions + milestone chests (loop 1h)
     governor_order,        # issues the 3 Governor Orders in sequence (loop 12h)
     rebel_conquest,        # resolves the Rebel Assault via Quick Challenge (loop 10min)
     alliance_tech,         # spends Alliance tech contribution points (loop 1h)
