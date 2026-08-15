@@ -525,6 +525,13 @@ INTEL_WIN_MSG_MIN_PIXELS = 200                 # >= this many green px -> win pr
 # any overlapped missions become visible.
 INTEL_CLAIM_BUTTON = "intel_claim.png"
 INTEL_CLAIM_THRESHOLD = 0.85
+# Some accounts (Master "Pan" trait) show an advisor-portrait icon at the panel's
+# top-left. Tapping it reveals an EXTRA batch of missions (often more hunts). Not
+# every account has it, so it is only tapped when its template is matched; the
+# icon is consumed by the tap (disappears), and re-checked each wave in case a
+# new batch appears.
+INTEL_ADVISOR_ICON = "intel_advisor_icon.png"
+INTEL_ADVISOR_THRESHOLD = 0.85
 # Mission type priority (do all hunts, then battles, then refugees) and per-type
 # waits. Only Monster Hunt occupies a march queue and has travel time; Battle and
 # Refugee resolve without a queue.

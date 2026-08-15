@@ -39,13 +39,18 @@ Dispatch (each flow validated live):
 
 On entering the panel each pass, "Claim All" is tapped when finished missions are
 waiting (their pins can overlap and hide pending missions, which only appear once
-the rewards are collected). After dispatching, the balloon gains a green check on
-the next scan (so it is not repeated). When there is nothing left to dispatch,
-"Claim All" collects any remaining rewards and the bot returns to the city.
+the rewards are collected). Some accounts also show an advisor-portrait icon at
+the panel's top-left; when present it is tapped to reveal an EXTRA batch of
+missions (often more hunts), which are then dispatched under the normal priority.
+After dispatching, the balloon gains a green check on the next scan (so it is not
+repeated). When there is nothing left to dispatch, "Claim All" collects any
+remaining rewards and the bot returns to the city.
 
 Templates (captured at 540x960):
   - intel_mission.png       : the compass on the world map that opens the panel.
   - intel_panel_marker.png  : the "Intel Mission" title (panel-open confirmation).
+  - intel_advisor_icon.png  : the top-left advisor portrait (reveals extra
+    missions when tapped; absent on accounts without the trait).
   - intel_lion/swords/tent.png : the three balloon glyphs (grayscale-matched).
   - intel_view.png          : the cyan "View" button on a mission preview.
   - deploy_button.png       : the "Deploy" button (reused from Hunt Terror).
@@ -121,6 +126,11 @@ class IntelMissionsTask(Task):
             # Claim finished missions first (in place — no reopen): their pins may
             # overlap and hide pending missions that only appear once claimed.
             self._claim_if_available(controller)
+
+            # If the advisor icon is present (some accounts), tap it to reveal the
+            # extra batch of missions (often more hunts) before scanning, so they
+            # are dispatched in this run under the normal type priority.
+            self._reveal_advisor_missions(controller)
 
             # Current stamina (meat counter), read ONCE from the open panel.
             stamina = self._read_stamina(controller)
@@ -377,6 +387,20 @@ class IntelMissionsTask(Task):
         time.sleep(1.8)
         controller.tap(*config.INTEL_VICTORY_EXIT_TAP)  # dismiss rewards overlay
         time.sleep(1.2)
+        return True
+
+    def _reveal_advisor_missions(self, controller: ADBController) -> bool:
+        """Some accounts show an advisor-portrait icon at the panel's top-left;
+        tapping it reveals an extra batch of missions (often more hunts). Tap it
+        when present (it is consumed by the tap); accounts without it just skip.
+        Returns True if it was tapped. The panel must already be open."""
+        match = find_template(controller.screenshot(), config.INTEL_ADVISOR_ICON,
+                              config.INTEL_ADVISOR_THRESHOLD)
+        if not match.found:
+            return False
+        print("[Intel Missions] Advisor icon present; revealing extra missions.")
+        controller.tap(match.x, match.y)
+        time.sleep(2.0)
         return True
 
     def _win_predicted(self, controller: ADBController) -> bool:
