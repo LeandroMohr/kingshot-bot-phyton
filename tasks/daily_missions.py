@@ -139,9 +139,10 @@ class DailyMissionsTask(Task):
         nothing left to claim. Returns how many Claim-All taps happened."""
         claimed = 0
         for _ in range(config.DAILY_MAX_CLAIM_PASSES):
-            if not self._claim_all_present(controller):
+            match = self._claim_all_match(controller)
+            if not match.found:
                 break
-            controller.tap(270, 773)  # center of the "Claim All" button
+            controller.tap(match.x, match.y)  # tap the detected "Claim All" button
             time.sleep(1.5)
             self._dismiss_rewards(controller)
             claimed += 1
@@ -227,10 +228,13 @@ class DailyMissionsTask(Task):
         screen = controller.screenshot()
         return find_template(screen, config.DAILY_PANEL_MARKER, 0.85).found
 
-    def _claim_all_present(self, controller: ADBController) -> bool:
+    def _claim_all_match(self, controller: ADBController):
         screen = controller.screenshot()
         return find_template(screen, config.DAILY_CLAIM_ALL,
-                             config.DAILY_CLAIM_ALL_THRESHOLD).found
+                             config.DAILY_CLAIM_ALL_THRESHOLD)
+
+    def _claim_all_present(self, controller: ADBController) -> bool:
+        return self._claim_all_match(controller).found
 
     def _dismiss_rewards(self, controller: ADBController) -> None:
         """Dismiss the chained golden 'Rewards' popups (Claim All + milestone
