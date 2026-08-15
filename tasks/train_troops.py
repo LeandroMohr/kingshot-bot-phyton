@@ -149,7 +149,7 @@ class TrainTroopsTask(Task):
             print(f"[Train] {troop}: training screen not idle as expected.")
             return "failed"
 
-        self._select_tier(controller, tier)
+        tier = self._select_tier(controller, tier)
         # Set the batch quantity: max the capacity, or the minimum while testing.
         slider = (config.TRAIN_QTY_SLIDER_MAX if config.TRAIN_MAX_QUANTITY
                   else config.TRAIN_QTY_SLIDER_MIN)
@@ -182,7 +182,24 @@ class TrainTroopsTask(Task):
             controller.tap(*config.TRAIN_POPUP_DISMISS_TAP)
             time.sleep(1.0)
 
-    def _select_tier(self, controller: ADBController, tier: int) -> None:
+    def _select_tier(self, controller: ADBController, tier: int) -> int:
+        """Select the requested tier, falling back to the highest UNLOCKED tier
+        when it is locked. A locked tier is greyed out and, once tapped, replaces
+        the "Train" button with "Upgrade Now" (a "Reach ... to unlock" panel).
+        Walk down from the requested tier until an unlocked one is selected and
+        return the tier actually chosen."""
+        tier = max(config.TRAIN_TIER_MIN, min(config.TRAIN_TIER_MAX, tier))
+        for candidate in range(tier, config.TRAIN_TIER_MIN - 1, -1):
+            self._tap_tier(controller, candidate)
+            if self._tier_unlocked(controller):
+                if candidate != tier:
+                    print(f"[Train] tier {tier} locked; using highest unlocked "
+                          f"tier {candidate}.")
+                return candidate
+            print(f"[Train] tier {candidate} locked; trying {candidate - 1}.")
+        return config.TRAIN_TIER_MIN
+
+    def _tap_tier(self, controller: ADBController, tier: int) -> None:
         """Scroll the tier row to the right page and tap the tier's hexagon.
         Tiers 6-10 live on the right page, 1-5 on the left page, both laid out on
         the same five slots."""
@@ -197,6 +214,14 @@ class TrainTroopsTask(Task):
             time.sleep(0.6)
         controller.tap(config.TRAIN_TIER_SLOTS_X[slot], config.TRAIN_TIER_ROW_Y)
         time.sleep(0.6)
+
+    def _tier_unlocked(self, controller: ADBController) -> bool:
+        """True if the currently selected tier is unlocked: the cyan "Train"
+        button is shown and the locked "Upgrade Now" button is not."""
+        screen = controller.screenshot()
+        if find_template(screen, config.TRAIN_UPGRADE_NOW_BUTTON, 0.85).found:
+            return False
+        return find_template(screen, config.TRAIN_START_BUTTON, 0.85).found
 
     # -- settings (tier) ---------------------------------------------------
     def _resolve_tier(self) -> int:

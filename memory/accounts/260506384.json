@@ -1,20 +1,21 @@
 {
   "description": "Per-account preferences and last-known profile, keyed by the in-game account ID. Settings that suit THIS account (e.g. the Terror level it can farm) live under 'preferences'; 'profile' is a reference snapshot.",
   "account_id": "260506384",
-  "updated": "2026-08-13T23:18:40+00:00",
+  "updated": "2026-08-14T23:25:21+00:00",
   "profile": {
     "name": "Arroba",
     "alliance_tag": "RGR",
     "id": "260506384",
-    "power": "56.8M",
+    "power": "57.7M",
     "kills": "265,582",
     "alliance": "RGR",
     "kingdom": "#1708",
-    "stamina": "398/200"
+    "stamina": "553/200"
   },
   "preferences": {
     "vip_level": 6,
     "terror_level": 3,
-    "rally_mode": "hnt"
+    "rally_mode": "hnt",
+    "train_tier": 10
   }
 }

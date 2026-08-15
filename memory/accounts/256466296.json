@@ -1,7 +1,7 @@
 {
   "description": "Per-account preferences and last-known profile, keyed by the in-game account ID. Settings that suit THIS account (e.g. the Terror level it can farm) live under 'preferences'; 'profile' is a reference snapshot.",
   "account_id": "256466296",
-  "updated": "2026-08-14T13:55:41+00:00",
+  "updated": "2026-08-14T23:35:56+00:00",
   "profile": {
     "name": "Itachi Uchiha",
     "alliance_tag": "KS1",
@@ -10,7 +10,7 @@
     "kills": "2.4M",
     "alliance": "KS1",
     "kingdom": "#1708",
-    "stamina": "505/200"
+    "stamina": "297/200"
   },
   "preferences": {
     "vip_level": 8,

@@ -253,6 +253,11 @@ TRAIN_SCREEN_MARKER = "train_screen_marker.png"  # the list icon (both states)
 TRAIN_RADIAL_BUTTON = "radial_train.png"         # the "Train" button in the radial menu
 TRAIN_START_BUTTON = "train_start_button.png"    # the cyan "Train" start button (idle)
 TRAIN_SPEEDUPS_BUTTON = "train_speedups.png"     # the "Speedups" button (already training)
+# A LOCKED tier (not yet unlocked by the building level) is shown greyed out;
+# selecting it replaces the "Train" button with "Upgrade Now" and shows a
+# "Reach ... to unlock" panel. This template detects that locked state so we can
+# fall back to the highest UNLOCKED tier instead.
+TRAIN_UPGRADE_NOW_BUTTON = "train_upgrade_now.png"
 TRAIN_START_TAP = (385, 832)           # fallback tap for the "Train" start button
 # The training screen has an animated glow (the selected tier pulses), which
 # confuses the generic tutorial-highlight recovery in go_to_home_screen. So we
@@ -305,6 +310,35 @@ TRAIN_TROOP_TYPES = ("infantry", "cavalry", "archer")
 # new batch at the saved tier. Types still training (a countdown is shown) are
 # skipped until the next pass.
 TRAIN_INTERVAL = 3 * 60 * 60           # seconds between training passes
+
+# ---------------------------------------------------------------------------
+# Governor Order (the "scales"/balance icon). Opened from the city: on the right
+# edge there is a vertical stack of icons (paw, scales, email). The paw may not
+# exist yet on low-level accounts, so the EMAIL icon (always present) is the
+# anchor: the scales sit one slot above it. The screen shows a 2x3 grid of
+# "order" books; issuing an order spends stars (balance at the top-right) and
+# activates a timed city buff. Three orders are issued in a strict sequence,
+# needing 250,000 stars total; if the balance is lower, none are issued.
+# ---------------------------------------------------------------------------
+GOV_EMAIL_ICON = "gov_email_icon.png"   # the email envelope icon (anchor, always present)
+GOV_BALANCE_ICON = "gov_balance_icon.png"  # the scales icon (secondary; fails under a red dot)
+GOV_BALANCE_FROM_EMAIL_DY = 71          # the scales are this many px above the email icon
+GOV_BALANCE_FALLBACK_TAP = (497, 721)   # fixed scales position if neither template is found
+GOV_ISSUE_BUTTON = "gov_issue_button.png"  # the cyan "Issue" label on an order's book
+GOV_ISSUE_TAP = (270, 692)              # the "Issue" button (fixed layout on the book)
+# Star balance at the top-right of the Governor Order screen ("82.3M"). OCR region.
+GOV_STARS_REGION = (435, 10, 505, 42)
+# The three orders issued, in strict order, with their star cost. Book tap points
+# on the 2x3 grid: col1/col2 x, rows at these y's (centres).
+GOV_ORDERS = (
+    ("productivity", (163, 715), 50_000),   # col1 row3: +100% output 24h (cd 12h)
+    ("rush_job", (371, 265), 150_000),      # col2 row1: 5 days of resources (Rewards modal)
+    ("festivities", (371, 715), 50_000),    # col2 row3: +50 Mood/+30 Comfort (cd 1 day)
+)
+GOV_TOTAL_COST = 250_000                # sum of the three costs; need at least this to run
+GOV_POST_ISSUE_DELAY = 6.0              # seconds of on-screen effects after issuing before reopening
+GOV_REWARDS_DISMISS_TAP = (270, 500)    # neutral spot to dismiss the Rush Job "Rewards" modal
+GOV_INTERVAL = 12 * 60 * 60             # loop every 12h (Productivity cooldown is the shortest)
 
 # ---------------------------------------------------------------------------
 # Arena of Glory (PVP). Reached like the Barracks: jump to the troop buildings

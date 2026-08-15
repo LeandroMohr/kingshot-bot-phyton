@@ -1,14 +1,14 @@
 {
   "description": "Latest player profile snapshot (dynamic game state). Read once when the script starts.",
-  "last_read": "2026-08-14T18:21:57+00:00",
+  "last_read": "2026-08-14T23:21:44+00:00",
   "player": {
-    "name": "IMohr",
-    "alliance_tag": "LRN",
-    "id": "259415100",
-    "power": "113.7M",
-    "kills": "4.8M",
-    "alliance": "LRN",
+    "name": "Arroba",
+    "alliance_tag": "RGR",
+    "id": "260506384",
+    "power": "57.7M",
+    "kills": "265,582",
+    "alliance": "RGR",
     "kingdom": "#1708",
-    "stamina": "116/200"
+    "stamina": "553/200"
   }
 }
