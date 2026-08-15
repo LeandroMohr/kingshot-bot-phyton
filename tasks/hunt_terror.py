@@ -19,6 +19,12 @@ terminal at start):
              march); it keeps the heroes the game auto-selects and taps
              "Equalize" so the troops are split evenly and more marches fit.
 
+In "hnt" mode a "require_diana" preference (also asked at start) controls what
+happens when Diana is out on a march (the HNT preset then leaves the archer slot
+empty and the rally costs the full 25): when ON (default) the hunt WAITS for her
+to return instead of deploying without her; when OFF it deploys anyway (cost 25).
+Diana's presence is detected by matching her portrait in the rally's hero slots.
+
   1. Detect where we are and follow the right flow: the hunt can start from the
      TOWER (city / home) or from the WORLD map. On any other screen (a leftover
      modal, the "Quit game?" dialog, ...) it recovers to the city first. It
@@ -145,6 +151,7 @@ class HuntTerrorTask(Task):
         launched_at: dict[int, float] = {}
         hunts = 0
         out_of_stamina = False
+        self._diana_busy = False
         while not out_of_stamina:
             # How many march queues are free right now? _idle_slots reads the
             # world-map "Marching N/M" panel; it returns None only when the panel
@@ -192,6 +199,17 @@ class HuntTerrorTask(Task):
 
             if out_of_stamina:
                 break
+
+            if self._diana_busy and not tracked:
+                # A launch was aborted because Diana is out (require_diana on) and
+                # nothing of ours is flying. Go back to the city and re-check after
+                # she has had time to return, instead of spinning.
+                self._go_town(controller)
+                self.interval = config.TERROR_DIANA_WAIT_RETRY
+                print("[Terror Hunt] Diana is out on a march; waiting "
+                      f"~{self.interval / 60:.0f} min for her to return before "
+                      "hunting (require_diana on).")
+                return Outcome.ABSENT
 
             if not tracked:
                 # Nothing of OURS is out. Either every queue is already busy with
@@ -308,10 +326,30 @@ class HuntTerrorTask(Task):
             if not self._tap(controller, "formation_hnt.png", wait=2.0,
                              threshold=0.80):
                 return False
+            # Diana gives the -20% stamina discount (cost 20 vs 25), but the HNT
+            # preset only loads her when she is free; if she is out on a march the
+            # archer slot is empty. When require_diana is on, do NOT deploy
+            # without her — cancel and wait for her to return. When off, deploy
+            # anyway (cost 25).
+            if getattr(self, "_require_diana", True) and \
+                    not self._diana_loaded(controller):
+                print("[Terror Hunt] Diana is out on a march (not in the rally); "
+                      "not deploying — waiting for her to return.")
+                self._diana_busy = True
+                self._go_home(controller)  # cancel the pending rally
+                return False
         # Deploy.
         if not self._tap(controller, "deploy_button.png", wait=3.0, threshold=0.80):
             return False
         return True
+
+    def _diana_loaded(self, controller: ADBController) -> bool:
+        """True if Diana's portrait is in the rally's hero slots (the HNT preset
+        loaded her). When she is out on a march the slot is empty and this is
+        False. Only meaningful on the rally formation screen."""
+        return find_template(controller.screenshot(),
+                             config.TERROR_DIANA_TEMPLATE,
+                             config.TERROR_DIANA_THRESHOLD).found
 
 
     def _open_search(self, controller: ADBController) -> bool:
@@ -523,13 +561,16 @@ class HuntTerrorTask(Task):
     # -- settings (file + prompt) ------------------------------------------
     def _resolve_settings(self, prompt: bool = True) -> tuple[int, str]:
         """Return (level, mode). Values come from the hunt-config file and, on
-        the first call of a run (prompt=True), an optional terminal prompt."""
-        level, mode = self._load_settings()
+        the first call of a run (prompt=True), an optional terminal prompt. The
+        Diana preference is stored on self._require_diana as a side effect."""
+        level, mode, require_diana = self._load_settings()
         if prompt:
-            level, mode = self._maybe_prompt_settings(level, mode)
+            level, mode, require_diana = self._maybe_prompt_settings(
+                level, mode, require_diana)
+        self._require_diana = require_diana
         return level, mode
 
-    def _load_settings(self) -> tuple[int, str]:
+    def _load_settings(self) -> tuple[int, str, bool]:
         # Prefer this account's own preferences (each account can farm a
         # different Terror level); fall back to the shared file / defaults when
         # the account isn't known yet or has no saved values.
@@ -540,12 +581,15 @@ class HuntTerrorTask(Task):
         try:
             level = int(src.get("terror_level", config.TERROR_LEVEL_DEFAULT))
             mode = str(src.get("rally_mode", config.TERROR_RALLY_MODE_DEFAULT))
+            require_diana = bool(src.get("require_diana",
+                                         config.TERROR_REQUIRE_DIANA_DEFAULT))
         except Exception:
             level, mode = config.TERROR_LEVEL_DEFAULT, config.TERROR_RALLY_MODE_DEFAULT
+            require_diana = config.TERROR_REQUIRE_DIANA_DEFAULT
         level = max(config.TERROR_LEVEL_MIN, min(config.TERROR_LEVEL_MAX, level))
         if mode not in config.TERROR_RALLY_MODES:
             mode = config.TERROR_RALLY_MODE_DEFAULT
-        return level, mode
+        return level, mode, require_diana
 
     def _load_global_settings(self) -> dict:
         """Read the shared (non per-account) hunt-config file. Used as a fallback
@@ -555,32 +599,38 @@ class HuntTerrorTask(Task):
         except Exception:
             return {}
 
-    def _save_settings(self, level: int, mode: str) -> None:
+    def _save_settings(self, level: int, mode: str,
+                       require_diana: bool) -> None:
         # Save under this account's preferences when we know which account it is;
         # otherwise fall back to the shared file so nothing is lost.
         account_id = account_prefs.current_account_id()
         if account_id:
             account_prefs.update_prefs(
-                account_id, {"terror_level": level, "rally_mode": mode})
+                account_id, {"terror_level": level, "rally_mode": mode,
+                             "require_diana": require_diana})
             return
         path = Path(config.TERROR_LEVEL_FILE)
         payload = {
             "description": "Terror Hunt settings. 'terror_level' (3-8) is which "
                            "Terror level to hunt. 'rally_mode' is 'hnt' (one "
                            "rally with the HNT preset) or 'fill' (keep every "
-                           "free march queue busy, Equalize, no preset). Both are "
-                           "re-read before every hunt.",
+                           "free march queue busy, Equalize, no preset). "
+                           "'require_diana' waits for Diana (hnt mode) instead "
+                           "of deploying without her. All are re-read before "
+                           "every hunt.",
             "terror_level": level,
             "rally_mode": mode,
+            "require_diana": require_diana,
         }
         path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
 
-    def _maybe_prompt_settings(self, level: int, mode: str) -> tuple[int, str]:
-        """Ask the operator for the level and the rally mode, keeping the current
-        values if there is no valid answer within the timeout. Only prompts when
-        running in an interactive terminal."""
+    def _maybe_prompt_settings(self, level: int, mode: str,
+                               require_diana: bool) -> tuple[int, str, bool]:
+        """Ask the operator for the level, the rally mode and the Diana
+        preference, keeping the current values if there is no valid answer within
+        the timeout. Only prompts when running in an interactive terminal."""
         if not sys.stdin or not sys.stdin.isatty():
-            return level, mode
+            return level, mode, require_diana
         answer = self._prompt(
             f"[Terror Hunt] Level Lv.{level}. Type {config.TERROR_LEVEL_MIN}-"
             f"{config.TERROR_LEVEL_MAX} to change (or wait to keep): ")
@@ -595,9 +645,18 @@ class HuntTerrorTask(Task):
             mode = "hnt"
         elif answer == "2":
             mode = "fill"
-        self._save_settings(level, mode)
-        print(f"[Terror Hunt] Using Lv.{level}, mode '{mode}'.")
-        return level, mode
+        answer = self._prompt(
+            f"[Terror Hunt] Require Diana? currently "
+            f"{'yes' if require_diana else 'no'}. Type 1 = yes (wait for her), "
+            f"2 = no (hunt without her, cost 25) (or wait to keep): ")
+        if answer == "1":
+            require_diana = True
+        elif answer == "2":
+            require_diana = False
+        self._save_settings(level, mode, require_diana)
+        print(f"[Terror Hunt] Using Lv.{level}, mode '{mode}', "
+              f"require_diana={require_diana}.")
+        return level, mode, require_diana
 
     def _prompt(self, message: str) -> str:
         """Print a prompt and return the typed line, or "" if the operator does

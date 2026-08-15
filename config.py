@@ -231,6 +231,15 @@ TERROR_RETURN_MAX_WAIT = 30 * 60       # safety cap: relaunch even if detection 
 #             left untouched.
 TERROR_RALLY_MODE_DEFAULT = "hnt"
 TERROR_RALLY_MODES = ("hnt", "fill")
+# Diana preference (mode "hnt" only). The HNT preset only loads Diana when she is
+# free; if she is out on a march the archer slot is empty and the rally costs the
+# full 25 stamina (no discount). When require_diana is on, the hunt WAITS for her
+# to return instead of deploying without her; when off, it hunts anyway (cost 25).
+# Detected by matching her portrait in the rally's hero slots.
+TERROR_REQUIRE_DIANA_DEFAULT = True
+TERROR_DIANA_TEMPLATE = "diana_hero.png"   # Diana's portrait (archer slot crop)
+TERROR_DIANA_THRESHOLD = 0.80              # match >= this means Diana is loaded
+TERROR_DIANA_WAIT_RETRY = 5 * 60           # seconds to wait for Diana before re-checking
 
 # ---------------------------------------------------------------------------
 # Train troops (tasks/train_troops.py)
@@ -467,6 +476,14 @@ INTEL_MAX_RUNTIME = 20 * 60               # wall-clock budget (s) for one run, i
 INTEL_QUEUE_WAIT_POLL = 45                # seconds between free-queue checks while waiting
 INTEL_DISPATCH_MAX_RETRY = 3              # give up on a spot after this many failed dispatches
 INTEL_INTERVAL = 6 * 60 * 60               # seconds between runs (panel refreshes ~5-6h)
+# Stamina cost per mission type (drawn from the meat counter at the panel's
+# top-right, read via INTEL_STAMINA_REGION). Hunts get first claim on stamina —
+# they are reserved before any battle/refugee is planned — so a wave never spends
+# the food a pending hunt still needs. Diana's -20% discount is ignored on
+# purpose (conservative: never over-commit stamina).
+INTEL_STAMINA_COST = {"hunt": 10, "battle": 10, "refugee": 12, "bounty": 10}
+INTEL_STAMINA_MASK_LO = 170              # white-mask low threshold for the meat OCR
+                                         # (170 reads the "192" cleanly; 155 misread the 9)
 
 # --- Rebel Bounty ("Gilded Baron") -----------------------------------------
 # A special, LAST mission: run only after every other Intel mission is done.

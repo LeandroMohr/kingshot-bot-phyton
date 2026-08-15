@@ -90,68 +90,89 @@ class IntelMissionsTask(Task):
         # Hunts whose equalized army was not predicted to win are recorded here so
         # they are not re-picked this run (avoids looping on an unwinnable hunt).
         self._skipped: list[tuple[int, int]] = []
+        # Spots already dispatched this run, so a not-yet-rendered done-check does
+        # not cause the same pin to be re-planned within the same run.
+        self._dispatched_spots: list[tuple[int, int]] = []
         # Marches already out before we dispatch anything (e.g. gathering). The
         # Rebel Bounty waits for the count to return to THIS baseline so only its
         # own battle report is fresh when we read the mail.
         self._baseline_marches = self._read_march_count(controller)
         # Per-spot dispatch-failure counts, to stop retrying a stuck pin.
         fails: dict[tuple[int, int], int] = {}
-        # 2. Scan-and-dispatch loop. Keep going until every mission has been
-        #    dispatched (no pending pins left). Each pass opens the panel, claims
-        #    finished missions, and dispatches the single best pending one. When
-        #    only Monster Hunts remain but all march queues are busy, wait for a
-        #    queue to free up (a hunt returning) and continue — the number of
-        #    missions is variable, so we loop until the map is clear rather than a
-        #    fixed count. A wall-clock budget bounds the total wait.
+        # 2. WAVE loop. Each wave opens the panel at most once and dispatches
+        #    everything it can start now, in priority order (all affordable hunts
+        #    to fill the free march queues, then battles, then refugees) bounded by
+        #    free queues and by STAMINA (the meat counter). Reading the free queues
+        #    (world map) and the stamina (open panel) happens ONCE per wave — not
+        #    per mission — which is what removes the old open/close churn. Each
+        #    dispatch drops us on the world map, so the panel is reopened before the
+        #    NEXT mission, but nothing is re-scanned/re-claimed/re-counted between
+        #    missions of the same wave. Between waves the queues and stamina are
+        #    re-read (marches return, stamina regenerates). A wall-clock budget
+        #    bounds the total wait.
         deadline = time.time() + config.INTEL_MAX_RUNTIME
         while time.time() < deadline and dispatched < config.INTEL_MAX_DISPATCH:
+            # Free march queues, read ONCE on the world map (no panel churn).
+            free_q = self._free_queue_count(controller)
+
             if not self._open_panel(controller):
                 return Outcome.FAILED if dispatched == 0 else Outcome.SUCCESS
 
-            # Claim any finished missions first: their pins may be overlapping and
-            # hiding pending missions that only appear once the rewards are taken.
+            # Claim finished missions first (in place — no reopen): their pins may
+            # overlap and hide pending missions that only appear once claimed.
             self._claim_if_available(controller)
 
+            # Current stamina (meat counter), read ONCE from the open panel.
+            stamina = self._read_stamina(controller)
             missions = self._scan_missions(controller)
             if not missions:
                 break  # every mission has been dispatched/claimed — done
 
-            # Are any queues free? Only Monster Hunts need one. Read it from the
-            # world-map "Marching N/M" panel (opening the Intel panel does not
-            # disturb it — it is read on the world map before/after).
-            queue_free = self._has_free_queue(controller)
-            target = self._pick_next(missions, queue_free)
-            if target is None:
-                # Only hunts remain and every queue is busy. Wait for one to free
-                # up (a hunt returning), then retry; stop if the budget runs out.
-                print("[Intel Missions] Queues busy; waiting for a march to "
-                      "return before dispatching the remaining hunt(s).")
-                if not self._wait_for_queue(controller, deadline):
-                    print("[Intel Missions] Gave up waiting for a free queue.")
-                    break
-                continue
+            plan = self._plan_wave(missions, free_q, stamina)
+            if not plan:
+                # Nothing startable right now. If hunts remain and we can still
+                # afford one, the only blocker is busy queues: wait for a march to
+                # return and try a fresh wave. Otherwise stamina is exhausted for
+                # the queue-less battles/refugees too, so we stop.
+                budget = stamina if stamina is not None else 10 ** 9
+                hunts_pending = any(m[0] == "hunt" for m in missions)
+                if hunts_pending and budget >= config.INTEL_STAMINA_COST["hunt"]:
+                    print("[Intel Missions] Queues busy; doing the remaining "
+                          "hunts as marches return.")
+                    if not self._wait_for_queue(controller, deadline):
+                        print("[Intel Missions] Gave up waiting for a free queue.")
+                        break
+                    continue
+                print("[Intel Missions] Out of stamina for the remaining "
+                      "missions this pass.")
+                break
 
-            kind, x, y, rarity = target
-            if self._dispatch(controller, kind, x, y):
-                dispatched += 1
-                print(f"[Intel Missions] Dispatched a {rarity} {kind} "
-                      f"(#{dispatched}).")
-            else:
-                # A dispatch can fail transiently (e.g. a just-sent pin has not
-                # yet shown its done-check and gets re-picked). Retry a few times,
-                # then give up on that spot so we don't churn on a stuck pin.
-                key = (x // 15, y // 15)
-                fails[key] = fails.get(key, 0) + 1
-                if fails[key] >= config.INTEL_DISPATCH_MAX_RETRY:
-                    self._skipped.append((x, y))
-                    print(f"[Intel Missions] Giving up on the {rarity} {kind} at "
-                          f"({x},{y}) after {fails[key]} tries.")
+            # Dispatch the whole plan, reopening the panel only BETWEEN missions.
+            for i, (kind, x, y, name) in enumerate(plan):
+                if i > 0 and not self._open_panel(controller):
+                    break
+                if self._dispatch(controller, kind, x, y):
+                    dispatched += 1
+                    self._dispatched_spots.append((x, y))
+                    print(f"[Intel Missions] Dispatched a {name} {kind} "
+                          f"(#{dispatched}).")
                 else:
-                    print(f"[Intel Missions] Could not dispatch the {rarity} "
-                          f"{kind}; will retry.")
-                # Reopen a clean state before the next attempt.
-                self._go_home(controller)
-                self._ensure_world(controller)
+                    # A dispatch can fail transiently (e.g. a just-sent pin has not
+                    # yet shown its done-check). Retry a few times, then give up on
+                    # that spot so we don't churn on a stuck pin. Break the wave to
+                    # re-scan from a fresh state.
+                    key = (x // 15, y // 15)
+                    fails[key] = fails.get(key, 0) + 1
+                    if fails[key] >= config.INTEL_DISPATCH_MAX_RETRY:
+                        self._skipped.append((x, y))
+                        print(f"[Intel Missions] Giving up on the {name} {kind} "
+                              f"at ({x},{y}) after {fails[key]} tries.")
+                    else:
+                        print(f"[Intel Missions] Could not dispatch the {name} "
+                              f"{kind}; will retry.")
+                    self._go_home(controller)
+                    self._ensure_world(controller)
+                    break
 
         # 3. Every ordinary mission is dispatched. Now run the Rebel Bounty last:
         #    attack it repeatedly (it gets harder each win) until we lose once or
@@ -195,6 +216,9 @@ class IntelMissionsTask(Task):
                     if any(abs(m.x - sx) <= 20 and abs(m.y - sy) <= 20
                            for sx, sy in getattr(self, "_skipped", [])):
                         continue  # an unwinnable hunt already skipped this run
+                    if any(abs(m.x - dx) <= 20 and abs(m.y - dy) <= 20
+                           for dx, dy in getattr(self, "_dispatched_spots", [])):
+                        continue  # already dispatched this run (check may lag)
                     rank, name = self._rarity(hsv, m.x, m.y)
                     out.append((kind, m.x, m.y, rank, name))
         return out
@@ -236,22 +260,47 @@ class IntelMissionsTask(Task):
                 return rank, name
         return config.INTEL_RARITY_WHITE_RANK, "white"
 
-    def _pick_next(self, missions: list[tuple], queue_free: bool):
-        """Choose the next mission to dispatch, honoring the rules: type order
-        (hunt -> battle -> refugee), then rarity (best rank first). Monster Hunts
-        are only eligible when a march queue is free. Returns
-        (kind, x, y, rarity_name) or None."""
+    def _plan_wave(self, missions: list[tuple], free_q: int,
+                   stamina: int | None) -> list[tuple]:
+        """Plan everything to dispatch THIS wave, in strict priority order and
+        bounded by free march queues + stamina. Returns an ordered list of
+        (kind, x, y, name).
+
+        Priority of the shared stamina pool: HUNTS FIRST. All pending hunts have
+        their stamina reserved before any battle/refugee is planned, so a wave
+        never spends the food a still-pending hunt will need — this realises the
+        rule "if there is not enough stamina for the battles + rescues in
+        parallel, just do every possible hunt and wait for the marches". Within a
+        type the best rarity (lowest rank) goes first, tie-broken topmost."""
+        cost = config.INTEL_STAMINA_COST
+        budget = stamina if stamina is not None else 10 ** 9
+
+        by_kind: dict[str, list[tuple]] = {}
         for kind in config.INTEL_TYPE_ORDER:
-            if kind == "hunt" and not queue_free:
-                continue
-            candidates = [m for m in missions if m[0] == kind]
-            if not candidates:
-                continue
-            # best rarity first (lowest rank), tie-break by position (topmost)
-            candidates.sort(key=lambda m: (m[3], m[2], m[1]))
-            kind, x, y, _rank, name = candidates[0]
-            return kind, x, y, name
-        return None
+            cands = [m for m in missions if m[0] == kind]
+            cands.sort(key=lambda m: (m[3], m[2], m[1]))  # rarity, then topmost
+            by_kind[kind] = cands
+
+        plan: list[tuple] = []
+        # Hunts: limited by free queues AND by stamina; they get first claim.
+        n_hunt = min(len(by_kind.get("hunt", [])), free_q, budget // cost["hunt"])
+        for m in by_kind.get("hunt", [])[:n_hunt]:
+            plan.append((m[0], m[1], m[2], m[4]))
+        budget -= n_hunt * cost["hunt"]
+        # Reserve stamina for the hunts we could NOT start yet (queues full), so a
+        # surplus battle/refugee never eats a pending hunt's food.
+        remaining_hunts = len(by_kind.get("hunt", [])) - n_hunt
+        surplus = max(0, budget - remaining_hunts * cost["hunt"])
+        # Battles (instant, no queue) from the surplus.
+        n_batt = min(len(by_kind.get("battle", [])), surplus // cost["battle"])
+        for m in by_kind.get("battle", [])[:n_batt]:
+            plan.append((m[0], m[1], m[2], m[4]))
+        surplus -= n_batt * cost["battle"]
+        # Refugees last, from whatever surplus remains.
+        n_ref = min(len(by_kind.get("refugee", [])), surplus // cost["refugee"])
+        for m in by_kind.get("refugee", [])[:n_ref]:
+            plan.append((m[0], m[1], m[2], m[4]))
+        return plan
 
     # -- dispatch flows ----------------------------------------------------
     def _dispatch(self, controller: ADBController, kind: str, x: int,
@@ -319,7 +368,8 @@ class IntelMissionsTask(Task):
         """If the green "Claim All" button is showing (finished missions exist,
         possibly hidden behind overlapping pins), claim them so their pins clear
         and any overlapped pending mission becomes visible. Returns True if it
-        claimed. The panel must already be open; it is reopened afterwards."""
+        claimed. The panel must already be open; claiming stays ON the panel
+        (dismissing the rewards overlay returns to it), so it is NOT reopened."""
         if not find_template(controller.screenshot(), config.INTEL_CLAIM_BUTTON,
                              config.INTEL_CLAIM_THRESHOLD).found:
             return False
@@ -327,7 +377,6 @@ class IntelMissionsTask(Task):
         time.sleep(1.8)
         controller.tap(*config.INTEL_VICTORY_EXIT_TAP)  # dismiss rewards overlay
         time.sleep(1.2)
-        self._open_panel(controller)  # back to the panel for scanning
         return True
 
     def _win_predicted(self, controller: ADBController) -> bool:
@@ -364,7 +413,9 @@ class IntelMissionsTask(Task):
         """True if at least one march queue is free (for Monster Hunts). Read
         from the world-map "Marching N/M" panel: absent panel = every queue free.
         Reading requires the world map, so we close the Intel panel with 'back'
-        first (which returns straight to the world map) and reopen it after."""
+        first (which returns straight to the world map) and reopen it after.
+        Used by the Rebel Bounty loop (the main wave loop uses _free_queue_count,
+        which reads the world map before the panel is opened)."""
         controller.back()  # Intel panel -> world map
         time.sleep(1.2)
         screen = controller.screenshot()
@@ -377,15 +428,64 @@ class IntelMissionsTask(Task):
         self._open_panel(controller)
         return free
 
+    def _free_queue_count(self, controller: ADBController) -> int:
+        """Number of FREE march queues, read ONCE on the world map (no panel
+        churn). An absent "Marching N/M" panel means every queue is free."""
+        self._ensure_world(controller)
+        screen = controller.screenshot()
+        if not find_template(screen, config.MARCHING_PANEL_TEMPLATE,
+                             config.MARCHING_PANEL_THRESHOLD).found:
+            return config.MARCH_MAX_QUEUES
+        busy, total = self._read_queue_counts(screen)
+        return max(0, total - busy)
+
+    def _read_queue_counts(self, screen: np.ndarray) -> tuple[int, int]:
+        """OCR the world-map "N/M" marching counter -> (busy, total). Falls back
+        to (0, MARCH_MAX_QUEUES) on an OCR miss (assume all free)."""
+        import re
+        import pytesseract
+        x1, y1, x2, y2 = config.MARCH_COUNTER_REGION
+        mask = cv2.inRange(screen[y1:y2, x1:x2], (180, 180, 180), (255, 255, 255))
+        mask = cv2.resize(mask, None, fx=6, fy=6, interpolation=cv2.INTER_CUBIC)
+        mask = cv2.bitwise_not(mask)
+        txt = pytesseract.image_to_string(
+            mask, config="--psm 7 -c tessedit_char_whitelist=0123456789/").strip()
+        m = re.match(r"(\d+)\s*/\s*(\d+)", txt)
+        if not m:
+            return 0, config.MARCH_MAX_QUEUES
+        return int(m.group(1)), max(1, int(m.group(2)))
+
+    def _read_stamina(self, controller: ADBController) -> int | None:
+        """OCR the panel's top-right meat counter (current stamina). The Intel
+        panel must be open. Returns the integer, or None on an OCR miss (the
+        caller then assumes plenty and lets a failed dispatch self-limit)."""
+        import re
+        import pytesseract
+        screen = controller.screenshot()
+        x1, y1, x2, y2 = config.INTEL_STAMINA_REGION
+        lo = config.INTEL_STAMINA_MASK_LO
+        mask = cv2.inRange(screen[y1:y2, x1:x2], (lo, lo, lo), (255, 255, 255))
+        mask = cv2.resize(mask, None, fx=6, fy=6, interpolation=cv2.INTER_CUBIC)
+        mask = cv2.bitwise_not(mask)
+        txt = pytesseract.image_to_string(
+            mask, config="--psm 7 -c tessedit_char_whitelist=0123456789").strip()
+        m = re.match(r"(\d+)", txt)
+        return int(m.group(1)) if m else None
+
     def _wait_for_queue(self, controller: ADBController, deadline: float) -> bool:
         """Block (polling) until a march queue frees up so a remaining Monster
-        Hunt can be dispatched. Returns True when one is free, False if the
-        wall-clock `deadline` is reached first."""
+        Hunt can be dispatched. Closes the Intel panel first so the world-map
+        marching counter is readable (the next wave reopens the panel). Returns
+        True when one is free, False if the wall-clock `deadline` is reached."""
+        if find_template(controller.screenshot(), config.INTEL_PANEL_MARKER,
+                         config.INTEL_PANEL_THRESHOLD).found:
+            controller.back()  # Intel panel -> world map
+            time.sleep(1.2)
         while time.time() < deadline:
-            time.sleep(config.INTEL_QUEUE_WAIT_POLL)
-            if self._has_free_queue(controller):
+            if self._free_queue_count(controller) > 0:
                 return True
-        return False
+            time.sleep(config.INTEL_QUEUE_WAIT_POLL)
+        return self._free_queue_count(controller) > 0
 
     # -- Rebel Bounty (special, last, looped) -----------------------------
     def _scan_bounties(self, controller: ADBController) -> list[tuple]:
