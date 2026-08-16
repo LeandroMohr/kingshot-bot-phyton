@@ -86,6 +86,8 @@ class IntelMissionsTask(Task):
     """Dispatch the Intel Mission balloons in priority order, then claim."""
 
     def execute(self, controller: ADBController) -> str:
+        # Reset to the normal cadence; only a busy-queue run shortens it to 10 min.
+        self.interval = config.INTEL_INTERVAL
         # 1. Start from a known state. The panel lives on the world map, so make
         #    sure we can reach it; recover to the city from any stray screen.
         if not self._ensure_world(controller):
@@ -140,20 +142,20 @@ class IntelMissionsTask(Task):
 
             plan = self._plan_wave(missions, free_q, stamina)
             if not plan:
-                # Nothing startable right now. If hunts remain and we can still
-                # afford one, the only blocker is busy queues: wait for a march to
-                # return and try a fresh wave. Otherwise stamina is exhausted for
-                # the queue-less battles/refugees too, so we stop.
-                budget = stamina if stamina is not None else 10 ** 9
+                # Nothing startable right now. Figure out WHY so we retry sensibly.
+                budget = stamina if stamina is not None else 0
                 hunts_pending = any(m[0] == "hunt" for m in missions)
-                if hunts_pending and budget >= config.INTEL_STAMINA_COST["hunt"]:
-                    print("[Intel Missions] Queues busy; doing the remaining "
-                          "hunts as marches return.")
-                    if not self._wait_for_queue(controller, deadline):
-                        print("[Intel Missions] Gave up waiting for a free queue.")
-                        break
-                    continue
-                print("[Intel Missions] Out of stamina for the remaining "
+                can_afford_hunt = budget >= config.INTEL_STAMINA_COST["hunt"]
+                # Only blocker is busy queues (hunts remain, stamina is enough, but
+                # no free queue) -> don't block the run; retry in 10 min until a
+                # queue frees.
+                if hunts_pending and can_afford_hunt and free_q <= 0:
+                    print("[Intel Missions] All march queues busy; retrying in "
+                          "10 min until one frees.")
+                    self.interval = config.INTEL_QUEUE_RETRY
+                    break
+                # Otherwise there is no stamina left for anything startable.
+                print("[Intel Missions] Not enough stamina for the remaining "
                       "missions this pass.")
                 break
 
@@ -283,7 +285,9 @@ class IntelMissionsTask(Task):
         parallel, just do every possible hunt and wait for the marches". Within a
         type the best rarity (lowest rank) goes first, tie-broken topmost."""
         cost = config.INTEL_STAMINA_COST
-        budget = stamina if stamina is not None else 10 ** 9
+        # Unreadable stamina -> treat as 0 (plan nothing) rather than "plenty", so
+        # a mission is never dispatched on an unverified stamina reading.
+        budget = stamina if stamina is not None else 0
 
         by_kind: dict[str, list[tuple]] = {}
         for kind in config.INTEL_TYPE_ORDER:
@@ -454,18 +458,25 @@ class IntelMissionsTask(Task):
 
     def _free_queue_count(self, controller: ADBController) -> int:
         """Number of FREE march queues, read ONCE on the world map (no panel
-        churn). An absent "Marching N/M" panel means every queue is free."""
+        churn). An absent "Marching N/M" panel means every queue is free. When the
+        panel IS present but the counter can't be OCR'd (after a few tries) we
+        assume ZERO free — never attempt a hunt on an unverified queue."""
         self._ensure_world(controller)
-        screen = controller.screenshot()
-        if not find_template(screen, config.MARCHING_PANEL_TEMPLATE,
-                             config.MARCHING_PANEL_THRESHOLD).found:
-            return config.MARCH_MAX_QUEUES
-        busy, total = self._read_queue_counts(screen)
-        return max(0, total - busy)
+        for _ in range(3):
+            screen = controller.screenshot()
+            if not find_template(screen, config.MARCHING_PANEL_TEMPLATE,
+                                 config.MARCHING_PANEL_THRESHOLD).found:
+                return config.MARCH_MAX_QUEUES
+            counts = self._read_queue_counts(screen)
+            if counts is not None:
+                busy, total = counts
+                return max(0, total - busy)
+            time.sleep(0.6)
+        return 0  # panel present but unreadable -> assume all busy (conservative)
 
-    def _read_queue_counts(self, screen: np.ndarray) -> tuple[int, int]:
-        """OCR the world-map "N/M" marching counter -> (busy, total). Falls back
-        to (0, MARCH_MAX_QUEUES) on an OCR miss (assume all free)."""
+    def _read_queue_counts(self, screen: np.ndarray) -> tuple[int, int] | None:
+        """OCR the world-map "N/M" marching counter -> (busy, total), or None on
+        an OCR miss (the caller retries / assumes busy)."""
         import re
         import pytesseract
         x1, y1, x2, y2 = config.MARCH_COUNTER_REGION
@@ -476,25 +487,30 @@ class IntelMissionsTask(Task):
             mask, config="--psm 7 -c tessedit_char_whitelist=0123456789/").strip()
         m = re.match(r"(\d+)\s*/\s*(\d+)", txt)
         if not m:
-            return 0, config.MARCH_MAX_QUEUES
+            return None
         return int(m.group(1)), max(1, int(m.group(2)))
 
     def _read_stamina(self, controller: ADBController) -> int | None:
         """OCR the panel's top-right meat counter (current stamina). The Intel
-        panel must be open. Returns the integer, or None on an OCR miss (the
-        caller then assumes plenty and lets a failed dispatch self-limit)."""
+        panel must be open. Retries a few times; returns None only if every
+        attempt missed (the caller then treats stamina as 0 = do nothing, so we
+        never dispatch a mission on an unverified stamina reading)."""
         import re
         import pytesseract
-        screen = controller.screenshot()
         x1, y1, x2, y2 = config.INTEL_STAMINA_REGION
         lo = config.INTEL_STAMINA_MASK_LO
-        mask = cv2.inRange(screen[y1:y2, x1:x2], (lo, lo, lo), (255, 255, 255))
-        mask = cv2.resize(mask, None, fx=6, fy=6, interpolation=cv2.INTER_CUBIC)
-        mask = cv2.bitwise_not(mask)
-        txt = pytesseract.image_to_string(
-            mask, config="--psm 7 -c tessedit_char_whitelist=0123456789").strip()
-        m = re.match(r"(\d+)", txt)
-        return int(m.group(1)) if m else None
+        for _ in range(3):
+            screen = controller.screenshot()
+            mask = cv2.inRange(screen[y1:y2, x1:x2], (lo, lo, lo), (255, 255, 255))
+            mask = cv2.resize(mask, None, fx=6, fy=6, interpolation=cv2.INTER_CUBIC)
+            mask = cv2.bitwise_not(mask)
+            txt = pytesseract.image_to_string(
+                mask, config="--psm 7 -c tessedit_char_whitelist=0123456789").strip()
+            m = re.match(r"(\d+)", txt)
+            if m:
+                return int(m.group(1))
+            time.sleep(0.5)
+        return None
 
     def _wait_for_queue(self, controller: ADBController, deadline: float) -> bool:
         """Block (polling) until a march queue frees up so a remaining Monster

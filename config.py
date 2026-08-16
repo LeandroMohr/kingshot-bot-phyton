@@ -541,6 +541,7 @@ INTEL_BATTLE_ANIM_WAIT = 8.0               # seconds after "Fight" for the win/l
 INTEL_MAX_DISPATCH = 50                    # absolute safety cap on missions per run
 INTEL_MAX_RUNTIME = 20 * 60               # wall-clock budget (s) for one run, incl. queue waits
 INTEL_QUEUE_WAIT_POLL = 45                # seconds between free-queue checks while waiting
+INTEL_QUEUE_RETRY = 10 * 60               # when all queues are busy, re-run in 10 min (not block)
 INTEL_DISPATCH_MAX_RETRY = 3              # give up on a spot after this many failed dispatches
 INTEL_INTERVAL = 6 * 60 * 60               # seconds between runs (panel refreshes ~5-6h)
 # Stamina cost per mission type (drawn from the meat counter at the panel's
