@@ -51,6 +51,15 @@ Terror Hunt (Hunt Terror) — **already created and validated live**:
 - `deploy_button.png`  → the "Deploy" button
 - `world_town.png`     → the Town button (bottom-right on the world map)
 
+Beast Hunt (Hunt Beasts) — **created and validated live on emulator 5555**:
+
+- Reuses `world_search.png`, `terror_icon.png`, `search_button.png`,
+  `formation_hnt.png`, `diana_hero.png`, and `deploy_button.png`.
+- The Beasts tab is selected relative to the Terror label immediately to its
+  right, so no animated bear-icon template is required.
+- Flow: Beasts → Lv.1-30 (default/max Lv.30) → Search → Attack → HNT → Deploy.
+- Unlike Terror Hunt, this is a direct attack: there is no rally-time dialog.
+
 Important rule (free-to-play): NEVER tap real-money purchase buttons (e.g.
 "$61.90", monthly cards, offers). Always close with the X or ignore them.
 

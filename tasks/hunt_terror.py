@@ -102,6 +102,8 @@ class HuntTerrorTask(Task):
     """Launches Terror rallies back-to-back, staying on the world map, until
     stamina runs out."""
 
+    log_label = "Terror Hunt"
+
     def execute(self, controller: ADBController) -> str:
         # 1. Figure out WHERE we are and follow the right flow. The hunt can run
         #    from the TOWER (city / home) or from the WORLD map, but if we land
@@ -111,11 +113,11 @@ class HuntTerrorTask(Task):
         #    'back' pops the "Quit game?" dialog and the bot gets lost.
         where = self._current_screen(controller)
         if where == "home":
-            print("[Terror Hunt] On the TOWER (city); starting from home.")
+            print(f"[{self.log_label}] On the TOWER (city); starting from home.")
         elif where == "world":
-            print("[Terror Hunt] On the WORLD map; starting from there.")
+            print(f"[{self.log_label}] On the WORLD map; starting from there.")
         else:
-            print(f"[Terror Hunt] On a '{where}' screen; returning to the city "
+            print(f"[{self.log_label}] On a '{where}' screen; returning to the city "
                   f"first so the hunt starts from a known state.")
             if not self._go_home(controller):
                 return Outcome.FAILED
@@ -125,7 +127,7 @@ class HuntTerrorTask(Task):
         #    needs (20 with the HNT/Diana preset, 25 otherwise).
         level, mode = self._resolve_settings()
         required = self._required_stamina(mode)
-        print(f"[Terror Hunt] Mode '{mode}', hunting Lv.{level} "
+        print(f"[{self.log_label}] Mode '{mode}', hunting Lv.{level} "
               f"(needs {required} stamina/rally).")
 
         # 3. Check stamina up front (read from the Intel Mission "meat" counter).
@@ -134,7 +136,7 @@ class HuntTerrorTask(Task):
             return Outcome.FAILED  # transient OCR/nav issue -> retried/backed off
         if stamina < required:
             self._schedule_recharge(stamina)
-            print(f"[Terror Hunt] Stamina {stamina} < {required}; "
+            print(f"[{self.log_label}] Stamina {stamina} < {required}; "
                   f"waiting ~{self.interval / 60:.0f} min to recharge.")
             return Outcome.ABSENT
 
@@ -194,7 +196,7 @@ class HuntTerrorTask(Task):
                     launched_at[slot] = time.monotonic()
                 tracked |= got
                 hunts += 1
-                print(f"[Terror Hunt] Launched hunt #{hunts} on slot {sorted(got)} "
+                print(f"[{self.log_label}] Launched hunt #{hunts} on slot {sorted(got)} "
                       f"(Lv.{level}, mode '{mode}', stamina was {stamina}).")
 
             if out_of_stamina:
@@ -206,7 +208,7 @@ class HuntTerrorTask(Task):
                 # she has had time to return, instead of spinning.
                 self._go_town(controller)
                 self.interval = config.TERROR_DIANA_WAIT_RETRY
-                print("[Terror Hunt] Diana is out on a march; waiting "
+                print(f"[{self.log_label}] Diana is out on a march; waiting "
                       f"~{self.interval / 60:.0f} min for her to return before "
                       "hunting (require_diana on).")
                 return Outcome.ABSENT
@@ -221,7 +223,7 @@ class HuntTerrorTask(Task):
                         # No free queue to hunt with right now (all busy
                         # elsewhere). Back off and try again later; don't spin.
                         self.interval = config.TERROR_ALL_BUSY_RETRY
-                        print("[Terror Hunt] No free march queue right now (all "
+                        print(f"[{self.log_label}] No free march queue right now (all "
                               "queues busy with other activities); retrying in "
                               f"~{self.interval / 60:.0f} min.")
                         return Outcome.ABSENT
@@ -244,7 +246,7 @@ class HuntTerrorTask(Task):
         # 5. Out of stamina: go back to the city and wait for it to recharge.
         self._go_town(controller)
         self._schedule_recharge(stamina if stamina is not None else 0)
-        print(f"[Terror Hunt] Ran {hunts} hunt(s); stamina low, back to the city. "
+        print(f"[{self.log_label}] Ran {hunts} hunt(s); stamina low, back to the city. "
               f"Next check in ~{self.interval / 60:.0f} min.")
         return Outcome.SUCCESS
 
@@ -333,7 +335,7 @@ class HuntTerrorTask(Task):
             # anyway (cost 25).
             if getattr(self, "_require_diana", True) and \
                     not self._diana_loaded(controller):
-                print("[Terror Hunt] Diana is out on a march (not in the rally); "
+                print(f"[{self.log_label}] Diana is out on a march (not in the rally); "
                       "not deploying — waiting for her to return.")
                 self._diana_busy = True
                 self._go_home(controller)  # cancel the pending rally
@@ -388,7 +390,7 @@ class HuntTerrorTask(Task):
                 elif age >= config.TERROR_RETURN_MIN_WAIT and slot in idle:
                     returned.add(slot)
             if returned:
-                print(f"[Terror Hunt] Slot(s) {sorted(returned)} back; relaunching.")
+                print(f"[{self.log_label}] Slot(s) {sorted(returned)} back; relaunching.")
                 return returned
             time.sleep(config.TERROR_RETURN_POLL)
 
@@ -407,7 +409,7 @@ class HuntTerrorTask(Task):
         balloon was tapped."""
         if not self._tap(controller, "help_balloon.png", wait=1.5, threshold=0.88):
             return False
-        print("[Terror Hunt] Helped the alliance (tapped the help balloon).")
+        print(f"[{self.log_label}] Helped the alliance (tapped the help balloon).")
         # Usually the balloon just disappears and we are still on the world map.
         # Only if a window clearly opened (the Town button is gone across a few
         # frames — a misclick onto the chat when the balloon vanished under our
@@ -474,7 +476,7 @@ class HuntTerrorTask(Task):
         if not match:
             return None
         busy, total = int(match.group(1)), int(match.group(2))
-        total = max(total, 1)
+        total = max(1, min(total, config.MARCH_MAX_QUEUES))
         busy = max(0, min(busy, total))
         return (busy, total)
 

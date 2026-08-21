@@ -25,6 +25,7 @@ from tasks import (
     alliance_chests,
     alliance_tech,
     buy_vip_points,
+    hunt_beasts,
     hunt_terror,
     gather_resources,
     train_troops,
@@ -51,6 +52,7 @@ _MODULES = [
     arena,                 # opens the Arena of Glory ranking screen (PVP entry point) (loop 1h)
     intel_missions,        # dispatches Intel Mission balloons (hunt/battle/refugee), then Claim All (loop 6h) — BEFORE Hunt Terror
     gather_resources,      # fills free march queues with resource-gathering marches (loop 20min)
+    hunt_beasts,           # directly attacks Lv.30 Beasts with HNT, before Terror drains stamina
     hunt_terror,           # launches Terror rallies, gated by stamina, many delays — ALWAYS LAST (slow)
 ]
 

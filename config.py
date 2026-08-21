@@ -185,6 +185,20 @@ TERROR_LEVEL_MINUS = (37, 790)         # slider '-' button
 TERROR_LEVEL_PLUS = (363, 790)         # slider '+' button
 TERROR_LEVEL_BOX = (430, 772, 492, 808)  # value box (x1,y1,x2,y2) for OCR
 RALLY_5MIN_TAP = (97, 441)             # the "5 min(s)" arrival-time checkbox
+
+# Beast Hunt uses the same world-search panel, march tracking and HNT formation
+# as Terror Hunt, but Beasts are direct attacks (no rally setup) and span Lv.1-30.
+BEAST_LEVEL_DEFAULT = 30
+BEAST_LEVEL_MIN = 1
+BEAST_LEVEL_MAX = 30
+BEAST_STAMINA_COST = 10
+BEAST_LEVEL_FILE = BASE_DIR / "memory" / "beast_hunt_config.json"
+BEAST_CATEGORY_OFFSET_X = -100         # Beasts tab is immediately left of Terror
+BEAST_ATTACK_TAP = (270, 460)          # orange Attack button on the Beast card
+BEAST_LEVEL_TAP_DELAY = 0.35           # lets the UI accept each required +/- tap
+BEAST_LEVEL_SETTLE_DELAY = 0.6         # wait for the displayed value before OCR
+BEAST_LEVEL_READ_TRIES = 3             # tolerate a transient OCR miss
+BEAST_LEVEL_ADJUST_PASSES = 3          # correct taps dropped by the game UI
 # Marching panel (used to detect when the troops are back). The bot stays on the
 # world map between rallies, where the "Marching N/M" panel is ALWAYS OPEN on the
 # left. It reads that N/M counter by OCR (no taps: tapping fixed points there

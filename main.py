@@ -29,6 +29,8 @@ from adb_controller import ADBController, list_devices, discover_devices
 from tasks import TASKS
 from tasks.base import Outcome
 from executor import ensure_game_ready, go_to_home_screen, read_player_profile
+from planner.task_runtime import order_tasks, record_duration
+import account_prefs
 
 
 def format_duration(seconds: float) -> str:
@@ -63,6 +65,7 @@ def check_task(controller: ADBController, port: int, task, now: float) -> None:
     failure and is never retried."""
     task.mark_checked(now)
     max_attempts = 1 + config.TASK_RETRY_ATTEMPTS
+    started = time.monotonic()
     for attempt in range(1, max_attempts + 1):
         try:
             outcome = task.execute(controller)
@@ -72,6 +75,8 @@ def check_task(controller: ADBController, port: int, task, now: float) -> None:
         else:
             print(f"[emulator {port}] {task.name}: {outcome}")
             if outcome in (Outcome.SUCCESS, Outcome.RECOVERED):
+                record_duration(account_prefs.current_account_id(), task.name,
+                                time.monotonic() - started)
                 task.mark_done()  # single-run task ends here
                 return
             if outcome == Outcome.ABSENT:
@@ -87,6 +92,8 @@ def check_task(controller: ADBController, port: int, task, now: float) -> None:
         else:
             print(f"[emulator {port}] {task.name}: giving up for now "
                   f"(will try again next cycle).")
+            record_duration(account_prefs.current_account_id(), task.name,
+                            time.monotonic() - started)
 
 
 
@@ -237,6 +244,8 @@ def run_loop(controller: ADBController) -> None:
         ensure_game_ready(controller)
         go_to_home_screen(controller)
         read_player_profile(controller)  # snapshot account info once at startup
+        active_tasks = order_tasks(active_tasks, account_prefs.current_account_id())
+        print("Task order: " + " -> ".join(task.name for task in active_tasks))
         print("Checking all tasks now that the game is open...")
         now = time.monotonic()
         for task in active_tasks:
