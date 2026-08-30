@@ -80,9 +80,15 @@ class GatherResourcesTask(Task):
             if not self._go_home(controller):
                 return Outcome.FAILED
 
+        # QUEUE FIRST: a gather needs a free march queue, so settle that BEFORE
+        # opening the search screen — with none free there is no point looking
+        # for a node. An unreadable counter counts as busy (conservative): we
+        # never walk the search/deploy flow on an unverified queue count.
         free = self._free_queue_count(controller)
         if free is None:
-            return Outcome.FAILED
+            print("[Gather] Could not read the march queues; assuming they are "
+                  "all busy.")
+            free = 0
         if free <= 0:
             # Queues are full (very likely gathers already running) -> wait 1h.
             print("[Gather] Every march queue is busy; re-checking in 1h.")
@@ -97,6 +103,7 @@ class GatherResourcesTask(Task):
         # is free; a busy specialist means that resource is already being gathered.
         for resource in config.GATHER_RESOURCE_ORDER:
             if free <= 0:
+                print("[Gather] No free march queue left; stopping this pass.")
                 break
             result = self._gather_one(controller, resource)
             if result == self._DISPATCHED:

@@ -12,11 +12,16 @@ Flow:
      "Troop Power". The game centres the Barracks with its radial menu open.
   3. Close the radial by tapping an empty spot, then pan the view RIGHT until the
      crossed-swords Arena building marker is on screen (it sits below the Stable,
-     beside the Range). Tapping that marker opens the Arena of Glory screen.
+     beside the Range). Each pan is short and slow, and the bot waits for the map
+     to stop coasting before matching/tapping — `adb input swipe` flings the map,
+     and tapping a marker spotted on a still-moving frame lands on the wrong
+     building. Tapping that marker opens the Arena of Glory screen.
   4. Tap "Challenge" to open the Challenge List, OCR "My Power" and every
-     opponent's power, pick the weakest opponent at or below a percentage of our
-     power (never someone stronger), tap that row's crossed-swords fight button,
-     tap "Fight" on the squad-selection screen and wait for the result.
+     opponent's power (rows are located by their green power text, since the
+     modal shifts vertically with its footer), pick the weakest opponent at or
+     below a percentage of our power (never someone stronger), tap that row's
+     crossed-swords fight button, tap "Fight" on the squad-selection screen and
+     wait for the result.
 
 Templates (captured at the 540x960 ADB resolution):
   - arena_building_icon.png   : the crossed-swords marker floating over the Arena
@@ -38,6 +43,7 @@ from tasks.base import Task, Outcome
 from adb_controller import ADBController
 from vision import find_template
 from executor import go_to_home_screen, handle_connection_lost
+from executor.tutorial import screen_fingerprint, screens_similar
 import config
 
 
@@ -85,14 +91,14 @@ class ArenaTask(Task):
                 print("[Arena] Could not read any opponent power; stopping.")
                 break
 
-            idx, power = self._pick_opponent(opponents, my_power)
-            readable = ", ".join(f"row{i}={p/1e6:.1f}M" for i, p in opponents)
+            idx, power, text_y = self._pick_opponent(opponents, my_power)
+            readable = ", ".join(f"row{i}={p/1e6:.1f}M" for i, p, _ in opponents)
             print(f"[Arena] Challenge {n + 1}/{config.ARENA_MAX_CHALLENGES}: "
                   f"My Power {my_power/1e6:.1f}M; opponents [{readable}] -> "
                   f"row{idx} ({power/1e6:.1f}M).")
 
             controller.tap(config.ARENA_FIGHT_BTN_X,
-                           config.ARENA_ROW_YS[idx])  # crossed-swords button
+                           text_y + config.ARENA_FIGHT_BTN_DY)  # crossed swords
             time.sleep(2.0)
 
             if not self._tap_fight(controller):
@@ -113,16 +119,17 @@ class ArenaTask(Task):
         return Outcome.ABSENT
 
     def _pick_opponent(self, opponents, my_power):
-        """Return (row_index, power) of the weakest opponent at or below
-        ARENA_MAX_OPPONENT_RATIO * my_power; fall back to the weakest overall."""
+        """Return the (row_index, power, text_y) of the weakest opponent at or
+        below ARENA_MAX_OPPONENT_RATIO * my_power; fall back to the weakest
+        overall."""
         if my_power > 0:
             cap = my_power * config.ARENA_MAX_OPPONENT_RATIO
-            eligible = [(i, p) for i, p in opponents if p <= cap]
+            eligible = [o for o in opponents if o[1] <= cap]
             if eligible:
-                return min(eligible, key=lambda t: t[1])
+                return min(eligible, key=lambda o: o[1])
             print("[Arena] No opponent below the power threshold; "
                   "picking the weakest available.")
-        return min(opponents, key=lambda t: t[1])
+        return min(opponents, key=lambda o: o[1])
 
     # -- OCR ---------------------------------------------------------------
     def _read_my_power(self, screen) -> int:
@@ -138,34 +145,86 @@ class ArenaTask(Task):
         return int(digits) if digits else 0
 
     def _read_opponents(self, screen):
-        """OCR each opponent's green power value. Returns a list of
-        (row_index, power_in_units). Values use the on-screen 'N.NM' / 'NNK'
-        abbreviation with one implied decimal digit."""
-        x1, x2 = config.ARENA_POWER_REGION_X
+        """OCR every opponent's green power value. Returns a list of
+        (row_index, power, text_y), where text_y is the vertical centre of that
+        row's power text (the fight button sits ARENA_FIGHT_BTN_DY from it).
+
+        Rows are located by their green text instead of fixed coordinates: the
+        modal shifts vertically with its footer (e.g. the "Free Refresh"
+        button), which silently pushed the values out of the old fixed crops."""
+        hsv = cv2.cvtColor(screen, cv2.COLOR_BGR2HSV)
+        mask = cv2.inRange(hsv, config.ARENA_GREEN_HSV_LOW,
+                           config.ARENA_GREEN_HSV_HIGH)
         results = []
-        for i, y in enumerate(config.ARENA_ROW_YS):
-            sub = screen[y - 16:y + 16, x1:x2]
-            hsv = cv2.cvtColor(sub, cv2.COLOR_BGR2HSV)
-            mask = cv2.inRange(hsv, (35, 50, 50), (85, 255, 255))
-            mask = cv2.resize(mask, None, fx=6, fy=6,
+        for top, bottom in self._power_text_rows(mask):
+            xs = np.nonzero(mask[top:bottom + 1].sum(axis=0) > 0)[0]
+            crop = mask[max(0, top - 6):bottom + 7,
+                        max(0, xs.min() - 4):xs.max() + 5]
+            crop = cv2.resize(crop, None, fx=6, fy=6,
                               interpolation=cv2.INTER_CUBIC)
-            mask = cv2.copyMakeBorder(mask, 30, 30, 30, 30,
+            crop = cv2.copyMakeBorder(crop, 30, 30, 30, 30,
                                       cv2.BORDER_CONSTANT, value=0)
             raw = pytesseract.image_to_string(
-                mask,
-                config="--psm 13 -c tessedit_char_whitelist=0123456789.MK").strip()
-            digits = re.sub(r"[^0-9]", "", raw)
-            if not digits:
-                continue
-            is_k = "K" in raw.upper()
-            # arena powers show as "N.NM" (>= 2 digits); a single digit means the
-            # OCR dropped part of the value -> unreliable, skip this row.
-            if not is_k and len(digits) < 2:
-                continue
-            mult = 1000 if is_k else 1_000_000
-            # one implied decimal place ("69" -> 6.9, "102" -> 10.2)
-            results.append((i, int(digits) / 10.0 * mult))
+                crop,
+                config="--psm 13 -c tessedit_char_whitelist=0123456789.,MK").strip()
+            power = self._parse_power(raw)
+            if power is not None:
+                results.append((len(results), power, (top + bottom) // 2))
         return results
+
+    @staticmethod
+    def _power_text_rows(mask):
+        """Vertical (top, bottom) bands of the opponents' green power text."""
+        x1, x2 = config.ARENA_ROW_SCAN_X
+        y1, y2 = config.ARENA_ROW_SCAN_Y
+        counts = mask[:, x1:x2].sum(axis=1) // 255
+        bands, start = [], None
+        for y in range(y1, min(y2, len(counts))):
+            if counts[y] >= config.ARENA_ROW_MIN_PIXELS:
+                start = y if start is None else start
+                continue
+            if start is not None:
+                bands.append((start, y - 1))
+                start = None
+        if start is not None:
+            bands.append((start, min(y2, len(counts)) - 1))
+        rows = []
+        for top, bottom in bands:
+            height = bottom - top + 1
+            if not (config.ARENA_ROW_MIN_HEIGHT <= height
+                    <= config.ARENA_ROW_MAX_HEIGHT):
+                continue  # noise, or the tall green "Free Refresh" button
+            xs = np.nonzero(mask[top:bottom + 1].sum(axis=0) > 0)[0]
+            if len(xs) and xs.max() - xs.min() <= config.ARENA_ROW_MAX_WIDTH:
+                rows.append((top, bottom))
+        return rows
+
+    @staticmethod
+    def _parse_power(raw: str) -> int | None:
+        """Turn an on-screen power string into a number. Player opponents show an
+        abbreviation ("5.6M", "980K"); the Guardsman NPCs show the plain value
+        with thousands separators ("166,500"). An abbreviation whose decimal
+        point the OCR dropped ("56M") carries one implied decimal digit."""
+        text = raw.upper().replace(" ", "")
+        digits = re.sub(r"[^0-9]", "", text)
+        if not digits:
+            return None
+        suffix = "M" if "M" in text else ("K" if "K" in text else "")
+        if not suffix:
+            # A separator or four-plus digits means this is the exact value.
+            if "," in text or len(digits) >= 4:
+                return int(digits)
+            # Two or three bare digits: an abbreviation whose suffix the OCR
+            # missed (a real power is never that small).
+            if len(digits) < 2:
+                return None
+            return int(int(digits) / 10.0 * 1_000_000)
+        scale = 1_000_000 if suffix == "M" else 1_000
+        if "." in text:
+            return int(float(re.sub(r"[^0-9.]", "", text).strip(".")) * scale)
+        if len(digits) < 2:
+            return None  # a single digit means the OCR dropped part of the value
+        return int(int(digits) / 10.0 * scale)
 
     def _tap_fight(self, controller: ADBController) -> bool:
         """Tap the 'Fight' button on the squad-selection screen. Returns False if
@@ -218,10 +277,15 @@ class ArenaTask(Task):
     def _open_arena(self, controller: ADBController) -> bool:
         """From the city, reach the troop buildings and pan right until the Arena
         marker is found, then tap it to open the Arena of Glory screen. Returns
-        True once that screen is confirmed open."""
+        True once that screen is confirmed open.
+
+        Every pan is followed by _settle_view: the map keeps coasting for about a
+        second after the swipe, and tapping a marker located on a still-moving
+        frame misses it (which is what used to send the first attempt off to a
+        random building)."""
         self._reach_barracks(controller)
         for _ in range(config.ARENA_MAX_STEPS):
-            screen = controller.screenshot()
+            screen = self._settle_view(controller)
             if find_template(screen, config.ARENA_TITLE_TEMPLATE,
                              config.ARENA_MARKER_THRESHOLD).found:
                 return True
@@ -232,10 +296,24 @@ class ArenaTask(Task):
                 controller.tap(icon.x, icon.y)
                 time.sleep(2.0)
                 continue
-            controller.swipe(*config.ARENA_PAN_RIGHT, 400)  # move the view right
-            time.sleep(1.0)
+            controller.swipe(*config.ARENA_PAN_RIGHT,
+                             config.ARENA_PAN_DURATION)  # move the view right
         return find_template(controller.screenshot(), config.ARENA_TITLE_TEMPLATE,
                              config.ARENA_MARKER_THRESHOLD).found
+
+    def _settle_view(self, controller: ADBController):
+        """Return a frame taken once the city view has stopped moving (two
+        consecutive frames alike), so template positions are tappable."""
+        screen = controller.screenshot()
+        previous = screen_fingerprint(screen)
+        for _ in range(config.ARENA_SETTLE_TRIES):
+            time.sleep(config.ARENA_SETTLE_DELAY)
+            screen = controller.screenshot()
+            current = screen_fingerprint(screen)
+            if screens_similar(previous, current):
+                break
+            previous = current
+        return screen
 
     # -- helpers -----------------------------------------------------------
     def _exit_arena_screen(self, controller: ADBController) -> None:

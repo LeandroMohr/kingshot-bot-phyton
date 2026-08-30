@@ -147,11 +147,12 @@ class IntelMissionsTask(Task):
                 hunts_pending = any(m[0] == "hunt" for m in missions)
                 can_afford_hunt = budget >= config.INTEL_STAMINA_COST["hunt"]
                 # Only blocker is busy queues (hunts remain, stamina is enough, but
-                # no free queue) -> don't block the run; retry in 10 min until a
-                # queue frees.
+                # no free queue). Every queue-free mission (battle/rescue) has
+                # already been run by now, so just retry in 10 min until a queue
+                # frees; don't block the run.
                 if hunts_pending and can_afford_hunt and free_q <= 0:
-                    print("[Intel Missions] All march queues busy; retrying in "
-                          "10 min until one frees.")
+                    print("[Intel Missions] Only queue-bound hunts left and all "
+                          "march queues are busy; retrying in 10 min.")
                     self.interval = config.INTEL_QUEUE_RETRY
                     break
                 # Otherwise there is no stamina left for anything startable.
@@ -282,8 +283,11 @@ class IntelMissionsTask(Task):
         their stamina reserved before any battle/refugee is planned, so a wave
         never spends the food a still-pending hunt will need — this realises the
         rule "if there is not enough stamina for the battles + rescues in
-        parallel, just do every possible hunt and wait for the marches". Within a
-        type the best rarity (lowest rank) goes first, tie-broken topmost."""
+        parallel, just do every possible hunt and wait for the marches". The one
+        exception is a FULL march queue: a hunt cannot start at all then, so its
+        stamina is not held back and the queue-free missions (battles, then
+        rescues) get the whole budget. Within a type the best rarity (lowest
+        rank) goes first, tie-broken topmost."""
         cost = config.INTEL_STAMINA_COST
         # Unreadable stamina -> treat as 0 (plan nothing) rather than "plenty", so
         # a mission is never dispatched on an unverified stamina reading.
@@ -302,9 +306,12 @@ class IntelMissionsTask(Task):
             plan.append((m[0], m[1], m[2], m[4]))
         budget -= n_hunt * cost["hunt"]
         # Reserve stamina for the hunts we could NOT start yet (queues full), so a
-        # surplus battle/refugee never eats a pending hunt's food.
+        # surplus battle/refugee never eats a pending hunt's food. With EVERY
+        # queue busy no hunt can go out this pass at all, so nothing is reserved
+        # and the queue-free missions use the full budget.
         remaining_hunts = len(by_kind.get("hunt", [])) - n_hunt
-        surplus = max(0, budget - remaining_hunts * cost["hunt"])
+        reserved = 0 if free_q <= 0 else remaining_hunts * cost["hunt"]
+        surplus = max(0, budget - reserved)
         # Battles (instant, no queue) from the surplus.
         n_batt = min(len(by_kind.get("battle", [])), surplus // cost["battle"])
         for m in by_kind.get("battle", [])[:n_batt]:

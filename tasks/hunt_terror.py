@@ -122,7 +122,21 @@ class HuntTerrorTask(Task):
             if not self._go_home(controller):
                 return Outcome.FAILED
 
-        # 2. Which level to hunt and which rally mode to use (file + optional
+        # 2. QUEUE FIRST. A hunt always costs a march queue, so check that before
+        #    anything else: the settings prompt and the stamina reading (which
+        #    opens the Intel panel and comes back) are pure waste when every
+        #    queue is busy with the player's other activities (gathering, ...).
+        #    A None here is a transient read miss, handled by the hunt loop.
+        free = self._idle_slots(controller)
+        if free is not None and not free:
+            self._go_town(controller)
+            self.interval = config.TERROR_ALL_BUSY_RETRY
+            print(f"[{self.log_label}] No free march queue right now (all queues "
+                  f"busy with other activities); retrying in "
+                  f"~{self.interval / 60:.0f} min.")
+            return Outcome.ABSENT
+
+        # 3. Which level to hunt and which rally mode to use (file + optional
         #    one-off terminal prompt). The mode fixes how much stamina each rally
         #    needs (20 with the HNT/Diana preset, 25 otherwise).
         level, mode = self._resolve_settings()
@@ -130,7 +144,7 @@ class HuntTerrorTask(Task):
         print(f"[{self.log_label}] Mode '{mode}', hunting Lv.{level} "
               f"(needs {required} stamina/rally).")
 
-        # 3. Check stamina up front (read from the Intel Mission "meat" counter).
+        # 4. Check stamina up front (read from the Intel Mission "meat" counter).
         stamina = self._read_stamina(controller)
         if stamina is None:
             return Outcome.FAILED  # transient OCR/nav issue -> retried/backed off
@@ -140,7 +154,7 @@ class HuntTerrorTask(Task):
                   f"waiting ~{self.interval / 60:.0f} min to recharge.")
             return Outcome.ABSENT
 
-        # 4. Hunt in a loop, staying on the world map, until stamina runs out.
+        # 5. Hunt in a loop, staying on the world map, until stamina runs out.
         #    Free slots come from the always-open "Marching N/M" panel on the
         #    world map; stamina comes from the Intel Mission "meat" counter. Both
         #    modes ("hnt" keeps one HNT rally going, "fill" keeps every free queue
@@ -243,7 +257,7 @@ class HuntTerrorTask(Task):
             level, mode = self._resolve_settings(prompt=False)
             required = self._required_stamina(mode)
 
-        # 5. Out of stamina: go back to the city and wait for it to recharge.
+        # 6. Out of stamina: go back to the city and wait for it to recharge.
         self._go_town(controller)
         self._schedule_recharge(stamina if stamina is not None else 0)
         print(f"[{self.log_label}] Ran {hunts} hunt(s); stamina low, back to the city. "

@@ -437,8 +437,15 @@ GOV_INTERVAL = 12 * 60 * 60             # loop every 12h (Productivity cooldown 
 # at the bottom). The Arena sits below the Stable and beside the Range.
 # ---------------------------------------------------------------------------
 ARENA_RADIAL_CLOSE_TAP = (40, 640)     # empty green spot to close the Barracks radial
-ARENA_PAN_RIGHT = (360, 500, 240, 500)  # one small "pan the view right" swipe
-ARENA_MAX_STEPS = 8                    # give up after this many pan/tap iterations
+# One SHORT pan (100 px) played SLOWLY: `adb input swipe` flings the map, so a
+# long/fast swipe overshoots the Arena and the first tap lands on the wrong spot
+# (the view is still drifting). 100 px over 900 ms moves the map ~140 px, which
+# keeps the marker from jumping past the screen in a single step.
+ARENA_PAN_RIGHT = (360, 500, 260, 500)  # one small "pan the view right" swipe
+ARENA_PAN_DURATION = 900               # ms; slower swipe = less fling/inertia
+ARENA_SETTLE_TRIES = 6                 # frames to compare while the map coasts
+ARENA_SETTLE_DELAY = 0.5               # seconds between those frames
+ARENA_MAX_STEPS = 10                   # give up after this many pan/tap iterations
 ARENA_ICON_TEMPLATE = "arena_building_icon.png"    # the crossed-swords building marker
 ARENA_ICON_THRESHOLD = 0.78            # the marker peaks ~0.83 when the Arena is on screen
 ARENA_TITLE_TEMPLATE = "arena_of_glory_title.png"  # confirms the Arena of Glory screen is open
@@ -457,9 +464,20 @@ ARENA_INTERVAL = 60 * 60               # seconds between Arena checks (loop)
 ARENA_CHALLENGE_TAP = (271, 912)       # the "Challenge" button on the Arena screen
 ARENA_CHALLENGE_LIST_TITLE = "arena_challenge_list_title.png"  # confirms the modal is open
 ARENA_MYPOWER_REGION = (286, 186, 412, 214)  # "My Power" number (fist icon excluded)
-ARENA_ROW_YS = (272, 371, 471, 570, 670)     # vertical centre of each opponent power value
-ARENA_POWER_REGION_X = (128, 200)      # x band of the opponent power value (green text)
+# Opponent rows are located by their GREEN power text rather than by fixed
+# coordinates: the modal shifts vertically depending on what the footer shows
+# (e.g. the "Free Refresh" button), which used to push the power values out of
+# the fixed crop and make every reading fail.
+ARENA_GREEN_HSV_LOW = (35, 50, 50)     # green power-text mask
+ARENA_GREEN_HSV_HIGH = (85, 255, 255)
+ARENA_ROW_SCAN_X = (100, 260)          # x band scanned for the power text
+ARENA_ROW_SCAN_Y = (200, 740)          # y band holding the opponent list
+ARENA_ROW_MIN_PIXELS = 5               # green pixels on a line to count as text
+ARENA_ROW_MIN_HEIGHT = 6               # thinner bands are noise
+ARENA_ROW_MAX_HEIGHT = 25              # taller ones are the green "Free Refresh" button
+ARENA_ROW_MAX_WIDTH = 120              # wider ones are buttons, not a power value
 ARENA_FIGHT_BTN_X = 468                # x of the crossed-swords fight button on each row
+ARENA_FIGHT_BTN_DY = -22               # its centre, relative to the row's power text
 ARENA_MAX_OPPONENT_RATIO = 0.85        # prefer opponents <= 85% of my power
 ARENA_CHALLENGE_CLOSE_TAP = (498, 144)  # X to close the Challenge List modal
 ARENA_FIGHT_TEMPLATE = "arena_fight_button.png"  # "Fight" button on the squad-selection screen
