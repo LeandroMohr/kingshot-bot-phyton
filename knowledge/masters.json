@@ -3,9 +3,11 @@
   "title": "Masters",
   "description": "Kingshot Masters (Realm Journey companions upgraded with General Master Emblem, Master's Manuscripts and Affinity). Each Master has Relationship Levels (global squad buff), unlock-gated Skills, and a single Talent. Terminology: 'Squads' = troops/marches. Marksman=Archer, Lancer=Cavalry elsewhere in the kit but Masters use generic Squad stats.",
   "status": "partial",
-  "last_updated": "2026-07-20",
+  "last_updated": "2026-09-24",
   "sources": [
-    "kingshotguide.com Masters guide (user-provided)"
+    "kingshotguide.com Masters guide (user-provided)",
+    "Kingshot Optimizer Masters database and individual Master pages (checked 2026-09-24)",
+    "Kingshot.net Masters database and individual Master pages (checked 2026-09-24)"
   ],
   "entries": [
     {
@@ -2043,6 +2045,118 @@
       ]
     },
     {
+      "id": "guinevere",
+      "name": "Guinevere",
+      "summary": "Queen of Holy Sword. Generation 4 Master focused on Swordland Showdown and Swordland Summit League combat, rewards, healing and rally capacity.",
+      "details": {
+        "role": "Queen of Holy Sword",
+        "unlocks_with": "Generation 4 Heroes",
+        "focus": "Swordland Showdown and Swordland Summit League",
+        "relationship_buff": "Squads' Lethality and Health, up to +15.00% each",
+        "talent": {
+          "name": "Holy Sword Domain",
+          "max_level": 11,
+          "effect_at_max": "Increases Squads' Attack and Defense by 30% during Swordland Showdown and Swordland Summit League."
+        },
+        "skills": [
+          {"name": "Max Efficiency", "unlock_requirement": "Relationship Level 10 (Acquaintance 1)", "max_level": 10, "effect_at_max": "Increases Relic Coins gained by 100%."},
+          {"name": "Merciful Heart", "unlock_requirement": "Relationship Level 20 (Acquaintance 2)", "max_level": 10, "effect_at_max": "Instantly heals 1,000,000 soldiers for free in every Swordland Showdown and Swordland Summit League."},
+          {"name": "Royal Guidance", "unlock_requirement": "Relationship Level 30 (Acquaintance 3)", "max_level": 20, "effect_at_max": "Increases participating Squads' Lethality and Health by 30% during Swordland events."},
+          {"name": "Call of Round Table", "unlock_requirement": "Relationship Level 40 (Casual 1)", "max_level": 20, "effect_at_max": "Increases Rally Capacity by 150,000 during Swordland events."}
+        ],
+        "master_research": {"base_attribute": "Squads' Defense", "milestone_scope": "Squad-wide attributes", "max_levels": 1000},
+        "source_urls": [
+          "https://kingshotoptimizer.com/masters/guinevere/",
+          "https://kingshot.net/database/masters/guinevere"
+        ]
+      },
+      "tags": ["master", "guinevere", "gen4", "swordland", "combat", "rally"]
+    },
+    {
+      "id": "wilson",
+      "name": "Wilson",
+      "summary": "Royal Herald. Generation 4 Master focused on Alliance Mobilization, Alliance Championship, Viking Vengeance and Alliance Brawl rewards.",
+      "details": {
+        "role": "Royal Herald",
+        "unlocks_with": "Generation 4 Heroes",
+        "focus": "Alliance events, event points, reward tiers and shop value",
+        "relationship_buff": "Squads' Attack and Defense, up to +10.00% each",
+        "talent": {
+          "name": "Trade Decree",
+          "max_level": 11,
+          "effect_at_max": "Reduces Alliance Shop prices by 15% and increases Personal Activity Triumph Chest rewards by 100%."
+        },
+        "skills": [
+          {"name": "Mobilization Master", "unlock_requirement": "Relationship Level 10 (Acquaintance 1)", "max_level": 10, "effect_at_max": "Increases Alliance Mobilization points by 20% and adds 3 milestone tiers."},
+          {"name": "Championship Publicity", "unlock_requirement": "Relationship Level 20 (Acquaintance 2)", "max_level": 10, "effect_at_max": "Increases Alliance Championship Badges by 50% and adds 3 Championship Shop items."},
+          {"name": "Viking Bounty", "unlock_requirement": "Relationship Level 30 (Acquaintance 3)", "max_level": 10, "effect_at_max": "Increases Viking Vengeance points by 50% and grants one chest per 200,000 points, up to 10 per event."},
+          {"name": "Duel Sponsorship", "unlock_requirement": "Relationship Level 40 (Casual 1)", "max_level": 10, "effect_at_max": "Increases Alliance Brawl points by 50%, excluding Merchant Empire, and adds 3 daily progress reward tiers."}
+        ],
+        "master_research": {"base_attribute": "Squads' Health", "milestone_scope": "Infantry attributes", "max_levels": 1000},
+        "source_urls": [
+          "https://kingshotoptimizer.com/masters/wilson/",
+          "https://kingshot.net/database/masters/wilson"
+        ]
+      },
+      "tags": ["master", "wilson", "gen4", "alliance-events", "rewards"]
+    },
+    {
+      "id": "aena",
+      "name": "Aena",
+      "summary": "Caravan Queen. Generation 5 Master focused on Merchant Empire travel, raids, cargo quality and caravan rewards.",
+      "details": {
+        "role": "Caravan Queen",
+        "unlocks_with": "Generation 5 Heroes",
+        "focus": "Merchant Empire caravans, raids and cargo rewards",
+        "relationship_buff": "Squads' Attack and Defense, up to +15.00% each",
+        "talent": {
+          "name": "Beneficent Mogul",
+          "max_level": 11,
+          "effect_at_max": "Increases Squads' Attack and Defense by 30% when conducting or suffering raids."
+        },
+        "skills": [
+          {"name": "Shortcuts", "unlock_requirement": "Relationship Level 10 (Acquaintance 1)", "max_level": 10, "effect_at_max": "Shortens caravan journey time by 20% and adds 3 free refreshes per caravan."},
+          {"name": "Finder's Keepers", "unlock_requirement": "Relationship Level 20 (Acquaintance 2)", "max_level": 10, "effect_at_max": "Grants a 100% chance to find 1 extra cargo item after a successful raid."},
+          {"name": "Delivery Drive", "unlock_requirement": "Relationship Level 30 (Acquaintance 3)", "max_level": 10, "effect_at_max": "Grants a 50% chance to recover 1 cargo item after being raided and provides 2 unraidable Elite Strongboxes."},
+          {"name": "Trading Ace", "unlock_requirement": "Relationship Level 40 (Casual 1)", "max_level": 10, "effect_at_max": "Guarantees a persistent Legendary caravan after every 4 completed escorts, improves 3 cargo slots and adds 1 daily caravan."}
+        ],
+        "master_research": {"base_attribute": "Squads' Lethality", "milestone_scope": "Cavalry attributes", "max_levels": 1000},
+        "source_urls": [
+          "https://kingshotoptimizer.com/masters/aena/",
+          "https://kingshot.net/database/masters/aena"
+        ]
+      },
+      "tags": ["master", "aena", "gen5", "merchant-empire", "caravan", "rewards"]
+    },
+    {
+      "id": "isnor",
+      "name": "Isnor",
+      "summary": "Legendary Explorer. Generation 5 Master focused on Eternity's Reach combat, Frontier Skill XP, Copper Ore and charm materials.",
+      "details": {
+        "role": "Legendary Explorer",
+        "unlocks_with": "Generation 5 Heroes",
+        "focus": "Eternity's Reach combat, progression and rewards",
+        "relationship_buff": "Squads' Lethality and Health, up to +15.00% each",
+        "talent": {
+          "name": "Old Hand",
+          "max_level": 11,
+          "effect_at_max": "Increases Squads' Lethality and Health by 30% in Eternity's Reach battles."
+        },
+        "skills": [
+          {"name": "Frontier Master", "unlock_requirement": "Relationship Level 10 (Acquaintance 1)", "max_level": 10, "effect_at_max": "Increases Frontier Skill XP from defeating Cesares Guards by 50%."},
+          {"name": "Survival Skills", "unlock_requirement": "Relationship Level 20 (Acquaintance 2)", "max_level": 10, "effect_at_max": "Increases Eternity's Reach Squad Deployment Capacity by 50,000 and reduces hero recovery time after defeat by 60%."},
+          {"name": "Unexpected Benefits", "unlock_requirement": "Relationship Level 30 (Acquaintance 3)", "max_level": 10, "effect_at_max": "Grants 60 Charm Designs after obtaining 200,000 Copper Ore in Eternity's Reach."},
+          {"name": "Backchannels", "unlock_requirement": "Relationship Level 40 (Casual 1)", "max_level": 10, "effect_at_max": "Generates 5,000 Copper Ore per minute and grants 100 extra Charm Guides after obtaining 200,000 Copper Ore."}
+        ],
+        "master_research": {"base_attribute": "Squads' Attack", "milestone_scope": "Archer attributes", "max_levels": 1000},
+        "source_urls": [
+          "https://kingshotoptimizer.com/masters/isnor/",
+          "https://kingshot.net/database/masters/isnor"
+        ]
+      },
+      "tags": ["master", "isnor", "gen5", "eternitys-reach", "charms", "rewards"]
+    },
+    {
       "id": "master-academy-priority",
       "name": "Master Academy Priority (Pan, Valora, Roman & Emblems)",
       "summary": "Decision-first guide for the Master Academy: which Master to prioritize, when to spend General Master Emblems, and how to avoid spreading upgrades too thin. Core rule: spend Emblems only when they unlock a useful breakpoint on a Master you will keep using.",
@@ -2156,13 +2270,21 @@
       "Valora (first)",
       "Pan (second)",
       "Roman (third)",
-      "Cassia (fourth)"
+      "Cassia (fourth)",
+      "Guinevere (Generation 4)",
+      "Wilson (Generation 4)",
+      "Aena (Generation 5)",
+      "Isnor (Generation 5)"
     ],
     "known_masters": [
       "Pan (Palace Administrator)",
       "Valora (Bear Hunter)",
       "Roman (Arena Champion)",
-      "Cassia (Battle Commander)"
+      "Cassia (Battle Commander)",
+      "Guinevere (Queen of Holy Sword)",
+      "Wilson (Royal Herald)",
+      "Aena (Caravan Queen)",
+      "Isnor (Legendary Explorer)"
     ],
     "also_mentioned": [
       "Master Academy",
@@ -2173,7 +2295,7 @@
   },
   "open_questions": [
     "General Master Emblem income rate and best sources for planning emblem gates (partly covered in inventory.json general-master-emblem).",
-    "Whether additional Masters exist beyond Pan, Valora, Roman, Cassia (guide also references Pan/Valora/Roman/Cassia in Master Academy and Master Upgrade Planner tooling).",
-    "Master's Manuscripts sources and income rate."
+    "Master's Manuscripts sources and income rate.",
+    "Add complete level-by-level affinity, skill, class and research tables for Guinevere, Wilson, Aena and Isnor."
   ]
 }

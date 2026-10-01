@@ -3,10 +3,12 @@
   "title": "Heroes",
   "description": "Hero roster with class, rarity, generation and how to obtain them, plus the concepts (rarities, generations, event roles) needed to build a hero strategy. Per-event star ratings are filled in knowledge/hero_event_ratings.json.",
   "status": "partial",
-  "last_updated": "2026-07-20",
+  "last_updated": "2026-09-24",
   "sources": [
     "Kingshot Optimizer hero card list (screenshots shared by user)",
-    "user notes on rarities, roles and generation gating"
+    "user notes on rarities, roles and generation gating",
+    "Kingshot Optimizer hero database and tier list (checked 2026-09-24)",
+    "Kingshot.net hero database and individual hero pages (checked 2026-09-24)"
   ],
   "reference": {
     "rarities": {
@@ -44,6 +46,14 @@
         "parts_per_star": 6,
         "mechanic": "Each star is completed by filling 6 parts with shards. Each part may require a different number of shards, but the total to complete a given star is fixed. Example for one full star: 1 + 1 + 2 + 2 + 2 + 2 shards.",
         "shards_to_complete_each_star": {"1_star": 10, "2_star": 40, "3_star": 115, "4_star": 300, "5_star": 600},
+        "tier_breakdown": {
+          "note": "Shard cost of each of the 6 parts, in order, to complete that star level (source: kingshot.net/hero-shard-calculator, checked 2026-09-24). The last part is always the most expensive.",
+          "1_star": [1, 1, 2, 2, 2, 2],
+          "2_star": [5, 5, 5, 5, 5, 15],
+          "3_star": [15, 15, 15, 15, 15, 40],
+          "4_star": [40, 40, 40, 40, 40, 100],
+          "5_star": [100, 100, 100, 100, 100, 100]
+        },
         "total_shards_to_max": 1065,
         "note": "The per-star numbers are the cost of completing THAT star; they sum to 1065 to reach 5 stars."
       },
@@ -191,9 +201,164 @@
     {"id": "ava", "name": "Ava", "summary": "Gen 7 offensive cavalry hero — get her for Bear Hunt and never look back. Jokingly called the 'new Amadeus for bear' thanks to a pure-offense kit + widget.", "details": {"class": "Cavalry", "rarity": "SSR", "generation": 7, "acquisition": ["Hall of Heroes"], "detailed": true, "preliminary": true, "role_focus": "Premier Gen 7 offensive cavalry Bear Hunt rally lead ('new Amadeus for bear') and best-in-slot Bear JOINER (new damage-up skill code); pure offensive profile.", "skills": {"conquest": [{"name": "Color Bomb", "type": "periodic", "effect": "Envelops an area, dealing Attack × 70% damage to nearby enemies every 0.5s for 3s (at L5). Sustained AoE zone.", "levels": {"L1": "50%", "L2": "55%", "L3": "60%", "L4": "65%", "L5": "70%"}}, {"name": "Corruption Bomb", "type": "active", "effect": "Detonates a corrosive pigment combo, dealing Attack × 35% damage every 0.5s and increasing the target's damage taken by 25% for 2s (at L5). Damage-amp debuff.", "levels": {"damage_up": {"L1": "25%", "L2": "27.5%", "L3": "30%", "L4": "32.5%", "L5": "35%"}, "enemy_damage_taken_up": {"L1": "5%", "L2": "10%", "L3": "15%", "L4": "20%", "L5": "25%"}}}, {"name": "Disguise Pigment", "type": "passive", "effect": "The right color combo confuses enemies, granting Ava 75% increased Defense (at L5). Her only defensive/self-survival tool in an otherwise pure-offense kit.", "levels": {"L1": "25%", "L2": "37.5%", "L3": "50%", "L4": "62.5%", "L5": "75%"}}], "expedition": [{"name": "Dissolution", "type": "passive", "effect": "Reduces total enemy Defense by 25% (at L5). One of her three damage-increasing expedition skills.", "levels": {"L1": "5%", "L2": "10%", "L3": "15%", "L4": "20%", "L5": "25%"}}, {"name": "Chiaroscuro", "type": "periodic", "effect": "Every 4 turns, all enemy soldiers receive 50% increased damage for 2 turns (at L5). Testing confirms it FUNCTIONS correctly against the Bear despite its delayed turn-counter (unlike many counter skills that the Bear neutralizes).", "levels": {"L1": "10%", "L2": "20%", "L3": "30%", "L4": "40%", "L5": "50%"}}, {"name": "Light and Cold", "type": "passive", "effect": "Increases soldiers' Lethality by 25% (at L5). Her JOINER skill — introduces a NEW damage-increasing skill code to the game, keeping her best-in-slot as a Bear joiner even after she is replaced as a primary rally lead.", "levels": {"L1": "5%", "L2": "10%", "L3": "15%", "L4": "20%", "L5": "25%"}}]}, "exclusive_gear": {"name": "Chameleos", "power": 722250, "conquest_stats": {"hero_attack": 1444, "hero_defense": 1444, "hero_health": 14445, "escort_attack": 481, "escort_defense": 481, "escort_health": 4815}, "expedition_stats": {"cavalry_lethality": "+160.50%", "cavalry_health": "+160.50%"}, "gear_skills": [{"name": "Irradiance", "mode": "conquest", "effect": "Increases her damage dealt by 25% and reduces affected targets' Attack by 15% (at Lv9).", "levels": {"Lv1": "5%", "Lv3": "10%", "Lv5": "15%", "Lv7": "20%", "Lv9": "25%"}}, {"name": "Color Storm", "mode": "expedition", "effect": "Increases Rally Squad Lethality by 15% (at Lv10). A standard OFFENSIVE cavalry lethality widget (rally lead) — same archetype as Thrud's Wolf-Kissed, completing her pure-offense profile.", "levels": {"Lv2": "5%", "Lv4": "7.5%", "Lv6": "10%", "Lv8": "12.5%", "Lv10": "15%"}}], "note": "Gen 7 gear power jumps to 722,250 with +160.50% expedition stats (~20% absolute power increase over Gen 6's 600,750 / +133.50%). Offensive cavalry widget (Color Storm). Three damage-up expedition skills + offensive widget = one of the rare pure-offense Bear profiles."}, "stats_5star_max": {"conquest": {"hero_attack": 7126, "hero_defense": 7126, "hero_health": 71262}, "expedition": {"cavalry_attack": "+650.52%", "cavalry_defense": "+650.52%"}}, "strategy": "PRELIMINARY (testing ongoing) — the Gen 7 offensive cavalry and a standout investment of her generation thanks to a rare, PURE-offense profile. Jokingly the 'new Amadeus for bear': one of the few heroes with THREE separate damage-increasing expedition skills (Dissolution -25% enemy defense, Chiaroscuro +50% enemy damage taken, Light and Cold +25% lethality) paired with an offensive widget (Color Storm), averaging a long-term ~25% damage increase. Testing confirms her Chiaroscuro turn-counter skill works correctly against the Bear (many counter skills get neutralized). She benefits from Gen 7's ~20% absolute power jump AND may have even GREATER Bear longevity than Yang: because the cavalry fraction in Bear formations is typically small, her superior offensive skillset stays relevant long after her base stats are surpassed. Her Light and Cold joiner ability introduces a NEW damage-up skill code, keeping her best-in-slot as a Bear JOINER (offensive and defensive rallies) even after she's replaced as a primary rally lead. Get her for Bear Hunt and never look back.", "investment": "Available via Hall of Heroes. A top-tier Gen 7 Bear Hunt investment — primary offensive cavalry rally lead AND best-in-slot Bear joiner via her unique damage-up code. Continues the archer Bear lineage's cavalry counterpart (Petra held cavalry Bear through Gen 6; Ava is the next cavalry step). Analysis is preliminary and may update as testing lands.", "story": "Lore for this hero is coming soon. Card flavor: 'Not all artists are used to painting on a canvas that is screaming.'"}, "tags": ["cavalry", "bear", "offensive", "rally-lead", "joiner", "expedition", "mythic"]},
     {"id": "charles", "name": "Charles", "summary": "Gen 7 defensive infantry hero held back by two 20%-capped defensive skills — carried mostly by the huge Gen 7 stat leap; invest with caution.", "details": {"class": "Infantry", "rarity": "SSR", "generation": 7, "acquisition": ["Featured Hero"], "detailed": true, "preliminary": true, "role_focus": "Niche defensive garrison infantry tank and potential PvP garrison JOINER (enemy-lethality-down code); weak skill design offset by the Gen 7 power leap. Caution/pass advised for most players.", "skills": {"conquest": [{"name": "Vengeance", "type": "active", "effect": "A fan-shaped strike dealing Attack × 140% damage, STUNNING targets for 1s and increasing his own Attack by 100% for 2s (at L5).", "levels": {"damage": {"L1": "100%", "L2": "110%", "L3": "120%", "L4": "130%", "L5": "140%"}, "attack_up": {"L1": "20%", "L2": "40%", "L3": "60%", "L4": "80%", "L5": "100%"}}}, {"name": "Parting Gift", "type": "active", "effect": "After his mech's destruction, minefields the area dealing Attack × 280% AoE damage to nearby enemies (at L5). A high-multiplier death-trigger nuke.", "levels": {"L1": "200%", "L2": "220%", "L3": "240%", "L4": "260%", "L5": "280%"}}, {"name": "Nimble Soul", "type": "proc", "effect": "50% chance to reduce damage taken by 50% (at L5). His main self-survival tool.", "levels": {"L1": "10% chance", "L2": "20% chance", "L3": "30% chance", "L4": "40% chance", "L5": "50% chance"}}], "expedition": [{"name": "Intimidation", "type": "passive", "effect": "Reduces enemy Squad's total Lethality by 20% (at L5). His JOINER skill — an UNUSUAL enemy-lethality-down code that likely stacks MULTIPLICATIVELY with other skills (think Fahd/Eric), helping offset its sub-benchmark 20% cap.", "levels": {"L1": "4%", "L2": "8%", "L3": "12%", "L4": "16%", "L5": "20%"}}, {"name": "Iron Bodies", "type": "passive", "effect": "Reduces damage taken by all soldiers by 20% (at L5). CRITICAL FLAW: this is NOT a true multiplier — because the combat formula places defensive skills in the DENOMINATOR, a 20% damage reduction here acts the same as a plain +20% health increase (and is below the usual 25% benchmark).", "levels": {"L1": "4%", "L2": "8%", "L3": "12%", "L4": "16%", "L5": "20%"}}, {"name": "Great Justice", "type": "passive", "effect": "Increases Squad's total Health by 25% (at L5). His one at-benchmark defensive skill.", "levels": {"L1": "5%", "L2": "10%", "L3": "15%", "L4": "20%", "L5": "25%"}}]}, "exclusive_gear": {"name": "Justice Fist", "power": 722250, "conquest_stats": {"hero_attack": 1107, "hero_defense": 1444, "hero_health": 21667, "escort_attack": 369, "escort_defense": 481, "escort_health": 7222}, "expedition_stats": {"infantry_lethality": "+160.50%", "infantry_health": "+160.50%"}, "gear_skills": [{"name": "Mechanic", "mode": "conquest", "effect": "Once per battle, when first under 50% Health, restores 35% of Max Health and increases Defense by 30% until end of battle (at Lv9). A one-time survival spike.", "levels": {"heal": {"Lv1": "15%", "Lv3": "20%", "Lv5": "25%", "Lv7": "30%", "Lv9": "35%"}, "defense_up": {"Lv1": "10%", "Lv3": "15%", "Lv5": "20%", "Lv7": "25%", "Lv9": "30%"}}}, {"name": "Shock and Awe", "mode": "expedition", "effect": "Increases Defender Squad's Health by 15% (at Lv10). A DEFENSIVE infantry widget (garrison), continuing the long trend of defensive infantry widgets — note it buffs HEALTH (not defense), like his kit.", "levels": {"Lv2": "5%", "Lv4": "7.5%", "Lv6": "10%", "Lv8": "12.5%", "Lv10": "15%"}}], "note": "Gen 7 gear power 722,250 / +160.50% (~110% infantry stat improvement / ~20% absolute leap over Gen 6). Defensive infantry widget (Shock and Awe). Enormous base health (21,667 gear / 106,892 at 5-star max) — the raw Gen 7 stat leap is what carries him past his weak 20%-capped skill design."}, "stats_5star_max": {"conquest": {"hero_attack": 5466, "hero_defense": 7126, "hero_health": 106892}, "expedition": {"infantry_attack": "+650.52%", "infantry_defense": "+650.52%"}}, "strategy": "PRELIMINARY (testing ongoing) — the Gen 7 defensive infantry, continuing the long trend of infantry with a defensive widget. Disappointing to theorycrafters: his first two expedition skills are capped at just 20% (below the 25% benchmark). A key design flaw is Iron Bodies' 20% damage reduction — because defensive skills sit in the combat formula's DENOMINATOR, it acts merely like a +20% health increase, not a true multiplier. His saving grace is Intimidation (enemy lethality -20%), an unusual JOINER code that likely multiplies with other skills (like Fahd/Eric), partly offsetting the 20% cap. Early Charles-vs-Triton testing is conflicting: Charles looks like an upgrade in 60/40 formations using Thrud and Saul, while Triton kept superior synergy in setups with Wee & Woo. Despite weak abilities, the massive Gen 7 power leap (~110% infantry stat improvement) is often enough to offset his mechanical shortcomings. Net: a NICHE investment for defensive-garrison leaders; most players should exercise caution or pass and wait for the likely Gen 8 Hero Roulette infantry.", "investment": "Available via Featured Hero. A niche pick ONLY for players leading defensive garrisons; his 20%-capped skills and denominator-flawed damage reduction make him mechanically weak, saved mainly by the Gen 7 stat leap and his multiplicative Intimidation joiner code. Most players are advised to exercise CAUTION or pass and wait for the expected Gen 8 Roulette infantry. Analysis is preliminary and may update.", "story": "Lore for this hero is coming soon. Card flavor: 'Only one kingdom heir ever came with a maintenance manual.' — he pilots a massive 'Angel of Justice' mech."}, "tags": ["infantry", "defense", "garrison", "tank", "joiner", "conquest", "arena", "mythic", "spender", "niche"]},
     {"id": "wee-and-woo", "name": "Wee & Woo", "summary": "Gen 7 F2P archer pair — mandatory Hero Roulette pickup for Expedition and Arena. First defensive-widget archer wheel hero since Saul (Gen 1), with one of the most broken Arena kits to date.", "details": {"class": "Archer", "rarity": "SSR", "generation": 7, "acquisition": ["Hero Roulette"], "detailed": true, "preliminary": true, "role_focus": "Best-in-slot F2P 60/40 garrison archer (upgrades Saul) and dominant Gen 7 Arena/Conquest AoE anchor; strong Bear JOINER and a pinch Bear rally lead. First defensive archer wheel hero since Gen 1 Saul.", "skills": {"conquest": [{"name": "High Ground", "type": "active", "effect": "Follows 'high ground, long shots' to the letter, dealing Attack × 420% AoE damage (at L5). A massive AoE nuke — among the highest-multiplier AoE skills in the game.", "levels": {"L1": "300%", "L2": "330%", "L3": "360%", "L4": "390%", "L5": "420%"}}, {"name": "Incendiaries", "type": "active", "effect": "Fires an incendiary round dealing Attack × 84% AoE damage; the flaming crater also deals Attack × 25% damage to nearby enemies every 0.5s for 2s (at L5). AoE nuke + lingering burn zone.", "levels": {"aoe_damage": {"L1": "60%", "L2": "66%", "L3": "72%", "L4": "78%", "L5": "84%"}, "crater_burn": {"L1": "17%", "L2": "19%", "L3": "21%", "L4": "23%", "L5": "25%"}}}, {"name": "Frontal Support", "type": "passive", "effect": "Increases Attack by 26% (at L5). A self-boost stacking on top of their already highest-in-generation base attack.", "levels": {"L1": "10%", "L2": "14%", "L3": "18%", "L4": "22%", "L5": "26%"}}], "expedition": [{"name": "Artillerymen", "type": "passive", "effect": "Increases Squad's total Attack by 15% AND total Lethality by 10% (at L5). Their unique priority JOINER skill — it SPLITS the usual joiner stats across Attack and Lethality (instead of lethality-only), giving a more balanced rally distribution and making them ideal for stacking MULTIPLICATIVE skill codes in Bear Hunt (attack and lethality multiply with each other).", "levels": {"attack": {"L1": "3%", "L2": "6%", "L3": "9%", "L4": "12%", "L5": "15%"}, "lethality": {"L1": "2%", "L2": "4%", "L3": "6%", "L4": "8%", "L5": "10%"}}}, {"name": "Chain Shelling", "type": "passive", "effect": "Increases Squad's Damage Dealt to Archer by 30% and to Infantry by 25% (at L5). Troop-type-targeted damage amplification.", "levels": {"damage_to_archer": {"L1": "6%", "L2": "12%", "L3": "18%", "L4": "24%", "L5": "30%"}, "damage_to_infantry": {"L1": "5%", "L2": "10%", "L3": "15%", "L4": "20%", "L5": "25%"}}}, {"name": "Boom Boom", "type": "proc", "effect": "All Squad's attacks have a 50% chance to deal 50% extra damage (~25% average at L5). Their third offensive skill.", "levels": {"L1": "10%", "L2": "20%", "L3": "30%", "L4": "40%", "L5": "50%"}}]}, "exclusive_gear": {"name": "Mortar", "power": 722250, "conquest_stats": {"hero_attack": 1752, "hero_defense": 1444, "hero_health": 10833, "escort_attack": 584, "escort_defense": 481, "escort_health": 3611}, "expedition_stats": {"archer_lethality": "+160.50%", "archer_health": "+160.50%"}, "gear_skills": [{"name": "Zero Sympathy", "mode": "conquest", "effect": "Increases Attack Speed by 14% for Heroes and Escorts for 5s (at Lv9). A field-wide attack-speed buff amplifying their AoE output.", "levels": {"Lv1": "6%", "Lv3": "8%", "Lv5": "10%", "Lv7": "12%", "Lv9": "14%"}}, {"name": "Landmines", "mode": "expedition", "effect": "Increases Defender Squad's Attack by 15% (at Lv10). A DEFENSIVE-activating archer widget (garrison) — same defensive alignment that makes them a garrison lead, not a natural Bear rally lead; buffs Attack (like Zoe/Long Fei style defensive widgets).", "levels": {"Lv2": "5%", "Lv4": "7.5%", "Lv6": "10%", "Lv8": "12.5%", "Lv10": "15%"}}], "note": "Gen 7 gear power 722,250 / +160.50% (~20% absolute leap over Gen 6). Defensive archer widget (Landmines). HIGHEST base attack in the game for their generation (1,752 gear / 8,656 at 5-star max), and their basic attack is itself an AoE — the core of their 'broken' Arena kit."}, "stats_5star_max": {"conquest": {"hero_attack": 8656, "hero_defense": 7126, "hero_health": 53446}, "expedition": {"archer_attack": "+650.52%", "archer_defense": "+650.52%"}}, "strategy": "PRELIMINARY (testing ongoing) — the Gen 7 Roulette Wheel archer pair, the most accessible Gen 7 hero for F2P and the FIRST defensive archer wheel hero since Saul (Gen 1). EXPEDITION: primarily defensive specialists, but the Gen 7 stat creep is so large they come CLOSE to Yang even in offensive settings. Their priority Artillermen skill is unique — it splits joiner stats across +15% Attack and +10% Lethality (vs traditional lethality-only), giving a more balanced rally distribution and making them ideal for stacking MULTIPLICATIVE codes in Bear Hunt. Their defensive widget (Landmines) makes them less suited to LEADING Bear formations, but their huge Gen 7 base stats + THREE offensive skills can offset the missing offensive widget — viable as a pinch Bear rally lead, especially for players who skipped Yang (their ~110% archer stat advantage nearly offsets Yang's widget-type edge). For spenders they are a best-in-slot 60/40 garrison upgrade over Saul, and high-utility for lower spenders in multi-team modes like Swordland, Tri-Alliance Clash and Mystic Trial (the latter two where widget abilities don't apply). ARENA/CONQUEST: one of the most BROKEN kits to date, with the highest base attack in the game for their generation AND an AoE basic attack. High Ground (420% AoE) and Incendiaries (AoE + burn crater) can devastate a whole formation, augmented by Frontal Support (self +26% attack) and Zero Sympathy (field-wide +14% attack speed) — a dominant backline anchor.", "investment": "The most accessible Gen 7 hero via the Hero Roulette (F2P) — a MANDATORY pickup. Build them as a 60/40 garrison archer (best-in-slot upgrade over Saul), a strong Bear joiner (balanced attack+lethality code stacks multiplicatively), a pinch Bear rally lead if you skipped Yang, and a dominant Arena/Conquest AoE anchor. Highly valuable in Swordland, Tri-Alliance Clash and Mystic Trial. Analysis is preliminary and may update.", "story": "Lore for this hero is coming soon. Card flavor: 'Two riders. One hero. No regrets.' — an artillery cannon duo of the Royal Foundry."}, "tags": ["archer", "expedition", "arena", "conquest", "defense", "garrison", "joiner", "aoe", "bear", "f2p", "mythic"]}
+    ,
+    {
+      "id": "diego",
+      "name": "Diego",
+      "summary": "Generation 8 Hero Roulette infantry hero with a strong mixed offensive and defensive kit.",
+      "details": {
+        "class": "Infantry",
+        "rarity": "SSR",
+        "generation": 8,
+        "acquisition": ["Hero Roulette"],
+        "detailed": true,
+        "preliminary": true,
+        "role_focus": "Gen 8 infantry option for garrison, PvP and solo combat; usable as a Bear rally leader in a pinch but not recommended as a Bear joiner.",
+        "skills": {
+          "conquest": [
+            {"name": "Undefendable", "type": "active", "effect_at_level_5": "Grants a shield equal to Attack x380% for 5 seconds."},
+            {"name": "Blade Soul", "type": "active", "effect_at_level_5": "Reduces enemy heroes' Attack by 5% and increases Diego's Attack by 5% per affected hero for 3 seconds."},
+            {"name": "Shadow Flicker", "type": "passive", "effect_at_level_5": "Grants a 15% chance to dodge normal attacks and a 20% critical-hit chance."}
+          ],
+          "expedition": [
+            {"name": "Defensive Guidance", "type": "passive", "effect_at_level_5": "Increases total Squads' Defense by 15% and Health by 10%."},
+            {"name": "Piercing Aura", "type": "proc", "effect_at_level_5": "Gives Squad attacks a 50% chance to deal 50% extra damage."},
+            {"name": "Cold Frost", "type": "passive", "effect_at_level_5": "Increases total Squads' Lethality by 25%."}
+          ]
+        },
+        "exclusive_gear": {
+          "name": "Meteor Blade",
+          "stats_at_max": {
+            "conquest": {"attack": 1331, "defense": 1737, "health": 26055},
+            "escort": {"attack": 443, "defense": 579, "health": 8685},
+            "expedition": {"lethality_percent": 193, "health_percent": 193}
+          },
+          "skills_at_level_5": [
+            {"name": "Doomblade", "effect": "Adds shield protection equal to Attack x95% to Undefendable and reflects 30% of damage received."},
+            {"name": "Extraordinary", "effect": "Increases Defender Squads' Defense by 15%."}
+          ]
+        },
+        "stats_5star_max": {
+          "conquest": {"hero_attack": 6573, "hero_defense": 8567, "hero_health": 128514},
+          "expedition": {"attack_percent": 780.62, "defense_percent": 780.62}
+        },
+        "source_urls": [
+          "https://kingshotoptimizer.com/heroes/diego/",
+          "https://kingshot.net/heroes/diego"
+        ]
+      },
+      "tags": ["hero", "gen8", "infantry", "ssr", "hero-roulette", "preliminary"]
+    },
+    {
+      "id": "liz",
+      "name": "Liz",
+      "summary": "Generation 8 cavalry hero designed for garrison, high-cavalry formations and Arena control.",
+      "details": {
+        "class": "Cavalry",
+        "rarity": "SSR",
+        "generation": 8,
+        "acquisition": ["Hall of Heroes", "Daily Deals", "Hall of Governors"],
+        "acquisition_source_conflict": {
+          "status": "unresolved",
+          "kingshot_optimizer": ["Hall of Heroes"],
+          "kingshot_net": ["Daily Deals", "Hall of Governors"]
+        },
+        "detailed": true,
+        "preliminary": true,
+        "role_focus": "Defensive Gen 8 cavalry for 60/40 garrisons and Arena; some Expedition value is cavalry-specific.",
+        "skills": {
+          "conquest": [
+            {"name": "Bubbletopia", "type": "active", "effect_at_level_5": "Deals Attack x300% area damage and disables the target for 1.5 seconds."},
+            {"name": "Slow Medicine", "type": "active", "effect_at_level_5": "Deals Attack x140% damage and reduces nearby enemies' Attack Speed by 50% for 3 seconds."},
+            {"name": "Quick Brew", "type": "passive", "effect_at_level_5": "Increases Liz's Attack Speed by 30%."}
+          ],
+          "expedition": [
+            {"name": "Alloyed Agent", "type": "proc", "effect_at_level_5": "Has a 50% chance each turn to increase total Squads' Lethality by 50%."},
+            {"name": "Vitalis Potion", "type": "passive", "effect_at_level_5": "Increases total Squads' Health by 25%."},
+            {"name": "Horsemaster", "type": "proc", "effect_at_level_5": "Gives Cavalry attacks a 50% chance to deal 150% extra damage."}
+          ]
+        },
+        "exclusive_gear": {
+          "name": "Midas Staff",
+          "stats_at_max": {
+            "conquest": {"attack": 1737, "defense": 1737, "health": 17370},
+            "escort": {"attack": 579, "defense": 579, "health": 5790},
+            "expedition": {"lethality_percent": 193, "health_percent": 193}
+          },
+          "skills_at_level_5": [
+            {"name": "Bubble Splash", "effect": "Increases Liz's Attack by 24%; when Bubbletopia's control ends, it deals Attack x70% splash damage."},
+            {"name": "Power Mix", "effect": "Increases Defender Squads' Lethality by 15%."}
+          ]
+        },
+        "stats_5star_max": {
+          "conquest": {"hero_attack": 8567, "hero_defense": 8567, "hero_health": 85676},
+          "expedition": {"attack_percent": 780.62, "defense_percent": 780.62}
+        },
+        "source_urls": [
+          "https://kingshotoptimizer.com/heroes/liz/",
+          "https://kingshot.net/heroes/liz"
+        ]
+      },
+      "tags": ["hero", "gen8", "cavalry", "ssr", "garrison", "preliminary"]
+    },
+    {
+      "id": "luna",
+      "name": "Luna",
+      "summary": "Generation 8 offensive archer for Bear Hunt, PvP rallies, joiner duty and Arena.",
+      "details": {
+        "class": "Archer",
+        "rarity": "SSR",
+        "generation": 8,
+        "acquisition": ["Featured Hero", "Hall of Heroes"],
+        "acquisition_source_conflict": {
+          "status": "unresolved",
+          "kingshot_optimizer": ["Featured Hero"],
+          "kingshot_net": ["Hall of Heroes"]
+        },
+        "detailed": true,
+        "preliminary": true,
+        "role_focus": "Top-tier Gen 8 offensive archer and Bear rally leader with strong PvP and Arena value.",
+        "skills": {
+          "conquest": [
+            {"name": "Starfall", "type": "active", "effect_at_level_5": "Deals Attack x300% area damage and stuns enemies for 1.5 seconds."},
+            {"name": "Arrow Storm", "type": "active", "effect_at_level_5": "Deals Attack x140% damage to enemies within range."},
+            {"name": "One Hunt", "type": "passive", "effect_at_level_5": "Increases Attack by 2.5% per defeated enemy, up to 15 stacks."}
+          ],
+          "expedition": [
+            {"name": "Driving Light", "type": "passive", "effect_at_level_5": "Increases total Squads' Attack by 25%."},
+            {"name": "Woodland Vengeance", "type": "periodic", "effect_at_level_5": "Reduces enemy Squads' Attack by 50% for 1 turn every 2 turns."},
+            {"name": "Arrowflash", "type": "passive", "effect_at_level_5": "Causes Archer attacks to deal 50% extra damage."}
+          ]
+        },
+        "exclusive_gear": {
+          "name": "Envoy of Ancients",
+          "stats_at_max": {
+            "conquest": {"attack": 2107, "defense": 1737, "health": 13027},
+            "escort": {"attack": 702, "defense": 579, "health": 4342},
+            "expedition": {"lethality_percent": 193, "health_percent": 193}
+          },
+          "skills_at_level_5": [
+            {"name": "Stars' Glory", "effect": "Summons a spirit with 30% of Luna's initial Health that draws enemy fire for 5 seconds."},
+            {"name": "Moonlit Splendor", "effect": "Increases Rally Squads' Attack by 15% when initiating a rally."}
+          ]
+        },
+        "stats_5star_max": {
+          "conquest": {"hero_attack": 10411, "hero_defense": 8567, "hero_health": 64256},
+          "expedition": {"attack_percent": 780.62, "defense_percent": 780.62}
+        },
+        "source_urls": [
+          "https://kingshotoptimizer.com/heroes/luna/",
+          "https://kingshot.net/heroes/luna"
+        ]
+      },
+      "tags": ["hero", "gen8", "archer", "ssr", "hall-of-heroes", "preliminary"]
+    }
   ],
   "open_questions": [
     "Confirm which generation the current account is in, to know which heroes are actually available.",
-    "Gen 7 heroes (Ava, Charles, Wee & Woo) are marked details.preliminary=true — the source guide's testing was still ongoing; revisit ratings/claims as they finalize."
+    "Gen 7 heroes (Ava, Charles, Wee & Woo) are marked details.preliminary=true — revisit ratings and claims as testing finalizes.",
+    "Gen 8 heroes (Diego, Liz, Luna) are marked details.preliminary=true because the Kingshot Optimizer individual strategy guides were still listed as Coming Soon on 2026-09-24.",
+    "Resolve the Gen 8 acquisition conflicts for Liz and Luna; Kingshot Optimizer and Kingshot.net list different routes as of 2026-09-24.",
+    "Record the complete level-by-level values for Gen 8 hero and exclusive-gear skills; current Gen 8 entries contain verified level-5 values."
   ]
 }
