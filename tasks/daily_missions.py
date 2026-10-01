@@ -53,6 +53,7 @@ import pytesseract
 from tasks.base import Task, Outcome
 from adb_controller import ADBController
 from vision import find_template, find_all_templates
+import account_prefs
 import config
 
 
@@ -191,6 +192,7 @@ class DailyMissionsTask(Task):
         """Run the linked flow for each pending mission that is allowed. Returns
         how many flows were run."""
         ran = 0
+        disabled = account_prefs.disabled_tasks(account_prefs.current_account_id())
         for module in pending:
             if module not in config.DAILY_LINKED_MODULES:
                 continue
@@ -198,6 +200,9 @@ class DailyMissionsTask(Task):
                 mod = importlib.import_module(f"tasks.{module}")
                 task = getattr(mod, "TASK", None)
                 if task is None:
+                    continue
+                if task.name in disabled:
+                    print(f"[Daily] linked '{module}' skipped (disabled for this account).")
                     continue
                 outcome = task.execute(controller)
                 print(f"[Daily] linked '{module}': {outcome}")

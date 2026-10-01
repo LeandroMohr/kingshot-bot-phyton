@@ -61,6 +61,7 @@ import pytesseract
 from tasks.base import Task, Outcome
 from adb_controller import ADBController
 from vision import find_template
+import account_prefs
 import config
 
 
@@ -74,6 +75,12 @@ class GatherResourcesTask(Task):
     _NO_NODE = "no_node"         # no fillable node found at any level
 
     def execute(self, controller: ADBController) -> str:
+        resources = self._resource_settings()
+        if not resources:
+            print("[Gather] No resource enabled for this account; skipping.")
+            self.interval = config.GATHER_INTERVAL
+            return Outcome.ABSENT
+
         # Start from a known state (never 'back' on the world map).
         where = self._current_screen(controller)
         if where not in ("home", "world"):
@@ -101,11 +108,11 @@ class GatherResourcesTask(Task):
         gathering = 0
         # One gather per resource: dispatch it (with hero) only if its specialist
         # is free; a busy specialist means that resource is already being gathered.
-        for resource in config.GATHER_RESOURCE_ORDER:
+        for resource, level in resources:
             if free <= 0:
                 print("[Gather] No free march queue left; stopping this pass.")
                 break
-            result = self._gather_one(controller, resource)
+            result = self._gather_one(controller, resource, level)
             if result == self._DISPATCHED:
                 dispatched += 1
                 free -= 1
@@ -120,9 +127,26 @@ class GatherResourcesTask(Task):
         self.interval = config.GATHER_INTERVAL
         return Outcome.ABSENT
 
+    def _resource_settings(self) -> list[tuple[str, int]]:
+        """(resource, starting level) for each resource enabled for this account,
+        in GATHER_RESOURCE_ORDER. Re-read every pass so panel edits apply live."""
+        prefs = account_prefs.load_prefs(account_prefs.current_account_id())
+        chosen = []
+        for resource in config.GATHER_RESOURCE_ORDER:
+            if not prefs.get(f"gather_{resource}_enabled", True):
+                continue
+            try:
+                level = int(prefs.get(f"gather_{resource}_level", config.GATHER_LEVEL_START))
+            except (TypeError, ValueError):
+                level = config.GATHER_LEVEL_START
+            chosen.append((resource, max(config.GATHER_LEVEL_MIN,
+                                         min(config.GATHER_LEVEL_MAX, level))))
+        return chosen
+
     # -- one gather (one queue) -------------------------------------------
-    def _gather_one(self, controller: ADBController, resource: str) -> str:
-        """Search the given resource from the highest level down and try to launch
+    def _gather_one(self, controller: ADBController, resource: str,
+                    start_level: int) -> str:
+        """Search the given resource from start_level down and try to launch
         ONE gather with its specialist hero. Returns:
           _DISPATCHED  - a march was launched with the correct blue gatherer;
           _GATHERING   - the specialist is out on a march (busy) so this resource
@@ -134,7 +158,7 @@ class GatherResourcesTask(Task):
         is a no-op), but after backing out of the DEPLOY screen we are dropped
         back on the world map with the panel closed — so we always re-select the
         category and reset the level before searching again."""
-        level = config.GATHER_LEVEL_START
+        level = start_level
         while level >= config.GATHER_LEVEL_MIN:
             if not self._select_category(controller, resource):
                 return self._NO_NODE

@@ -107,6 +107,12 @@ def get_pref(account_id: str | None, key: str, default: Any = None) -> Any:
     return load_prefs(account_id).get(key, default)
 
 
+def disabled_tasks(account_id: str | None) -> set[str]:
+    """Task names turned off for this account in the control panel."""
+    value = load_prefs(account_id).get("disabled_tasks")
+    return {str(name) for name in value} if isinstance(value, list) else set()
+
+
 def set_pref(account_id: str | None, key: str, value: Any) -> None:
     update_prefs(account_id, {key: value})
 

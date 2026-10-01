@@ -128,6 +128,11 @@ ALLIANCE_HOME_TAP = (403, 918)                  # fallback coords if template mi
 # proof that the Alliance screen is open.
 ALLIANCE_CHESTS_BUTTON = "alliance_chests_button.png"
 
+# Buy VIP Points: buys VIP XP while the account's VIP level is below the target
+# (per-account "vip_target_level", editable in the control panel).
+VIP_TARGET_LEVEL_DEFAULT = 6
+VIP_LEVEL_MAX = 12
+
 # ---------------------------------------------------------------------------
 # Loop
 # ---------------------------------------------------------------------------
@@ -192,6 +197,7 @@ BEAST_LEVEL_DEFAULT = 30
 BEAST_LEVEL_MIN = 1
 BEAST_LEVEL_MAX = 30
 BEAST_STAMINA_COST = 10
+BEAST_REQUIRE_DIANA_DEFAULT = True     # only attack when the HNT preset loaded Diana
 BEAST_LEVEL_FILE = BASE_DIR / "memory" / "beast_hunt_config.json"
 BEAST_CATEGORY_OFFSET_X = -100         # Beasts tab is immediately left of Terror
 BEAST_ATTACK_TAP = (270, 460)          # orange Attack button on the Beast card

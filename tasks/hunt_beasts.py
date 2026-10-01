@@ -58,7 +58,7 @@ class HuntBeastsTask(HuntTerrorTask):
         if not self._tap(controller, "formation_hnt.png", wait=2.0,
                          threshold=0.80):
             return self._fail("could not load the HNT preset")
-        if not self._diana_loaded(controller):
+        if self._require_diana and not self._diana_loaded(controller):
             print(f"[{self.log_label}] Diana is unavailable; not deploying "
                   "without the HNT formation.")
             self._diana_busy = True
@@ -149,7 +149,9 @@ class HuntBeastsTask(HuntTerrorTask):
                 if config.BEAST_LEVEL_MIN <= requested <= config.BEAST_LEVEL_MAX:
                     level = requested
             self._save_beast_level(level)
-        self._require_diana = True
+        self._require_diana = bool(account_prefs.get_pref(
+            account_prefs.current_account_id(), "beast_require_diana",
+            config.BEAST_REQUIRE_DIANA_DEFAULT))
         return level, "hnt"
 
     def _load_beast_level(self) -> int:

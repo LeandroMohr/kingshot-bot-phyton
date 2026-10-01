@@ -54,6 +54,17 @@ def describe_task(task) -> str:
     return f"{task.name} (runs once)"
 
 
+def skip_disabled(tasks: list, port: int,
+                  previous: frozenset | None) -> tuple[list, frozenset]:
+    """Drop the tasks disabled for this account (re-read every tick so panel
+    changes apply live) and announce whenever that set changes."""
+    disabled = frozenset(account_prefs.disabled_tasks(account_prefs.current_account_id()))
+    if disabled != previous and (previous is not None or disabled):
+        names = ", ".join(sorted(disabled)) or "none"
+        print(f"[emulator {port}] Tasks disabled for this account: {names}")
+    return [task for task in tasks if task.name not in disabled], disabled
+
+
 def check_task(controller: ADBController, port: int, task, now: float) -> None:
     """Run a single task, print its outcome and end single-run tasks.
 
@@ -260,17 +271,19 @@ def run_loop(controller: ADBController, selected: list | None = None) -> None:
         read_player_profile(controller)  # snapshot account info once at startup
         active_tasks = order_tasks(active_tasks, account_prefs.current_account_id())
         print("Task order: " + " -> ".join(task.name for task in active_tasks))
+        runnable, disabled = skip_disabled(active_tasks, port, None)
         print("Checking all tasks now that the game is open...")
         now = time.monotonic()
-        for task in active_tasks:
+        for task in runnable:
             check_task(controller, port, task, now)
 
         # From here on, each task runs again only when its own interval elapses.
         while True:
             ensure_game_ready(controller)  # relaunch the game if it closes/crashes
             go_to_home_screen(controller)  # close welcome/promo popups before tasks
+            runnable, disabled = skip_disabled(active_tasks, port, disabled)
             now = time.monotonic()
-            for task in active_tasks:
+            for task in runnable:
                 if not task.due(now):
                     continue
                 check_task(controller, port, task, now)

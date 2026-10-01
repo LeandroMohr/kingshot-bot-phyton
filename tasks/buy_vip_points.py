@@ -51,7 +51,7 @@ import account_prefs
 
 
 # -- gating ----------------------------------------------------------------
-VIP_TARGET_LEVEL = 6                    # buy only while current level < this
+VIP_TARGET_LEVEL = config.VIP_TARGET_LEVEL_DEFAULT  # buy only while current level < this
 
 # -- home VIP badge / VIP screen -------------------------------------------
 VIP_BADGE_TAP = (497, 66)              # VIP badge on the home screen (top-right)
@@ -98,9 +98,10 @@ class BuyVipPointsTask(Task):
             print("Could not read the VIP level; skipping VIP purchases.")
             return Outcome.ABSENT
         self._save_vip_level(level)
-        print(f"Account VIP level: {level} (target < {VIP_TARGET_LEVEL}).")
-        if level >= VIP_TARGET_LEVEL:
-            return Outcome.ABSENT  # already VIP 6+, nothing to do
+        target = self._target_level()
+        print(f"Account VIP level: {level} (target < {target}).")
+        if level >= target:
+            return Outcome.ABSENT  # target reached, nothing to do
 
         # 2. Alliance -> Shop.
         if not open_alliance(controller):
@@ -151,6 +152,16 @@ class BuyVipPointsTask(Task):
         account_id = account_prefs.current_account_id()
         if account_id:
             account_prefs.set_pref(account_id, "vip_level", level)
+
+    @staticmethod
+    def _target_level() -> int:
+        """VIP level to buy up to (per account, set in the control panel)."""
+        value = account_prefs.get_pref(account_prefs.current_account_id(),
+                                       "vip_target_level", VIP_TARGET_LEVEL)
+        try:
+            return max(1, min(config.VIP_LEVEL_MAX, int(value)))
+        except (TypeError, ValueError):
+            return VIP_TARGET_LEVEL
 
     # -- buying ------------------------------------------------------------
     def _buy_tab(self, controller: ADBController) -> int:
