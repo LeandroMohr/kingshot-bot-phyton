@@ -111,6 +111,11 @@ def parse_args() -> argparse.Namespace:
         "--list", action="store_true",
         help="Just list the connected emulators and exit.",
     )
+    parser.add_argument(
+        "--task", action="append", metavar="NAME",
+        help="Run only this task (repeatable, e.g. --task 'Hunt Beasts'). "
+             "Skips the task menu.",
+    )
     return parser.parse_args()
 
 
@@ -198,6 +203,16 @@ def main() -> None:
                 print(f"  - {d}")
         return
 
+    selected = None
+    if args.task:
+        by_name = {task.name: task for task in TASKS}
+        unknown = [name for name in args.task if name not in by_name]
+        if unknown:
+            print(f"Unknown task(s): {', '.join(unknown)}")
+            print("Available: " + ", ".join(by_name))
+            sys.exit(2)
+        selected = [task for task in TASKS if task.name in args.task]
+
     if args.port is None:
         selection = choose_emulator(args.host)
         if selection is None:
@@ -208,10 +223,10 @@ def main() -> None:
         host, port = args.host, args.port
 
     controller = ADBController(host=host, port=port)
-    run_loop(controller)
+    run_loop(controller, selected)
 
 
-def run_loop(controller: ADBController) -> None:
+def run_loop(controller: ADBController, selected: list | None = None) -> None:
     port = controller.port
     print("==============================================")
     print("            Kingshot Bot started")
@@ -221,7 +236,7 @@ def run_loop(controller: ADBController) -> None:
     print(f"Connected to emulator {port}!")
 
     # Ask whether to run all tasks or just one (defaults to all after a timeout).
-    active_tasks = select_active_tasks(TASKS)
+    active_tasks = selected if selected is not None else select_active_tasks(TASKS)
 
     # Make sure the game is open before starting.
     ensure_game_ready(controller, announce_if_open=True)
