@@ -113,6 +113,23 @@ def disabled_tasks(account_id: str | None) -> set[str]:
     return {str(name) for name in value} if isinstance(value, list) else set()
 
 
+def list_accounts() -> list[dict]:
+    """Every saved account file (id, updated, profile, preferences)."""
+    accounts = []
+    for path in sorted(_ACCOUNTS_DIR.glob("*.json")):
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except (OSError, ValueError):
+            continue
+        accounts.append({
+            "account_id": str(data.get("account_id") or path.stem),
+            "updated": data.get("updated"),
+            "profile": data.get("profile") or {},
+            "preferences": data.get("preferences") or {},
+        })
+    return accounts
+
+
 def set_pref(account_id: str | None, key: str, value: Any) -> None:
     update_prefs(account_id, {key: value})
 

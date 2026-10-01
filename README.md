@@ -59,6 +59,29 @@ python main.py
 ```
 Stop with `Ctrl+C`.
 
+## Control panel (macOS / Windows / Linux)
+
+```bash
+python app.py            # opens the panel in its own window (pywebview)
+python app.py --browser  # opens it in the default browser instead
+```
+From the panel you can find emulators, start/stop one bot per emulator and
+follow each bot's log. The side menu (Resources, Hunt, Alliance, Troops,
+Daily) turns each task on/off and edits its options PER ACCOUNT (gather levels
+per resource, Beast/Terror level, Diana requirement, VIP target, training
+tier...), with a "Como fazer" guide on every task. Changes apply while the bot
+runs. The Conta / Tropas / Eventos / Coleta pages also hold the account's
+planning sheet (heroes & gear, troop stock and training plan, team distribution
+per event, resource stock), saved in `memory/planning/<account_id>.json`
+(not versioned; one backup per day in `memory/planning/backups/`). The language
+selector next to the panel name switches between English (default) and
+Portuguese (BR). Closing the panel stops the
+bots it started. Each bot still runs as its own `main.py` process, so the
+terminal flow below keeps working (`python main.py --port 5605 --task "Hunt Beasts"`).
+
+On Linux, pywebview needs a GUI backend (`pip install pywebview[qt]` or GTK);
+without it, use `--browser`.
+
 ## Multiple emulators
 
 Each emulator has its own ADB port (see Settings → Advanced → ADB).
@@ -96,6 +119,7 @@ python capture.py help.png --port 5615
 | `tasks/`            | Task definitions and their steps (one file per task).     |
 | `capture.py`        | Utility to take 1 screenshot and crop templates.          |
 | `main.py`           | Main loop.                                                |
+| `app.py`, `gui/`    | Control panel (local web server + pywebview window).      |
 
 ## Add new tasks
 

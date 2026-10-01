@@ -1,3 +1,4 @@
 opencv-python-headless>=4.9.0
 numpy>=1.26.0
 pytesseract>=0.3.10
+pywebview>=5.0

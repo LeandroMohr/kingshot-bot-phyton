@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Kingshot Bot</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="layout">
+    <aside class="sidebar">
+      <div class="brand">
+        <span>Kingshot Bot</span>
+        <select id="lang-select" data-i18n-title="lang.label"></select>
+      </div>
+      <nav id="menu" class="menu"></nav>
+      <div id="status" class="sidebar-foot muted"></div>
+    </aside>
+
+    <div class="content">
+      <header class="topbar">
+        <h1 id="page-title"></h1>
+        <div class="account-bar">
+          <label for="account-select" class="muted" data-i18n="account.label"></label>
+          <select id="account-select"></select>
+          <span id="account-info" class="muted small"></span>
+          <form id="add-account-form" class="inline">
+            <input id="add-account-id" data-i18n-placeholder="account.idPlaceholder" pattern="\d{1,20}" data-i18n-title="account.onlyDigits" required>
+            <button type="submit" class="ghost" data-i18n="account.add"></button>
+          </form>
+        </div>
+      </header>
+
+      <main id="page-run" class="page">
+        <section class="card">
+          <div class="card-head">
+            <h2 data-i18n="emu.title"></h2>
+            <button id="scan-btn" data-i18n="emu.scan"></button>
+          </div>
+          <div id="emulators" class="emulators"></div>
+          <form id="manual-form" class="inline">
+            <label><span data-i18n="emu.manualPort"></span>
+              <input id="manual-port" type="number" min="1" max="65535" placeholder="5555" required>
+            </label>
+            <button type="submit" data-i18n="emu.add"></button>
+          </form>
+        </section>
+
+        <section class="card">
+          <div class="card-head">
+            <h2 data-i18n="logs.title"></h2>
+            <div id="log-tabs" class="tabs"></div>
+          </div>
+          <pre id="log" class="log"></pre>
+        </section>
+
+        <details id="general-howto" class="howto card"></details>
+      </main>
+
+      <main id="page-settings" class="page" hidden></main>
+    </div>
+  </div>
+
+  <div id="toast" class="toast" hidden></div>
+  <script src="/i18n.js"></script>
+  <script src="/planning.js"></script>
+  <script src="/app.js"></script>
+</body>
+</html>
