@@ -20,11 +20,11 @@ Multiple emulators:
 from __future__ import annotations
 
 import argparse
-import select
 import sys
 import time
 
 import config
+import console
 from adb_controller import ADBController, list_devices, discover_devices
 from tasks import TASKS
 from tasks.base import Outcome
@@ -162,14 +162,13 @@ def select_active_tasks(tasks: list) -> list:
     print("\nWhat do you want to run?")
     print("  1 - All mapped tasks (default)")
     print("  2 - Pick a single task")
-    print(f"Option (auto 'all' in {int(config.TASK_MENU_TIMEOUT)}s): ",
-          end="", flush=True)
-    ready, _, _ = select.select([sys.stdin], [], [], config.TASK_MENU_TIMEOUT)
-    if not ready:
-        print("\nNo answer; running all tasks.")
+    choice = console.timed_input(
+        f"Option (auto 'all' in {int(config.TASK_MENU_TIMEOUT)}s): ",
+        config.TASK_MENU_TIMEOUT)
+    if choice is None:
+        print("No answer; running all tasks.")
         return tasks
 
-    choice = sys.stdin.readline().strip()
     if choice != "2":
         return tasks  # '1', empty or anything else -> all
 
@@ -177,7 +176,7 @@ def select_active_tasks(tasks: list) -> list:
     print("\nAvailable tasks:")
     for i, task in enumerate(tasks, 1):
         print(f"  {i} - {task.name}")
-    line = input("Task number (blank = all): ").strip()
+    line = console.timed_input("Task number (blank = all): ", None) or ""
     if line.isdigit() and 1 <= int(line) <= len(tasks):
         chosen = tasks[int(line) - 1]
         print(f"Running only: {chosen.name}")

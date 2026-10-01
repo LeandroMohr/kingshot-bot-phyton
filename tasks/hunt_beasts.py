@@ -157,7 +157,7 @@ class HuntBeastsTask(HuntTerrorTask):
         source = account_prefs.load_prefs(account_id)
         if "beast_level" not in source:
             try:
-                source = json.loads(Path(config.BEAST_LEVEL_FILE).read_text())
+                source = json.loads(Path(config.BEAST_LEVEL_FILE).read_text(encoding="utf-8"))
             except Exception:
                 source = {}
         try:
@@ -177,7 +177,7 @@ class HuntBeastsTask(HuntTerrorTask):
             "beast_level": level,
         }
         Path(config.BEAST_LEVEL_FILE).write_text(
-            json.dumps(payload, indent=2, ensure_ascii=False))
+            json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 TASK = HuntBeastsTask(

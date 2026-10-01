@@ -14,6 +14,9 @@ import numpy as np
 
 import config
 
+# Without this, every adb call flashes a console window when run from the GUI on Windows.
+NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)
+
 
 @dataclass
 class ADBController:
@@ -110,7 +113,7 @@ class ADBController:
     # -- internal ----------------------------------------------------------
     @staticmethod
     def _run(cmd: list[str]) -> bytes:
-        result = subprocess.run(cmd, capture_output=True)
+        result = subprocess.run(cmd, capture_output=True, creationflags=NO_WINDOW)
         if result.returncode != 0:
             raise RuntimeError(
                 f"Command failed: {' '.join(cmd)}\n{result.stderr.decode(errors='ignore')}"
@@ -121,7 +124,7 @@ class ADBController:
 def list_devices(binary: str = config.ADB_BINARY) -> list[str]:
     """Return the serials (e.g. '127.0.0.1:5605') of the connected devices."""
     out = subprocess.run(
-        [binary, "devices"], capture_output=True
+        [binary, "devices"], capture_output=True, creationflags=NO_WINDOW
     ).stdout.decode(errors="ignore")
     devices: list[str] = []
     for line in out.splitlines()[1:]:  # skip the header
@@ -143,6 +146,7 @@ def discover_devices(
             [binary, "connect", f"{host}:{port}"],
             capture_output=True,
             timeout=5,
+            creationflags=NO_WINDOW,
         )
     return list_devices(binary)
 

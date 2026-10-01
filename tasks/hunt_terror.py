@@ -83,7 +83,6 @@ from __future__ import annotations
 
 import json
 import re
-import select
 import sys
 import time
 from pathlib import Path
@@ -96,6 +95,7 @@ from adb_controller import ADBController
 from vision import find_template
 import config
 import account_prefs
+import console
 
 
 class HuntTerrorTask(Task):
@@ -611,7 +611,7 @@ class HuntTerrorTask(Task):
         """Read the shared (non per-account) hunt-config file. Used as a fallback
         and for migrating accounts that have no saved preferences yet."""
         try:
-            return json.loads(Path(config.TERROR_LEVEL_FILE).read_text())
+            return json.loads(Path(config.TERROR_LEVEL_FILE).read_text(encoding="utf-8"))
         except Exception:
             return {}
 
@@ -638,7 +638,7 @@ class HuntTerrorTask(Task):
             "rally_mode": mode,
             "require_diana": require_diana,
         }
-        path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+        path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
     def _maybe_prompt_settings(self, level: int, mode: str,
                                require_diana: bool) -> tuple[int, str, bool]:
@@ -677,13 +677,7 @@ class HuntTerrorTask(Task):
     def _prompt(self, message: str) -> str:
         """Print a prompt and return the typed line, or "" if the operator does
         not answer within config.TERROR_LEVEL_PROMPT_TIMEOUT seconds."""
-        print(message, end="", flush=True)
-        ready, _, _ = select.select([sys.stdin], [], [],
-                                    config.TERROR_LEVEL_PROMPT_TIMEOUT)
-        if not ready:
-            print()
-            return ""
-        return sys.stdin.readline().strip()
+        return console.timed_input(message, config.TERROR_LEVEL_PROMPT_TIMEOUT) or ""
 
     # -- helpers -----------------------------------------------------------
     def _tap(self, controller: ADBController, template: str, wait: float = 1.0,

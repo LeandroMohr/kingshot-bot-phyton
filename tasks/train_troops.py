@@ -34,7 +34,6 @@ Templates (captured at the 540x960 ADB resolution):
 from __future__ import annotations
 
 import json
-import select
 import sys
 import time
 from pathlib import Path
@@ -45,6 +44,7 @@ from vision import find_template
 from executor import go_to_home_screen, handle_connection_lost
 import config
 import account_prefs
+import console
 
 
 class TrainTroopsTask(Task):
@@ -252,7 +252,7 @@ class TrainTroopsTask(Task):
 
     def _load_global_tier(self) -> dict:
         try:
-            return json.loads(Path(config.TRAIN_TIER_FILE).read_text())
+            return json.loads(Path(config.TRAIN_TIER_FILE).read_text(encoding="utf-8"))
         except Exception:
             return {}
 
@@ -268,18 +268,12 @@ class TrainTroopsTask(Task):
                            "before every training pass.",
             "train_tier": tier,
         }
-        path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+        path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
     def _prompt(self, message: str) -> str:
         """Print a prompt and return the typed line, or "" if the operator does
         not answer within config.TRAIN_TIER_PROMPT_TIMEOUT seconds."""
-        print(message, end="", flush=True)
-        ready, _, _ = select.select([sys.stdin], [], [],
-                                    config.TRAIN_TIER_PROMPT_TIMEOUT)
-        if not ready:
-            print()
-            return ""
-        return sys.stdin.readline().strip()
+        return console.timed_input(message, config.TRAIN_TIER_PROMPT_TIMEOUT) or ""
 
     # -- helpers -----------------------------------------------------------
     def _tap(self, controller: ADBController, template: str, wait: float = 1.0,

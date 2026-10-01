@@ -59,7 +59,7 @@ def load_prefs(account_id: str | None) -> dict:
     if not account_id:
         return {}
     try:
-        data = json.loads(_account_file(str(account_id)).read_text())
+        data = json.loads(_account_file(str(account_id)).read_text(encoding="utf-8"))
         return data.get("preferences", {}) or {}
     except Exception:
         return {}
@@ -78,7 +78,7 @@ def save_prefs(account_id: str | None, prefs: dict,
     path = _account_file(account_id)
     existing = {}
     try:
-        existing = json.loads(path.read_text())
+        existing = json.loads(path.read_text(encoding="utf-8"))
     except Exception:
         pass
     payload = {
@@ -91,7 +91,7 @@ def save_prefs(account_id: str | None, prefs: dict,
         "profile": profile if profile is not None else existing.get("profile"),
         "preferences": prefs,
     }
-    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+    path.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def update_prefs(account_id: str | None, changes: dict) -> None:

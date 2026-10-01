@@ -19,7 +19,7 @@ _FILE = config.BASE_DIR / "memory" / "task_runtime.json"
 
 def _load() -> dict:
     try:
-        data = json.loads(_FILE.read_text())
+        data = json.loads(_FILE.read_text(encoding="utf-8"))
         return data if isinstance(data, dict) else {}
     except (OSError, ValueError, TypeError):
         return {}
@@ -27,7 +27,7 @@ def _load() -> dict:
 
 def _save(data: dict) -> None:
     _FILE.parent.mkdir(parents=True, exist_ok=True)
-    _FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False))
+    _FILE.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def _bucket(account_id: str | None) -> str:

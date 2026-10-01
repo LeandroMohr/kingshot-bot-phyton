@@ -125,7 +125,7 @@ def _save_state(data: dict) -> None:
         "last_read": datetime.now(timezone.utc).isoformat(timespec="seconds"),
         "player": data,
     }
-    _STATE_FILE.write_text(json.dumps(payload, indent=2, ensure_ascii=False))
+    _STATE_FILE.write_text(json.dumps(payload, indent=2, ensure_ascii=False), encoding="utf-8")
 
 
 def read_player_profile(controller: ADBController, save: bool = True) -> dict | None:
