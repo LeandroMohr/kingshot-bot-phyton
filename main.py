@@ -25,6 +25,7 @@ import time
 
 import config
 import console
+import bot_control
 from adb_controller import ADBController, list_devices, discover_devices
 from tasks import TASKS
 from tasks.base import Outcome
@@ -127,6 +128,10 @@ def parse_args() -> argparse.Namespace:
         help="Run only this task (repeatable, e.g. --task 'Hunt Beasts'). "
              "Skips the task menu.",
     )
+    parser.add_argument(
+        "--control-stdin", action="store_true",
+        help="Accept 'pause' / 'resume' commands on stdin (used by the control panel).",
+    )
     return parser.parse_args()
 
 
@@ -203,6 +208,8 @@ def select_active_tasks(tasks: list) -> list:
 
 def main() -> None:
     args = parse_args()
+    if args.control_stdin:
+        bot_control.listen_stdin()
 
     if args.list:
         devices = list_devices()
@@ -234,7 +241,10 @@ def main() -> None:
         host, port = args.host, args.port
 
     controller = ADBController(host=host, port=port)
-    run_loop(controller, selected)
+    try:
+        run_loop(controller, selected)
+    except KeyboardInterrupt:  # stopped before the main loop started
+        print("\nKingshot Bot stopped. See you next time!")
 
 
 def run_loop(controller: ADBController, selected: list | None = None) -> None:

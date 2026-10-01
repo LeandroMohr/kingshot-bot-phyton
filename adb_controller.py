@@ -13,6 +13,7 @@ import cv2
 import numpy as np
 
 import config
+from bot_control import wait_if_paused
 
 # Without this, every adb call flashes a console window when run from the GUI on Windows.
 NO_WINDOW = getattr(subprocess, "CREATE_NO_WINDOW", 0)
@@ -113,6 +114,7 @@ class ADBController:
     # -- internal ----------------------------------------------------------
     @staticmethod
     def _run(cmd: list[str]) -> bytes:
+        wait_if_paused()
         result = subprocess.run(cmd, capture_output=True, creationflags=NO_WINDOW)
         if result.returncode != 0:
             raise RuntimeError(
