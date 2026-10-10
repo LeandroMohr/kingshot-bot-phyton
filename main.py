@@ -28,6 +28,7 @@ import console
 import bot_control
 from adb_controller import ADBController, list_devices, discover_devices
 from tasks import TASKS
+from events import EVENTS
 from tasks.base import Outcome
 from executor import ensure_game_ready, go_to_home_screen, read_player_profile
 from planner.task_runtime import order_tasks, record_duration
@@ -123,10 +124,16 @@ def parse_args() -> argparse.Namespace:
         "--list", action="store_true",
         help="Just list the connected emulators and exit.",
     )
-    parser.add_argument(
+    execution = parser.add_mutually_exclusive_group()
+    execution.add_argument(
         "--task", action="append", metavar="NAME",
         help="Run only this task (repeatable, e.g. --task 'Hunt Beasts'). "
              "Skips the task menu.",
+    )
+    execution.add_argument(
+        "--event", choices=list(EVENTS),
+        help="Run an individual event once. "
+             "Never included in the default daily routine.",
     )
     parser.add_argument(
         "--control-stdin", action="store_true",
@@ -168,13 +175,13 @@ def choose_emulator(host: str) -> tuple[str, int] | None:
         print("Invalid option. Let's try again.")
 
 
-def select_active_tasks(tasks: list) -> list:
-    """Ask whether to run all mapped tasks or just a single one.
+def select_active_tasks(tasks: list, events: list | None = None) -> list:
+    """Choose all daily tasks, a single task, or an individual event.
 
     Runs ALL tasks if the operator picks option 1, presses Enter, gives no
     answer within config.TASK_MENU_TIMEOUT seconds, or when the bot is not
     attached to a real terminal (so it never blocks a headless run). Picking
-    option 2 opens a numbered list to choose one task."""
+    option 2 opens a task list; option 3 opens the separate event list."""
     if not tasks:
         return tasks
     if not sys.stdin or not sys.stdin.isatty():
@@ -183,6 +190,8 @@ def select_active_tasks(tasks: list) -> list:
     print("\nWhat do you want to run?")
     print("  1 - All mapped tasks (default)")
     print("  2 - Pick a single task")
+    if events:
+        print("  3 - Events")
     choice = console.timed_input(
         f"Option (auto 'all' in {int(config.TASK_MENU_TIMEOUT)}s): ",
         config.TASK_MENU_TIMEOUT)
@@ -190,18 +199,25 @@ def select_active_tasks(tasks: list) -> list:
         print("No answer; running all tasks.")
         return tasks
 
-    if choice != "2":
+    if choice != "2" and not (choice == "3" and events):
         return tasks  # '1', empty or anything else -> all
 
     # Single-task submenu.
-    print("\nAvailable tasks:")
-    for i, task in enumerate(tasks, 1):
+    available = events if choice == "3" else tasks
+    print("\nAvailable events:" if choice == "3" else "\nAvailable tasks:")
+    for i, task in enumerate(available, 1):
         print(f"  {i} - {task.name}")
-    line = console.timed_input("Task number (blank = all): ", None) or ""
-    if line.isdigit() and 1 <= int(line) <= len(tasks):
-        chosen = tasks[int(line) - 1]
+    line = console.timed_input(
+        "Event number: " if choice == "3" else "Task number (blank = all): ",
+        None,
+    ) or ""
+    if line.isdigit() and 1 <= int(line) <= len(available):
+        chosen = available[int(line) - 1]
         print(f"Running only: {chosen.name}")
         return [chosen]
+    if choice == "3":
+        print("No event selected; stopping without running daily tasks.")
+        return []
     print("Invalid choice; running all tasks.")
     return tasks
 
@@ -242,12 +258,13 @@ def main() -> None:
 
     controller = ADBController(host=host, port=port)
     try:
-        run_loop(controller, selected)
+        run_loop(controller, selected, event=EVENTS.get(args.event))
     except KeyboardInterrupt:  # stopped before the main loop started
         print("\nKingshot Bot stopped. See you next time!")
 
 
-def run_loop(controller: ADBController, selected: list | None = None) -> None:
+def run_loop(controller: ADBController, selected: list | None = None,
+             event=None) -> None:
     port = controller.port
     print("==============================================")
     print("            Kingshot Bot started")
@@ -257,7 +274,33 @@ def run_loop(controller: ADBController, selected: list | None = None) -> None:
     print(f"Connected to emulator {port}!")
 
     # Ask whether to run all tasks or just one (defaults to all after a timeout).
-    active_tasks = selected if selected is not None else select_active_tasks(TASKS)
+    active_tasks = ([event] if event is not None else
+                    selected if selected is not None else
+                    select_active_tasks(TASKS, list(EVENTS.values())))
+    if not active_tasks:
+        print("No task or event selected.")
+        return
+
+    if len(active_tasks) == 1 and any(
+            active_tasks[0] is item for item in EVENTS.values()):
+        # Preserve the prepared screen; recovery/profile navigation would close
+        # the event. No automatic retry: live stages can cost event currency.
+        task = active_tasks[0]
+        ensure_game_ready(controller, announce_if_open=True)
+        try:
+            if task.requires_profile:
+                if not go_to_home_screen(controller):
+                    print(f"[emulator {port}] {task.name}: could not reach the city.")
+                    return
+                read_player_profile(controller)
+            outcome = task.execute(controller)
+        except KeyboardInterrupt:
+            print(f"\n[emulator {port}] {task.name}: stopped by operator.")
+        except (RuntimeError, OSError, ValueError, KeyError) as exc:
+            print(f"[emulator {port}] {task.name}: error ({exc})")
+        else:
+            print(f"[emulator {port}] {task.name}: {outcome}")
+        return
 
     # Make sure the game is open before starting.
     ensure_game_ready(controller, announce_if_open=True)
