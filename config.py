@@ -684,6 +684,59 @@ DAILY_GO_THRESHOLD = 0.85
 DAILY_GO_MAX_ACTIONS = 4                     # safety cap on how many Go missions to drive per run
 DAILY_RECRUIT_FREE_TAP = (143, 635)         # "Recruit x1 Free" on the Hero Recruitment screen
 
+# --- Castle Battle (King's Castle event) -------------------------------------
+# Event entry point: a gold-rimmed round CASTLE icon in the right-hand icon
+# column (city and world map, next to the paw / scales / mail buttons). That
+# column grows upwards as more event icons appear, so the icon is always located
+# by template, never by a fixed coordinate. The icon has an animated gold glow,
+# hence the lower threshold (present ~0.73-1.00, absent ~0.31).
+CASTLE_EVENT_ICON = "castle_event_icon.png"
+CASTLE_EVENT_ICON_THRESHOLD = 0.65
+CASTLE_GO_BUTTON = "castle_go_button.png"   # cyan "Go" at the bottom of the event panel
+CASTLE_MAP_LABEL = "castle_map_label.png"   # white "King's Castle" label on the map
+CASTLE_MODAL_TITLE = "castle_modal_title.png"   # proves the modal is the CASTLE
+CASTLE_ATTACK_BUTTON = "castle_attack_button.png"
+CASTLE_DEPLOY_MARKER = "castle_deploy_marker.png"  # "Deploy" header of the troop screen
+CASTLE_DEPLOY_BUTTON = "castle_deploy_button.png"
+CASTLE_MARCH_TIME_REGION = (372, 858, 470, 880)  # clock above Deploy (x1,y1,x2,y2)
+CASTLE_MARCH_POLL = 10.0                    # seconds between "is the march back?" checks
+CASTLE_MARCH_MAX_WAIT = 15 * 60             # safety cap waiting for one attack to resolve
+CASTLE_BATTLE_BUFFER = 40                   # extra seconds for the fight + the way back
+CASTLE_MAX_RUNTIME = 60 * 60                # cap for a single run of the task
+
+# Infirmary / "Heal Injured" modal. Opened from the green "+" button with the
+# infirmary usage percentage, in the same right-hand column as the event icon.
+# HARD RULES (player): never tap "Finish" (it costs gems), heal at most
+# HEAL_BATCH_SIZE troops of a SINGLE type per batch, and after starting a heal
+# tap "Help" so the (very active) alliance finishes it instantly.
+INFIRMARY_BUTTON = "infirmary_button.png"
+INFIRMARY_BUTTON_THRESHOLD = 0.85
+HEAL_MODAL_TITLE = "heal_modal_title.png"
+HEAL_START_BUTTON = "heal_start_button.png"  # cyan "Heal" (idle state)
+HEAL_HELP_BUTTON = "heal_help_button.png"    # cyan "Help" (healing in progress)
+HEAL_CLOSE_TAP = (448, 149)                  # X of the Heal Injured modal
+HEAL_INJURED_REGION = (112, 200, 300, 232)   # "49,625/237,400" (x1,y1,x2,y2)
+HEAL_ROW_FIRST_Y = 257                       # y of the first troop row label
+HEAL_ROW_PITCH = 107                         # vertical distance between rows
+HEAL_ROW_LABEL_X = (168, 400)                # x band of the "Apex Infantry 24,562" text
+HEAL_QTY_BOX_X = 407                         # x of the per-row quantity box
+HEAL_QTY_BOX_DY = 45                         # box y = row label y + this
+HEAL_INPUT_OK_TAP = (475, 908)               # "OK" of the Android text-input bar
+HEAL_INPUT_REGION = (20, 888, 440, 932)      # the value typed, in the system font
+HEAL_BATCH_SIZE = 500                        # max troops healed per batch (one type)
+HEAL_MAX_BATCHES = 250                       # safety cap on heal batches per run
+HEAL_HELP_MAX_TAPS = 6                       # "Help" taps before giving up on instant heal
+# Stop attacking and drain the infirmary when the wounded reach EITHER limit.
+# The infirmary must never get close to full (a full one starts losing troops).
+CASTLE_INJURED_LIMIT = 100_000               # absolute number of severely injured
+CASTLE_INFIRMARY_PCT_LIMIT = 45.0            # or this share of the infirmary capacity
+# One castle attack wounds tens of thousands of troops, so the decision to
+# attack has to look at where the infirmary will be AFTER the attack, not where
+# it is now. This is the starting estimate (deliberately high = heals earlier);
+# the real figure is measured on every attack and saved per account as
+# "castle_wounds_per_attack".
+CASTLE_WOUNDS_PER_ATTACK = 50_000
+
 # If True, saves an annotated screenshot ONLY when DEBUG is enabled.
 # By default no image is written to disk — captures live only in memory.
 DEBUG = False
