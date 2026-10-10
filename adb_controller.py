@@ -7,6 +7,8 @@ from __future__ import annotations
 
 import re
 import subprocess
+import threading
+import time
 from dataclasses import dataclass
 
 import cv2
@@ -42,10 +44,11 @@ class ADBController:
             )
 
     # -- capture -----------------------------------------------------------
-    def screenshot(self) -> np.ndarray:
+    def screenshot(self, timeout: float | None = None) -> np.ndarray:
         """Capture the screen and return a BGR image (numpy). In memory only."""
         raw = self._run(
-            [self.binary, "-s", self.serial, "exec-out", "screencap", "-p"]
+            [self.binary, "-s", self.serial, "exec-out", "screencap", "-p"],
+            timeout=timeout,
         )
         img = cv2.imdecode(np.frombuffer(raw, dtype=np.uint8), cv2.IMREAD_COLOR)
         if img is None:
@@ -71,6 +74,19 @@ class ADBController:
         """Send the Android 'back' key (closes dialogs/windows)."""
         self._run(
             [self.binary, "-s", self.serial, "shell", "input", "keyevent", "4"]
+        )
+
+    def key_event(self, *keycodes: int) -> None:
+        """Send one or more Android key events (e.g. 67 = DEL, 123 = MOVE_END)."""
+        self._run(
+            [self.binary, "-s", self.serial, "shell", "input", "keyevent",
+             *[str(k) for k in keycodes]]
+        )
+
+    def input_text(self, text: str) -> None:
+        """Type `text` into the input field that currently has focus."""
+        self._run(
+            [self.binary, "-s", self.serial, "shell", "input", "text", text]
         )
 
     # -- app / game --------------------------------------------------------
@@ -113,14 +129,101 @@ class ADBController:
 
     # -- internal ----------------------------------------------------------
     @staticmethod
-    def _run(cmd: list[str]) -> bytes:
+    def _run(cmd: list[str], timeout: float | None = None) -> bytes:
         wait_if_paused()
-        result = subprocess.run(cmd, capture_output=True, creationflags=NO_WINDOW)
+        try:
+            result = subprocess.run(
+                cmd, capture_output=True, timeout=timeout, creationflags=NO_WINDOW,
+            )
+        except subprocess.TimeoutExpired as exc:
+            raise RuntimeError(f"Command timed out after {timeout}s: {' '.join(cmd)}") from exc
         if result.returncode != 0:
             raise RuntimeError(
                 f"Command failed: {' '.join(cmd)}\n{result.stderr.decode(errors='ignore')}"
             )
         return result.stdout
+
+
+@dataclass(frozen=True)
+class CapturedFrame:
+    sequence: int
+    started_at: float
+    completed_at: float
+    image: np.ndarray
+
+
+class ContinuousCapture:
+    """One bounded ADB worker, retaining only the latest immutable frame."""
+
+    def __init__(self, controller: ADBController, max_fps: float = 10.0):
+        if max_fps <= 0:
+            raise ValueError("Capture frame rate must be positive.")
+        self.controller = controller
+        self.interval = 1.0 / max_fps
+        self._condition = threading.Condition()
+        self._stop = threading.Event()
+        self._thread = threading.Thread(target=self._capture, name="adb-capture")
+        self._latest: CapturedFrame | None = None
+        self._error: Exception | None = None
+        self.frames = 0
+        self.capture_seconds = 0.0
+        self.started_at = 0.0
+        self.stopped_at = 0.0
+
+    def __enter__(self) -> ContinuousCapture:
+        self.started_at = time.monotonic()
+        self._thread.start()
+        return self
+
+    def __exit__(self, exc_type, exc_value, traceback) -> None:
+        self.close()
+
+    def close(self) -> None:
+        self._stop.set()
+        with self._condition:
+            self._condition.notify_all()
+        if self._thread.ident is not None:
+            self._thread.join(timeout=3.0)
+            if self._thread.is_alive():
+                raise RuntimeError("ADB capture worker did not stop within 3 seconds.")
+        self.stopped_at = time.monotonic()
+
+    def next_frame(self, after_sequence: int = -1, not_before: float = 0.0,
+                   timeout: float = 2.5) -> CapturedFrame:
+        deadline = time.monotonic() + timeout
+        with self._condition:
+            while True:
+                if self._error is not None:
+                    raise RuntimeError(f"Continuous ADB capture failed: {self._error}") from self._error
+                if self._stop.is_set():
+                    raise RuntimeError("Continuous ADB capture is closed.")
+                frame = self._latest
+                # started_at, not completed_at, excludes captures in flight at tap time.
+                if (frame is not None and frame.sequence > after_sequence
+                        and frame.started_at >= not_before):
+                    return frame
+                remaining = deadline - time.monotonic()
+                if remaining <= 0:
+                    raise TimeoutError("No fresh ADB frame within the requested timeout.")
+                self._condition.wait(remaining)
+
+    def _capture(self) -> None:
+        try:
+            while not self._stop.is_set():
+                started = time.monotonic()
+                image = self.controller.screenshot(timeout=2.0)
+                completed = time.monotonic()
+                image.setflags(write=False)
+                with self._condition:
+                    self.frames += 1
+                    self.capture_seconds += completed - started
+                    self._latest = CapturedFrame(self.frames, started, completed, image)
+                    self._condition.notify_all()
+                self._stop.wait(max(0.0, self.interval - (completed - started)))
+        except Exception as exc:  # transfer worker failures to the consuming thread
+            with self._condition:
+                self._error = exc
+                self._condition.notify_all()
 
 
 def list_devices(binary: str = config.ADB_BINARY) -> list[str]:
@@ -151,4 +254,3 @@ def discover_devices(
             creationflags=NO_WINDOW,
         )
     return list_devices(binary)
-
