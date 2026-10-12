@@ -100,10 +100,24 @@ Open the event on the emulator, then run:
 
 This runs one round and exits, preserving the prepared screen (no city/profile
 navigation or automatic retries). From the pre-event page it starts the free
-**Nível de Prática**. For a live stage, open/start the stage yourself first;
-the bot does not spend event currency or buy hints.
+**Nível de Prática**. From the live event page, an explicit individual execution
+recognizes the **Start** / **Start Game** button by image and starts one stage (entry may consume
+event currency). Start takes priority over practice. It waits for the entry page
+to disappear, so that page's event countdown cannot be mistaken for the round
+timer. It never retries entry, buys hints, or starts the next stage.
+Live stages also display a **Tap anywhere to start** introduction absent from
+practice. A language-independent stopwatch-card marker recognizes it; one tap
+at `(270, 810)`, outside the landscape and hint, dismisses it. Repeated frames
+never cause repeated taps. The event can also be launched from that already-open
+introduction without paying entry again, and still waits for the real round
+before using coordinates. Result screens are never dismissed.
+Entry allows up to 20 seconds for loading and waits for a readable timer, not just
+the clock icon: live stages can display an empty landscape/timer while loading.
+It also waits for a recognized landscape before starting the solver: the live
+timer can become readable while the scene is still rendering. No coordinates
+are used during that intermediate state.
 
-The mapped forest scene uses **540x960** captures. Names (including two-line
+The mapped forest and live-event village scenes use **540x960** captures. Names (including two-line
 labels) are read with Tesseract, matched to coordinates, and each click must
 increase the yellow progress bar and cross out/replace the target label.
 The number of objects is **level-dependent**, not fixed at nine. The bot keeps
@@ -203,6 +217,38 @@ are excluded. Analysis failures are surfaced and both workers are joined on exit
 This is class-agnostic visual search, **not semantic recognition of the requested
 name**: changing scenery can also receive high scores, and items can be missed.
 No backup coordinates, pretrained detector or remote service are needed.
+
+The live chapter-1 village uses `hidden_objects_village_background.png`, captured
+at native size **before the targets were rendered** in stage 1-3. Two manually
+completed rounds confirmed the fixed scenery and successful terminal detection.
+The cat was already present in that initial scene and is retained. A ball, rope
+and wall ivy appeared afterward and remained in both final captures, although
+none appeared in the recorded stage-1-3 target list. The early frame supplies
+real pixels behind all three; no inpainting is needed. They can still produce
+difference candidates, and those observations do not prove they can never be
+requested in another stage.
+
+Village coordinates/misses are scoped independently as `village:540x960`; the
+30 training-forest coordinates are **not reused in the village**. Village now
+has 12 confirmed reference coordinates from the untimed practice mode after a
+stage-1-5 defeat: Pouch, Bell, Map, Starfish, Sunflower, Corn, Rubber Duck,
+Watering Can, Barrel, Balloons, Scarf and Camera. All twelve were individually
+verified by label strike-through, increasing progress and a localized change
+at the click before saving. The blue object on the right tree is Scarf, not
+Butterfly. New objects still require confirmed discovery. Observed new names
+include Map, Rubber Duck, Balloons, Starfish, Corn, Camera and Butterfly, with
+Portuguese canonical aliases. Autonomous village completion has not yet been
+validated. A cold-start stage-1-5 run reached timeout after 19 exploratory taps,
+learning Bell and Rubber Duck while other progress was reconciled without false
+attribution. Practice mapping used visually identified candidates and confirmed
+all 12 with 12 correct taps; that is not an autonomous cold-start measurement.
+A subsequent mapped stage-1-5 validation reached **All items found** in
+32.22 seconds of solver time (35.66 seconds including entry), with 16 scene
+taps, one paid entry, one intro dismissal and no hint/result/next-stage taps.
+Seven hits were uniquely attributed to the bot; other progress was reconciled
+without learning ambiguous coordinates, so this does not establish 12 autonomous
+hits. Butterfly and Feather remained pending, and OCR read Balloons as
+`Ballecns`, causing unnecessary exploratory clicks despite its known coordinate.
 
 Each frame carries a sequence number and capture start/end timestamps. After a
 tap, confirmation accepts only frames whose capture **started after the tap

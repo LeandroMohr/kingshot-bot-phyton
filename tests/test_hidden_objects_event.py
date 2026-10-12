@@ -87,6 +87,63 @@ class ObjectMapTests(unittest.TestCase):
         self.mapping.reference["scenes"]["forest"].pop("background")
         self.assertIsNone(self.mapping.background("forest"))
 
+    def test_village_background_and_coordinates_are_separate_from_training(self):
+        image = self.mapping.background("village")
+        self.assertEqual(image.shape, (735, 450, 3))
+        self.assertFalse(image.flags.writeable)
+        self.assertIsNone(self.mapping.coordinates("village", "Rope"))
+        self.assertEqual(self.mapping.coordinates("forest", "Rope"), (416, 634))
+        self.mapping.confirm("village", "Rope", (430, 710))
+        self.assertEqual(self.mapping.coordinates("village", "Corda"), (430, 710))
+        self.assertEqual(self.mapping.coordinates("forest", "Rope"), (416, 634))
+
+    def test_new_live_event_names_have_bilingual_canonical_aliases(self):
+        for english, portuguese in [
+            ("Map", "Mapa"), ("Rubber Duck", "Pato de Borracha"),
+            ("Balloons", "Balões"), ("Starfish", "Estrela do Mar"),
+            ("Corn", "Milho"), ("Camera", "Câmera"), ("Butterfly", "Borboleta"),
+            ("Bell", "Sino"), ("Sunflower", "Girassol"),
+            ("Watering Can", "Regador"), ("Scarf", "Cachecol"),
+        ]:
+            with self.subTest(name=english):
+                self.assertEqual(self.mapping.canonical_name(english), portuguese)
+
+    def test_all_twelve_village_practice_items_have_confirmed_bilingual_coordinates(self):
+        objects = {
+            "Pouch": ("Bolsa Pequena", (149, 513)),
+            "Bell": ("Sino", (398, 395)),
+            "Map": ("Mapa", (304, 711)),
+            "Starfish": ("Estrela do Mar", (330, 541)),
+            "Sunflower": ("Girassol", (464, 586)),
+            "Corn": ("Milho", (136, 584)),
+            "Rubber Duck": ("Pato de Borracha", (234, 551)),
+            "Watering Can": ("Regador", (397, 521)),
+            "Barrel": ("Barril", (179, 509)),
+            "Balloons": ("Balões", (216, 285)),
+            "Scarf": ("Cachecol", (454, 452)),
+            "Camera": ("Câmera", (228, 610)),
+        }
+        self.assertEqual(set(self.mapping.reference["scenes"]["village"]["objects"]),
+                         {name for name, _ in objects.values()})
+        for english, (portuguese, point) in objects.items():
+            with self.subTest(name=english):
+                self.assertEqual(self.mapping.coordinates("village", english), point)
+                self.assertEqual(self.mapping.coordinates("village", portuguese), point)
+        self.assertEqual(self.mapping.coordinates("forest", "Pouch"), (171, 594))
+        self.assertEqual(self.mapping.coordinates("forest", "Barrel"), (446, 476))
+
+    def test_new_alias_confirmation_migrates_old_english_learned_key(self):
+        bucket = self.mapping._bucket("village")
+        bucket["objects"]["bell"] = {"name": "Bell", "point": [398, 395]}
+        bucket["pending"] = ["Watering Can", "Scarf"]
+        bucket["misses"] = {"regador": [[394, 316]]}
+        self.mapping.confirm("village", "Bell", (398, 395))
+        self.assertNotIn("bell", bucket["objects"])
+        self.assertEqual(bucket["objects"]["sino"]["name"], "Sino")
+        self.mapping.confirm("village", "Watering Can", (397, 521))
+        self.assertNotIn("regador", bucket["misses"])
+        self.assertEqual(bucket["pending"], [])
+
     def test_configured_missing_background_raises(self):
         self.mapping.reference["scenes"]["forest"]["background"] = "missing-background.png"
         with self.assertRaisesRegex(FileNotFoundError, "Clean background"):
@@ -359,10 +416,18 @@ class ExecutionTests(unittest.TestCase):
 
     def test_practice_starts_with_language_independent_button_marker(self):
         screen = screen_with_progress(0)
+        screen[816:826, 55:70] = 255
         self.controller.screenshot.return_value = screen
 
         def match(image, name, *args):
             if name == "hidden_objects_success.png" or name.startswith("hidden_objects_timeout"):
+                return Match(False, 0)
+            if name == "hidden_objects_stage_intro.png":
+                return Match(False, 0)
+            if name == "hidden_objects_event_icon.png":
+                return Match(self.controller.screenshot.call_count == 1, 1)
+            if name in ("hidden_objects_start_button.png",
+                        "hidden_objects_start_game_button.png"):
                 return Match(False, 0)
             if name == "hidden_objects_practice_button.png":
                 return Match(False, 0)
@@ -371,6 +436,7 @@ class ExecutionTests(unittest.TestCase):
             return Match(True, 1)
 
         with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.remaining_seconds", return_value=60), \
                 patch("events.hidden_objects.ContinuousCapture"), \
                 patch("events.hidden_objects.ImageCandidates"), \
                 patch("events.hidden_objects.RoundCapture") as live, \
@@ -379,12 +445,249 @@ class ExecutionTests(unittest.TestCase):
             self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
         self.controller.tap.assert_called_once_with(270, 895)
 
+    def test_live_start_has_priority_and_waits_for_entry_page_to_disappear(self):
+        screen = screen_with_progress(0)
+        screen[816:826, 55:70] = 255
+        self.controller.screenshot.return_value = screen
+
+        def match(image, name, *args):
+            if name == "hidden_objects_success.png" or name.startswith("hidden_objects_timeout"):
+                return Match(False, 0)
+            if name == "hidden_objects_stage_intro.png":
+                return Match(False, 0)
+            if name == "hidden_objects_event_icon.png":
+                return Match(self.controller.screenshot.call_count <= 2, 1)
+            if name == "hidden_objects_start_button.png":
+                return Match(True, 1, 365, 882)
+            return Match(True, 1)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.remaining_seconds", return_value=60), \
+                patch("events.hidden_objects.time.sleep"), \
+                patch("events.hidden_objects.ContinuousCapture"), \
+                patch("events.hidden_objects.ImageCandidates"), \
+                patch("events.hidden_objects.RoundCapture") as live, \
+                patch.object(self.task, "_solve", return_value=Outcome.SUCCESS):
+            live.return_value.screenshot.return_value = screen
+            self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
+        self.assertEqual(self.controller.screenshot.call_count, 3)
+        self.controller.tap.assert_called_once_with(365, 882)
+
+    def test_entry_timeout_never_retries_or_uses_the_event_page_clock(self):
+        def match(image, name, *args):
+            return Match(name in ("hidden_objects_event_icon.png",
+                                  "hidden_objects_start_button.png",
+                                  "hidden_objects_round_marker.png"), 1, 365, 882)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.time.monotonic", side_effect=[0, 21]), \
+                patch.object(self.task, "_solve") as solve:
+            self.assertEqual(self.task.execute(self.controller), Outcome.FAILED)
+        self.controller.tap.assert_called_once_with(365, 882)
+        solve.assert_not_called()
+
+    def test_start_dismisses_intro_once_and_waits_for_real_round(self):
+        entry = screen_with_progress(0)
+        intro = screen_with_progress(0)
+        ready = screen_with_progress(0)
+        ready[816:826, 55:70] = 255
+        self.controller.screenshot.side_effect = [entry, intro, intro, ready]
+
+        def match(image, name, *args):
+            if name == "hidden_objects_event_icon.png":
+                return Match(image is entry, 1)
+            if name == "hidden_objects_start_game_button.png":
+                return Match(image is entry, 1, 365, 880)
+            if name == "hidden_objects_stage_intro.png":
+                return Match(image is intro, 1)
+            return Match(image is ready and name in (
+                "hidden_objects_round_marker.png", "hidden_objects_village_scene.png"), 1)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.remaining_seconds", return_value=60), \
+                patch("events.hidden_objects.time.sleep"), \
+                patch("events.hidden_objects.ContinuousCapture"), \
+                patch("events.hidden_objects.ImageCandidates"), \
+                patch("events.hidden_objects.RoundCapture") as live, \
+                patch.object(self.task, "_solve", return_value=Outcome.SUCCESS) as solve:
+            live.return_value.screenshot.return_value = ready
+            self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
+        self.assertEqual([call.args for call in self.controller.tap.call_args_list],
+                         [(365, 880), (270, 810)])
+        self.assertEqual(solve.call_args.args[2], "village")
+
+    def test_can_start_from_already_open_intro_without_paying_entry_again(self):
+        intro = screen_with_progress(0)
+        ready = screen_with_progress(0)
+        ready[816:826, 55:70] = 255
+        self.controller.screenshot.side_effect = [intro, intro, ready]
+
+        def match(image, name, *args):
+            if name == "hidden_objects_stage_intro.png":
+                return Match(image is intro, 1)
+            return Match(image is ready and name in (
+                "hidden_objects_round_marker.png", "hidden_objects_village_scene.png"), 1)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.remaining_seconds", return_value=60), \
+                patch("events.hidden_objects.time.sleep"), \
+                patch("events.hidden_objects.ContinuousCapture"), \
+                patch("events.hidden_objects.ImageCandidates"), \
+                patch("events.hidden_objects.RoundCapture") as live, \
+                patch.object(self.task, "_solve", return_value=Outcome.SUCCESS):
+            live.return_value.screenshot.return_value = ready
+            self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
+        self.controller.tap.assert_called_once_with(270, 810)
+
+    def test_persistent_intro_times_out_without_repeated_taps_or_solver(self):
+        with patch("events.hidden_objects.find_template",
+                   side_effect=lambda image, name, *args: Match(
+                       name == "hidden_objects_stage_intro.png", 1)), \
+                patch("events.hidden_objects.time.monotonic", side_effect=[0, 1, 2, 21]), \
+                patch("events.hidden_objects.time.sleep"), \
+                patch.object(self.task, "_solve") as solve:
+            self.assertEqual(self.task.execute(self.controller), Outcome.FAILED)
+        self.controller.tap.assert_called_once_with(270, 810)
+        solve.assert_not_called()
+
+    def test_result_during_intro_wait_stops_without_dismissing_anything(self):
+        intro = screen_with_progress(0)
+        terminal = result_screen(Outcome.SUCCESS)
+        self.controller.screenshot.side_effect = [intro, terminal]
+
+        def match(image, name, *args):
+            if image is intro:
+                return Match(name == "hidden_objects_stage_intro.png", 1)
+            return event_match(image, name, *args)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch.object(self.task, "_solve") as solve:
+            self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
+        self.controller.tap.assert_not_called()
+        solve.assert_not_called()
+
+    def test_start_game_variant_is_recognized_without_fixed_currency_counter(self):
+        def match(image, name, *args):
+            return Match(name in ("hidden_objects_event_icon.png",
+                                  "hidden_objects_start_game_button.png"), 1, 365, 880)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.time.monotonic", side_effect=[0, 21]):
+            self.assertEqual(self.task.execute(self.controller), Outcome.FAILED)
+        self.controller.tap.assert_called_once_with(365, 880)
+
+    def test_live_entry_waits_through_slow_loading_and_empty_timer(self):
+        entry = screen_with_progress(0)
+        loading = screen_with_progress(0)
+        loading[816:826, 55:70] = 255
+        ready = screen_with_progress(0)
+        ready[816:826, 55:70] = 255
+        self.controller.screenshot.side_effect = [entry, loading, ready]
+
+        def match(image, name, *args):
+            if name == "hidden_objects_event_icon.png":
+                return Match(image is entry, 1)
+            if name == "hidden_objects_start_button.png":
+                return Match(image is entry, 1, 365, 882)
+            return Match(name in ("hidden_objects_round_marker.png",
+                                  "hidden_objects_forest_scene.png"), 1)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.remaining_seconds",
+                      side_effect=[ValueError("Timer is still empty"), 60]) as timer, \
+                patch("events.hidden_objects.time.monotonic", side_effect=[0, 7, 8]), \
+                patch("events.hidden_objects.time.sleep"), \
+                patch("events.hidden_objects.ContinuousCapture"), \
+                patch("events.hidden_objects.ImageCandidates"), \
+                patch("events.hidden_objects.RoundCapture") as live, \
+                patch.object(self.task, "_solve", return_value=Outcome.SUCCESS):
+            live.return_value.screenshot.return_value = ready
+            self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
+        self.controller.tap.assert_called_once_with(365, 882)
+        self.assertEqual(self.controller.screenshot.call_count, 3)
+        self.assertEqual(timer.call_count, 2)
+
+    def test_readable_timer_does_not_start_solver_before_landscape_has_loaded(self):
+        entry = screen_with_progress(0)
+        loading = screen_with_progress(0)
+        ready = screen_with_progress(0)
+        loading[816:826, 55:70] = 255
+        ready[816:826, 55:70] = 255
+        self.controller.screenshot.side_effect = [entry, loading, ready]
+
+        def match(image, name, *args):
+            if name == "hidden_objects_event_icon.png":
+                return Match(image is entry, 1)
+            if name == "hidden_objects_start_button.png":
+                return Match(image is entry, 1, 365, 882)
+            if name == "hidden_objects_village_scene.png":
+                return Match(image is ready, 1)
+            return Match(name == "hidden_objects_round_marker.png", 1)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.remaining_seconds", return_value=62), \
+                patch("events.hidden_objects.time.monotonic", side_effect=[0, 1, 2]), \
+                patch("events.hidden_objects.time.sleep"), \
+                patch("events.hidden_objects.ContinuousCapture"), \
+                patch("events.hidden_objects.ImageCandidates"), \
+                patch("events.hidden_objects.RoundCapture") as live, \
+                patch.object(self.task, "_solve", return_value=Outcome.SUCCESS) as solve:
+            live.return_value.screenshot.return_value = ready
+            self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
+        self.assertEqual(solve.call_args.args[2], "village")
+        self.assertEqual(self.controller.screenshot.call_count, 3)
+        self.controller.tap.assert_called_once_with(365, 882)
+
+    def test_unrecognized_landscape_after_entry_times_out_without_scene_taps(self):
+        screen = screen_with_progress(0)
+        screen[816:826, 55:70] = 255
+        self.controller.screenshot.return_value = screen
+
+        def match(image, name, *args):
+            if name == "hidden_objects_event_icon.png":
+                return Match(self.controller.screenshot.call_count == 1, 1)
+            return Match(name in ("hidden_objects_start_button.png",
+                                  "hidden_objects_round_marker.png"), 1, 365, 882)
+
+        with patch("events.hidden_objects.find_template", side_effect=match), \
+                patch("events.hidden_objects.remaining_seconds", return_value=60), \
+                patch("events.hidden_objects.time.monotonic", side_effect=[0, 1, 21]), \
+                patch("events.hidden_objects.time.sleep"), \
+                patch.object(self.task, "_solve") as solve:
+            self.assertEqual(self.task.execute(self.controller), Outcome.FAILED)
+        self.controller.tap.assert_called_once_with(365, 882)
+        solve.assert_not_called()
+
+    def test_unrecognized_entry_sends_no_taps_even_when_the_clock_matches(self):
+        with patch("events.hidden_objects.find_template",
+                   side_effect=lambda image, name, *args: Match(
+                       name in ("hidden_objects_event_icon.png",
+                                "hidden_objects_round_marker.png"), 1)):
+            self.assertEqual(self.task.execute(self.controller), Outcome.ABSENT)
+        self.controller.tap.assert_not_called()
+
     def test_unknown_landscape_sends_no_taps(self):
         self.controller.screenshot.return_value = screen_with_progress(0)
         with patch("events.hidden_objects.find_template",
                    side_effect=lambda s, name, *args: Match(
                        name == "hidden_objects_round_marker.png", 1)):
             self.assertEqual(self.task.execute(self.controller), Outcome.FAILED)
+        self.controller.tap.assert_not_called()
+
+    def test_live_village_is_selected_without_reusing_training_coordinates(self):
+        with patch("events.hidden_objects.find_template",
+                   side_effect=lambda image, name, *args: Match(
+                       name in ("hidden_objects_round_marker.png",
+                                "hidden_objects_village_scene.png"), 1)), \
+                patch("events.hidden_objects.ContinuousCapture"), \
+                patch("events.hidden_objects.ImageCandidates") as candidates, \
+                patch("events.hidden_objects.RoundCapture") as live, \
+                patch.object(self.task, "_solve", return_value=Outcome.SUCCESS) as solve:
+            live.return_value.screenshot.return_value = screen_with_progress(0)
+            self.assertEqual(self.task.execute(self.controller), Outcome.SUCCESS)
+        self.assertEqual(solve.call_args.args[2], "village")
+        self.assertIsNone(solve.call_args.args[3].coordinates("village", "Rope"))
+        self.assertEqual(candidates.call_args.args[2].shape, (735, 450, 3))
         self.controller.tap.assert_not_called()
 
     def test_full_nine_block_bar_waits_for_failure_instead_of_assuming_success(self):

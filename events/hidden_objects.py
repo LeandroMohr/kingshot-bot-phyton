@@ -32,10 +32,15 @@ _ROUND_MARKER = "hidden_objects_round_marker.png"
 _EVENT_MARKER = "hidden_objects_event_icon.png"
 _PRACTICE_BUTTON = "hidden_objects_practice_button.png"
 _PRACTICE_CORNER = "hidden_objects_practice_corner.png"
+_START_BUTTON = "hidden_objects_start_button.png"
+_START_GAME_BUTTON = "hidden_objects_start_game_button.png"
+_STAGE_INTRO = "hidden_objects_stage_intro.png"
+_INTRO_TAP = (270, 810)
 _TIMEOUT_MARKERS = ("hidden_objects_timeout.png", "hidden_objects_timeout_en.png")
 _SUCCESS_MARKER = "hidden_objects_success.png"
 _CONFIRM_SECONDS = 2.5
 _RESULT_GRACE_SECONDS = 5.0
+_ENTRY_SECONDS = 20.0
 _MISS_RADIUS = 8
 
 
@@ -316,10 +321,14 @@ def _target_confirmed(before: np.ndarray, after: np.ndarray, target: Target,
                 white_text(crop(before, region)), current)) > 5))
 
 
-def remaining_seconds(screen: np.ndarray, region) -> int:
+def _timer_text_mask(screen: np.ndarray, region) -> np.ndarray:
     cropped = crop(screen, region)
-    mask = cv2.bitwise_or(white_text(cropped),
+    return cv2.bitwise_or(white_text(cropped),
                          cv2.inRange(cropped, (0, 0, 160), (100, 100, 255)))
+
+
+def remaining_seconds(screen: np.ndarray, region) -> int:
+    mask = _timer_text_mask(screen, region)
     image = cv2.resize(255 - mask, None, fx=4, fy=4,
                        interpolation=cv2.INTER_CUBIC)
     raw = pytesseract.image_to_string(
@@ -343,6 +352,11 @@ def round_result(screen: np.ndarray) -> str | None:
     return None
 
 
+def _detect_scene(screen: np.ndarray, reference: dict) -> str | None:
+    return next((key for key, value in reference["scenes"].items()
+                 if find_template(screen, value["marker"], .9).found), None)
+
+
 class HiddenObjectsEvent:
     name = "Hidden Objects (Sorte de Quem Procura)"
     requires_profile = False
@@ -360,34 +374,81 @@ class HiddenObjectsEvent:
             print(f"[Hidden Objects] Result screen detected: {result}.")
             return result
 
-        if find_template(screen, _EVENT_MARKER).found:
-            button = find_template(screen, _PRACTICE_BUTTON)
-            if button.found:
-                practice_tap = (button.x, button.y)
-            else:
-                corner = find_template(screen, _PRACTICE_CORNER, .95)
-                practice_tap = (corner.x + 104, corner.y) if corner.found else None
-            if practice_tap is None:
-                print("[Hidden Objects] Open a stage manually; no practice button.")
-                return Outcome.ABSENT
-            controller.tap(*practice_tap)
-            deadline = time.monotonic() + 5
+        on_event_page = find_template(screen, _EVENT_MARKER).found
+        on_intro = (not on_event_page
+                    and find_template(screen, _STAGE_INTRO, .95).found)
+        if on_event_page or on_intro:
+            if on_event_page:
+                button = find_template(screen, _START_BUTTON, .95)
+                if not button.found:
+                    button = find_template(screen, _START_GAME_BUTTON, .95)
+                if button.found:
+                    entry_tap = (button.x, button.y)
+                    print("[Hidden Objects] Starting one live stage; no automatic retry.")
+                else:
+                    button = find_template(screen, _PRACTICE_BUTTON)
+                    if button.found:
+                        entry_tap = (button.x, button.y)
+                    else:
+                        corner = find_template(screen, _PRACTICE_CORNER, .95)
+                        entry_tap = (corner.x + 104, corner.y) if corner.found else None
+                if entry_tap is None:
+                    print("[Hidden Objects] No recognized Start/practice button; no taps sent.")
+                    return Outcome.ABSENT
+                controller.tap(*entry_tap)
+            deadline = time.monotonic() + _ENTRY_SECONDS
+            timer_pending_logged = False
+            scene_pending_logged = False
+            intro_dismissed = False
             while time.monotonic() < deadline:
                 screen = controller.screenshot()
-                if find_template(screen, _ROUND_MARKER).found:
-                    break
+                result = round_result(screen)
+                if result is not None:
+                    return result
+                if find_template(screen, _STAGE_INTRO, .95).found:
+                    if not intro_dismissed:
+                        print("[Hidden Objects] Stage introduction detected; "
+                              "one neutral tap to start, no hint used.")
+                        # Outside the landscape and hint, safe if manually dismissed.
+                        controller.tap(*_INTRO_TAP)
+                        intro_dismissed = True
+                    time.sleep(.15)
+                    continue
+                # The live entry page also has a clock resembling the timer.
+                if (not find_template(screen, _EVENT_MARKER).found
+                        and find_template(screen, _ROUND_MARKER).found
+                        and cv2.countNonZero(_timer_text_mask(
+                            screen, object_map.reference["timer_region"])) >= 5):
+                    try:
+                        remaining_seconds(screen, object_map.reference["timer_region"])
+                    except ValueError as exc:
+                        if not timer_pending_logged:
+                            print(f"[Hidden Objects] Waiting for a readable stage timer: {exc}")
+                            timer_pending_logged = True
+                    else:
+                        if _detect_scene(screen, object_map.reference) is not None:
+                            break
+                        if not scene_pending_logged:
+                            print("[Hidden Objects] Timer is ready; waiting for "
+                                  "the landscape to finish loading before using coordinates.")
+                            scene_pending_logged = True
                 time.sleep(.15)
+            else:
+                print("[Hidden Objects] Stage/timer/landscape did not become ready "
+                      "after one entry tap; "
+                      "stopping without retry.")
+                return Outcome.FAILED
         if not find_template(screen, _ROUND_MARKER).found:
             print("[Hidden Objects] Open Sorte de Quem Procura or an active round "
                   "before selecting this individual task.")
             return Outcome.ABSENT
 
-        scene = next((key for key, value in object_map.reference["scenes"].items()
-                      if find_template(screen, value["marker"], .9).found), None)
+        scene = _detect_scene(screen, object_map.reference)
         if scene is None:
             print("[Hidden Objects] Unmapped landscape; no coordinates reused.")
             return Outcome.FAILED
         background = object_map.background(scene)
+        print(f"[Hidden Objects] Recognized landscape: {scene}.")
         if background is not None:
             print("[Hidden Objects] Clean-background pixel comparison enabled.")
         capture = ContinuousCapture(controller)

@@ -80,7 +80,19 @@
     "paintbrush": "Pincel",
     "paint brush": "Pincel",
     "potatces": "Batatas",
-    "repe": "Corda"
+    "repe": "Corda",
+    "map": "Mapa",
+    "rubber duck": "Pato de Borracha",
+    "balloons": "Balões",
+    "balloon": "Balões",
+    "starfish": "Estrela do Mar",
+    "corn": "Milho",
+    "camera": "Câmera",
+    "butterfly": "Borboleta",
+    "bell": "Sino",
+    "sunflower": "Girassol",
+    "watering can": "Regador",
+    "scarf": "Cachecol"
   },
   "scenes": {
     "forest": {
@@ -117,6 +129,24 @@
         "Muleta": [72, 554],
         "Remendo": [455, 400],
         "Pincel": [87, 430]
+      }
+    },
+    "village": {
+      "marker": "hidden_objects_village_scene.png",
+      "background": "hidden_objects_village_background.png",
+      "objects": {
+        "Bolsa Pequena": [149, 513],
+        "Sino": [398, 395],
+        "Mapa": [304, 711],
+        "Estrela do Mar": [330, 541],
+        "Girassol": [464, 586],
+        "Milho": [136, 584],
+        "Pato de Borracha": [234, 551],
+        "Regador": [397, 521],
+        "Barril": [179, 509],
+        "Balões": [216, 285],
+        "Cachecol": [454, 452],
+        "Câmera": [228, 610]
       }
     }
   }
