@@ -52,11 +52,14 @@ _MODULES = [
     arena,                 # opens the Arena of Glory ranking screen (PVP entry point) (loop 1h)
     intel_missions,        # dispatches Intel Mission balloons (hunt/battle/refugee), then Claim All (loop 6h) — BEFORE Hunt Terror
     gather_resources,      # fills free march queues with resource-gathering marches (loop 20min)
-    hunt_beasts,           # directly attacks Lv.30 Beasts with HNT, before Terror drains stamina
-    hunt_terror,           # launches Terror rallies, gated by stamina, many delays — ALWAYS LAST (slow)
 ]
 
 # Collect only the active tasks (TASK != None).
 TASKS: list[Task] = [m.TASK for m in _MODULES if getattr(m, "TASK", None)]
+SINGLE_ONLY_TASKS: list[Task] = [module.TASK for module in (hunt_beasts, hunt_terror)
+                               if getattr(module, "TASK", None)]
+for task in SINGLE_ONLY_TASKS:
+    task.loop = False
+ALL_TASKS: list[Task] = TASKS + SINGLE_ONLY_TASKS
 
-__all__ = ["TASKS", "Task", "Step"]
+__all__ = ["TASKS", "ALL_TASKS", "SINGLE_ONLY_TASKS", "Task", "Step"]

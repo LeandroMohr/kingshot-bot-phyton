@@ -1383,6 +1383,54 @@ class ExecutionTests(unittest.TestCase):
 
 
 class IntegrationTests(unittest.TestCase):
+    def test_submenus_return_to_main_menu_and_allow_another_selection(self):
+        for submenu in ("2", "3"):
+            with self.subTest(submenu=submenu), \
+                    patch("main.sys.stdin") as stdin, \
+                    patch("main.console.timed_input", side_effect=[
+                        submenu, "0", "3", "1"]):
+                stdin.isatty.return_value = True
+                self.assertEqual(main.select_active_tasks(
+                    TASKS, list(EVENTS.values())), [EVENTS["hidden-objects"]])
+
+    def test_quit_is_available_in_main_menu_and_each_submenu(self):
+        for answers in (["q"], ["2", "q"], ["3", "Q"]):
+            with self.subTest(answers=answers), \
+                    patch("main.sys.stdin") as stdin, \
+                    patch("main.console.timed_input", side_effect=answers):
+                stdin.isatty.return_value = True
+                self.assertEqual(main.select_active_tasks(
+                    TASKS, list(EVENTS.values())), [])
+
+    def test_invalid_menu_choices_reprompt_without_running_daily_tasks(self):
+        for submenu in ("2", "3"):
+            with self.subTest(submenu=submenu), \
+                    patch("main.sys.stdin") as stdin, \
+                    patch("main.console.timed_input", side_effect=[
+                        "invalid", submenu, "999", "invalid", "q"]):
+                stdin.isatty.return_value = True
+                self.assertEqual(main.select_active_tasks(
+                    TASKS, list(EVENTS.values())), [])
+
+    def test_manual_port_back_returns_to_emulator_menu(self):
+        with patch("main.discover_devices", return_value=["127.0.0.1:5555"]), \
+                patch("builtins.input", side_effect=["0", "0", "1"]):
+            self.assertEqual(main.choose_emulator("127.0.0.1"),
+                             ("127.0.0.1", 5555))
+
+    def test_quit_is_available_in_emulator_menu_and_manual_port(self):
+        for answers in (["q"], ["0", "Q"]):
+            with self.subTest(answers=answers), \
+                    patch("main.discover_devices", return_value=[]), \
+                    patch("builtins.input", side_effect=answers):
+                self.assertIsNone(main.choose_emulator("127.0.0.1"))
+
+    def test_invalid_manual_port_stays_in_submenu(self):
+        with patch("main.discover_devices", return_value=[]), \
+                patch("builtins.input", side_effect=["0", "invalid", "65536", "5555"]):
+            self.assertEqual(main.choose_emulator("127.0.0.1"),
+                             ("127.0.0.1", 5555))
+
     def test_all_events_excluded_from_daily_tasks(self):
         for event in EVENTS.values():
             self.assertNotIn(event, TASKS)

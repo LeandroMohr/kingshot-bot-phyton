@@ -39,38 +39,6 @@ def visible_target(box, frame_size, excluded_regions=()) -> bool:
             and all(overlap(box, region) == 0 for region in excluded_regions))
 
 
-def brighten_dark_frame(image, excluded_regions=(), gamma: float = .35):
-    if not 0 < gamma <= 1:
-        raise ValueError("Brightness gamma must be between zero and one.")
-    hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-    value = hsv[:, :, 2]
-    selected = (value > 0) & (value < 180)
-    for left, top, width, height in excluded_regions:
-        selected[max(0, int(top)):int(top + height),
-                 max(0, int(left)):int(left + width)] = False
-    levels = np.arange(256, dtype=np.float32)
-    lookup = np.where(levels < 180, 180 * (levels / 180) ** gamma, levels)
-    hsv[:, :, 2] = cv2.LUT(value, np.rint(lookup).clip(0, 255).astype(np.uint8))
-    enhanced = cv2.cvtColor(hsv, cv2.COLOR_HSV2BGR)
-    result = image.copy()
-    result[selected] = np.maximum(image[selected], enhanced[selected])
-    return result
-
-
-def brightness_layer(original, enhanced):
-    source = original.astype(np.float32)
-    difference = np.maximum(enhanced.astype(np.float32) - source, 0)
-    alpha = np.max(difference / np.maximum(255 - source, 1), axis=2)
-    alpha = np.ceil(alpha * 255).clip(0, 255).astype(np.uint8)
-    fraction = np.maximum(alpha.astype(np.float32) / 255, 1 / 255)
-    color = source + difference / fraction[:, :, None]
-    layer = np.zeros((*original.shape[:2], 4), np.uint8)
-    layer[:, :, :3] = np.rint(color).clip(0, 255).astype(np.uint8)
-    layer[:, :, 3] = alpha
-    layer[alpha == 0] = 0
-    return layer
-
-
 def foreground_mask(sprite):
     hsv = cv2.cvtColor(sprite, cv2.COLOR_BGR2HSV)
     mask = np.where(((hsv[:, :, 0] < 60) | (hsv[:, :, 1] < 75))

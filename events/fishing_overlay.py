@@ -8,12 +8,9 @@ import threading
 import time
 from pathlib import Path
 
-import cv2
-
 import config
 from adb_controller import ADBController, ContinuousCapture
-from events.fishing_highlight import (CatalogDetector, FishDetector, FishTracker, fishing_hud_regions,
-                                     brighten_dark_frame, brightness_layer)
+from events.fishing_highlight import CatalogDetector, FishDetector, FishTracker, fishing_hud_regions
 from events.fishing_tournament import has_pause_icon
 
 
@@ -99,10 +96,8 @@ def choose_window(windows: list[dict], identifier: int | None = None) -> dict:
 
 
 class HighlightWorker:
-    def __init__(self, controller: ADBController, detector: FishDetector,
-                 brighten: bool = False):
+    def __init__(self, controller: ADBController, detector: FishDetector):
         self.controller, self.detector = controller, detector
-        self.brighten = brighten
         self.stop = threading.Event()
         self.lock = threading.Lock()
         self.state = {"tracks": [], "frame_size": (540, 960), "completed_at": 0.0}
@@ -126,25 +121,16 @@ class HighlightWorker:
                         tracker.clear()
                         previous_time = 0.0
                         with self.lock:
-                            self.state = {**self.state, "tracks": [], "completed_at": 0.0,
-                                          "brightness_png": None}
+                            self.state = {**self.state, "tracks": [], "completed_at": 0.0}
                         continue
                     sequence = frame.sequence
                     if previous_time and frame.started_at - previous_time > .5:
                         tracker.clear()
                         previous_time = 0.0
                     started = time.monotonic()
-                    brightness_png = None
                     if has_pause_icon(frame.image):
                         excluded = fishing_hud_regions((frame.image.shape[1], frame.image.shape[0]))
                         image = frame.image
-                        if self.brighten:
-                            image = brighten_dark_frame(frame.image, excluded)
-                            layer = brightness_layer(frame.image, image)
-                            success, encoded = cv2.imencode(".png", layer, [cv2.IMWRITE_PNG_COMPRESSION, 1])
-                            if not success:
-                                raise RuntimeError("Could not encode brightness overlay.")
-                            brightness_png = encoded.tobytes()
                         detections = self.detector.detect(image, excluded_regions=excluded)
                         tracks = tracker.update(image, detections, excluded_regions=excluded)
                     else:
@@ -159,8 +145,7 @@ class HighlightWorker:
                     with self.lock:
                         self.state = {"tracks": snapshot,
                                       "frame_size": (frame.image.shape[1], frame.image.shape[0]),
-                                      "completed_at": frame.completed_at,
-                                      "brightness_png": brightness_png}
+                                      "completed_at": frame.completed_at}
                     self.frames += 1
                     self.maximum_instances = max(self.maximum_instances, len(tracks))
                     self.processing_seconds += time.monotonic() - started
@@ -177,7 +162,7 @@ class HighlightWorker:
 def run_overlay(controller: ADBController, detector: FishDetector,
                 window_id: int | None = None, insets: tuple[float, ...] = (0, 30, 32, 0),
                 duration: float | None = None, snapshot: Path | None = None,
-                report_path: Path | None = None, brighten: bool = False,
+                report_path: Path | None = None,
                 target_statuses: dict[str, str] | None = None) -> dict:
     if sys.platform != "darwin":
         raise RuntimeError("The click-through overlay currently requires macOS.")
@@ -186,7 +171,6 @@ def run_overlay(controller: ADBController, detector: FishDetector,
     import AppKit
     import Quartz
     import objc
-    from Foundation import NSData
 
     def visible_windows():
         return Quartz.CGWindowListCopyWindowInfo(Quartz.kCGWindowListOptionOnScreenOnly,
@@ -195,7 +179,7 @@ def run_overlay(controller: ADBController, detector: FishDetector,
     target = choose_window(visible_windows(), window_id)
     identifier = target["kCGWindowNumber"]
     controller.connect()
-    worker = HighlightWorker(controller, detector, brighten=brighten)
+    worker = HighlightWorker(controller, detector)
     application = AppKit.NSApplication.sharedApplication()
     application.setActivationPolicy_(AppKit.NSApplicationActivationPolicyAccessory)
     window = AppKit.NSWindow.alloc().initWithContentRect_styleMask_backing_defer_(
@@ -217,10 +201,6 @@ def run_overlay(controller: ADBController, detector: FishDetector,
         def drawRect_(self, rect):
             AppKit.NSColor.clearColor().set()
             AppKit.NSRectFillUsingOperation(rect, AppKit.NSCompositingOperationCopy)
-            if self.brightness_image is not None:
-                self.brightness_image.drawInRect_fromRect_operation_fraction_respectFlipped_hints_(
-                    self.bounds(), AppKit.NSZeroRect, AppKit.NSCompositingOperationSourceOver,
-                    1.0, True, None)
             frame_width, frame_height = self.frame_size
             scale_x = self.bounds().size.width / frame_width
             scale_y = self.bounds().size.height / frame_height
@@ -254,13 +234,12 @@ def run_overlay(controller: ADBController, detector: FishDetector,
     view.tracks = []
     view.frame_size = (540, 960)
     view.completed_at = 0.0
-    view.brightness_image = None
     view.target_statuses = target_statuses or {}
     window.setContentView_(view)
     started = time.monotonic()
     report = {"serial": controller.serial, "window_id": identifier,
               "click_through": bool(window.ignoresMouseEvents()), "insets": list(insets),
-              "brighten": brighten, "targets": target_statuses or {},
+              "targets": target_statuses or {},
               "experimental_catalog": isinstance(detector, CatalogDetector),
               "unusable_references": getattr(detector, "rejected", {})}
 
@@ -291,15 +270,9 @@ def run_overlay(controller: ADBController, detector: FishDetector,
                                       (viewport["Width"], viewport["Height"])), False)
             view.frame_size, view.tracks = state["frame_size"], state["tracks"]
             view.completed_at = state["completed_at"]
-            if state["completed_at"] != self.brightness_frame_time:
-                self.brightness_frame_time = state["completed_at"]
-                content = state.get("brightness_png")
-                view.brightness_image = (AppKit.NSImage.alloc().initWithData_(
-                    NSData.dataWithBytes_length_(content, len(content))) if content else None)
             view.setNeedsDisplay_(True)
             window.orderFrontRegardless()
-            if (snapshot and not self.snapshot_saved
-                    and (len(view.tracks) >= 2 or view.brightness_image is not None)):
+            if snapshot and not self.snapshot_saved and len(view.tracks) >= 2:
                 view.displayIfNeeded()
                 bitmap = view.bitmapImageRepForCachingDisplayInRect_(view.bounds())
                 view.cacheDisplayInRect_toBitmapImageRep_(view.bounds(), bitmap)
@@ -311,7 +284,6 @@ def run_overlay(controller: ADBController, detector: FishDetector,
     timer_target.next_window_check = 0.0
     timer_target.target_window = target
     timer_target.snapshot_saved = False
-    timer_target.brightness_frame_time = 0.0
     timer = AppKit.NSTimer.scheduledTimerWithTimeInterval_target_selector_userInfo_repeats_(
         1 / 30, timer_target, "tick:", None, True)
     target_application = AppKit.NSRunningApplication.runningApplicationWithProcessIdentifier_(target["kCGWindowOwnerPID"])
@@ -340,7 +312,7 @@ def run_overlay(controller: ADBController, detector: FishDetector,
     return report
 
 
-def main() -> None:
+def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--port", type=int, default=5555)
     parser.add_argument("--host", default=config.ADB_HOST)
@@ -356,9 +328,7 @@ def main() -> None:
     parser.add_argument("--duration", type=float)
     parser.add_argument("--snapshot", type=Path)
     parser.add_argument("--report", type=Path)
-    parser.add_argument("--brighten", action="store_true",
-                        help="Brighten recoverable dark pixels in the click-through overlay")
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     entries = json.loads((config.BASE_DIR / "knowledge/fishing_catalog.json").read_text(encoding="utf-8"))["entries"]
     target_path = args.targets or config.BASE_DIR / "memory" / f"fishing_highlight_targets_{args.port}.json"
     if args.update_targets or args.fish is None:
@@ -386,7 +356,7 @@ def main() -> None:
     run_overlay(ADBController(host=args.host, port=args.port), detector, args.window_id,
                 tuple(args.insets), args.duration, args.snapshot,
                 args.report or config.BASE_DIR / "memory" / f"fishing_highlight_{args.port}.json",
-                brighten=args.brighten, target_statuses=target_statuses)
+                target_statuses=target_statuses)
 
 
 if __name__ == "__main__":

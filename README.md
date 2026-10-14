@@ -59,6 +59,22 @@ python main.py
 ```
 Stop with `Ctrl+C`.
 
+Every terminal menu offers `q` to quit. Task/event submenus and manual port
+entry offer `0` to go back one level. Invalid options keep the current menu
+open without starting tasks. The main execution menu still defaults to all
+daily tasks on Enter or timeout.
+
+The default routine excludes Hunt Beasts and Hunt Terror. Both remain in
+menu option 2 (single task) and can be selected explicitly:
+
+```bash
+python main.py --port 5555 --task "Hunt Beasts"
+python main.py --port 5555 --task "Hunt Terror"
+```
+
+These hunts execute once and exit when selected alone; they are not scheduled
+again by the recurring daily loop.
+
 ## Control panel (macOS / Windows / Linux)
 
 ```bash
@@ -85,16 +101,39 @@ without it, use `--browser`.
 ## Events (individual only)
 
 Recurring and seasonal events live in `events/`, separate from daily tasks.
-Menu option **3 — Events** offers **Sorte de Quem Procura** and **Castle Battle**.
-Neither is included in "All mapped tasks", unattended startup, or the daily loop.
+Menu option **3 — Events** offers **Sorte de Quem Procura**, **Castle Battle**,
+and one **Fishing Tournament** option. Events are never included in
+the default daily selection, unattended startup, or the daily loop.
 `--event` and the repeatable daily-task selector `--task` are mutually exclusive.
 Both execution modes preserve `--control-stdin` pause/resume support.
 
 ### Fishing Tournament (experimental inspection)
 
-The standalone fishing scripts are not registered in the daily loop or event
-menu. Only explicit trial commands launch a free Trial Stage; they never launch
-regular fishing, buy equipment, or select special items.
+Select **Fishing Tournament** once in the Events submenu, or run:
+
+```bash
+python main.py --port 5555 --event fishing
+```
+
+Open the Fishing Tournament event before starting. Its submenu defaults to
+using the saved collection and starting highlights without scanning Guide.
+Press Enter, choose `1`, or let the prompt time out to use that default;
+non-interactive startup also skips scanning. Choose `2` explicitly to update
+the collection first. Use `0` to return to Events or `q` to quit.
+
+When updating, the flow opens Guide, selects each of the four categories,
+opens a specimen card and scans
+captured/missing states. It preserves existing collection metadata and leaves
+ambiguous readings unknown. An unconfirmed navigation step stops the flow
+instead of tapping blindly. Previously verified states are retained when OCR
+cannot read a later card; the scan does not guarantee complete identification.
+
+After an optional mapping, it returns to the Fishing tab. Both modes refresh the pending/unknown
+target list and starts the click-through highlight overlay.
+The player starts and controls the round normally. The event never launches
+regular fishing, schedules daily tasks, purchases equipment, starts a Trial,
+or invokes Pause/Retreat. The Trial and reset helpers remain developer-only
+standalone controls for future work, not menu entries.
 
 The reference catalog in `knowledge/fishing_catalog.json` contains 230 entries
 from https://kingshotmastery.com/tools/fishing-handbook: 150 catches, 60
@@ -196,7 +235,7 @@ macOS overlay. Its editable selection is
 `memory/fishing_highlight_targets_5555.json`:
 
 ```bash
-.venv/bin/python -m events.fishing_overlay --port 5555 --brighten
+.venv/bin/python -m events.fishing_overlay --port 5555
 ```
 
 At startup, the list is rebuilt from `memory/fishing_collection_5555.json`.
@@ -215,17 +254,12 @@ it is removed on the next startup or explicit list refresh:
 
 An already running overlay does not reload its selection; restart it after
 updates. Once every entry is confirmed captured, the selection is empty and
-the brightness layer can still run without highlighting captured specimens.
+no markers are drawn.
 Stop a running process with `kill -TERM PID`, using the PID reported by
 `pgrep -fl 'events.fishing_overlay'`; verify it stopped before restarting.
 
-Add `--brighten` to compensate for recoverable darkness directly above the
-emulator. A per-pixel translucent layer lifts shadow brightness, preserves the
-HUD and already bright areas, and still ignores mouse input. Detection and
-tracking use the enhanced frame. Fully black pixels contain no recoverable
-detail and remain black: this does not remove the event's visibility mask.
-The correction follows fresh ADB frames, so it can lag behind moving objects;
-it hides with stale capture and outside active fishing like the markers.
+The overlay draws only markers and labels; it does not change the game's
+brightness or colors. Detection and tracking use the original ADB frames.
 
 This draws red circles above the BlueStacks game window, not into the game or
 onto a separate video mirror. The transparent window ignores mouse events, so
@@ -258,8 +292,7 @@ are fitted into that viewport, including letterboxing. Native rendering runs at
 30Hz, while fresh ADB captures target 10 FPS; this is not zero-latency tracking.
 
 Stop with Ctrl+C. For a bounded test use `--duration 20`; `--snapshot PATH` writes
-one transparent overlay-only PNG once at least two fish are tracked or the
-brightness layer is active. Reports
+one transparent overlay-only PNG once at least two fish are tracked. Reports
 default to `memory/fishing_highlight_5555.json`. On the live 5555 test, the
 overlay tracked up to five simultaneous Blowfish with about 29ms processing per
 frame and a maximum sampled frame age of 275ms. Transparency, click-through

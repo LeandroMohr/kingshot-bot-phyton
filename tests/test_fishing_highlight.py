@@ -8,8 +8,7 @@ import cv2
 import numpy as np
 
 from events.fishing_highlight import (CatalogDetector, FishDetection, FishDetector, FishTracker,
-                                     annotate_frame, fishing_hud_regions,
-                                     brighten_dark_frame, brightness_layer)
+                                     annotate_frame, fishing_hud_regions)
 from adb_controller import CapturedFrame
 from events.fishing_overlay import (HighlightWorker, choose_window, game_bounds,
                                     load_target_references, main, pending_entries, update_target_list)
@@ -26,6 +25,135 @@ def fish_sprite():
 
 
 class FishingHighlightTests(unittest.TestCase):
+    def test_panel_keeps_hunt_settings_visible_as_single_only(self):
+        from gui import server
+        with patch.object(server, "_task_info", None):
+            info = server.task_info()
+        for name in ("Hunt Beasts", "Hunt Terror"):
+            self.assertIn(name, info)
+            self.assertFalse(info[name]["loop"])
+            self.assertIn("schedule", info[name])
+
+    def test_fishing_flows_are_events_not_daily_tasks_and_use_selected_emulator(self):
+        from events import EVENTS
+        from tasks import TASKS
+        from tasks.base import Outcome
+        controller = Mock(host="127.0.0.1", port=5615)
+        self.assertEqual([key for key in EVENTS if key.startswith("fishing")], ["fishing"])
+        self.assertFalse(EVENTS["fishing"].requires_profile)
+        self.assertNotIn(EVENTS["fishing"], TASKS)
+        ordered = Mock()
+        with patch.object(EVENTS["fishing"], "update_collection", True), \
+            patch("events.fishing_tournament.map_fishing_collection") as mapping, \
+                patch("events.fishing_overlay.main") as overlay, \
+                patch("events.fishing_tournament.start_trial_stage") as trial, \
+                patch("events.fishing_tournament.reset_fishing_round") as retreat:
+            ordered.attach_mock(mapping, "mapping")
+            ordered.attach_mock(overlay, "overlay")
+            self.assertEqual(EVENTS["fishing"].execute(controller), Outcome.SUCCESS)
+        mapping.assert_called_once_with(controller)
+        overlay.assert_called_once_with(["--host", "127.0.0.1", "--port", "5615"])
+        self.assertEqual([item[0] for item in ordered.mock_calls], ["mapping", "overlay"])
+        trial.assert_not_called()
+        retreat.assert_not_called()
+
+    def test_fishing_defaults_to_saved_collection_without_scanning(self):
+        from events.fishing_tournament import FishingFlow
+        from tasks.base import Outcome
+        for answers in ([""], [None], ["1"]):
+            with self.subTest(answers=answers), \
+                    patch("events.fishing_tournament.sys.stdin") as stdin, \
+                    patch("events.fishing_tournament.console.timed_input", side_effect=answers), \
+                    patch("events.fishing_tournament.map_fishing_collection") as mapping, \
+                    patch("events.fishing_overlay.main") as overlay:
+                stdin.isatty.return_value = True
+                flow = FishingFlow()
+                flow.update_collection = True
+                self.assertEqual(flow.choose_options(), "start")
+                self.assertEqual(flow.execute(Mock(host="127.0.0.1", port=5555)), Outcome.SUCCESS)
+                mapping.assert_not_called()
+                overlay.assert_called_once_with(["--host", "127.0.0.1", "--port", "5555"])
+
+    def test_fishing_updates_only_when_explicitly_selected(self):
+        from events.fishing_tournament import FishingFlow
+        with patch("events.fishing_tournament.sys.stdin") as stdin, \
+                patch("events.fishing_tournament.console.timed_input", side_effect=["invalid", "2"]):
+            stdin.isatty.return_value = True
+            flow = FishingFlow()
+            self.assertEqual(flow.choose_options(), "start")
+            self.assertTrue(flow.update_collection)
+
+    def test_fishing_noninteractive_start_uses_saved_collection(self):
+        from events.fishing_tournament import FishingFlow
+        with patch("events.fishing_tournament.sys.stdin") as stdin, \
+                patch("events.fishing_tournament.console.timed_input") as prompt:
+            stdin.isatty.return_value = False
+            flow = FishingFlow()
+            self.assertEqual(flow.choose_options(), "start")
+            self.assertFalse(flow.update_collection)
+            prompt.assert_not_called()
+
+    def test_fishing_submenu_supports_back_to_events_and_quit(self):
+        import main as bot_main
+        from events import EVENTS
+        from tasks import TASKS
+        index = list(EVENTS).index("fishing") + 1
+        for answers in (["3", str(index), "0", "0", "q"],
+                        ["3", str(index), "q"]):
+            with self.subTest(answers=answers), \
+                    patch("main.sys.stdin") as stdin, \
+                    patch("main.console.timed_input", side_effect=answers):
+                stdin.isatty.return_value = True
+                self.assertEqual(bot_main.select_active_tasks(TASKS, list(EVENTS.values())), [])
+
+    def test_cli_fishing_asks_for_options_and_quit_does_not_launch_overlay(self):
+        import main as bot_main
+        from events import EVENTS
+        with patch.object(EVENTS["fishing"], "choose_options", return_value="quit") as options, \
+                patch("main.ensure_game_ready") as ready, \
+                patch("events.fishing_overlay.main") as overlay:
+            bot_main.run_loop(Mock(port=5555), event=EVENTS["fishing"])
+        options.assert_called_once()
+        ready.assert_not_called()
+        overlay.assert_not_called()
+
+    def test_single_task_menu_and_cli_keep_hunting_available(self):
+        import main as bot_main
+        from tasks import ALL_TASKS, TASKS
+        index = next(index for index, task in enumerate(ALL_TASKS, 1) if task.name == "Hunt Beasts")
+        with patch("main.sys.stdin") as stdin, \
+                patch("main.console.timed_input", side_effect=["2", str(index)]):
+            stdin.isatty.return_value = True
+            selected = bot_main.select_active_tasks(TASKS, [], ALL_TASKS)
+        self.assertEqual([task.name for task in selected], ["Hunt Beasts"])
+        with patch("main.sys.argv", ["main.py", "--port", "5555", "--task", "Hunt Terror"]), \
+                patch("main.ADBController") as controller, patch("main.run_loop") as run:
+            bot_main.main()
+        self.assertEqual([task.name for task in run.call_args.args[1]], ["Hunt Terror"])
+
+    def test_single_only_hunting_finishes_without_entering_recurring_loop(self):
+        import main as bot_main
+        task = Mock(loop=False)
+        task.name = "Hunt Beasts"
+        controller = Mock(port=5555)
+        with patch("main.SINGLE_ONLY_TASKS", [task]), \
+                patch("main.ensure_game_ready"), patch("main.go_to_home_screen"), \
+                patch("main.read_player_profile"), patch("main.order_tasks", return_value=[task]), \
+                patch("main.skip_disabled", return_value=([task], [])), \
+                patch("main.check_task") as check, patch("main.time.sleep") as wait:
+            bot_main.run_loop(controller, [task])
+        check.assert_called_once()
+        task.mark_done.assert_called_once()
+        wait.assert_not_called()
+
+    def test_hunting_is_single_only_and_excluded_from_default_tasks(self):
+        from tasks import ALL_TASKS, SINGLE_ONLY_TASKS, TASKS
+        names = {task.name for task in SINGLE_ONLY_TASKS}
+        self.assertEqual(names, {"Hunt Beasts", "Hunt Terror"})
+        self.assertTrue(names.isdisjoint({task.name for task in TASKS}))
+        self.assertTrue(names.issubset({task.name for task in ALL_TASKS}))
+        self.assertTrue(all(task.loop is False for task in SINGLE_ONLY_TASKS))
+
     def test_default_startup_refreshes_pending_selection_without_native_blowfish(self):
         with tempfile.TemporaryDirectory() as folder:
             base = Path(folder)
@@ -43,7 +171,7 @@ class FishingHighlightTests(unittest.TestCase):
                 {"id": 10024, "file": "blowfish.png", "available_seasons": ["autumn"]},
                 {"id": 40001, "file": "object.png", "available_seasons": ["winter"]}]}))
             with patch("events.fishing_overlay.config.BASE_DIR", base), \
-                    patch("sys.argv", ["overlay", "--port", "5555", "--brighten"]), \
+                    patch("sys.argv", ["overlay", "--port", "5555"]), \
                     patch("events.fishing_overlay.CatalogDetector") as catalog, \
                     patch("events.fishing_overlay.FishDetector") as native, \
                     patch("events.fishing_overlay.run_overlay") as overlay:
@@ -118,11 +246,11 @@ class FishingHighlightTests(unittest.TestCase):
                                                    "2": {"captured": True}}, references, path)
             self.assertEqual(complete["entries"], [])
 
-    def test_brightening_worker_publishes_transparent_layer_and_uses_enhanced_frame(self):
+    def test_worker_uses_original_frame_without_publishing_brightness_layer(self):
         controller, detector, capture, tracker = Mock(), Mock(), Mock(), Mock()
         detector.detect.return_value = []
         tracker.update.return_value = []
-        worker = HighlightWorker(controller, detector, brighten=True)
+        worker = HighlightWorker(controller, detector)
         image = np.zeros((960, 540, 3), np.uint8)
         image[300:400, 200:300] = (2, 10, 24)
         image.setflags(write=False)
@@ -138,37 +266,10 @@ class FishingHighlightTests(unittest.TestCase):
             factory.return_value.__enter__.return_value = capture
             worker.run()
         self.assertIsNone(worker.error)
-        layer = cv2.imdecode(np.frombuffer(worker.state["brightness_png"], np.uint8), cv2.IMREAD_UNCHANGED)
-        self.assertEqual(layer.shape, (960, 540, 4))
-        self.assertEqual(int(layer[700, 300, 3]), 0)
-        self.assertGreater(int(layer[350, 250, 3]), 0)
-        enhanced = detector.detect.call_args.args[0]
-        self.assertGreater(int(enhanced[350, 250, 2]), 24)
+        self.assertNotIn("brightness_png", worker.state)
+        self.assertIs(detector.detect.call_args.args[0], image)
+        self.assertIs(tracker.update.call_args.args[0], image)
         self.assertEqual(int(image[350, 250, 2]), 24)
-
-    def test_brightening_preserves_black_pixels_hud_and_bright_content(self):
-        image = np.zeros((960, 540, 3), np.uint8)
-        image[20:100, 10:130] = (2, 10, 24)
-        image[300:400, 200:300] = (2, 10, 24)
-        image[500:600, 200:300] = (200, 180, 140)
-        image.setflags(write=False)
-        enhanced = brighten_dark_frame(image, fishing_hud_regions((540, 960)))
-        np.testing.assert_array_equal(enhanced[:140, :150], image[:140, :150])
-        np.testing.assert_array_equal(enhanced[500:600, 200:300], image[500:600, 200:300])
-        np.testing.assert_array_equal(enhanced[700:], image[700:])
-        self.assertGreater(int(enhanced[350, 250, 2]), int(image[350, 250, 2]))
-        self.assertEqual(int(image[350, 250, 2]), 24)
-
-    def test_brightness_layer_composites_to_enhanced_frame_without_covering_unchanged_pixels(self):
-        image = np.array([[(0, 0, 0), (2, 10, 24), (200, 180, 140)]], np.uint8)
-        enhanced = brighten_dark_frame(image)
-        layer = brightness_layer(image, enhanced)
-        alpha = layer[:, :, 3:4].astype(np.float32) / 255
-        composite = layer[:, :, :3] * alpha + image * (1 - alpha)
-        np.testing.assert_allclose(composite, enhanced, atol=1)
-        self.assertEqual(layer[0, 0, 3], 0)
-        self.assertEqual(layer[0, 2, 3], 0)
-        self.assertGreater(layer[0, 1, 3], 0)
 
     def test_overlay_worker_recovers_after_fresh_frame_timeout(self):
         controller, detector, capture, tracker = Mock(), Mock(), Mock(), Mock()

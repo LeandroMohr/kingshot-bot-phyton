@@ -2,8 +2,10 @@
 from __future__ import annotations
 
 import argparse
+from contextlib import nullcontext
 import json
 import re
+import sys
 import time
 from difflib import SequenceMatcher
 from datetime import datetime, timezone
@@ -13,6 +15,7 @@ import cv2
 import pytesseract
 
 import config
+import console
 from adb_controller import ADBController, ContinuousCapture
 from events.fishing_catalog import SEASONS, plan_collection
 
@@ -227,7 +230,8 @@ def read_handbook_card(image, entries: list[dict]) -> dict | None:
 
 
 def scan_handbook(controller: ADBController, entries: list[dict], output: Path,
-                  max_cards: int = 96, scope: str | None = None) -> dict:
+                  max_cards: int = 96, scope: str | None = None,
+                  capture: ContinuousCapture | None = None) -> dict:
     if not 1 <= max_cards <= 230:
         raise ValueError("Handbook scan must be limited to 1..230 cards.")
     controller.connect()
@@ -237,10 +241,10 @@ def scan_handbook(controller: ADBController, entries: list[dict], output: Path,
         previous = json.loads(output.read_text(encoding="utf-8"))
         if previous.get("scope") != report["scope"]:
             raise ValueError("Collection scope differs; use a separate output file.")
-        report["entries"] = previous["entries"]
+        report = {**previous, **report, "entries": previous["entries"]}
     seen = set()
     try:
-        with ContinuousCapture(controller) as capture:
+        with (ContinuousCapture(controller) if capture is None else nullcontext(capture)) as capture:
             frame = capture.next_frame()
             for index in range(max_cards):
                 card = read_handbook_card(frame.image, entries)
@@ -322,7 +326,100 @@ def observe(controller: ADBController, duration: float, output: Path,
     return report
 
 
-def main() -> None:
+HANDBOOK_CATEGORIES = {"Catches": 90, "Mermaids": 210, "Ocean Chests": 330, "Memorabilia": 450}
+
+
+def is_handbook_grid(image) -> bool:
+    return is_event_screen(image) and is_tab_selected(image, "handbook")
+
+
+def is_handbook_category_selected(image, category: str) -> bool:
+    if image.shape[:2] != (960, 540):
+        return False
+    center = HANDBOOK_CATEGORIES[category]
+    region = cv2.cvtColor(image[272:305, center - 45:center + 45], cv2.COLOR_BGR2HSV)
+    selected = cv2.inRange(region, (80, 70, 160), (115, 255, 255))
+    return cv2.countNonZero(selected) / selected.size >= .35
+
+
+def map_fishing_collection(controller: ADBController,
+                           max_cards_per_category: int | None = None) -> dict:
+    entries = json.loads((config.BASE_DIR / "knowledge/fishing_catalog.json").read_text(encoding="utf-8"))["entries"]
+    output = config.BASE_DIR / "memory" / f"fishing_collection_{controller.port}.json"
+    image = controller.screenshot()
+    if read_handbook_card(image, entries) is not None:
+        controller.back()
+        with ContinuousCapture(controller) as capture:
+            capture.next_frame(not_before=time.monotonic() + .45)
+    open_event_tab(controller, "handbook")
+    report = {}
+    with ContinuousCapture(controller) as capture:
+        frame = capture.next_frame()
+        for category, center in HANDBOOK_CATEGORIES.items():
+            if not is_handbook_grid(frame.image):
+                raise RuntimeError("Guide grid not confirmed; collection mapping stopped.")
+            controller.tap(center, 290)
+            frame = capture.next_frame(not_before=time.monotonic() + .45)
+            if not is_handbook_grid(frame.image) or not is_handbook_category_selected(frame.image, category):
+                raise RuntimeError(f"Guide category not confirmed: {category}")
+            controller.tap(86, 440)
+            frame = capture.next_frame(not_before=time.monotonic() + .45)
+            category_entries = [entry for entry in entries if entry["category"] == category]
+            if read_handbook_card(frame.image, category_entries) is None:
+                raise RuntimeError(f"Specimen card not confirmed: {category}")
+            limit = max_cards_per_category or len(category_entries)
+            report = scan_handbook(controller, category_entries, output, limit, capture=capture)
+            controller.back()
+            frame = capture.next_frame(not_before=time.monotonic() + .45)
+    open_event_tab(controller, "fishing")
+    return report
+
+
+class FishingFlow:
+    requires_profile = False
+    update_collection = False
+
+    name = "Fishing Tournament"
+
+    def choose_options(self) -> str:
+        self.update_collection = False
+        if not sys.stdin or not sys.stdin.isatty():
+            return "start"
+        while True:
+            print("\nFishing Tournament:")
+            print("  1 - Use saved collection and start highlights (default)")
+            print("  2 - Update collection from Guide, then start highlights")
+            print("  0 - Back")
+            print("  q - Quit")
+            choice = console.timed_input(
+                f"Option (auto 'saved collection' in {int(config.TASK_MENU_TIMEOUT)}s): ",
+                config.TASK_MENU_TIMEOUT)
+            if choice is None or choice.strip() in ("", "1"):
+                return "start"
+            choice = choice.strip().lower()
+            if choice == "2":
+                self.update_collection = True
+                return "start"
+            if choice == "0":
+                return "back"
+            if choice == "q":
+                return "quit"
+            print("Invalid option. Let's try again.")
+
+    def execute(self, controller: ADBController) -> str:
+        from tasks.base import Outcome
+        from events.fishing_overlay import main as overlay_main
+        if self.update_collection:
+            map_fishing_collection(controller)
+        arguments = ["--host", controller.host, "--port", str(controller.port)]
+        overlay_main(arguments)
+        return Outcome.SUCCESS
+
+
+FISHING_EVENTS = {"fishing": FishingFlow()}
+
+
+def main(argv: list[str] | None = None) -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--host", default=config.ADB_HOST)
     parser.add_argument("--port", type=int, default=5555)
@@ -339,7 +436,7 @@ def main() -> None:
     parser.add_argument("--season", choices=SEASONS,
                         help="Season displayed by the current event; required for handbook scans")
     parser.add_argument("--max-depth", type=int, default=250)
-    args = parser.parse_args()
+    args = parser.parse_args(argv)
     if sum(bool(value) for value in (args.tab, args.scan_handbook, args.trial_action)) > 1:
         parser.error("Choose only one of --tab, --scan-handbook or --trial-action")
     if args.trial_action:

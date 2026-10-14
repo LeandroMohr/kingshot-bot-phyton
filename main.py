@@ -27,7 +27,7 @@ import config
 import console
 import bot_control
 from adb_controller import ADBController, list_devices, discover_devices
-from tasks import TASKS
+from tasks import ALL_TASKS, SINGLE_ONLY_TASKS, TASKS
 from events import EVENTS
 from tasks.base import Outcome
 from executor import ensure_game_ready, go_to_home_screen, read_player_profile
@@ -161,10 +161,18 @@ def choose_emulator(host: str) -> tuple[str, int] | None:
             return None
 
         if choice == "0":
-            port_str = input("Emulator ADB port: ").strip()
-            if port_str.isdigit():
-                return host, int(port_str)
-            print("Invalid port. Let's try again.")
+            while True:
+                print("\nEnter the emulator ADB port:")
+                print("  0 - Back")
+                print("  q - Quit")
+                port_str = input("Port: ").strip()
+                if port_str.lower() == "q":
+                    return None
+                if port_str == "0":
+                    break
+                if port_str.isdigit() and 1 <= int(port_str) <= 65535:
+                    return host, int(port_str)
+                print("Invalid port. Let's try again.")
             continue
 
         if choice.isdigit() and 1 <= int(choice) <= len(devices):
@@ -175,7 +183,8 @@ def choose_emulator(host: str) -> tuple[str, int] | None:
         print("Invalid option. Let's try again.")
 
 
-def select_active_tasks(tasks: list, events: list | None = None) -> list:
+def select_active_tasks(tasks: list, events: list | None = None,
+                        single_tasks: list | None = None) -> list:
     """Choose all daily tasks, a single task, or an individual event.
 
     Runs ALL tasks if the operator picks option 1, presses Enter, gives no
@@ -187,39 +196,59 @@ def select_active_tasks(tasks: list, events: list | None = None) -> list:
     if not sys.stdin or not sys.stdin.isatty():
         return tasks  # non-interactive: run everything
 
-    print("\nWhat do you want to run?")
-    print("  1 - All mapped tasks (default)")
-    print("  2 - Pick a single task")
-    if events:
-        print("  3 - Events")
-    choice = console.timed_input(
-        f"Option (auto 'all' in {int(config.TASK_MENU_TIMEOUT)}s): ",
-        config.TASK_MENU_TIMEOUT)
-    if choice is None:
-        print("No answer; running all tasks.")
-        return tasks
+    while True:
+        print("\nWhat do you want to run?")
+        print("  1 - All daily tasks (default)")
+        print("  2 - Pick a single task")
+        if events:
+            print("  3 - Events")
+        print("  q - Quit")
+        choice = console.timed_input(
+            f"Option (auto 'all' in {int(config.TASK_MENU_TIMEOUT)}s): ",
+            config.TASK_MENU_TIMEOUT)
+        if choice is None:
+            print("No answer; running all tasks.")
+            return tasks
+        choice = choice.strip().lower()
+        if choice == "q":
+            return []
+        if choice in ("1", ""):
+            return tasks
+        if choice != "2" and not (choice == "3" and events):
+            print("Invalid option. Let's try again.")
+            continue
 
-    if choice != "2" and not (choice == "3" and events):
-        return tasks  # '1', empty or anything else -> all
-
-    # Single-task submenu.
-    available = events if choice == "3" else tasks
-    print("\nAvailable events:" if choice == "3" else "\nAvailable tasks:")
-    for i, task in enumerate(available, 1):
-        print(f"  {i} - {task.name}")
-    line = console.timed_input(
-        "Event number: " if choice == "3" else "Task number (blank = all): ",
-        None,
-    ) or ""
-    if line.isdigit() and 1 <= int(line) <= len(available):
-        chosen = available[int(line) - 1]
-        print(f"Running only: {chosen.name}")
-        return [chosen]
-    if choice == "3":
-        print("No event selected; stopping without running daily tasks.")
-        return []
-    print("Invalid choice; running all tasks.")
-    return tasks
+        available = events if choice == "3" else single_tasks if single_tasks is not None else tasks
+        while True:
+            print("\nAvailable events:" if choice == "3" else "\nAvailable tasks:")
+            for index, task in enumerate(available, 1):
+                print(f"  {index} - {task.name}")
+            print("  0 - Back")
+            print("  q - Quit")
+            line = console.timed_input(
+                "Event number: " if choice == "3" else "Task number (blank = all): ",
+                None,
+            )
+            if line is None:
+                return []
+            line = line.strip().lower()
+            if line == "q":
+                return []
+            if line == "0":
+                break
+            if not line:
+                return [] if choice == "3" else tasks
+            if line.isdigit() and 1 <= int(line) <= len(available):
+                chosen = available[int(line) - 1]
+                if chosen is EVENTS.get("fishing"):
+                    action = chosen.choose_options()
+                    if action == "back":
+                        continue
+                    if action == "quit":
+                        return []
+                print(f"Running only: {chosen.name}")
+                return [chosen]
+            print("Invalid option. Let's try again.")
 
 
 def main() -> None:
@@ -239,13 +268,13 @@ def main() -> None:
 
     selected = None
     if args.task:
-        by_name = {task.name: task for task in TASKS}
+        by_name = {task.name: task for task in ALL_TASKS}
         unknown = [name for name in args.task if name not in by_name]
         if unknown:
             print(f"Unknown task(s): {', '.join(unknown)}")
             print("Available: " + ", ".join(by_name))
             sys.exit(2)
-        selected = [task for task in TASKS if task.name in args.task]
+        selected = [task for task in ALL_TASKS if task.name in args.task]
 
     if args.port is None:
         selection = choose_emulator(args.host)
@@ -276,7 +305,7 @@ def run_loop(controller: ADBController, selected: list | None = None,
     # Ask whether to run all tasks or just one (defaults to all after a timeout).
     active_tasks = ([event] if event is not None else
                     selected if selected is not None else
-                    select_active_tasks(TASKS, list(EVENTS.values())))
+                    select_active_tasks(TASKS, list(EVENTS.values()), ALL_TASKS))
     if not active_tasks:
         print("No task or event selected.")
         return
@@ -286,6 +315,9 @@ def run_loop(controller: ADBController, selected: list | None = None,
         # Preserve the prepared screen; recovery/profile navigation would close
         # the event. No automatic retry: live stages can cost event currency.
         task = active_tasks[0]
+        if event is not None and task is EVENTS.get("fishing"):
+            if task.choose_options() != "start":
+                return
         ensure_game_ready(controller, announce_if_open=True)
         try:
             if task.requires_profile:
@@ -329,6 +361,12 @@ def run_loop(controller: ADBController, selected: list | None = None,
         now = time.monotonic()
         for task in runnable:
             check_task(controller, port, task, now)
+            if any(task is item for item in SINGLE_ONLY_TASKS):
+                task.mark_done()
+
+        if all(any(task is item for item in SINGLE_ONLY_TASKS) for task in active_tasks):
+            print("Single-task execution finished.")
+            return
 
         # From here on, each task runs again only when its own interval elapses.
         while True:

@@ -37,8 +37,11 @@ _task_info: dict[str, dict] | None = None
 def task_info() -> dict[str, dict]:
     global _task_info
     if _task_info is None:
-        from tasks import TASKS  # heavy import (OpenCV/Tesseract), done once on demand
-        _task_info = {t.name: {"loop": t.loop, "interval": t.interval} for t in TASKS}
+        from tasks import ALL_TASKS, SINGLE_ONLY_TASKS
+        _task_info = {task.name: {"loop": task.loop, "interval": task.interval,
+                                  **({"schedule": L("Single task only", "Somente tarefa avulsa")}
+                                     if any(task is item for item in SINGLE_ONLY_TASKS) else {})}
+                      for task in ALL_TASKS}
     return _task_info
 
 

@@ -1,6 +1,8 @@
 import json
+import tempfile
 import unittest
-from unittest.mock import Mock, patch
+from pathlib import Path
+from unittest.mock import Mock, call, patch
 
 import cv2
 import numpy as np
@@ -9,7 +11,7 @@ from events.fishing_catalog import parse_catalog, plan_collection
 from events.fishing_tournament import (
     EVENT_TABS, is_fishing_paused, is_tab_selected, open_event_tab,
     read_fishing_hud, read_handbook_card, reset_fishing_round,
-    retreat_paused_round, start_trial_stage,
+    retreat_paused_round, start_trial_stage, map_fishing_collection, scan_handbook,
 )
 
 
@@ -23,6 +25,54 @@ def specimen(identifier=10001, **overrides):
 
 
 class FishingCatalogTests(unittest.TestCase):
+    def test_mapping_scans_four_categories_and_returns_to_fishing_with_one_capture_worker(self):
+        entries = [specimen(index, category=category) for index, category in enumerate(
+            ("Catches", "Mermaids", "Ocean Chests", "Memorabilia"), 1)]
+        controller = Mock(port=5555)
+        with patch("events.fishing_tournament.json.loads", return_value={"entries": entries}), \
+                patch("events.fishing_tournament.read_handbook_card", side_effect=[None] + [entries[0]] * 4), \
+                patch("events.fishing_tournament.open_event_tab") as tabs, \
+                patch("events.fishing_tournament.is_handbook_grid", return_value=True), \
+                patch("events.fishing_tournament.is_handbook_category_selected", return_value=True), \
+                patch("events.fishing_tournament.scan_handbook", return_value={"entries": {}}) as scan, \
+                patch("events.fishing_tournament.ContinuousCapture") as factory:
+            result = map_fishing_collection(controller)
+        self.assertEqual(result, {"entries": {}})
+        self.assertEqual(tabs.call_args_list, [call(controller, "handbook"), call(controller, "fishing")])
+        self.assertEqual(controller.tap.call_args_list, [call(center, 290) if step == 0 else call(86, 440)
+                         for center in (90, 210, 330, 450) for step in (0, 1)])
+        self.assertEqual(controller.back.call_count, 4)
+        self.assertEqual(scan.call_count, 4)
+        factory.assert_called_once_with(controller)
+        self.assertTrue(all(item.kwargs["capture"] is factory.return_value.__enter__.return_value
+                            for item in scan.call_args_list))
+
+    def test_mapping_stops_before_card_tap_when_category_is_unconfirmed(self):
+        controller = Mock(port=5555)
+        with patch("events.fishing_tournament.read_handbook_card", return_value=None), \
+                patch("events.fishing_tournament.open_event_tab"), \
+                patch("events.fishing_tournament.is_handbook_grid", return_value=True), \
+                patch("events.fishing_tournament.is_handbook_category_selected", return_value=False), \
+                patch("events.fishing_tournament.ContinuousCapture"), \
+                patch("events.fishing_tournament.scan_handbook") as scan:
+            with self.assertRaisesRegex(RuntimeError, "category not confirmed"):
+                map_fishing_collection(controller)
+        controller.tap.assert_called_once_with(90, 290)
+        scan.assert_not_called()
+
+    def test_collection_scan_preserves_user_reported_totals(self):
+        controller = Mock(serial="127.0.0.1:5555")
+        totals = {"source": "user_reported", "categories": {"Catches": {"captured": 102}}}
+        with tempfile.TemporaryDirectory() as folder:
+            output = Path(folder) / "collection.json"
+            output.write_text(json.dumps({"scope": controller.serial, "entries": {}, "reported_totals": totals}))
+            with patch("events.fishing_tournament.ContinuousCapture"), \
+                    patch("events.fishing_tournament.read_handbook_card", return_value={
+                        "id": 10001, "name": "Rosy Bitterling", "captured": True}):
+                result = scan_handbook(controller, [specimen()], output, max_cards=1)
+            self.assertEqual(result["reported_totals"], totals)
+            self.assertEqual(json.loads(output.read_text())["reported_totals"], totals)
+
     def test_trial_start_never_taps_unrecognized_entry(self):
         controller = Mock()
         with patch("events.fishing_tournament.ContinuousCapture") as capture, \
