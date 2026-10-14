@@ -1,0 +1,3917 @@
+{
+  "source": "https://kingshotmastery.com/tools/fishing-handbook",
+  "season_ids": {
+    "spring": 2,
+    "summer": 3,
+    "autumn": 4,
+    "winter": 1
+  },
+  "entries": [
+    {
+      "id": 10001,
+      "name": "Rosy Bitterling",
+      "category": "Catches",
+      "slug": "rosy-bitterling",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/rosy-bitterling.webp"
+    },
+    {
+      "id": 10002,
+      "name": "Sea Slug",
+      "category": "Catches",
+      "slug": "sea-slug",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/sea-slug.webp"
+    },
+    {
+      "id": 10003,
+      "name": "Flatworm",
+      "category": "Catches",
+      "slug": "flatworm",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/flatworm.webp"
+    },
+    {
+      "id": 10004,
+      "name": "Neon Tetra",
+      "category": "Catches",
+      "slug": "neon-tetra",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/neon-tetra.webp"
+    },
+    {
+      "id": 10005,
+      "name": "Kissing Gourami",
+      "category": "Catches",
+      "slug": "kissing-gourami",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/kissing-gourami.webp"
+    },
+    {
+      "id": 10006,
+      "name": "Ricefish",
+      "category": "Catches",
+      "slug": "ricefish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/ricefish.webp"
+    },
+    {
+      "id": 10007,
+      "name": "Sweet Shrimp",
+      "category": "Catches",
+      "slug": "sweet-shrimp",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/sweet-shrimp.webp"
+    },
+    {
+      "id": 10008,
+      "name": "Opaline Gourami",
+      "category": "Catches",
+      "slug": "opaline-gourami",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/opaline-gourami.webp"
+    },
+    {
+      "id": 10009,
+      "name": "Crystal Anchovy",
+      "category": "Catches",
+      "slug": "crystal-anchovy",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/crystal-anchovy.webp"
+    },
+    {
+      "id": 10010,
+      "name": "Japanese Jack Mackerel",
+      "category": "Catches",
+      "slug": "japanese-jack-mackerel",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/japanese-jack-mackerel.webp"
+    },
+    {
+      "id": 10011,
+      "name": "Leaf Turtle",
+      "category": "Catches",
+      "slug": "leaf-turtle",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/leaf-turtle.webp"
+    },
+    {
+      "id": 10012,
+      "name": "Red Swordtail",
+      "category": "Catches",
+      "slug": "red-swordtail",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/red-swordtail.webp"
+    },
+    {
+      "id": 10013,
+      "name": "Small Crab",
+      "category": "Catches",
+      "slug": "small-crab",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/small-crab.webp"
+    },
+    {
+      "id": 10014,
+      "name": "Hermit Crab",
+      "category": "Catches",
+      "slug": "hermit-crab",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/hermit-crab.webp"
+    },
+    {
+      "id": 10015,
+      "name": "Sea Cucumber",
+      "category": "Catches",
+      "slug": "sea-cucumber",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/sea-cucumber.webp"
+    },
+    {
+      "id": 10016,
+      "name": "Emerald Turtle",
+      "category": "Catches",
+      "slug": "emerald-turtle",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/emerald-turtle.webp"
+    },
+    {
+      "id": 10017,
+      "name": "Toadfish",
+      "category": "Catches",
+      "slug": "toadfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/toadfish.webp"
+    },
+    {
+      "id": 10018,
+      "name": "Bluegill Sunfish",
+      "category": "Catches",
+      "slug": "bluegill-sunfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/bluegill-sunfish.webp"
+    },
+    {
+      "id": 10019,
+      "name": "Small Starfish",
+      "category": "Catches",
+      "slug": "small-starfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/small-starfish.webp"
+    },
+    {
+      "id": 10020,
+      "name": "Jellyfish",
+      "category": "Catches",
+      "slug": "jellyfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/jellyfish.webp"
+    },
+    {
+      "id": 10021,
+      "name": "Tilapia",
+      "category": "Catches",
+      "slug": "tilapia",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/tilapia.webp"
+    },
+    {
+      "id": 10022,
+      "name": "Sea Bass",
+      "category": "Catches",
+      "slug": "sea-bass",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/sea-bass.webp"
+    },
+    {
+      "id": 10023,
+      "name": "Black Sea Bass",
+      "category": "Catches",
+      "slug": "black-sea-bass",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/black-sea-bass.webp"
+    },
+    {
+      "id": 10024,
+      "name": "Blowfish",
+      "category": "Catches",
+      "slug": "blowfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/blowfish.webp"
+    },
+    {
+      "id": 10025,
+      "name": "Eurasian Dace",
+      "category": "Catches",
+      "slug": "eurasian-dace",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/eurasian-dace.webp"
+    },
+    {
+      "id": 10026,
+      "name": "Ayu Sweetfish",
+      "category": "Catches",
+      "slug": "ayu-sweetfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/ayu-sweetfish.webp"
+    },
+    {
+      "id": 10027,
+      "name": "Salmon",
+      "category": "Catches",
+      "slug": "salmon",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/salmon.webp"
+    },
+    {
+      "id": 10028,
+      "name": "Flatfish",
+      "category": "Catches",
+      "slug": "flatfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/flatfish.webp"
+    },
+    {
+      "id": 10029,
+      "name": "Ribbon Eel",
+      "category": "Catches",
+      "slug": "ribbon-eel",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/ribbon-eel.webp"
+    },
+    {
+      "id": 10030,
+      "name": "Catfish",
+      "category": "Catches",
+      "slug": "catfish",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/catfish.webp"
+    },
+    {
+      "id": 10031,
+      "name": "Platinum Peacock Bass",
+      "category": "Catches",
+      "slug": "platinum-peacock-bass",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/platinum-peacock-bass.webp"
+    },
+    {
+      "id": 10032,
+      "name": "Grass Guppy",
+      "category": "Catches",
+      "slug": "grass-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/grass-guppy.webp"
+    },
+    {
+      "id": 10033,
+      "name": "Swordtail Guppy",
+      "category": "Catches",
+      "slug": "swordtail-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/swordtail-guppy.webp"
+    },
+    {
+      "id": 10034,
+      "name": "Firefly Squid",
+      "category": "Catches",
+      "slug": "firefly-squid",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/firefly-squid.webp"
+    },
+    {
+      "id": 10035,
+      "name": "Glass Guppy",
+      "category": "Catches",
+      "slug": "glass-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/glass-guppy.webp"
+    },
+    {
+      "id": 10036,
+      "name": "Crowntail Guppy",
+      "category": "Catches",
+      "slug": "crowntail-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/crowntail-guppy.webp"
+    },
+    {
+      "id": 10037,
+      "name": "Tuxedo Guppy",
+      "category": "Catches",
+      "slug": "tuxedo-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/tuxedo-guppy.webp"
+    },
+    {
+      "id": 10038,
+      "name": "Snakeskin Guppy",
+      "category": "Catches",
+      "slug": "snakeskin-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/snakeskin-guppy.webp"
+    },
+    {
+      "id": 10039,
+      "name": "Mosaic Guppy",
+      "category": "Catches",
+      "slug": "mosaic-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/mosaic-guppy.webp"
+    },
+    {
+      "id": 10040,
+      "name": "Panda Guppy",
+      "category": "Catches",
+      "slug": "panda-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/panda-guppy.webp"
+    },
+    {
+      "id": 10041,
+      "name": "Albino Guppy",
+      "category": "Catches",
+      "slug": "albino-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/albino-guppy.webp"
+    },
+    {
+      "id": 10042,
+      "name": "Ribbon Fin Guppy",
+      "category": "Catches",
+      "slug": "ribbon-fin-guppy",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/ribbon-fin-guppy.webp"
+    },
+    {
+      "id": 10043,
+      "name": "Scallop",
+      "category": "Catches",
+      "slug": "scallop",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/scallop.webp"
+    },
+    {
+      "id": 10044,
+      "name": "Triton's Trumpet",
+      "category": "Catches",
+      "slug": "tritons-trumpet",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/tritons-trumpet.webp"
+    },
+    {
+      "id": 10045,
+      "name": "Telescope Goldfish",
+      "category": "Catches",
+      "slug": "telescope-goldfish",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/telescope-goldfish.webp"
+    },
+    {
+      "id": 10046,
+      "name": "Pygmy Octopus",
+      "category": "Catches",
+      "slug": "pygmy-octopus",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/pygmy-octopus.webp"
+    },
+    {
+      "id": 10047,
+      "name": "Blue Tang",
+      "category": "Catches",
+      "slug": "blue-tang",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/blue-tang.webp"
+    },
+    {
+      "id": 10048,
+      "name": "Nibblefish",
+      "category": "Catches",
+      "slug": "nibblefish",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/nibblefish.webp"
+    },
+    {
+      "id": 10049,
+      "name": "Colorfin Fish",
+      "category": "Catches",
+      "slug": "colorfin-fish",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/colorfin-fish.webp"
+    },
+    {
+      "id": 10050,
+      "name": "Sea Urchin",
+      "category": "Catches",
+      "slug": "sea-urchin",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/sea-urchin.webp"
+    },
+    {
+      "id": 10051,
+      "name": "Mussel",
+      "category": "Catches",
+      "slug": "mussel",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/mussel.webp"
+    },
+    {
+      "id": 10052,
+      "name": "Jumbo Crab",
+      "category": "Catches",
+      "slug": "jumbo-crab",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/jumbo-crab.webp"
+    },
+    {
+      "id": 10053,
+      "name": "Lionfish",
+      "category": "Catches",
+      "slug": "lionfish",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/lionfish.webp"
+    },
+    {
+      "id": 10054,
+      "name": "Nautilus",
+      "category": "Catches",
+      "slug": "nautilus",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/nautilus.webp"
+    },
+    {
+      "id": 10055,
+      "name": "Freshwater Lobster",
+      "category": "Catches",
+      "slug": "freshwater-lobster",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/freshwater-lobster.webp"
+    },
+    {
+      "id": 10056,
+      "name": "Sunset Salmon",
+      "category": "Catches",
+      "slug": "sunset-salmon",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/sunset-salmon.webp"
+    },
+    {
+      "id": 10057,
+      "name": "Suckermouth Catfish",
+      "category": "Catches",
+      "slug": "suckermouth-catfish",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/suckermouth-catfish.webp"
+    },
+    {
+      "id": 10058,
+      "name": "Northern Pike",
+      "category": "Catches",
+      "slug": "northern-pike",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/northern-pike.webp"
+    },
+    {
+      "id": 10059,
+      "name": "Chinook Salmon",
+      "category": "Catches",
+      "slug": "chinook-salmon",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/chinook-salmon.webp"
+    },
+    {
+      "id": 10060,
+      "name": "Slender Sharksucker",
+      "category": "Catches",
+      "slug": "slender-sharksucker",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/slender-sharksucker.webp"
+    },
+    {
+      "id": 10061,
+      "name": "Mantis Shrimp",
+      "category": "Catches",
+      "slug": "mantis-shrimp",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/mantis-shrimp.webp"
+    },
+    {
+      "id": 10062,
+      "name": "Blueberry Goldfish",
+      "category": "Catches",
+      "slug": "blueberry-goldfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/blueberry-goldfish.webp"
+    },
+    {
+      "id": 10063,
+      "name": "Chinese Mitten Crab",
+      "category": "Catches",
+      "slug": "chinese-mitten-crab",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/chinese-mitten-crab.webp"
+    },
+    {
+      "id": 10064,
+      "name": "Wimple Piranha",
+      "category": "Catches",
+      "slug": "wimple-piranha",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/wimple-piranha.webp"
+    },
+    {
+      "id": 10065,
+      "name": "Slate Pencil Urchin",
+      "category": "Catches",
+      "slug": "slate-pencil-urchin",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/slate-pencil-urchin.webp"
+    },
+    {
+      "id": 10066,
+      "name": "Black-lip Pearl Oyster",
+      "category": "Catches",
+      "slug": "black-lip-pearl-oyster",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/black-lip-pearl-oyster.webp"
+    },
+    {
+      "id": 10067,
+      "name": "Flapjack Octopus",
+      "category": "Catches",
+      "slug": "flapjack-octopus",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/flapjack-octopus.webp"
+    },
+    {
+      "id": 10068,
+      "name": "Swimming Crab",
+      "category": "Catches",
+      "slug": "swimming-crab",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/swimming-crab.webp"
+    },
+    {
+      "id": 10069,
+      "name": "Blue Sea Star",
+      "category": "Catches",
+      "slug": "blue-sea-star",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/blue-sea-star.webp"
+    },
+    {
+      "id": 10070,
+      "name": "Ocean Dwellers",
+      "category": "Catches",
+      "slug": "ocean-dwellers",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/ocean-dwellers.webp"
+    },
+    {
+      "id": 10071,
+      "name": "Bighead Carp",
+      "category": "Catches",
+      "slug": "bighead-carp",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/bighead-carp.webp"
+    },
+    {
+      "id": 10072,
+      "name": "Three-eyed Flounder",
+      "category": "Catches",
+      "slug": "three-eyed-flounder",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/three-eyed-flounder.webp"
+    },
+    {
+      "id": 10073,
+      "name": "Silver Trevally",
+      "category": "Catches",
+      "slug": "silver-trevally",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/silver-trevally.webp"
+    },
+    {
+      "id": 10074,
+      "name": "Clownfish",
+      "category": "Catches",
+      "slug": "clownfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/clownfish.webp"
+    },
+    {
+      "id": 10075,
+      "name": "White-faced Surgeonfish",
+      "category": "Catches",
+      "slug": "white-faced-surgeonfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/white-faced-surgeonfish.webp"
+    },
+    {
+      "id": 10076,
+      "name": "Largemouth Bass",
+      "category": "Catches",
+      "slug": "largemouth-bass",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/largemouth-bass.webp"
+    },
+    {
+      "id": 10077,
+      "name": "Orange Clownfish",
+      "category": "Catches",
+      "slug": "orange-clownfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/orange-clownfish.webp"
+    },
+    {
+      "id": 10078,
+      "name": "Tigerfish",
+      "category": "Catches",
+      "slug": "tigerfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/tigerfish.webp"
+    },
+    {
+      "id": 10079,
+      "name": "Scorpionfish",
+      "category": "Catches",
+      "slug": "scorpionfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/scorpionfish.webp"
+    },
+    {
+      "id": 10080,
+      "name": "Goldribbon Soapfish",
+      "category": "Catches",
+      "slug": "goldribbon-soapfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/goldribbon-soapfish.webp"
+    },
+    {
+      "id": 10081,
+      "name": "Gleaming Salmon",
+      "category": "Catches",
+      "slug": "gleaming-salmon",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/gleaming-salmon.webp"
+    },
+    {
+      "id": 10082,
+      "name": "Lobster",
+      "category": "Catches",
+      "slug": "lobster",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/lobster.webp"
+    },
+    {
+      "id": 10083,
+      "name": "Masked Bannerfish",
+      "category": "Catches",
+      "slug": "masked-bannerfish",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/masked-bannerfish.webp"
+    },
+    {
+      "id": 10084,
+      "name": "Sea Bream",
+      "category": "Catches",
+      "slug": "sea-bream",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/sea-bream.webp"
+    },
+    {
+      "id": 10085,
+      "name": "Red Rock Turtle",
+      "category": "Catches",
+      "slug": "red-rock-turtle",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/red-rock-turtle.webp"
+    },
+    {
+      "id": 10086,
+      "name": "Betta",
+      "category": "Catches",
+      "slug": "betta",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/betta.webp"
+    },
+    {
+      "id": 10087,
+      "name": "Moon Jellyfish",
+      "category": "Catches",
+      "slug": "moon-jellyfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/moon-jellyfish.webp"
+    },
+    {
+      "id": 10088,
+      "name": "Red Starfish",
+      "category": "Catches",
+      "slug": "red-starfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/red-starfish.webp"
+    },
+    {
+      "id": 10089,
+      "name": "Mandarinfish",
+      "category": "Catches",
+      "slug": "mandarinfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/mandarinfish.webp"
+    },
+    {
+      "id": 10090,
+      "name": "Blue-ringed Octopus",
+      "category": "Catches",
+      "slug": "blue-ringed-octopus",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/blue-ringed-octopus.webp"
+    },
+    {
+      "id": 10091,
+      "name": "Emperor Angelfish",
+      "category": "Catches",
+      "slug": "emperor-angelfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/emperor-angelfish.webp"
+    },
+    {
+      "id": 10092,
+      "name": "Blackfish",
+      "category": "Catches",
+      "slug": "blackfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/blackfish.webp"
+    },
+    {
+      "id": 10093,
+      "name": "Blackspot Tuskfish",
+      "category": "Catches",
+      "slug": "blackspot-tuskfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/blackspot-tuskfish.webp"
+    },
+    {
+      "id": 10094,
+      "name": "Vampire Squid",
+      "category": "Catches",
+      "slug": "vampire-squid",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/vampire-squid.webp"
+    },
+    {
+      "id": 10095,
+      "name": "Bonefish",
+      "category": "Catches",
+      "slug": "bonefish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/bonefish.webp"
+    },
+    {
+      "id": 10096,
+      "name": "Pufferfish",
+      "category": "Catches",
+      "slug": "pufferfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/pufferfish.webp"
+    },
+    {
+      "id": 10097,
+      "name": "Striped Beakfish",
+      "category": "Catches",
+      "slug": "striped-beakfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/striped-beakfish.webp"
+    },
+    {
+      "id": 10098,
+      "name": "Goblinfish",
+      "category": "Catches",
+      "slug": "goblinfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/goblinfish.webp"
+    },
+    {
+      "id": 10099,
+      "name": "Japan Surgeonfish",
+      "category": "Catches",
+      "slug": "japan-surgeonfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/japan-surgeonfish.webp"
+    },
+    {
+      "id": 10100,
+      "name": "Koi Fish",
+      "category": "Catches",
+      "slug": "koi-fish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/koi-fish.webp"
+    },
+    {
+      "id": 10101,
+      "name": "Eel Loach",
+      "category": "Catches",
+      "slug": "eel-loach",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/eel-loach.webp"
+    },
+    {
+      "id": 10102,
+      "name": "Moray Eel",
+      "category": "Catches",
+      "slug": "moray-eel",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/moray-eel.webp"
+    },
+    {
+      "id": 10103,
+      "name": "King Crab",
+      "category": "Catches",
+      "slug": "king-crab",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/king-crab.webp"
+    },
+    {
+      "id": 10104,
+      "name": "Lanternfish",
+      "category": "Catches",
+      "slug": "lanternfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/lanternfish.webp"
+    },
+    {
+      "id": 10105,
+      "name": "Baculite",
+      "category": "Catches",
+      "slug": "baculite",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/baculite.webp"
+    },
+    {
+      "id": 10106,
+      "name": "Big Head Pufferfish",
+      "category": "Catches",
+      "slug": "big-head-pufferfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/big-head-pufferfish.webp"
+    },
+    {
+      "id": 10107,
+      "name": "Phantomfish",
+      "category": "Catches",
+      "slug": "phantomfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/phantomfish.webp"
+    },
+    {
+      "id": 10108,
+      "name": "Giant Oarfish",
+      "category": "Catches",
+      "slug": "giant-oarfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/giant-oarfish.webp"
+    },
+    {
+      "id": 10109,
+      "name": "Spiny Lobster",
+      "category": "Catches",
+      "slug": "spiny-lobster",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/spiny-lobster.webp"
+    },
+    {
+      "id": 10110,
+      "name": "Saberfish",
+      "category": "Catches",
+      "slug": "saberfish",
+      "star": 4,
+      "rarity": "Epic",
+      "points": 70,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/saberfish.webp"
+    },
+    {
+      "id": 10111,
+      "name": "Sapphirefish",
+      "category": "Catches",
+      "slug": "sapphirefish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/sapphirefish.webp"
+    },
+    {
+      "id": 10112,
+      "name": "Sea Pig",
+      "category": "Catches",
+      "slug": "sea-pig",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/sea-pig.webp"
+    },
+    {
+      "id": 10113,
+      "name": "Japanese Spider Crab",
+      "category": "Catches",
+      "slug": "japanese-spider-crab",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/japanese-spider-crab.webp"
+    },
+    {
+      "id": 10114,
+      "name": "Gold Spotted Foxface",
+      "category": "Catches",
+      "slug": "gold-spotted-foxface",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/gold-spotted-foxface.webp"
+    },
+    {
+      "id": 10115,
+      "name": "Neptune Grouper",
+      "category": "Catches",
+      "slug": "neptune-grouper",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/neptune-grouper.webp"
+    },
+    {
+      "id": 10116,
+      "name": "Peppermint Angelfish",
+      "category": "Catches",
+      "slug": "peppermint-angelfish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/peppermint-angelfish.webp"
+    },
+    {
+      "id": 10117,
+      "name": "Philippine Butterflyfish",
+      "category": "Catches",
+      "slug": "philippine-butterflyfish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/philippine-butterflyfish.webp"
+    },
+    {
+      "id": 10118,
+      "name": "Emerald Pupfish",
+      "category": "Catches",
+      "slug": "emerald-pupfish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 530,
+      "image": "/images/tools/fishing-handbook/emerald-pupfish.webp"
+    },
+    {
+      "id": 10119,
+      "name": "Blue Lobster",
+      "category": "Catches",
+      "slug": "blue-lobster",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 530,
+      "image": "/images/tools/fishing-handbook/blue-lobster.webp"
+    },
+    {
+      "id": 10120,
+      "name": "Tideland Walker",
+      "category": "Catches",
+      "slug": "tideland-walker",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 530,
+      "image": "/images/tools/fishing-handbook/tideland-walker.webp"
+    },
+    {
+      "id": 10121,
+      "name": "Golden Trout",
+      "category": "Catches",
+      "slug": "golden-trout",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/golden-trout.webp"
+    },
+    {
+      "id": 10122,
+      "name": "Bluefin Tuna",
+      "category": "Catches",
+      "slug": "bluefin-tuna",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/bluefin-tuna.webp"
+    },
+    {
+      "id": 10123,
+      "name": "Giant Isopod",
+      "category": "Catches",
+      "slug": "giant-isopod",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/giant-isopod.webp"
+    },
+    {
+      "id": 10124,
+      "name": "Golden Arowana",
+      "category": "Catches",
+      "slug": "golden-arowana",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/golden-arowana.webp"
+    },
+    {
+      "id": 10125,
+      "name": "Dumbo Octopus",
+      "category": "Catches",
+      "slug": "dumbo-octopus",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/dumbo-octopus.webp"
+    },
+    {
+      "id": 10126,
+      "name": "Giant Pearl Grouper",
+      "category": "Catches",
+      "slug": "giant-pearl-grouper",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/giant-pearl-grouper.webp"
+    },
+    {
+      "id": 10127,
+      "name": "Achilles Tang",
+      "category": "Catches",
+      "slug": "achilles-tang",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/achilles-tang.webp"
+    },
+    {
+      "id": 10128,
+      "name": "Scythe Butterflyfish",
+      "category": "Catches",
+      "slug": "scythe-butterflyfish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/scythe-butterflyfish.webp"
+    },
+    {
+      "id": 10129,
+      "name": "White Piranha",
+      "category": "Catches",
+      "slug": "white-piranha",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/white-piranha.webp"
+    },
+    {
+      "id": 10130,
+      "name": "Humphead Wrasse",
+      "category": "Catches",
+      "slug": "humphead-wrasse",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/humphead-wrasse.webp"
+    },
+    {
+      "id": 10131,
+      "name": "Amethyst Giant Clam",
+      "category": "Catches",
+      "slug": "amethyst-giant-clam",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/amethyst-giant-clam.webp"
+    },
+    {
+      "id": 10132,
+      "name": "Chinese Sturgeon",
+      "category": "Catches",
+      "slug": "chinese-sturgeon",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/chinese-sturgeon.webp"
+    },
+    {
+      "id": 10133,
+      "name": "Deep-sea Batfish",
+      "category": "Catches",
+      "slug": "deep-sea-batfish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/deep-sea-batfish.webp"
+    },
+    {
+      "id": 10134,
+      "name": "Giant Octopus",
+      "category": "Catches",
+      "slug": "giant-octopus",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/giant-octopus.webp"
+    },
+    {
+      "id": 10135,
+      "name": "Paddlefish",
+      "category": "Catches",
+      "slug": "paddlefish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/paddlefish.webp"
+    },
+    {
+      "id": 10136,
+      "name": "Siberian Taimen",
+      "category": "Catches",
+      "slug": "siberian-taimen",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/siberian-taimen.webp"
+    },
+    {
+      "id": 10137,
+      "name": "Golden Dorado",
+      "category": "Catches",
+      "slug": "golden-dorado",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/golden-dorado.webp"
+    },
+    {
+      "id": 10138,
+      "name": "Black Armored Warrior",
+      "category": "Catches",
+      "slug": "black-armored-warrior",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/black-armored-warrior.webp"
+    },
+    {
+      "id": 10139,
+      "name": "Thorn Sturgeon",
+      "category": "Catches",
+      "slug": "thorn-sturgeon",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/thorn-sturgeon.webp"
+    },
+    {
+      "id": 10140,
+      "name": "Marlin",
+      "category": "Catches",
+      "slug": "marlin",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/marlin.webp"
+    },
+    {
+      "id": 10141,
+      "name": "Largetooth Sawfish",
+      "category": "Catches",
+      "slug": "largetooth-sawfish",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/largetooth-sawfish.webp"
+    },
+    {
+      "id": 10142,
+      "name": "Anchorshark",
+      "category": "Catches",
+      "slug": "anchorshark",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/anchorshark.webp"
+    },
+    {
+      "id": 10143,
+      "name": "Titan Sea Beast",
+      "category": "Catches",
+      "slug": "titan-sea-beast",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        4
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/titan-sea-beast.webp"
+    },
+    {
+      "id": 10144,
+      "name": "Crimson Snapper",
+      "category": "Catches",
+      "slug": "crimson-snapper",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/crimson-snapper.webp"
+    },
+    {
+      "id": 10145,
+      "name": "Armored Turtle",
+      "category": "Catches",
+      "slug": "armored-turtle",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/armored-turtle.webp"
+    },
+    {
+      "id": 10146,
+      "name": "Red-spotted Giant Turtle",
+      "category": "Catches",
+      "slug": "red-spotted-giant-turtle",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        1
+      ],
+      "depth": 450,
+      "image": "/images/tools/fishing-handbook/red-spotted-giant-turtle.webp"
+    },
+    {
+      "id": 10147,
+      "name": "Steel-toothed Shark",
+      "category": "Catches",
+      "slug": "steel-toothed-shark",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        3,
+        4
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/steel-toothed-shark.webp"
+    },
+    {
+      "id": 10148,
+      "name": "Angel Shark",
+      "category": "Catches",
+      "slug": "angel-shark",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 530,
+      "image": "/images/tools/fishing-handbook/angel-shark.webp"
+    },
+    {
+      "id": 10149,
+      "name": "Anomalocaris",
+      "category": "Catches",
+      "slug": "anomalocaris",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 530,
+      "image": "/images/tools/fishing-handbook/anomalocaris.webp"
+    },
+    {
+      "id": 10150,
+      "name": "Placodermi",
+      "category": "Catches",
+      "slug": "placodermi",
+      "star": 5,
+      "rarity": "Legendary",
+      "points": 150,
+      "sellPrice": 150,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 530,
+      "image": "/images/tools/fishing-handbook/placodermi.webp"
+    },
+    {
+      "id": 20001,
+      "name": "Distressed Ariel",
+      "category": "Mermaids",
+      "slug": "distressed-ariel",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/distressed-ariel.webp"
+    },
+    {
+      "id": 20002,
+      "name": "Distressed Cami",
+      "category": "Mermaids",
+      "slug": "distressed-cami",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/distressed-cami.webp"
+    },
+    {
+      "id": 20003,
+      "name": "Distressed Helena",
+      "category": "Mermaids",
+      "slug": "distressed-helena",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/distressed-helena.webp"
+    },
+    {
+      "id": 20004,
+      "name": "Mermaid Joy",
+      "category": "Mermaids",
+      "slug": "mermaid-joy",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/mermaid-joy.webp"
+    },
+    {
+      "id": 20005,
+      "name": "Mermaid Petra",
+      "category": "Mermaids",
+      "slug": "mermaid-petra",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/mermaid-petra.webp"
+    },
+    {
+      "id": 20006,
+      "name": "Mermaid Ivy",
+      "category": "Mermaids",
+      "slug": "mermaid-ivy",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/mermaid-ivy.webp"
+    },
+    {
+      "id": 20007,
+      "name": "Lost Eris",
+      "category": "Mermaids",
+      "slug": "lost-eris",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4
+      ],
+      "depth": 350,
+      "image": "/images/tools/fishing-handbook/lost-eris.webp"
+    },
+    {
+      "id": 20008,
+      "name": "Lost Zoe",
+      "category": "Mermaids",
+      "slug": "lost-zoe",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        1
+      ],
+      "depth": 350,
+      "image": "/images/tools/fishing-handbook/lost-zoe.webp"
+    },
+    {
+      "id": 20009,
+      "name": "Princess Nairo",
+      "category": "Mermaids",
+      "slug": "princess-nairo",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        4,
+        1
+      ],
+      "depth": 350,
+      "image": "/images/tools/fishing-handbook/princess-nairo.webp"
+    },
+    {
+      "id": 20010,
+      "name": "Princess Berenice",
+      "category": "Mermaids",
+      "slug": "princess-berenice",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 350,
+      "image": "/images/tools/fishing-handbook/princess-berenice.webp"
+    },
+    {
+      "id": 30001,
+      "name": "Ocean Resource Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-resource-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/ocean-resource-chest.webp"
+    },
+    {
+      "id": 30002,
+      "name": "Ocean Training Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-training-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/ocean-training-chest.webp"
+    },
+    {
+      "id": 30003,
+      "name": "Ocean Tech Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-tech-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/ocean-tech-chest.webp"
+    },
+    {
+      "id": 30004,
+      "name": "Ocean Construction Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-construction-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/ocean-construction-chest.webp"
+    },
+    {
+      "id": 30005,
+      "name": "Ocean Gear Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-gear-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/ocean-gear-chest.webp"
+    },
+    {
+      "id": 30006,
+      "name": "Ocean Speedup Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-speedup-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/ocean-speedup-chest.webp"
+    },
+    {
+      "id": 30007,
+      "name": "Ocean XP Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-xp-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 40,
+      "seasons": [
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/ocean-xp-chest.webp"
+    },
+    {
+      "id": 30008,
+      "name": "Ocean Upgrade Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-upgrade-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        4
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/ocean-upgrade-chest.webp"
+    },
+    {
+      "id": 30009,
+      "name": "Ocean Hero Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-hero-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 70,
+      "seasons": [
+        2,
+        3,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/ocean-hero-chest.webp"
+    },
+    {
+      "id": 30010,
+      "name": "Ocean Governor Chest",
+      "category": "Ocean Chests",
+      "slug": "ocean-governor-chest",
+      "star": null,
+      "rarity": null,
+      "points": null,
+      "sellPrice": 70,
+      "seasons": [
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/ocean-governor-chest.webp"
+    },
+    {
+      "id": 40001,
+      "name": "Tattered Boots",
+      "category": "Memorabilia",
+      "slug": "tattered-boots",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/tattered-boots.webp"
+    },
+    {
+      "id": 40002,
+      "name": "Sword Hilt",
+      "category": "Memorabilia",
+      "slug": "sword-hilt",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/sword-hilt.webp"
+    },
+    {
+      "id": 40003,
+      "name": "War Axe",
+      "category": "Memorabilia",
+      "slug": "war-axe",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/war-axe.webp"
+    },
+    {
+      "id": 40004,
+      "name": "Wooden Spoon",
+      "category": "Memorabilia",
+      "slug": "wooden-spoon",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/wooden-spoon.webp"
+    },
+    {
+      "id": 40005,
+      "name": "Ceramic Jar",
+      "category": "Memorabilia",
+      "slug": "ceramic-jar",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/ceramic-jar.webp"
+    },
+    {
+      "id": 40006,
+      "name": "Clay Jug",
+      "category": "Memorabilia",
+      "slug": "clay-jug",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/clay-jug.webp"
+    },
+    {
+      "id": 40007,
+      "name": "Wooden Figure",
+      "category": "Memorabilia",
+      "slug": "wooden-figure",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 10,
+      "image": "/images/tools/fishing-handbook/wooden-figure.webp"
+    },
+    {
+      "id": 40008,
+      "name": "Doll",
+      "category": "Memorabilia",
+      "slug": "doll",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/doll.webp"
+    },
+    {
+      "id": 40009,
+      "name": "Voodoo Doll",
+      "category": "Memorabilia",
+      "slug": "voodoo-doll",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/voodoo-doll.webp"
+    },
+    {
+      "id": 40010,
+      "name": "Pirate Hat",
+      "category": "Memorabilia",
+      "slug": "pirate-hat",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/pirate-hat.webp"
+    },
+    {
+      "id": 40011,
+      "name": "Message in a Bottle",
+      "category": "Memorabilia",
+      "slug": "message-in-a-bottle",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/message-in-a-bottle.webp"
+    },
+    {
+      "id": 40012,
+      "name": "Wine Goblet",
+      "category": "Memorabilia",
+      "slug": "wine-goblet",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/wine-goblet.webp"
+    },
+    {
+      "id": 40013,
+      "name": "Iron Hook",
+      "category": "Memorabilia",
+      "slug": "iron-hook",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/iron-hook.webp"
+    },
+    {
+      "id": 40014,
+      "name": "Prosthetic Leg",
+      "category": "Memorabilia",
+      "slug": "prosthetic-leg",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/prosthetic-leg.webp"
+    },
+    {
+      "id": 40015,
+      "name": "Spectacle Frame",
+      "category": "Memorabilia",
+      "slug": "spectacle-frame",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/spectacle-frame.webp"
+    },
+    {
+      "id": 40016,
+      "name": "Astrolabe",
+      "category": "Memorabilia",
+      "slug": "astrolabe",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/astrolabe.webp"
+    },
+    {
+      "id": 40017,
+      "name": "Lantern",
+      "category": "Memorabilia",
+      "slug": "lantern",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/lantern.webp"
+    },
+    {
+      "id": 40018,
+      "name": "Crucible",
+      "category": "Memorabilia",
+      "slug": "crucible",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/crucible.webp"
+    },
+    {
+      "id": 40019,
+      "name": "Rum",
+      "category": "Memorabilia",
+      "slug": "rum",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/rum.webp"
+    },
+    {
+      "id": 40020,
+      "name": "Strange Portrait Frame",
+      "category": "Memorabilia",
+      "slug": "strange-portrait-frame",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/strange-portrait-frame.webp"
+    },
+    {
+      "id": 40021,
+      "name": "Telescope",
+      "category": "Memorabilia",
+      "slug": "telescope",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/telescope.webp"
+    },
+    {
+      "id": 40022,
+      "name": "Brass Bell",
+      "category": "Memorabilia",
+      "slug": "brass-bell",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/brass-bell.webp"
+    },
+    {
+      "id": 40023,
+      "name": "Wooden Sword",
+      "category": "Memorabilia",
+      "slug": "wooden-sword",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/wooden-sword.webp"
+    },
+    {
+      "id": 40024,
+      "name": "Mask",
+      "category": "Memorabilia",
+      "slug": "mask",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/mask.webp"
+    },
+    {
+      "id": 40025,
+      "name": "Rudder",
+      "category": "Memorabilia",
+      "slug": "rudder",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/rudder.webp"
+    },
+    {
+      "id": 40026,
+      "name": "Torch",
+      "category": "Memorabilia",
+      "slug": "torch",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/torch.webp"
+    },
+    {
+      "id": 40027,
+      "name": "Hourglass",
+      "category": "Memorabilia",
+      "slug": "hourglass",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/hourglass.webp"
+    },
+    {
+      "id": 40028,
+      "name": "Candelabrum",
+      "category": "Memorabilia",
+      "slug": "candelabrum",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/candelabrum.webp"
+    },
+    {
+      "id": 40029,
+      "name": "Barrel",
+      "category": "Memorabilia",
+      "slug": "barrel",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/barrel.webp"
+    },
+    {
+      "id": 40030,
+      "name": "Anchor",
+      "category": "Memorabilia",
+      "slug": "anchor",
+      "star": 1,
+      "rarity": "Common",
+      "points": 10,
+      "sellPrice": 10,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/anchor.webp"
+    },
+    {
+      "id": 40031,
+      "name": "Anvil",
+      "category": "Memorabilia",
+      "slug": "anvil",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/anvil.webp"
+    },
+    {
+      "id": 40032,
+      "name": "Wooden Figurine",
+      "category": "Memorabilia",
+      "slug": "wooden-figurine",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/wooden-figurine.webp"
+    },
+    {
+      "id": 40033,
+      "name": "Damaged Crossbow",
+      "category": "Memorabilia",
+      "slug": "damaged-crossbow",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/damaged-crossbow.webp"
+    },
+    {
+      "id": 40034,
+      "name": "Helmet",
+      "category": "Memorabilia",
+      "slug": "helmet",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/helmet.webp"
+    },
+    {
+      "id": 40035,
+      "name": "Exotic Strings",
+      "category": "Memorabilia",
+      "slug": "exotic-strings",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 100,
+      "image": "/images/tools/fishing-handbook/exotic-strings.webp"
+    },
+    {
+      "id": 40036,
+      "name": "New Wrist Band",
+      "category": "Memorabilia",
+      "slug": "new-wrist-band",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/new-wrist-band.webp"
+    },
+    {
+      "id": 40037,
+      "name": "Crystal Ball",
+      "category": "Memorabilia",
+      "slug": "crystal-ball",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/crystal-ball.webp"
+    },
+    {
+      "id": 40038,
+      "name": "\"Roman's Log\"",
+      "category": "Memorabilia",
+      "slug": "romans-log",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/romans-log.webp"
+    },
+    {
+      "id": 40039,
+      "name": "Horn",
+      "category": "Memorabilia",
+      "slug": "horn",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/horn.webp"
+    },
+    {
+      "id": 40040,
+      "name": "Saul's Sorrow Sack",
+      "category": "Memorabilia",
+      "slug": "sauls-sorrow-sack",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/sauls-sorrow-sack.webp"
+    },
+    {
+      "id": 40041,
+      "name": "Mallet",
+      "category": "Memorabilia",
+      "slug": "mallet",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/mallet.webp"
+    },
+    {
+      "id": 40042,
+      "name": "Odd Statuette",
+      "category": "Memorabilia",
+      "slug": "odd-statuette",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/odd-statuette.webp"
+    },
+    {
+      "id": 40043,
+      "name": "Captain's Shield",
+      "category": "Memorabilia",
+      "slug": "captains-shield",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/captains-shield.webp"
+    },
+    {
+      "id": 40044,
+      "name": "Broken Portrait Frame",
+      "category": "Memorabilia",
+      "slug": "broken-portrait-frame",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/broken-portrait-frame.webp"
+    },
+    {
+      "id": 40045,
+      "name": "Waterlogged Musket",
+      "category": "Memorabilia",
+      "slug": "waterlogged-musket",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/waterlogged-musket.webp"
+    },
+    {
+      "id": 40046,
+      "name": "Ripe Banana",
+      "category": "Memorabilia",
+      "slug": "ripe-banana",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/ripe-banana.webp"
+    },
+    {
+      "id": 40047,
+      "name": "Bronze Mirror",
+      "category": "Memorabilia",
+      "slug": "bronze-mirror",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/bronze-mirror.webp"
+    },
+    {
+      "id": 40048,
+      "name": "Incense Burner",
+      "category": "Memorabilia",
+      "slug": "incense-burner",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/incense-burner.webp"
+    },
+    {
+      "id": 40049,
+      "name": "Exquisite Pottery",
+      "category": "Memorabilia",
+      "slug": "exquisite-pottery",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/exquisite-pottery.webp"
+    },
+    {
+      "id": 40050,
+      "name": "Golden Dice",
+      "category": "Memorabilia",
+      "slug": "golden-dice",
+      "star": 2,
+      "rarity": "Uncommon",
+      "points": 20,
+      "sellPrice": 20,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/golden-dice.webp"
+    },
+    {
+      "id": 40051,
+      "name": "Crown",
+      "category": "Memorabilia",
+      "slug": "crown",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/crown.webp"
+    },
+    {
+      "id": 40052,
+      "name": "Magic Lamp",
+      "category": "Memorabilia",
+      "slug": "magic-lamp",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/magic-lamp.webp"
+    },
+    {
+      "id": 40053,
+      "name": "Bongo Drum",
+      "category": "Memorabilia",
+      "slug": "bongo-drum",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/bongo-drum.webp"
+    },
+    {
+      "id": 40054,
+      "name": "Helga's Friend's Cousin's Uncle's Slingshot",
+      "category": "Memorabilia",
+      "slug": "helgas-friends-cousins-uncles-slingshot",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 300,
+      "image": "/images/tools/fishing-handbook/helgas-friends-cousins-uncles-slingshot.webp"
+    },
+    {
+      "id": 40055,
+      "name": "Golden Wineglass",
+      "category": "Memorabilia",
+      "slug": "golden-wineglass",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/golden-wineglass.webp"
+    },
+    {
+      "id": 40056,
+      "name": "Crystal Skull",
+      "category": "Memorabilia",
+      "slug": "crystal-skull",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/crystal-skull.webp"
+    },
+    {
+      "id": 40057,
+      "name": "Marlin's Right Leg",
+      "category": "Memorabilia",
+      "slug": "marlins-right-leg",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 400,
+      "image": "/images/tools/fishing-handbook/marlins-right-leg.webp"
+    },
+    {
+      "id": 40058,
+      "name": "Ship in a Bottle",
+      "category": "Memorabilia",
+      "slug": "ship-in-a-bottle",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/ship-in-a-bottle.webp"
+    },
+    {
+      "id": 40059,
+      "name": "Sextant",
+      "category": "Memorabilia",
+      "slug": "sextant",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 200,
+      "image": "/images/tools/fishing-handbook/sextant.webp"
+    },
+    {
+      "id": 40060,
+      "name": "Trident",
+      "category": "Memorabilia",
+      "slug": "trident",
+      "star": 3,
+      "rarity": "Rare",
+      "points": 40,
+      "sellPrice": 40,
+      "seasons": [
+        2,
+        3,
+        4,
+        1
+      ],
+      "depth": 500,
+      "image": "/images/tools/fishing-handbook/trident.webp"
+    }
+  ]
+}

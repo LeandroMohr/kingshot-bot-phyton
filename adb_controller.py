@@ -155,10 +155,15 @@ class CapturedFrame:
 class ContinuousCapture:
     """One bounded ADB worker, retaining only the latest immutable frame."""
 
-    def __init__(self, controller: ADBController, max_fps: float = 10.0):
+    def __init__(self, controller: ADBController, max_fps: float = 10.0,
+                 max_timeout_retries: int = 0):
         if max_fps <= 0:
             raise ValueError("Capture frame rate must be positive.")
+        if type(max_timeout_retries) is not int or max_timeout_retries < 0:
+            raise ValueError("Maximum timeout retries must be a nonnegative integer.")
         self.controller = controller
+        self.max_timeout_retries = max_timeout_retries
+        self.timeouts = 0
         self.interval = 1.0 / max_fps
         self._condition = threading.Condition()
         self._stop = threading.Event()
@@ -208,10 +213,27 @@ class ContinuousCapture:
                 self._condition.wait(remaining)
 
     def _capture(self) -> None:
+        consecutive_timeouts = 0
         try:
             while not self._stop.is_set():
                 started = time.monotonic()
-                image = self.controller.screenshot(timeout=2.0)
+                try:
+                    image = self.controller.screenshot(timeout=2.0)
+                except (RuntimeError, subprocess.TimeoutExpired) as exc:
+                    is_timeout = (isinstance(exc, subprocess.TimeoutExpired)
+                                  or isinstance(exc.__cause__, subprocess.TimeoutExpired))
+                    if not is_timeout:
+                        raise
+                    self.timeouts += 1
+                    with self._condition:
+                        self._latest = None
+                        self._condition.notify_all()
+                    if consecutive_timeouts >= self.max_timeout_retries:
+                        raise
+                    consecutive_timeouts += 1
+                    self._stop.wait(self.interval)
+                    continue
+                consecutive_timeouts = 0
                 completed = time.monotonic()
                 image.setflags(write=False)
                 with self._condition:

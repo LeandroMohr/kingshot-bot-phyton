@@ -90,6 +90,187 @@ Neither is included in "All mapped tasks", unattended startup, or the daily loop
 `--event` and the repeatable daily-task selector `--task` are mutually exclusive.
 Both execution modes preserve `--control-stdin` pause/resume support.
 
+### Fishing Tournament (experimental inspection)
+
+The standalone fishing scripts are not registered in the daily loop or event
+menu. Only explicit trial commands launch a free Trial Stage; they never launch
+regular fishing, buy equipment, or select special items.
+
+The reference catalog in `knowledge/fishing_catalog.json` contains 230 entries
+from https://kingshotmastery.com/tools/fishing-handbook: 150 catches, 60
+memorabilia, 10 mermaids and 10 ocean chests. It preserves source image URLs,
+minimum depth, points, sell value and seasons. Unknown special-entry points stay
+null; sell value is not substituted for tournament points.
+
+The five event tabs are mapped at the native ADB resolution of 540x960:
+
+| Tab | CLI ID | Bar Alignment | Tap (x, y) |
+| --- | --- | --- | --- |
+| Fishing Tournament | `fishing` | Left edge | (102, 105) |
+| Fishing Guild | `guild` | Left edge | (254, 105) |
+| Master Fisher Leaderboard | `leaderboard` | Left edge | (405, 105) |
+| Fishing Pro Set | `pro-set` | Right edge | (286, 105) |
+| Guide | `handbook` | Right edge | (438, 105) |
+
+The selected tab hides its name. Navigation confirms its two white side borders
+instead of reading the missing label. To reveal Guide, drag the tab bar left
+from (450, 130) to (90, 130) over 700ms. The reverse drag restores the left edge.
+Coordinates are only used after alignment and a fresh frame; dragging through
+the icons at y=105 was unreliable, while the lower strip at y=130 was validated.
+All five transitions were tested on emulator 5555 without starting a cast,
+claiming rewards or buying anything. Open the event without a modal first.
+
+```bash
+.venv/bin/python -m events.fishing_tournament --port 5555 --tab handbook
+.venv/bin/python -m events.fishing_tournament --port 5555 --tab fishing
+```
+
+Start and reset were mapped in the free Trial Stage on emulator 5555:
+
+| Action | Confirmed Screen | Tap (x, y) |
+| --- | --- | --- |
+| Open Rules | Fishing Tournament tab | (496, 172) |
+| Start Trial Stages | Rules and Trial Stages labels | (270, 835) |
+| Pause | Active fishing HUD and pause icon | (510, 26) |
+| Retreat | Both Retreat and Continue labels | (192, 480) |
+
+Start runs the 3-2-1 countdown. The script does not act during it and confirms
+moving depth in the trial HUD (10-catch capacity, 100m maximum). The full entry
+transition took about 4.6 seconds in the live test, including the countdown.
+Reset confirms Pause before tapping Retreat, then verifies the fishing menu.
+If the round is already paused, it skips the Pause tap. It never automatically
+starts another round. Pending score and catches are discarded by Retreat.
+
+```bash
+.venv/bin/python -m events.fishing_tournament --port 5555 --trial-action start
+.venv/bin/python -m events.fishing_tournament --port 5555 --trial-action reset
+.venv/bin/python -m events.fishing_tournament --port 5555 --trial-action cycle
+```
+
+`start` requires the fishing tab or the already-open Rules modal. `reset` only
+accepts a confirmed active or paused fishing round. `cycle` starts the free
+trial, waits for active fishing, and immediately resets it. Trial commands are
+mutually exclusive with tab navigation and handbook scanning. Reports are saved
+to `memory/fishing_trial_5555.json` (or `--output`). The live trial cycles returned
+with 880 points and 10/10 regular baits unchanged. Refunds of entry keys and
+special items in regular/paid modes were not tested by these free-trial cycles.
+
+Monitor the emulator with one bounded latest-frame capture worker:
+
+```bash
+.venv/bin/python -m events.fishing_tournament --port 5555 --duration 60
+```
+
+For collection scanning, manually open a specimen detail card, then run:
+
+```bash
+.venv/bin/python -m events.fishing_tournament --port 5555 --scan-handbook --season autumn --max-cards 96
+```
+
+Scanning only taps the card's right arrow and stops on an unrecognized card or
+repeated ID. It uses calibrated 540x960 card layouts, title OCR, green checks,
+gray stars and silhouettes. Ambiguous states remain unknown. Select each of the
+four tabs and open a card before scanning that category. Fish classification
+was validated against the live Autumn counter (65 captured, 31 missing);
+collection-state recognition for the other categories is not yet validated.
+Default collection storage is device-scoped in
+`memory/fishing_collection_5555.json`. When switching accounts, use a separate
+`--output` and an explicitly verified account ID in `--scope`.
+
+Generate a season-aware collection report:
+
+```bash
+.venv/bin/python -m events.fishing_catalog --collection memory/fishing_collection_5555.json --season autumn --max-depth 250 --output memory/fishing_plan_5555.json
+```
+
+There is no season calendar or predicted next season. Supply the season shown
+when each event starts; no default season is assumed. The report keeps all
+entries, including unavailable ones, with `available_seasons`, `event_season`,
+`available_now`, `awaiting_seasons`, `capture_status` and `eligible_now`.
+An uncaught Summer-only specimen stays missing during Winter but is not an
+eligible target. Recompute the report when the next event announces its season.
+Use `--current-season-only` to exclude unavailable entries from that report.
+
+Missing and unknown specimens can be highlighted with an experimental native
+macOS overlay. Its editable selection is
+`memory/fishing_highlight_targets_5555.json`:
+
+```bash
+.venv/bin/python -m events.fishing_overlay --port 5555 --brighten
+```
+
+At startup, the list is rebuilt from `memory/fishing_collection_5555.json`.
+Only entries not confirmed as captured are included, across all categories,
+seasons, and depths. Set `enabled` to `false` to disable a candidate; that choice
+is preserved on refresh. Red markers indicate confirmed missing entries;
+amber markers and a question mark indicate unknown collection states.
+
+Detection does not confirm capture and does not update the collection. After
+an entry is verified as captured and its collection record has `captured: true`,
+it is removed on the next startup or explicit list refresh:
+
+```bash
+.venv/bin/python -m events.fishing_overlay --port 5555 --update-targets
+```
+
+An already running overlay does not reload its selection; restart it after
+updates. Once every entry is confirmed captured, the selection is empty and
+the brightness layer can still run without highlighting captured specimens.
+Stop a running process with `kill -TERM PID`, using the PID reported by
+`pgrep -fl 'events.fishing_overlay'`; verify it stopped before restarting.
+
+Add `--brighten` to compensate for recoverable darkness directly above the
+emulator. A per-pixel translucent layer lifts shadow brightness, preserves the
+HUD and already bright areas, and still ignores mouse input. Detection and
+tracking use the enhanced frame. Fully black pixels contain no recoverable
+detail and remain black: this does not remove the event's visibility mask.
+The correction follows fresh ADB frames, so it can lag behind moving objects;
+it hides with stale capture and outside active fishing like the markers.
+
+This draws red circles above the BlueStacks game window, not into the game or
+onto a separate video mirror. The transparent window ignores mouse events, so
+the player can keep steering the hook. It never sends ADB game input. Markers
+are updated from continuous capture, with optical-flow tracking between
+detections and short motion prediction for drawing. Multiple instances and both
+fish orientations are supported. Tracks remain while their boxes intersect the
+frame and are cleared outside active fishing; temporary detector misses are
+handled by tracking. Heavy occlusion and fish captures can still confuse this
+experimental tracker, so disappearance and identity are not guaranteed in all
+conditions.
+
+Catalog mode isolates reference artwork with OpenCV GrabCut and uses SIFT
+features with geometric verification. All 128 current candidate references
+loaded successfully, but gameplay recognition is not yet validated. Similar
+artwork, small specimens, darkness, and occlusion may prevent identification or
+produce incorrect matches. This mode is not calibrated for gameplay.
+
+The separate native ADB mode remains available explicitly with `--fish Blowfish`
+and uses `templates/fishing_blowfish.png`. Its color gate is tuned for Blowfish;
+only this native reference has been validated in live gameplay. It is never
+restored as a fallback when the pending list becomes empty.
+
+Keep BlueStacks in the foreground. The overlay follows its window position and
+size, hides when another application is active, and hides stale captures after
+0.5 seconds. If multiple emulator windows exist, choose `--window-id`. The
+default viewport insets are `(0, 30, 32, 0)` in macOS points; override them with
+`--insets LEFT TOP RIGHT BOTTOM` if emulator chrome differs. ADB frame pixels
+are fitted into that viewport, including letterboxing. Native rendering runs at
+30Hz, while fresh ADB captures target 10 FPS; this is not zero-latency tracking.
+
+Stop with Ctrl+C. For a bounded test use `--duration 20`; `--snapshot PATH` writes
+one transparent overlay-only PNG once at least two fish are tracked or the
+brightness layer is active. Reports
+default to `memory/fishing_highlight_5555.json`. On the live 5555 test, the
+overlay tracked up to five simultaneous Blowfish with about 29ms processing per
+frame and a maximum sampled frame age of 275ms. Transparency, click-through
+configuration and native circle rendering were verified. Desktop screen capture
+was not authorized by macOS, so pixel alignment over the actual desktop remains
+a visual check by the player.
+
+Head targeting and autonomous descent are not implemented. A successful
+handbook scan or overlay test does not prove reliable real-time steering or
+identical layouts after Retreat.
+
 ### Sorte de Quem Procura
 
 Open the event on the emulator, then run:

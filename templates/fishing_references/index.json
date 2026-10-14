@@ -1,0 +1,6214 @@
+{
+  "source": "https://kingshotmastery.com/tools/fishing-handbook",
+  "reference_type": "handbook_artwork",
+  "calibrated_for_gameplay": false,
+  "background_removed": false,
+  "entries": [
+    {
+      "id": 10001,
+      "name": "Rosy Bitterling",
+      "category": "Catches",
+      "file": "fish/10001_rosy-bitterling.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/rosy-bitterling.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10002,
+      "name": "Sea Slug",
+      "category": "Catches",
+      "file": "fish/10002_sea-slug.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sea-slug.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10003,
+      "name": "Flatworm",
+      "category": "Catches",
+      "file": "fish/10003_flatworm.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/flatworm.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10004,
+      "name": "Neon Tetra",
+      "category": "Catches",
+      "file": "fish/10004_neon-tetra.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/neon-tetra.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10005,
+      "name": "Kissing Gourami",
+      "category": "Catches",
+      "file": "fish/10005_kissing-gourami.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/kissing-gourami.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10006,
+      "name": "Ricefish",
+      "category": "Catches",
+      "file": "fish/10006_ricefish.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ricefish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10007,
+      "name": "Sweet Shrimp",
+      "category": "Catches",
+      "file": "fish/10007_sweet-shrimp.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sweet-shrimp.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10008,
+      "name": "Opaline Gourami",
+      "category": "Catches",
+      "file": "fish/10008_opaline-gourami.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/opaline-gourami.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10009,
+      "name": "Crystal Anchovy",
+      "category": "Catches",
+      "file": "fish/10009_crystal-anchovy.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/crystal-anchovy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10010,
+      "name": "Japanese Jack Mackerel",
+      "category": "Catches",
+      "file": "fish/10010_japanese-jack-mackerel.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/japanese-jack-mackerel.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10011,
+      "name": "Leaf Turtle",
+      "category": "Catches",
+      "file": "fish/10011_leaf-turtle.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/leaf-turtle.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10012,
+      "name": "Red Swordtail",
+      "category": "Catches",
+      "file": "fish/10012_red-swordtail.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/red-swordtail.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10013,
+      "name": "Small Crab",
+      "category": "Catches",
+      "file": "fish/10013_small-crab.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/small-crab.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10014,
+      "name": "Hermit Crab",
+      "category": "Catches",
+      "file": "fish/10014_hermit-crab.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/hermit-crab.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10015,
+      "name": "Sea Cucumber",
+      "category": "Catches",
+      "file": "fish/10015_sea-cucumber.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sea-cucumber.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10016,
+      "name": "Emerald Turtle",
+      "category": "Catches",
+      "file": "fish/10016_emerald-turtle.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/emerald-turtle.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10017,
+      "name": "Toadfish",
+      "category": "Catches",
+      "file": "fish/10017_toadfish.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/toadfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10018,
+      "name": "Bluegill Sunfish",
+      "category": "Catches",
+      "file": "fish/10018_bluegill-sunfish.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/bluegill-sunfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10019,
+      "name": "Small Starfish",
+      "category": "Catches",
+      "file": "fish/10019_small-starfish.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/small-starfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10020,
+      "name": "Jellyfish",
+      "category": "Catches",
+      "file": "fish/10020_jellyfish.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/jellyfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10021,
+      "name": "Tilapia",
+      "category": "Catches",
+      "file": "fish/10021_tilapia.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/tilapia.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10022,
+      "name": "Sea Bass",
+      "category": "Catches",
+      "file": "fish/10022_sea-bass.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sea-bass.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10023,
+      "name": "Black Sea Bass",
+      "category": "Catches",
+      "file": "fish/10023_black-sea-bass.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/black-sea-bass.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10024,
+      "name": "Blowfish",
+      "category": "Catches",
+      "file": "fish/10024_blowfish.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blowfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10025,
+      "name": "Eurasian Dace",
+      "category": "Catches",
+      "file": "fish/10025_eurasian-dace.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/eurasian-dace.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10026,
+      "name": "Ayu Sweetfish",
+      "category": "Catches",
+      "file": "fish/10026_ayu-sweetfish.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ayu-sweetfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10027,
+      "name": "Salmon",
+      "category": "Catches",
+      "file": "fish/10027_salmon.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/salmon.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10028,
+      "name": "Flatfish",
+      "category": "Catches",
+      "file": "fish/10028_flatfish.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/flatfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10029,
+      "name": "Ribbon Eel",
+      "category": "Catches",
+      "file": "fish/10029_ribbon-eel.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ribbon-eel.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10030,
+      "name": "Catfish",
+      "category": "Catches",
+      "file": "fish/10030_catfish.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/catfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10031,
+      "name": "Platinum Peacock Bass",
+      "category": "Catches",
+      "file": "fish/10031_platinum-peacock-bass.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/platinum-peacock-bass.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10032,
+      "name": "Grass Guppy",
+      "category": "Catches",
+      "file": "fish/10032_grass-guppy.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/grass-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10033,
+      "name": "Swordtail Guppy",
+      "category": "Catches",
+      "file": "fish/10033_swordtail-guppy.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/swordtail-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10034,
+      "name": "Firefly Squid",
+      "category": "Catches",
+      "file": "fish/10034_firefly-squid.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/firefly-squid.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10035,
+      "name": "Glass Guppy",
+      "category": "Catches",
+      "file": "fish/10035_glass-guppy.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/glass-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10036,
+      "name": "Crowntail Guppy",
+      "category": "Catches",
+      "file": "fish/10036_crowntail-guppy.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/crowntail-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10037,
+      "name": "Tuxedo Guppy",
+      "category": "Catches",
+      "file": "fish/10037_tuxedo-guppy.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/tuxedo-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10038,
+      "name": "Snakeskin Guppy",
+      "category": "Catches",
+      "file": "fish/10038_snakeskin-guppy.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/snakeskin-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10039,
+      "name": "Mosaic Guppy",
+      "category": "Catches",
+      "file": "fish/10039_mosaic-guppy.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mosaic-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10040,
+      "name": "Panda Guppy",
+      "category": "Catches",
+      "file": "fish/10040_panda-guppy.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/panda-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10041,
+      "name": "Albino Guppy",
+      "category": "Catches",
+      "file": "fish/10041_albino-guppy.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/albino-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10042,
+      "name": "Ribbon Fin Guppy",
+      "category": "Catches",
+      "file": "fish/10042_ribbon-fin-guppy.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ribbon-fin-guppy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10043,
+      "name": "Scallop",
+      "category": "Catches",
+      "file": "fish/10043_scallop.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/scallop.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10044,
+      "name": "Triton's Trumpet",
+      "category": "Catches",
+      "file": "fish/10044_tritons-trumpet.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/tritons-trumpet.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10045,
+      "name": "Telescope Goldfish",
+      "category": "Catches",
+      "file": "fish/10045_telescope-goldfish.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/telescope-goldfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10046,
+      "name": "Pygmy Octopus",
+      "category": "Catches",
+      "file": "fish/10046_pygmy-octopus.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/pygmy-octopus.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10047,
+      "name": "Blue Tang",
+      "category": "Catches",
+      "file": "fish/10047_blue-tang.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blue-tang.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10048,
+      "name": "Nibblefish",
+      "category": "Catches",
+      "file": "fish/10048_nibblefish.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/nibblefish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10049,
+      "name": "Colorfin Fish",
+      "category": "Catches",
+      "file": "fish/10049_colorfin-fish.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/colorfin-fish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10050,
+      "name": "Sea Urchin",
+      "category": "Catches",
+      "file": "fish/10050_sea-urchin.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sea-urchin.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10051,
+      "name": "Mussel",
+      "category": "Catches",
+      "file": "fish/10051_mussel.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mussel.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10052,
+      "name": "Jumbo Crab",
+      "category": "Catches",
+      "file": "fish/10052_jumbo-crab.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/jumbo-crab.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10053,
+      "name": "Lionfish",
+      "category": "Catches",
+      "file": "fish/10053_lionfish.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/lionfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10054,
+      "name": "Nautilus",
+      "category": "Catches",
+      "file": "fish/10054_nautilus.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/nautilus.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10055,
+      "name": "Freshwater Lobster",
+      "category": "Catches",
+      "file": "fish/10055_freshwater-lobster.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/freshwater-lobster.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10056,
+      "name": "Sunset Salmon",
+      "category": "Catches",
+      "file": "fish/10056_sunset-salmon.png",
+      "points": 20,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sunset-salmon.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10057,
+      "name": "Suckermouth Catfish",
+      "category": "Catches",
+      "file": "fish/10057_suckermouth-catfish.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/suckermouth-catfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10058,
+      "name": "Northern Pike",
+      "category": "Catches",
+      "file": "fish/10058_northern-pike.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/northern-pike.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10059,
+      "name": "Chinook Salmon",
+      "category": "Catches",
+      "file": "fish/10059_chinook-salmon.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/chinook-salmon.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10060,
+      "name": "Slender Sharksucker",
+      "category": "Catches",
+      "file": "fish/10060_slender-sharksucker.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/slender-sharksucker.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10061,
+      "name": "Mantis Shrimp",
+      "category": "Catches",
+      "file": "fish/10061_mantis-shrimp.png",
+      "points": 40,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mantis-shrimp.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10062,
+      "name": "Blueberry Goldfish",
+      "category": "Catches",
+      "file": "fish/10062_blueberry-goldfish.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blueberry-goldfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10063,
+      "name": "Chinese Mitten Crab",
+      "category": "Catches",
+      "file": "fish/10063_chinese-mitten-crab.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/chinese-mitten-crab.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10064,
+      "name": "Wimple Piranha",
+      "category": "Catches",
+      "file": "fish/10064_wimple-piranha.png",
+      "points": 40,
+      "depth": 100,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/wimple-piranha.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10065,
+      "name": "Slate Pencil Urchin",
+      "category": "Catches",
+      "file": "fish/10065_slate-pencil-urchin.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/slate-pencil-urchin.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10066,
+      "name": "Black-lip Pearl Oyster",
+      "category": "Catches",
+      "file": "fish/10066_black-lip-pearl-oyster.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/black-lip-pearl-oyster.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10067,
+      "name": "Flapjack Octopus",
+      "category": "Catches",
+      "file": "fish/10067_flapjack-octopus.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/flapjack-octopus.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10068,
+      "name": "Swimming Crab",
+      "category": "Catches",
+      "file": "fish/10068_swimming-crab.png",
+      "points": 40,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/swimming-crab.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10069,
+      "name": "Blue Sea Star",
+      "category": "Catches",
+      "file": "fish/10069_blue-sea-star.png",
+      "points": 40,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blue-sea-star.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10070,
+      "name": "Ocean Dwellers",
+      "category": "Catches",
+      "file": "fish/10070_ocean-dwellers.png",
+      "points": 40,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-dwellers.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10071,
+      "name": "Bighead Carp",
+      "category": "Catches",
+      "file": "fish/10071_bighead-carp.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/bighead-carp.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10072,
+      "name": "Three-eyed Flounder",
+      "category": "Catches",
+      "file": "fish/10072_three-eyed-flounder.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/three-eyed-flounder.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10073,
+      "name": "Silver Trevally",
+      "category": "Catches",
+      "file": "fish/10073_silver-trevally.png",
+      "points": 40,
+      "depth": 100,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/silver-trevally.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10074,
+      "name": "Clownfish",
+      "category": "Catches",
+      "file": "fish/10074_clownfish.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/clownfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10075,
+      "name": "White-faced Surgeonfish",
+      "category": "Catches",
+      "file": "fish/10075_white-faced-surgeonfish.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/white-faced-surgeonfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10076,
+      "name": "Largemouth Bass",
+      "category": "Catches",
+      "file": "fish/10076_largemouth-bass.png",
+      "points": 40,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/largemouth-bass.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10077,
+      "name": "Orange Clownfish",
+      "category": "Catches",
+      "file": "fish/10077_orange-clownfish.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/orange-clownfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10078,
+      "name": "Tigerfish",
+      "category": "Catches",
+      "file": "fish/10078_tigerfish.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/tigerfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10079,
+      "name": "Scorpionfish",
+      "category": "Catches",
+      "file": "fish/10079_scorpionfish.png",
+      "points": 40,
+      "depth": 100,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/scorpionfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10080,
+      "name": "Goldribbon Soapfish",
+      "category": "Catches",
+      "file": "fish/10080_goldribbon-soapfish.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/goldribbon-soapfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10081,
+      "name": "Gleaming Salmon",
+      "category": "Catches",
+      "file": "fish/10081_gleaming-salmon.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/gleaming-salmon.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10082,
+      "name": "Lobster",
+      "category": "Catches",
+      "file": "fish/10082_lobster.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/lobster.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10083,
+      "name": "Masked Bannerfish",
+      "category": "Catches",
+      "file": "fish/10083_masked-bannerfish.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/masked-bannerfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10084,
+      "name": "Sea Bream",
+      "category": "Catches",
+      "file": "fish/10084_sea-bream.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sea-bream.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10085,
+      "name": "Red Rock Turtle",
+      "category": "Catches",
+      "file": "fish/10085_red-rock-turtle.png",
+      "points": 40,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/red-rock-turtle.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10086,
+      "name": "Betta",
+      "category": "Catches",
+      "file": "fish/10086_betta.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/betta.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10087,
+      "name": "Moon Jellyfish",
+      "category": "Catches",
+      "file": "fish/10087_moon-jellyfish.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/moon-jellyfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10088,
+      "name": "Red Starfish",
+      "category": "Catches",
+      "file": "fish/10088_red-starfish.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/red-starfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10089,
+      "name": "Mandarinfish",
+      "category": "Catches",
+      "file": "fish/10089_mandarinfish.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mandarinfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10090,
+      "name": "Blue-ringed Octopus",
+      "category": "Catches",
+      "file": "fish/10090_blue-ringed-octopus.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blue-ringed-octopus.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10091,
+      "name": "Emperor Angelfish",
+      "category": "Catches",
+      "file": "fish/10091_emperor-angelfish.png",
+      "points": 70,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/emperor-angelfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10092,
+      "name": "Blackfish",
+      "category": "Catches",
+      "file": "fish/10092_blackfish.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blackfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10093,
+      "name": "Blackspot Tuskfish",
+      "category": "Catches",
+      "file": "fish/10093_blackspot-tuskfish.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blackspot-tuskfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10094,
+      "name": "Vampire Squid",
+      "category": "Catches",
+      "file": "fish/10094_vampire-squid.png",
+      "points": 70,
+      "depth": 300,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/vampire-squid.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10095,
+      "name": "Bonefish",
+      "category": "Catches",
+      "file": "fish/10095_bonefish.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/bonefish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10096,
+      "name": "Pufferfish",
+      "category": "Catches",
+      "file": "fish/10096_pufferfish.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/pufferfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10097,
+      "name": "Striped Beakfish",
+      "category": "Catches",
+      "file": "fish/10097_striped-beakfish.png",
+      "points": 70,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/striped-beakfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10098,
+      "name": "Goblinfish",
+      "category": "Catches",
+      "file": "fish/10098_goblinfish.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/goblinfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10099,
+      "name": "Japan Surgeonfish",
+      "category": "Catches",
+      "file": "fish/10099_japan-surgeonfish.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/japan-surgeonfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10100,
+      "name": "Koi Fish",
+      "category": "Catches",
+      "file": "fish/10100_koi-fish.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/koi-fish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10101,
+      "name": "Eel Loach",
+      "category": "Catches",
+      "file": "fish/10101_eel-loach.png",
+      "points": 70,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/eel-loach.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10102,
+      "name": "Moray Eel",
+      "category": "Catches",
+      "file": "fish/10102_moray-eel.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/moray-eel.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10103,
+      "name": "King Crab",
+      "category": "Catches",
+      "file": "fish/10103_king-crab.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/king-crab.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10104,
+      "name": "Lanternfish",
+      "category": "Catches",
+      "file": "fish/10104_lanternfish.png",
+      "points": 70,
+      "depth": 300,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/lanternfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10105,
+      "name": "Baculite",
+      "category": "Catches",
+      "file": "fish/10105_baculite.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/baculite.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10106,
+      "name": "Big Head Pufferfish",
+      "category": "Catches",
+      "file": "fish/10106_big-head-pufferfish.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/big-head-pufferfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10107,
+      "name": "Phantomfish",
+      "category": "Catches",
+      "file": "fish/10107_phantomfish.png",
+      "points": 70,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/phantomfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10108,
+      "name": "Giant Oarfish",
+      "category": "Catches",
+      "file": "fish/10108_giant-oarfish.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/giant-oarfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10109,
+      "name": "Spiny Lobster",
+      "category": "Catches",
+      "file": "fish/10109_spiny-lobster.png",
+      "points": 70,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/spiny-lobster.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10110,
+      "name": "Saberfish",
+      "category": "Catches",
+      "file": "fish/10110_saberfish.png",
+      "points": 70,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/saberfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10111,
+      "name": "Sapphirefish",
+      "category": "Catches",
+      "file": "fish/10111_sapphirefish.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sapphirefish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10112,
+      "name": "Sea Pig",
+      "category": "Catches",
+      "file": "fish/10112_sea-pig.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sea-pig.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10113,
+      "name": "Japanese Spider Crab",
+      "category": "Catches",
+      "file": "fish/10113_japanese-spider-crab.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/japanese-spider-crab.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10114,
+      "name": "Gold Spotted Foxface",
+      "category": "Catches",
+      "file": "fish/10114_gold-spotted-foxface.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/gold-spotted-foxface.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10115,
+      "name": "Neptune Grouper",
+      "category": "Catches",
+      "file": "fish/10115_neptune-grouper.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/neptune-grouper.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10116,
+      "name": "Peppermint Angelfish",
+      "category": "Catches",
+      "file": "fish/10116_peppermint-angelfish.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/peppermint-angelfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10117,
+      "name": "Philippine Butterflyfish",
+      "category": "Catches",
+      "file": "fish/10117_philippine-butterflyfish.png",
+      "points": 150,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/philippine-butterflyfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10118,
+      "name": "Emerald Pupfish",
+      "category": "Catches",
+      "file": "fish/10118_emerald-pupfish.png",
+      "points": 150,
+      "depth": 530,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/emerald-pupfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10119,
+      "name": "Blue Lobster",
+      "category": "Catches",
+      "file": "fish/10119_blue-lobster.png",
+      "points": 150,
+      "depth": 530,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/blue-lobster.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10120,
+      "name": "Tideland Walker",
+      "category": "Catches",
+      "file": "fish/10120_tideland-walker.png",
+      "points": 150,
+      "depth": 530,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/tideland-walker.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10121,
+      "name": "Golden Trout",
+      "category": "Catches",
+      "file": "fish/10121_golden-trout.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/golden-trout.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10122,
+      "name": "Bluefin Tuna",
+      "category": "Catches",
+      "file": "fish/10122_bluefin-tuna.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/bluefin-tuna.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10123,
+      "name": "Giant Isopod",
+      "category": "Catches",
+      "file": "fish/10123_giant-isopod.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/giant-isopod.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10124,
+      "name": "Golden Arowana",
+      "category": "Catches",
+      "file": "fish/10124_golden-arowana.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/golden-arowana.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10125,
+      "name": "Dumbo Octopus",
+      "category": "Catches",
+      "file": "fish/10125_dumbo-octopus.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/dumbo-octopus.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10126,
+      "name": "Giant Pearl Grouper",
+      "category": "Catches",
+      "file": "fish/10126_giant-pearl-grouper.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/giant-pearl-grouper.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10127,
+      "name": "Achilles Tang",
+      "category": "Catches",
+      "file": "fish/10127_achilles-tang.png",
+      "points": 150,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/achilles-tang.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10128,
+      "name": "Scythe Butterflyfish",
+      "category": "Catches",
+      "file": "fish/10128_scythe-butterflyfish.png",
+      "points": 150,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/scythe-butterflyfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10129,
+      "name": "White Piranha",
+      "category": "Catches",
+      "file": "fish/10129_white-piranha.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/white-piranha.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10130,
+      "name": "Humphead Wrasse",
+      "category": "Catches",
+      "file": "fish/10130_humphead-wrasse.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/humphead-wrasse.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10131,
+      "name": "Amethyst Giant Clam",
+      "category": "Catches",
+      "file": "fish/10131_amethyst-giant-clam.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/amethyst-giant-clam.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10132,
+      "name": "Chinese Sturgeon",
+      "category": "Catches",
+      "file": "fish/10132_chinese-sturgeon.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/chinese-sturgeon.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10133,
+      "name": "Deep-sea Batfish",
+      "category": "Catches",
+      "file": "fish/10133_deep-sea-batfish.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/deep-sea-batfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10134,
+      "name": "Giant Octopus",
+      "category": "Catches",
+      "file": "fish/10134_giant-octopus.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/giant-octopus.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10135,
+      "name": "Paddlefish",
+      "category": "Catches",
+      "file": "fish/10135_paddlefish.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/paddlefish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10136,
+      "name": "Siberian Taimen",
+      "category": "Catches",
+      "file": "fish/10136_siberian-taimen.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/siberian-taimen.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10137,
+      "name": "Golden Dorado",
+      "category": "Catches",
+      "file": "fish/10137_golden-dorado.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/golden-dorado.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10138,
+      "name": "Black Armored Warrior",
+      "category": "Catches",
+      "file": "fish/10138_black-armored-warrior.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/black-armored-warrior.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10139,
+      "name": "Thorn Sturgeon",
+      "category": "Catches",
+      "file": "fish/10139_thorn-sturgeon.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "captured",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/thorn-sturgeon.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10140,
+      "name": "Marlin",
+      "category": "Catches",
+      "file": "fish/10140_marlin.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/marlin.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10141,
+      "name": "Largetooth Sawfish",
+      "category": "Catches",
+      "file": "fish/10141_largetooth-sawfish.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/largetooth-sawfish.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10142,
+      "name": "Anchorshark",
+      "category": "Catches",
+      "file": "fish/10142_anchorshark.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/anchorshark.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10143,
+      "name": "Titan Sea Beast",
+      "category": "Catches",
+      "file": "fish/10143_titan-sea-beast.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "spring",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/titan-sea-beast.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10144,
+      "name": "Crimson Snapper",
+      "category": "Catches",
+      "file": "fish/10144_crimson-snapper.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/crimson-snapper.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10145,
+      "name": "Armored Turtle",
+      "category": "Catches",
+      "file": "fish/10145_armored-turtle.png",
+      "points": 150,
+      "depth": 400,
+      "available_seasons": [
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/armored-turtle.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10146,
+      "name": "Red-spotted Giant Turtle",
+      "category": "Catches",
+      "file": "fish/10146_red-spotted-giant-turtle.png",
+      "points": 150,
+      "depth": 450,
+      "available_seasons": [
+        "summer",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/red-spotted-giant-turtle.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10147,
+      "name": "Steel-toothed Shark",
+      "category": "Catches",
+      "file": "fish/10147_steel-toothed-shark.png",
+      "points": 150,
+      "depth": 500,
+      "available_seasons": [
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/steel-toothed-shark.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10148,
+      "name": "Angel Shark",
+      "category": "Catches",
+      "file": "fish/10148_angel-shark.png",
+      "points": 150,
+      "depth": 530,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/angel-shark.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10149,
+      "name": "Anomalocaris",
+      "category": "Catches",
+      "file": "fish/10149_anomalocaris.png",
+      "points": 150,
+      "depth": 530,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/anomalocaris.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 10150,
+      "name": "Placodermi",
+      "category": "Catches",
+      "file": "fish/10150_placodermi.png",
+      "points": 150,
+      "depth": 530,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "missing",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/placodermi.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20001,
+      "name": "Distressed Ariel",
+      "category": "Mermaids",
+      "file": "mermaids/20001_distressed-ariel.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/distressed-ariel.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20002,
+      "name": "Distressed Cami",
+      "category": "Mermaids",
+      "file": "mermaids/20002_distressed-cami.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/distressed-cami.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20003,
+      "name": "Distressed Helena",
+      "category": "Mermaids",
+      "file": "mermaids/20003_distressed-helena.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/distressed-helena.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20004,
+      "name": "Mermaid Joy",
+      "category": "Mermaids",
+      "file": "mermaids/20004_mermaid-joy.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mermaid-joy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20005,
+      "name": "Mermaid Petra",
+      "category": "Mermaids",
+      "file": "mermaids/20005_mermaid-petra.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mermaid-petra.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20006,
+      "name": "Mermaid Ivy",
+      "category": "Mermaids",
+      "file": "mermaids/20006_mermaid-ivy.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mermaid-ivy.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20007,
+      "name": "Lost Eris",
+      "category": "Mermaids",
+      "file": "mermaids/20007_lost-eris.png",
+      "points": null,
+      "depth": 350,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/lost-eris.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20008,
+      "name": "Lost Zoe",
+      "category": "Mermaids",
+      "file": "mermaids/20008_lost-zoe.png",
+      "points": null,
+      "depth": 350,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/lost-zoe.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20009,
+      "name": "Princess Nairo",
+      "category": "Mermaids",
+      "file": "mermaids/20009_princess-nairo.png",
+      "points": null,
+      "depth": 350,
+      "available_seasons": [
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/princess-nairo.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 20010,
+      "name": "Princess Berenice",
+      "category": "Mermaids",
+      "file": "mermaids/20010_princess-berenice.png",
+      "points": null,
+      "depth": 350,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/princess-berenice.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30001,
+      "name": "Ocean Resource Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30001_ocean-resource-chest.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-resource-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30002,
+      "name": "Ocean Training Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30002_ocean-training-chest.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-training-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30003,
+      "name": "Ocean Tech Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30003_ocean-tech-chest.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-tech-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30004,
+      "name": "Ocean Construction Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30004_ocean-construction-chest.png",
+      "points": null,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-construction-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30005,
+      "name": "Ocean Gear Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30005_ocean-gear-chest.png",
+      "points": null,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-gear-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30006,
+      "name": "Ocean Speedup Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30006_ocean-speedup-chest.png",
+      "points": null,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-speedup-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30007,
+      "name": "Ocean XP Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30007_ocean-xp-chest.png",
+      "points": null,
+      "depth": 300,
+      "available_seasons": [
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-xp-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30008,
+      "name": "Ocean Upgrade Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30008_ocean-upgrade-chest.png",
+      "points": null,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-upgrade-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30009,
+      "name": "Ocean Hero Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30009_ocean-hero-chest.png",
+      "points": null,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-hero-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 30010,
+      "name": "Ocean Governor Chest",
+      "category": "Ocean Chests",
+      "file": "chests/30010_ocean-governor-chest.png",
+      "points": null,
+      "depth": 400,
+      "available_seasons": [
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ocean-governor-chest.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40001,
+      "name": "Tattered Boots",
+      "category": "Memorabilia",
+      "file": "objects/40001_tattered-boots.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/tattered-boots.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40002,
+      "name": "Sword Hilt",
+      "category": "Memorabilia",
+      "file": "objects/40002_sword-hilt.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sword-hilt.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40003,
+      "name": "War Axe",
+      "category": "Memorabilia",
+      "file": "objects/40003_war-axe.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/war-axe.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40004,
+      "name": "Wooden Spoon",
+      "category": "Memorabilia",
+      "file": "objects/40004_wooden-spoon.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/wooden-spoon.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40005,
+      "name": "Ceramic Jar",
+      "category": "Memorabilia",
+      "file": "objects/40005_ceramic-jar.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ceramic-jar.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40006,
+      "name": "Clay Jug",
+      "category": "Memorabilia",
+      "file": "objects/40006_clay-jug.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/clay-jug.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40007,
+      "name": "Wooden Figure",
+      "category": "Memorabilia",
+      "file": "objects/40007_wooden-figure.png",
+      "points": 10,
+      "depth": 10,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/wooden-figure.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40008,
+      "name": "Doll",
+      "category": "Memorabilia",
+      "file": "objects/40008_doll.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/doll.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40009,
+      "name": "Voodoo Doll",
+      "category": "Memorabilia",
+      "file": "objects/40009_voodoo-doll.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/voodoo-doll.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40010,
+      "name": "Pirate Hat",
+      "category": "Memorabilia",
+      "file": "objects/40010_pirate-hat.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/pirate-hat.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40011,
+      "name": "Message in a Bottle",
+      "category": "Memorabilia",
+      "file": "objects/40011_message-in-a-bottle.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/message-in-a-bottle.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40012,
+      "name": "Wine Goblet",
+      "category": "Memorabilia",
+      "file": "objects/40012_wine-goblet.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/wine-goblet.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40013,
+      "name": "Iron Hook",
+      "category": "Memorabilia",
+      "file": "objects/40013_iron-hook.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/iron-hook.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40014,
+      "name": "Prosthetic Leg",
+      "category": "Memorabilia",
+      "file": "objects/40014_prosthetic-leg.png",
+      "points": 10,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/prosthetic-leg.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40015,
+      "name": "Spectacle Frame",
+      "category": "Memorabilia",
+      "file": "objects/40015_spectacle-frame.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/spectacle-frame.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40016,
+      "name": "Astrolabe",
+      "category": "Memorabilia",
+      "file": "objects/40016_astrolabe.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/astrolabe.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40017,
+      "name": "Lantern",
+      "category": "Memorabilia",
+      "file": "objects/40017_lantern.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/lantern.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40018,
+      "name": "Crucible",
+      "category": "Memorabilia",
+      "file": "objects/40018_crucible.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/crucible.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40019,
+      "name": "Rum",
+      "category": "Memorabilia",
+      "file": "objects/40019_rum.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/rum.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40020,
+      "name": "Strange Portrait Frame",
+      "category": "Memorabilia",
+      "file": "objects/40020_strange-portrait-frame.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/strange-portrait-frame.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40021,
+      "name": "Telescope",
+      "category": "Memorabilia",
+      "file": "objects/40021_telescope.png",
+      "points": 10,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/telescope.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40022,
+      "name": "Brass Bell",
+      "category": "Memorabilia",
+      "file": "objects/40022_brass-bell.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/brass-bell.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40023,
+      "name": "Wooden Sword",
+      "category": "Memorabilia",
+      "file": "objects/40023_wooden-sword.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/wooden-sword.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40024,
+      "name": "Mask",
+      "category": "Memorabilia",
+      "file": "objects/40024_mask.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mask.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40025,
+      "name": "Rudder",
+      "category": "Memorabilia",
+      "file": "objects/40025_rudder.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/rudder.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40026,
+      "name": "Torch",
+      "category": "Memorabilia",
+      "file": "objects/40026_torch.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/torch.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40027,
+      "name": "Hourglass",
+      "category": "Memorabilia",
+      "file": "objects/40027_hourglass.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/hourglass.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40028,
+      "name": "Candelabrum",
+      "category": "Memorabilia",
+      "file": "objects/40028_candelabrum.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/candelabrum.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40029,
+      "name": "Barrel",
+      "category": "Memorabilia",
+      "file": "objects/40029_barrel.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/barrel.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40030,
+      "name": "Anchor",
+      "category": "Memorabilia",
+      "file": "objects/40030_anchor.png",
+      "points": 10,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/anchor.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40031,
+      "name": "Anvil",
+      "category": "Memorabilia",
+      "file": "objects/40031_anvil.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/anvil.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40032,
+      "name": "Wooden Figurine",
+      "category": "Memorabilia",
+      "file": "objects/40032_wooden-figurine.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/wooden-figurine.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40033,
+      "name": "Damaged Crossbow",
+      "category": "Memorabilia",
+      "file": "objects/40033_damaged-crossbow.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/damaged-crossbow.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40034,
+      "name": "Helmet",
+      "category": "Memorabilia",
+      "file": "objects/40034_helmet.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/helmet.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40035,
+      "name": "Exotic Strings",
+      "category": "Memorabilia",
+      "file": "objects/40035_exotic-strings.png",
+      "points": 20,
+      "depth": 100,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/exotic-strings.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40036,
+      "name": "New Wrist Band",
+      "category": "Memorabilia",
+      "file": "objects/40036_new-wrist-band.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/new-wrist-band.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40037,
+      "name": "Crystal Ball",
+      "category": "Memorabilia",
+      "file": "objects/40037_crystal-ball.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/crystal-ball.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40038,
+      "name": "\"Roman's Log\"",
+      "category": "Memorabilia",
+      "file": "objects/40038_romans-log.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/romans-log.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40039,
+      "name": "Horn",
+      "category": "Memorabilia",
+      "file": "objects/40039_horn.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/horn.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40040,
+      "name": "Saul's Sorrow Sack",
+      "category": "Memorabilia",
+      "file": "objects/40040_sauls-sorrow-sack.png",
+      "points": 20,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sauls-sorrow-sack.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40041,
+      "name": "Mallet",
+      "category": "Memorabilia",
+      "file": "objects/40041_mallet.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/mallet.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40042,
+      "name": "Odd Statuette",
+      "category": "Memorabilia",
+      "file": "objects/40042_odd-statuette.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/odd-statuette.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40043,
+      "name": "Captain's Shield",
+      "category": "Memorabilia",
+      "file": "objects/40043_captains-shield.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/captains-shield.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40044,
+      "name": "Broken Portrait Frame",
+      "category": "Memorabilia",
+      "file": "objects/40044_broken-portrait-frame.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/broken-portrait-frame.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40045,
+      "name": "Waterlogged Musket",
+      "category": "Memorabilia",
+      "file": "objects/40045_waterlogged-musket.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/waterlogged-musket.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40046,
+      "name": "Ripe Banana",
+      "category": "Memorabilia",
+      "file": "objects/40046_ripe-banana.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ripe-banana.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40047,
+      "name": "Bronze Mirror",
+      "category": "Memorabilia",
+      "file": "objects/40047_bronze-mirror.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/bronze-mirror.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40048,
+      "name": "Incense Burner",
+      "category": "Memorabilia",
+      "file": "objects/40048_incense-burner.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/incense-burner.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40049,
+      "name": "Exquisite Pottery",
+      "category": "Memorabilia",
+      "file": "objects/40049_exquisite-pottery.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/exquisite-pottery.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40050,
+      "name": "Golden Dice",
+      "category": "Memorabilia",
+      "file": "objects/40050_golden-dice.png",
+      "points": 20,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/golden-dice.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40051,
+      "name": "Crown",
+      "category": "Memorabilia",
+      "file": "objects/40051_crown.png",
+      "points": 40,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/crown.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40052,
+      "name": "Magic Lamp",
+      "category": "Memorabilia",
+      "file": "objects/40052_magic-lamp.png",
+      "points": 40,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/magic-lamp.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40053,
+      "name": "Bongo Drum",
+      "category": "Memorabilia",
+      "file": "objects/40053_bongo-drum.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/bongo-drum.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40054,
+      "name": "Helga's Friend's Cousin's Uncle's Slingshot",
+      "category": "Memorabilia",
+      "file": "objects/40054_helgas-friends-cousins-uncles-slingshot.png",
+      "points": 40,
+      "depth": 300,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/helgas-friends-cousins-uncles-slingshot.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40055,
+      "name": "Golden Wineglass",
+      "category": "Memorabilia",
+      "file": "objects/40055_golden-wineglass.png",
+      "points": 40,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/golden-wineglass.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40056,
+      "name": "Crystal Skull",
+      "category": "Memorabilia",
+      "file": "objects/40056_crystal-skull.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/crystal-skull.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40057,
+      "name": "Marlin's Right Leg",
+      "category": "Memorabilia",
+      "file": "objects/40057_marlins-right-leg.png",
+      "points": 40,
+      "depth": 400,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/marlins-right-leg.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40058,
+      "name": "Ship in a Bottle",
+      "category": "Memorabilia",
+      "file": "objects/40058_ship-in-a-bottle.png",
+      "points": 40,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/ship-in-a-bottle.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40059,
+      "name": "Sextant",
+      "category": "Memorabilia",
+      "file": "objects/40059_sextant.png",
+      "points": 40,
+      "depth": 200,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/sextant.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    },
+    {
+      "id": 40060,
+      "name": "Trident",
+      "category": "Memorabilia",
+      "file": "objects/40060_trident.png",
+      "points": 40,
+      "depth": 500,
+      "available_seasons": [
+        "spring",
+        "summer",
+        "autumn",
+        "winter"
+      ],
+      "capture_status": "unknown",
+      "source_url": "https://cdn.kingshotmastery.com/images/tools/fishing-handbook/trident.webp",
+      "source_size": [
+        350,
+        423
+      ],
+      "crop_bounds": [
+        7,
+        85,
+        343,
+        309
+      ],
+      "calibrated_for_gameplay": false,
+      "background_removed": false
+    }
+  ]
+}

@@ -68,3 +68,29 @@ Tips:
 - ALWAYS keep the same emulator resolution used to create the templates.
 - If a button is not detected, lower `DEFAULT_THRESHOLD` in `config.py`
   (e.g. 0.80) or redo the crop.
+
+## Fishing handbook references
+
+`fishing_references/` contains website artwork, not calibrated gameplay templates:
+150 fish, 60 objects, 10 mermaids, and 10 ocean chests. Each central PNG crop is
+named by catalog ID and slug, grouped in `fish/`, `objects/`, `mermaids/`, or
+`chests/`. Original cards are cached in `cards/`.
+
+Regenerate from the project root:
+
+```bash
+.venv/bin/python -m events.fishing_references
+```
+
+Use `--names Blowfish "Distressed Ariel"` to export a subset. The output
+`index.json` describes the entries exported by that run, with names, points,
+depths, available seasons, source URLs, crop bounds, and verified collection
+states. Unknown entries remain unknown; website checkmarks and aggregate
+collection counters do not identify individual captured specimens.
+
+These crops retain the blue card background. They have not been scale-calibrated
+or validated against moving specimens at native ADB resolution. They are not
+calibrated native templates and must not replace `fishing_blowfish.png`.
+The overlay's experimental catalog mode loads enabled references selected in
+`memory/fishing_highlight_targets_5555.json`, isolates foreground artwork, and
+matches visual features. Native `--fish` mode still requires native ADB crops.

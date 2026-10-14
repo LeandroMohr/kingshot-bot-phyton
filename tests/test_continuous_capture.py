@@ -10,6 +10,67 @@ from adb_controller import ADBController, ContinuousCapture, NO_WINDOW
 
 
 class ContinuousCaptureTests(unittest.TestCase):
+    def test_opt_in_recovers_from_wrapped_screenshot_timeout(self):
+        controller = Mock()
+        failure = RuntimeError("Screenshot timed out")
+        failure.__cause__ = subprocess.TimeoutExpired(["adb", "screencap"], 2)
+        controller.screenshot.side_effect = [failure, np.zeros((10, 10, 3), np.uint8)]
+        with ContinuousCapture(controller, max_timeout_retries=2) as capture:
+            frame = capture.next_frame(timeout=1)
+            self.assertEqual(frame.sequence, 1)
+            self.assertEqual(capture.timeouts, 1)
+        self.assertFalse(capture._thread.is_alive())
+
+    def test_persistent_timeouts_exhaust_retry_limit(self):
+        controller = Mock()
+        controller.screenshot.side_effect = subprocess.TimeoutExpired(["adb", "screencap"], 2)
+        with ContinuousCapture(controller, max_fps=100, max_timeout_retries=2) as capture:
+            with self.assertRaisesRegex(RuntimeError, "capture failed"):
+                capture.next_frame(timeout=1)
+            self.assertEqual(capture.timeouts, 3)
+            self.assertEqual(controller.screenshot.call_count, 3)
+
+    def test_retries_do_not_hide_non_timeout_failures(self):
+        controller = Mock()
+        controller.screenshot.side_effect = RuntimeError("ADB disconnected")
+        with ContinuousCapture(controller, max_timeout_retries=2) as capture:
+            with self.assertRaisesRegex(RuntimeError, "ADB disconnected"):
+                capture.next_frame(timeout=1)
+        self.assertEqual(controller.screenshot.call_count, 1)
+
+    def test_retry_limit_is_reset_after_success_and_stale_frame_is_invalidated(self):
+        first_received = threading.Event()
+        second_timeout = threading.Event()
+        release = threading.Event()
+        calls = []
+
+        def screenshot(timeout):
+            calls.append(1)
+            if len(calls) == 3:
+                first_received.wait(1)
+            if len(calls) in (1, 3):
+                raise subprocess.TimeoutExpired(["adb", "screencap"], timeout)
+            if len(calls) == 4:
+                second_timeout.set()
+                release.wait(1)
+            return np.zeros((10, 10, 3), np.uint8)
+
+        controller = Mock()
+        controller.screenshot.side_effect = screenshot
+        with ContinuousCapture(controller, max_fps=100, max_timeout_retries=1) as capture:
+            first = capture.next_frame(timeout=1)
+            first_received.set()
+            try:
+                self.assertTrue(second_timeout.wait(1))
+                with self.assertRaises(TimeoutError):
+                    capture.next_frame(timeout=.02)
+                release.set()
+                fresh = capture.next_frame(first.sequence, timeout=1)
+                self.assertGreater(fresh.sequence, first.sequence)
+                self.assertEqual(capture.timeouts, 2)
+            finally:
+                release.set()
+
     def test_latest_frame_replaces_backlog_and_is_immutable(self):
         controller = Mock()
         controller.screenshot.side_effect = lambda timeout: np.zeros((10, 10, 3), np.uint8)
